@@ -1,5 +1,5 @@
 { 
-    "version": "2.4.1.4", 
-    "releaseNotes": "Fix pulsanti lite disabilitati", 
+    "version": "2.4.1.5", 
+    "releaseNotes": "Fix attivatori, Revisione completa codice e rimozione codice superfluo", 
     "updateUrl": "https://github.com/Italian-Developer/WinHubX/releases/download/WinHubX/WinHubX.exe" 
 }
