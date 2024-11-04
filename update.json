@@ -1,5 +1,5 @@
 { 
-    "version": "2.4.1.5", 
-    "releaseNotes": "Fix attivatori, Revisione completa codice e rimozione codice superfluo", 
+    "version": "2.4.1.6", 
+    "releaseNotes": "Changelog nel programma", 
     "updateUrl": "https://github.com/Italian-Developer/WinHubX/releases/download/WinHubX/WinHubX.exe" 
 }
