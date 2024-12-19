@@ -6,4 +6,7 @@ updates:
       interval: "weekly" # Frequenza degli aggiornamenti (puoi cambiare in "daily" o "monthly")
     commit-message:
       prefix: "fix" # Prefisso per il messaggio di commit
-    open-pull-requests-limit: 0 # Nessun limite alle PR aperte
+    open-pull-requests-limit: 5 # Limite massimo di PR aperte contemporaneamente
+    ignore:
+      - dependency-name: "Microsoft.NET.Test.Sdk" # Esempio di pacchetto da ignorare
+        versions: ["<16.0.0"] # Ignora versioni specifiche
