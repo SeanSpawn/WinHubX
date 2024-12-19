@@ -1,12 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: "nuget" # Ecosistema di pacchetti da monitorare
-    directory: "/" # Directory del tuo progetto
+  - package-ecosystem: "nuget"
+    directory: "/WinHubX/" # Percorso della directory contenente il file .csproj
     schedule:
-      interval: "weekly" # Frequenza degli aggiornamenti (puoi cambiare in "daily" o "monthly")
+      interval: "weekly" # Aggiornamenti settimanali
     commit-message:
-      prefix: "fix" # Prefisso per il messaggio di commit
-    open-pull-requests-limit: 5 # Limite massimo di PR aperte contemporaneamente
-    ignore:
-      - dependency-name: "Microsoft.NET.Test.Sdk" # Esempio di pacchetto da ignorare
-        versions: ["<16.0.0"] # Ignora versioni specifiche
+      prefix: "chore(deps)"
+    open-pull-requests-limit: 0
