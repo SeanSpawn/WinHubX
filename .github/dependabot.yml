@@ -1,9 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/WinHubX/" # Percorso della directory contenente il file .csproj
+    directory: "/WinHubX/" 
     schedule:
-      interval: "weekly" # Aggiornamenti settimanali
+      interval: "weekly"
     commit-message:
       prefix: "chore(deps)"
     open-pull-requests-limit: 0
