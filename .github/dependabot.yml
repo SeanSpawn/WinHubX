@@ -1,9 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" # Ecosistema di pacchetti da monitorare
-    directory: "/" # Directory principale del progetto
+    directory: "/" # Directory del tuo progetto
     schedule:
-      interval: "weekly" # Frequenza degli aggiornamenti (può essere "daily" o "monthly")
+      interval: "weekly" # Frequenza degli aggiornamenti (puoi cambiare in "daily" o "monthly")
     commit-message:
-      prefix: "chore(deps)" # Prefisso per il messaggio di commit
-    open-pull-requests-limit: 0 # Nessun limite alle pull request aperte
+      prefix: "fix" # Prefisso per il messaggio di commit
+    open-pull-requests-limit: 0 # Nessun limite alle PR aperte
