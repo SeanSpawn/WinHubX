@@ -28,7 +28,7 @@ Community leaders are responsible for clarifying the standards of acceptable beh
 
 ## Enforcement 📅
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at [your-email@example.com]. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at [Alessandro824@proton.me]. All complaints will be reviewed and investigated promptly and fairly.
 
 All project team members are obligated to respect the confidentiality of the reporter of any incident.
 
