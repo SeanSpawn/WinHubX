@@ -1,5 +1,5 @@
 { 
-    "version": "2.4.1.9", 
-    "releaseNotes": "Fix Creazione ISO con spazio nelle path, Aggiunto installazione app, Aggiornato WSA, Fixato rilevazione disco, Aggiornato codice crea ISO (batch)", 
+    "version": "2.4.2.0", 
+    "releaseNotes": "Major Update", 
     "updateUrl": "https://github.com/Italian-Developer/WinHubX/releases/download/WinHubX/WinHubX.exe" 
 }
