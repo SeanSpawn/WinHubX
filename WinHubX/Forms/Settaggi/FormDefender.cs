@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using WinHubX.Forms.Base;
 
 namespace WinHubX.Forms.Settaggi
@@ -98,11 +100,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 DisabilitaDefender.SetItemChecked(index, GetCheckboxState("DisabilitaNETStrongCryptography"));
             }
-            index = DisabilitaDefender.Items.IndexOf("Disabilita Meltdown CVE-2017-5754");
-            if (index != -1)
-            {
-                DisabilitaDefender.SetItemChecked(index, GetCheckboxState("DisabilitaMeltdownCVE-2017-5754"));
-            }
             index = DisabilitaDefender.Items.IndexOf("Livello Minimo UAC");
             if (index != -1)
             {
@@ -168,11 +165,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AbilitaDefender.SetItemChecked(index, GetCheckboxState("AbilitaNETStrongCryptography"));
             }
-            index = AbilitaDefender.Items.IndexOf("Abilita Meltdown CVE-2017-5754");
-            if (index != -1)
-            {
-                AbilitaDefender.SetItemChecked(index, GetCheckboxState("AbilitaMeltdownCVE-2017-5754"));
-            }
             index = AbilitaDefender.Items.IndexOf("Livello Massimo UAC");
             if (index != -1)
             {
@@ -212,24 +204,7 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaControlloAccessoCartella", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-MpPreference -EnableControlledFolderAccess Disabled -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetMpPreference("EnableControlledFolderAccess", true);
                 }
                 catch (Exception ex)
                 {
@@ -245,24 +220,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaIsolamentoCore", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity\" -Name \"Enabled\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", RegistryView.Registry64);
+                    DeleteRegistryKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -311,24 +270,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaProtezioneAccountWarning", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty \"HKCU:\\Software\\Microsoft\\Windows Security Health\\State\" -Name \"AccountProtection_MicrosoftAccount_Disconnected\" -Type DWord -Value 1",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -344,24 +287,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaBloccoDownloadFiles", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\" -Name \"SaveZoneInformation\" -Type DWord -Value 1",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -377,24 +304,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaWindowsScriptHost", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows Script Host\\Settings\" -Name \"Enabled\" -Type DWord -Value 0",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -410,24 +321,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaNETStrongCryptography", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\" -Name \"SchUseStrongCrypto\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -438,62 +333,13 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaNETStrongCryptography", false);
             }
-            if (DisabilitaDefender.CheckedItems.Contains("Disabilita Meltdown CVE-2017-5754"))
-            {
-                SetCheckboxState("DisabilitaMeltdownCVE-2017-5754", true);
-                try
-                {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat\" -Name \"cadca5fe-87d3-4b96-b7fb-a231484277cc\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                }
-            }
-            else
-            {
-                SetCheckboxState("DisabilitaMeltdownCVE-2017-5754", false);
-            }
             if (DisabilitaDefender.CheckedItems.Contains("Livello Minimo UAC"))
             {
                 SetCheckboxState("LivelloMinimoUAC", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -Name \"ConsentPromptBehaviorAdmin\" -Type DWord -Value 0",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -509,24 +355,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaImplicitAdministrativeSheres", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\" -Name \"AutoShareWks\" -Type DWord -Value 0",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -542,24 +372,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaWindowsFirewall", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\StandardProfile\" -Name \"EnableFirewall\" -Type DWord -Value 0",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", 0, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", 0, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -575,24 +389,10 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaWindowsDefenderCLoud", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\" -Name \"SpynetReporting\" -Type DWord -Value 0; Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\" -Name \"SubmitSamplesConsent\" -Type DWord -Value 2",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -608,23 +408,33 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaWindowsDefenderSysTray", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "If (!(Test-Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Systray\")) { New-Item -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Systray\" -Force | Out-Null } Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Systray\" -Name \"HideSystray\" -Type DWord -Value 1 If ([System.Environment]::OSVersion.Version.Build -eq 14393) { Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name \"WindowsDefender\" -ErrorAction SilentlyContinue } ElseIf ([System.Environment]::OSVersion.Version.Build -ge 15063) { Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name \"SecurityHealth\" -ErrorAction SilentlyContinue }",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+                    string systrayKeyPath = @"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray";
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
+                    // Crea o apri la chiave per Registry64
+                    using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).CreateSubKey(systrayKeyPath, writable: true))
                     {
-                        process.WaitForExit();
+                        // Imposta il valore della chiave di registro per HideSystray
+                        key64?.SetValue("HideSystray", 1, RegistryValueKind.DWord);
+                    }
 
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
+                    // Crea o apri la chiave per Registry32
+                    using (var key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).CreateSubKey(systrayKeyPath, writable: true))
+                    {
+                        // Imposta il valore della chiave di registro per HideSystray
+                        key32?.SetValue("HideSystray", 1, RegistryValueKind.DWord);
+                    }
+
+                    // Controlla la versione del sistema operativo
+                    var osVersion = Environment.OSVersion.Version;
+                    if (osVersion.Build == 14393)
+                    {
+                        // Rimuovi la chiave di registro per Windows Defender
+                        RemoveRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender");
+                    }
+                    else if (osVersion.Build >= 15063)
+                    {
+                        // Rimuovi la chiave di registro per SecurityHealth
+                        RemoveRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth");
                     }
                 }
                 catch (Exception ex)
@@ -641,57 +451,38 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaWindowsDefenderServices", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
+                    // Percorsi delle chiavi di registro da modificare
+                    string[] registryPaths = new[]
                     {
-                        FileName = "powershell.exe",
-                        Arguments = "Takeown-Registry(\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\"); Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\" \"Start\" 4; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\" \"AutorunsDisabled\" 3; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WdNisSvc\" \"Start\" 4; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WdNisSvc\" \"AutorunsDisabled\" 3; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Sense\" \"Start\" 4; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Sense\" \"AutorunsDisabled\" 3",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+            @"SYSTEM\CurrentControlSet\Services\WinDefend",
+            @"SYSTEM\CurrentControlSet\Services\WdNisSvc",
+            @"SYSTEM\CurrentControlSet\Services\Sense"
+        };
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
+                    foreach (var path in registryPaths)
                     {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
+                        // Prendi possesso della chiave per Registry64
+                        TakeOwnership(path, RegistryView.Registry64);
+                        // Prendi possesso della chiave per Registry32
+                        TakeOwnership(path, RegistryView.Registry32);
                     }
+
+                    // Altri codici per disabilitare Windows Defender Services possono essere aggiunti qui
+
+                    MessageBox.Show("Ownership taken for Windows Defender services.");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred: {ex.Message}");
                 }
             }
-            else
-            {
-                SetCheckboxState("DisabilitaWindowsDefenderServices", false);
-            }
             if (AbilitaDefender.CheckedItems.Contains("Abilita Controllo Accesso Cartella"))
             {
                 SetCheckboxState("AbilitaControlloAccessoCartella", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-MpPreference -EnableControlledFolderAccess Enabled -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -707,24 +498,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaIsolamentoCore", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity\" -Name \"Enabled\" -Type DWord -Value 1",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -773,24 +548,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaProtezioneAccountWarning", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty \"HKCU:\\Software\\Microsoft\\Windows Security Health\\State\" -Name \"AccountProtection_MicrosoftAccount_Disconnected\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey(@"Software\Microsoft\Windows Security Health\State", RegistryView.Registry64);
+                    DeleteRegistryKey(@"Software\Microsoft\Windows Security Health\State", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -806,24 +565,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaBloccoDownloadFiles", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\" -Name \"SaveZoneInformation\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -839,24 +582,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaWindowsScriptHost", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows Script Host\\Settings\" -Name \"Enabled\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -872,24 +599,10 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaNETStrongCryptography", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\" -Name \"SchUseStrongCrypto\" -Type DWord -Value 1; Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\" -Name \"SchUseStrongCrypto\" -Type DWord -Value 1",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry64);
                 }
                 catch (Exception ex)
                 {
@@ -900,62 +613,16 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaNETStrongCryptography", false);
             }
-            if (AbilitaDefender.CheckedItems.Contains("Abilita Meltdown CVE-2017-5754"))
-            {
-                SetCheckboxState("AbilitaMeltdownCVE-2017-5754", true);
-                try
-                {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat\" -Name \"cadca5fe-87d3-4b96-b7fb-a231484277cc\" -Type DWord -Value 0",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                }
-            }
-            else
-            {
-                SetCheckboxState("AbilitaMeltdownCVE-2017-5754", false);
-            }
             if (AbilitaDefender.CheckedItems.Contains("Livello Massimo UAC"))
             {
                 SetCheckboxState("LivelloMassimoUAC", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -Name \"ConsentPromptBehaviorAdmin\" -Type DWord -Value 5; Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" -Name \"PromptOnSecureDesktop\" -Type DWord -Value 1",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 5, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 5, RegistryView.Registry32);
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -971,24 +638,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaImplicitAdministrativeSheres", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\" -Name \"AutoShareWks\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -1004,24 +655,8 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaWindowsFirewall", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\StandardProfile\" -Name \"EnableFirewall\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -1037,24 +672,11 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaWindowsDefenderCLoud", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\" -Name \"SpynetReporting\" -ErrorAction SilentlyContinue; Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\" -Name \"SubmitSamplesConsent\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", RegistryView.Registry32);
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -1070,23 +692,30 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaWindowsDefenderSysTray", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Systray\" -Name \"HideSystray\" -ErrorAction SilentlyContinue; If ([System.Environment]::OSVersion.Version.Build -eq 14393) { Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name \"WindowsDefender\" -Type ExpandString -Value \"`\"%ProgramFiles%\\Windows Defender\\MSASCuiL.exe`\"\" } ElseIf ([System.Environment]::OSVersion.Version.Build -ge 15063 -And [System.Environment]::OSVersion.Version.Build -le 17134) { Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name \"SecurityHealth\" -Type ExpandString -Value \"%ProgramFiles%\\Windows Defender\\MSASCuiL.exe\" } ElseIf ([System.Environment]::OSVersion.Version.Build -ge 17763) { Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name \"SecurityHealth\" -Type ExpandString -Value \"%windir%\\system32\\SecurityHealthSystray.exe\" }",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+                    // Elimina la proprietà "HideSystray"
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray", "HideSystray", RegistryView.Registry64);
+                    DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray", "HideSystray", RegistryView.Registry32);
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
+                    // Ottieni la versione di build del sistema operativo
+                    var buildVersion = Environment.OSVersion.Version.Build;
 
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
+                    if (buildVersion == 14393)
+                    {
+                        // Imposta il valore "WindowsDefender" con il percorso specifico
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry64);
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry32);
+                    }
+                    else if (buildVersion >= 15063 && buildVersion <= 17134)
+                    {
+                        // Imposta il valore "SecurityHealth" per build tra 15063 e 17134
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry64);
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry32);
+                    }
+                    else if (buildVersion >= 17763)
+                    {
+                        // Imposta il valore "SecurityHealth" per build 17763 o superiori
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%windir%\system32\SecurityHealthSystray.exe", RegistryView.Registry64);
+                        SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%windir%\system32\SecurityHealthSystray.exe", RegistryView.Registry32);
                     }
                 }
                 catch (Exception ex)
@@ -1103,24 +732,22 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaWindowsDefenderServices", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Takeown-Registry(\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\"); Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\" \"Start\" 3; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WinDefend\" \"AutorunsDisabled\" 4; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WdNisSvc\" \"Start\" 3; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WdNisSvc\" \"AutorunsDisabled\" 4; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Sense\" \"Start\" 3; Set-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Sense\" \"AutorunsDisabled\" 4",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runas"
-                    };
+                    // Prendi il controllo delle chiavi di registro richieste
+                    TakeOwnRegistry(@"SYSTEM\CurrentControlSet\Services\WinDefend");
 
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    // Imposta i valori di registro richiesti
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "Start", 3, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "AutorunsDisabled", 4, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WdNisSvc", "Start", 3, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WdNisSvc", "AutorunsDisabled", 4, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "Start", 3, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "AutorunsDisabled", 4, RegistryView.Registry64);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "Start", 3, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "AutorunsDisabled", 4, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WdNisSvc", "Start", 3, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WdNisSvc", "AutorunsDisabled", 4, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "Start", 3, RegistryView.Registry32);
+                    SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "AutorunsDisabled", 4, RegistryView.Registry32);
                 }
                 catch (Exception ex)
                 {
@@ -1138,38 +765,34 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                var startInfo = new System.Diagnostics.ProcessStartInfo()
-                {
-                    FileName = "powershell.exe",
-                    Arguments = @"Set-MpPreference -EnableControlledFolderAccess Disabled -ErrorAction SilentlyContinue; " +
-            @"Remove-ItemProperty -Path ""HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"" -Name ""Enabled"" -ErrorAction SilentlyContinue; " +
-            @"Disable-WindowsOptionalFeature -online -FeatureName ""Windows-Defender-ApplicationGuard"" -NoRestart -WarningAction SilentlyContinue; " +
-            @"Set-ItemProperty ""HKCU:\Software\Microsoft\Windows Security Health\State"" -Name ""AccountProtection_MicrosoftAccount_Disconnected"" -Type DWord -Value 1; " +
-            @"Set-ItemProperty -Path ""HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments"" -Name ""SaveZoneInformation"" -Type DWord -Value 1; " +
-            @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows Script Host\Settings"" -Name ""Enabled"" -Type DWord -Value 0; " +
-            @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\.NETFramework\v4.0.30319"" -Name ""SchUseStrongCrypto"" -ErrorAction SilentlyContinue; " +
-            @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319"" -Name ""SchUseStrongCrypto"" -ErrorAction SilentlyContinue; " +
-            @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat"" -Name ""cadca5fe-87d3-4b96-b7fb-a231484277cc"" -ErrorAction SilentlyContinue; " +
-            @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" -Name ""ConsentPromptBehaviorAdmin"" -Type DWord -Value 0; " +
-            @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" -Name ""PromptOnSecureDesktop"" -Type DWord -Value 0; " +
-            @"Set-ItemProperty -Path ""HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"" -Name ""AutoShareWks"" -Type DWord -Value 0; " +
-            @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"" -Name ""SpynetReporting"" -Type DWord -Value 0; " +
-            @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"" -Name ""SubmitSamplesConsent"" -Type DWord -Value 2",
+                // Disabilita Controlled Folder Access
+                SetMpPreference("EnableControlledFolderAccess", false);
 
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    Verb = "runas"
-                };
-
-                using (var process = System.Diagnostics.Process.Start(startInfo))
-                {
-                    process.WaitForExit();
-
-                    var output = process.StandardOutput.ReadToEnd();
-                    var error = process.StandardError.ReadToEnd();
-                }
+                // Rimuove vari valori di registro
+                DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat", "cadca5fe-87d3-4b96-b7fb-a231484277cc", RegistryView.Registry64);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry64);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", RegistryView.Registry32);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
+                DeleteRegistryKey3arg(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat", "cadca5fe-87d3-4b96-b7fb-a231484277cc", RegistryView.Registry32);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry32);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
             }
             catch (Exception ex)
             {
@@ -1182,43 +805,196 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                var startInfo = new System.Diagnostics.ProcessStartInfo()
-                {
-                    FileName = "powershell.exe",
-                    Arguments = @"Set-MpPreference -EnableControlledFolderAccess Enabled -ErrorAction SilentlyContinue; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity"" -Name ""Enabled"" -Type DWord -Value 1; " +
-                        @"Enable-WindowsOptionalFeature -online -FeatureName ""Windows-Defender-ApplicationGuard"" -NoRestart -WarningAction SilentlyContinue; " +
-                        @"Remove-ItemProperty ""HKCU:\Software\Microsoft\Windows Security Health\State"" -Name ""AccountProtection_MicrosoftAccount_Disconnected"" -ErrorAction SilentlyContinue; " +
-                        @"Remove-ItemProperty -Path ""HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments"" -Name ""SaveZoneInformation"" -ErrorAction SilentlyContinue; " +
-                        @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows Script Host\Settings"" -Name ""Enabled"" -ErrorAction SilentlyContinue; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\.NETFramework\v4.0.30319"" -Name ""SchUseStrongCrypto"" -Type DWord -Value 1; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319"" -Name ""SchUseStrongCrypto"" -Type DWord -Value 1; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat"" -Name ""cadca5fe-87d3-4b96-b7fb-a231484277cc"" -Type DWord -Value 0; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" -Name ""ConsentPromptBehaviorAdmin"" -Type DWord -Value 5; " +
-                        @"Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"" -Name ""PromptOnSecureDesktop"" -Type DWord -Value 1; " +
-                        @"Remove-ItemProperty -Path ""HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"" -Name ""AutoShareWks"" -ErrorAction SilentlyContinue; " +
-                        @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"" -Name ""SpynetReporting"" -ErrorAction SilentlyContinue; " +
-                        @"Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"" -Name ""SubmitSamplesConsent"" -ErrorAction SilentlyContinue;",
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    Verb = "runas"
-                };
+                // Disabilita Controlled Folder Access
+                SetMpPreference("EnableControlledFolderAccess", false);
 
-                using (var process = System.Diagnostics.Process.Start(startInfo))
-                {
-                    process.WaitForExit();
+                // Rimuove vari valori di registro su Registry64 e Registry32, dove applicabile
+                DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
+                DeleteRegistryKey3arg(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
+                DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat", "cadca5fe-87d3-4b96-b7fb-a231484277cc", RegistryView.Registry64);
 
-                    var output = process.StandardOutput.ReadToEnd();
-                    var error = process.StandardError.ReadToEnd();
+                // Imposta i valori di registro richiesti su entrambi i RegistryView dove applicabile
+                SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry64);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry64);
+                SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry32);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry64);
+                SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating registry settings: {ex.Message}");
+            }
+            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        static void DeleteRegistryKey(string keyPath, RegistryView registryView)
+        {
+            try
+            {
+                using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+                {
+                    baseKey.DeleteSubKeyTree(keyPath);
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        static void DeleteRegistryKey3arg(string keyPath, string subKeyName, RegistryView registryView)
+        {
+            try
+            {
+                // Apri la chiave di registro principale
+                using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+                {
+                    // Elimina la sottochiave specificata
+                    baseKey.DeleteSubKey(Path.Combine(keyPath, subKeyName), throwOnMissingSubKey: false);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                // Gestisci l'eccezione (ad esempio, registrandola o mostrando un messaggio)
+                Console.WriteLine($"Errore durante l'eliminazione della chiave di registro: {ex.Message}");
             }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        static void SetDwordRegistryValue(string keyPath, string valueName, int value, RegistryView registryView)
+        {
+            try
+            {
+                using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView).CreateSubKey(keyPath, writable: true))
+                {
+                    if (key != null)
+                    {
+                        key.SetValue(valueName, value, RegistryValueKind.DWord);
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        static void RemoveRegistryValue(string keyPath, string valueName)
+        {
+            try
+            {
+                // Rimuovi la chiave per Registry64
+                using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(keyPath, writable: true))
+                {
+                    key64?.DeleteValue(valueName, throwOnMissingValue: false);
+                }
+
+                // Rimuovi la chiave per Registry32
+                using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(keyPath, writable: true))
+                {
+                    key32?.DeleteValue(valueName, throwOnMissingValue: false);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        void TakeOwnership(string keyPath, RegistryView registryView)
+        {
+            try
+            {
+                // Ottieni la chiave di registro
+                using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView).OpenSubKey(keyPath, writable: true))
+                {
+                    if (key != null)
+                    {
+                        // Ottieni la security access control della chiave
+                        RegistrySecurity security = key.GetAccessControl();
+
+                        // Ottieni il SID dell'utente corrente
+                        WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                        SecurityIdentifier sid = identity.User;
+
+                        // Aggiungi il permesso di prendere possesso della chiave
+                        security.AddAccessRule(new RegistryAccessRule(sid, RegistryRights.TakeOwnership, AccessControlType.Allow));
+
+                        // Applica le modifiche alla chiave di registro
+                        key.SetAccessControl(security);
+
+                        // Prendi possesso della chiave
+                        key.SetAccessControl(new RegistrySecurity { });
+
+                        // Imposta i permessi per l'utente corrente
+                        key.SetAccessControl(new RegistrySecurity());
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private void SetStringRegistryValue(string keyPath, string name, string value, RegistryView view)
+        {
+            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view))
+            using (var key = baseKey.CreateSubKey(keyPath))
+            {
+                key.SetValue(name, value, RegistryValueKind.ExpandString);
+            }
+        }
+
+        private void TakeOwnRegistry(string keyPath)
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c takeown /f \"HKEY_LOCAL_MACHINE\\{keyPath}\" /a",
+                Verb = "runas",
+                UseShellExecute = true
+            };
+            var process = System.Diagnostics.Process.Start(psi);
+            process.WaitForExit();
+        }
+
+        private void SetMpPreference(string preference, bool enabled)
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = $"-Command Set-MpPreference -{preference} {(enabled ? "Enabled" : "Disabled")}",
+                Verb = "runas",
+                UseShellExecute = true
+            };
+            var process = System.Diagnostics.Process.Start(psi);
+            process.WaitForExit();
         }
     }
 }

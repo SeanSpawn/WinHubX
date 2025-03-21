@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.Net;
 
 namespace WinHubX.Dialog.Tools
 {
@@ -39,31 +39,52 @@ namespace WinHubX.Dialog.Tools
             this.Close();
         }
 
-        private void btnDownload_Click(object sender, EventArgs e)
+        private async void btnDownload_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string resourceName = "WinHubX.Resources.DriverRST.zip";
-                string destPath = saveFileDialog.FileName;
+            string jsonUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string driverRstUrl = string.Empty;
 
-                try
+            try
+            {
+                using (HttpClient client = new HttpClient())
                 {
-                    using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                    // Effettua la richiesta al JSON online
+                    var response = await client.GetStringAsync(jsonUrl);
+                    // Analizza il JSON per trovare il link nella sezione "Dialog" > "DriverRST"
+                    dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(response);
+                    driverRstUrl = json.Dialog.DriverRST;
+
+                    // Controlla se è stato trovato il link
+                    if (string.IsNullOrEmpty(driverRstUrl))
                     {
-                        if (resourceStream != null)
-                        {
-                            using (FileStream fileStream = new FileStream(destPath, FileMode.Create, FileAccess.Write))
-                            {
-                                resourceStream.CopyTo(fileStream);
-                            }
-                        }
+                        MessageBox.Show("Link non trovato nella sezione 'DriverRST'.");
+                        return;
                     }
-                    this.Close();
                 }
-                catch (Exception ex)
+
+                // Apri il dialogo di salvataggio file
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    MessageBox.Show($"Errore durante il salvataggio del file: {ex.Message}");
+                    saveFileDialog.FileName = "DriverRST.zip"; // Nome predefinito del file
+                    saveFileDialog.Filter = "ZIP Files (*.zip)|*.zip";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string destPath = saveFileDialog.FileName;
+
+                        // Scarica il file dal link
+                        using (var client = new WebClient())
+                        {
+                            await client.DownloadFileTaskAsync(new Uri(driverRstUrl), destPath);
+                        }
+
+                        MessageBox.Show("Download completato.");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore durante il download: {ex.Message}");
             }
         }
     }

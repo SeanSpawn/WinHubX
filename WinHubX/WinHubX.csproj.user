@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\Nico\Documents\GitHub\WinHubX\WinHubX\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\utente\Downloads\1.WinHubX %281%29\1.WinHubX\WinHubX\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Dialog\InfoDialog.cs">
@@ -11,9 +11,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Dialog\PacManDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Dialog\Tools\DialogCheckHW.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Dialog\Tools\DialogDaRT.cs">
@@ -34,6 +31,9 @@
     <Compile Update="Dialog\Tools\DialogWIMToolKit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DiskTypeSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Base\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -44,6 +44,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Base\FormHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Base\FormMonitoraggio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Base\FormOffice.cs">
@@ -67,13 +70,19 @@
     <Compile Update="Forms\Bottoni\CircularProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Forms\DebloatAvanzato\FormDebloatAvanzato.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Personalizzazione office\PersonalizzazioneOffice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\ReinstallaAPP\FormReinstallaAPP.cs">
+    <Compile Update="Forms\Base\FormReinstallaAPP.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Settaggi\FormDefender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Settaggi\FormPersonalizzazione.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Settaggi\FormPrivacy.cs">

@@ -91,16 +91,6 @@ namespace WinHubX.Properties {
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
-        /// </summary>
-        internal static byte[] MSPCManagerSetup {
-            get {
-                object obj = ResourceManager.GetObject("MSPCManagerSetup", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap nicksparrow {
@@ -116,6 +106,16 @@ namespace WinHubX.Properties {
         internal static System.Drawing.Bitmap png365 {
             get {
                 object obj = ResourceManager.GetObject("png365", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngAddApp {
+            get {
+                object obj = ResourceManager.GetObject("pngAddApp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,6 +346,36 @@ namespace WinHubX.Properties {
         internal static System.Drawing.Bitmap Rufus_4Lite {
             get {
                 object obj = ResourceManager.GetObject("Rufus-4Lite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap term_giallo {
+            get {
+                object obj = ResourceManager.GetObject("term_giallo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap term_rosso {
+            get {
+                object obj = ResourceManager.GetObject("term_rosso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap term_verde {
+            get {
+                object obj = ResourceManager.GetObject("term_verde", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

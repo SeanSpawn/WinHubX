@@ -361,8 +361,8 @@
             // 
             // FormOffice
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(btnPersonalizzaOffice);
@@ -388,6 +388,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormOffice";
             Text = "FormOffice";
+            Load += FormOffice_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

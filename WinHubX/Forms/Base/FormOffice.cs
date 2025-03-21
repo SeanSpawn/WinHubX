@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Net;
 using System.Reflection;
 using WinHubX.Dialog;
 using WinHubX.Forms.Personalizzazione_office;
@@ -9,6 +11,11 @@ namespace WinHubX
     {
         private Form1 form1;
         private NotifyIcon notifyIcon;
+        private string link32_2019, link64_2019, fileName_2019, sha256_2019;
+        private string link32_2021, link64_2021, fileName_2021, sha256_2021;
+        private string link32_2024, link64_2024, fileName_2024, sha256_2024;
+        private string link32_365, link64_365, fileName_365, sha256_365;
+
         public FormOffice(Form1 form1)
         {
             InitializeComponent();
@@ -20,20 +27,69 @@ namespace WinHubX
             this.form1 = form1;
         }
 
+        #region Link
+        private async Task LoadOfficeLinks()
+        {
+            string jsonUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+
+            try
+            {
+                var jsonData = await GetJsonDataAsync(jsonUrl);
+
+                // Office 2019
+                link32_2019 = jsonData["Office2019"]["Officex32"]?.ToString();
+                link64_2019 = jsonData["Office2019"]["Officex64"]?.ToString();
+                fileName_2019 = jsonData["Office2019"]["Offline2019"]?.ToString();
+                sha256_2019 = jsonData["Office2019"]["sha2562019"]?.ToString();
+
+                // Office 2021
+                link32_2021 = jsonData["Office2021"]["Officex32"]?.ToString();
+                link64_2021 = jsonData["Office2021"]["Officex64"]?.ToString();
+                fileName_2021 = jsonData["Office2021"]["Offline2021"]?.ToString();
+                sha256_2021 = jsonData["Office2021"]["sha2562021"]?.ToString();
+
+                // Office 2024
+                link32_2024 = jsonData["Office2024"]["Officex32"]?.ToString();
+                link64_2024 = jsonData["Office2024"]["Officex64"]?.ToString();
+                fileName_2024 = jsonData["Office2024"]["Offline2024"]?.ToString();
+                sha256_2024 = jsonData["Office2024"]["sha2562024"]?.ToString();
+
+                // Office 365
+                link32_365 = jsonData["Office365"]["Officex32"]?.ToString();
+                link64_365 = jsonData["Office365"]["Officex64"]?.ToString();
+                fileName_365 = jsonData["Office365"]["Offline365"]?.ToString();
+                sha256_365 = jsonData["Office365"]["sha256365"]?.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore nel caricamento del JSON: {ex.Message}");
+            }
+        }
+
+        private async Task<JObject> GetJsonDataAsync(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetStringAsync(url);
+                return JObject.Parse(response);
+            }
+        }
+
+        #endregion
+
+
+
         #region Office2019
 
         private void btn2019Online_MouseUp(object sender, MouseEventArgs e)
         {
-            string link32 = "https://devuploads.com/dd4c73vcnsk1";
-            string link64 = "https://devuploads.com/8xy39zy1jaev";
-
             OfficeDialog officeDialog = new OfficeDialog()
             {
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            officeDialog.openDialog(lblOffice2019, link32, link64);
+            officeDialog.openDialog(lblOffice2019, link32_2019, link64_2019);
             officeDialog.ShowDialog();
         }
 
@@ -41,9 +97,7 @@ namespace WinHubX
         {
             if (e.Button == MouseButtons.Right)
             {
-
-                Clipboard.SetText("6b50ee7f4eccd87126a0ee1aa42c814773f85cb28d0603e1afd1b56ed00bf6fc");
-
+                Clipboard.SetText(sha256_2019);
                 notifyIcon.BalloonTipTitle = "SHA256 copiato!";
                 notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
                 notifyIcon.ShowBalloonTip(1000);
@@ -54,7 +108,7 @@ namespace WinHubX
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/nqsmxo5pf47p",
+                        FileName = fileName_2019,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
@@ -65,22 +119,20 @@ namespace WinHubX
                 }
             }
         }
+
         #endregion
 
         #region Office2021
 
         private void btn2021Online_MouseUp(object sender, MouseEventArgs e)
         {
-            string link32 = "https://devuploads.com/7n1zl4y08idi";
-            string link64 = "https://devuploads.com/zz26itbug7ib";
-
             OfficeDialog officeDialog = new OfficeDialog()
             {
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            officeDialog.openDialog(lblOffice2021, link32, link64);
+            officeDialog.openDialog(lblOffice2021, link32_2021, link64_2021);
             officeDialog.ShowDialog();
         }
 
@@ -88,9 +140,7 @@ namespace WinHubX
         {
             if (e.Button == MouseButtons.Right)
             {
-
-                Clipboard.SetText("1f0a36b7996840ce8022e4a98fe058cac05a5bb172dcc5d1bac6c7f386823a88");
-
+                Clipboard.SetText(sha256_2021);
                 notifyIcon.BalloonTipTitle = "SHA256 copiato!";
                 notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
                 notifyIcon.ShowBalloonTip(1000);
@@ -101,7 +151,7 @@ namespace WinHubX
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/xokgnvikk8w0",
+                        FileName = fileName_2021,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
@@ -118,16 +168,13 @@ namespace WinHubX
 
         private void btn365Online_MouseUp(object sender, MouseEventArgs e)
         {
-            string link32 = "https://devuploads.com/lbk9qknvueqf";
-            string link64 = "https://devuploads.com/tr1vgi78kk57";
-
             OfficeDialog officeDialog = new OfficeDialog()
             {
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            officeDialog.openDialog(lblOffice365, link32, link64);
+            officeDialog.openDialog(lblOffice365, link32_365, link64_365);
             officeDialog.ShowDialog();
         }
 
@@ -135,9 +182,7 @@ namespace WinHubX
         {
             if (e.Button == MouseButtons.Right)
             {
-
-                Clipboard.SetText("8c9e3d26a9af4a0fa1f1e74ec5ff197eaf2c71ab538b4ff6d9a2494167032ddc");
-
+                Clipboard.SetText(sha256_365);
                 notifyIcon.BalloonTipTitle = "SHA256 copiato!";
                 notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
                 notifyIcon.ShowBalloonTip(1000);
@@ -148,7 +193,7 @@ namespace WinHubX
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/qrawhfz7hk6s",
+                        FileName = fileName_365,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
@@ -167,16 +212,13 @@ namespace WinHubX
 
         private void btn2024Online_MouseUp(object sender, MouseEventArgs e)
         {
-            string link32 = "https://devuploads.com/udxq7u2nqfgt";
-            string link64 = "https://devuploads.com/q009rzo2u4z8";
-
             OfficeDialog officeDialog = new OfficeDialog()
             {
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            officeDialog.openDialog(lblOffice2024, link32, link64);
+            officeDialog.openDialog(lblOffice2024, link32_2024, link64_2024);
             officeDialog.ShowDialog();
         }
 
@@ -184,9 +226,7 @@ namespace WinHubX
         {
             if (e.Button == MouseButtons.Right)
             {
-
-                Clipboard.SetText("2ef0ee897892060b27da35b1e64ccc3efc22dc7b6ed03905a33ab4a672eb851e");
-
+                Clipboard.SetText(sha256_2024);
                 notifyIcon.BalloonTipTitle = "SHA256 copiato!";
                 notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
                 notifyIcon.ShowBalloonTip(1000);
@@ -197,7 +237,7 @@ namespace WinHubX
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/cp3k76gumznb",
+                        FileName = fileName_2024,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
@@ -212,28 +252,53 @@ namespace WinHubX
         #endregion
 
         #region AttivaOffice
-        private void btnAttivaOffice_Click(object sender, EventArgs e)
+        private async void btnAttivaOffice_Click(object sender, EventArgs e)
         {
-            string fileName = "WinHubXOfficeAttivatore.cmd";
-            string resourceName = "WinHubX.Resources.WinHubXOfficeAttivatore.cmd"; string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            string tempScript = Path.Combine(Path.GetTempPath(), "tempScript.bat");
+            string logFile = Path.Combine(Path.GetTempPath(), "ScriptExecution.log");
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string primaryURL = string.Empty;
+
+            // Eliminare il file temporaneo se esiste
+            if (File.Exists(tempScript))
+            {
+                File.Delete(tempScript);
+            }
+
             try
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                using (HttpClient client = new HttpClient())
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
+                    var jsonResponse = await client.GetStringAsync(configUrl);
+                    var jsonObject = JObject.Parse(jsonResponse);
+                    primaryURL = jsonObject["AttivatoreOffice"]["primaryURL"].ToString();
                 }
-                Process.Start(tempFilePath);
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(primaryURL, tempScript);
+                }
+
+                // Eseguire il file scaricato con cmd
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c \"{tempScript}\"",
+                    UseShellExecute = true,
+                    CreateNoWindow = false
+                };
+
+                using (Process process = Process.Start(startInfo))
+                {
+
+                }
+
+                File.AppendAllText(logFile, $"Esecuzione completata per lo script: {tempScript}{Environment.NewLine}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                File.AppendAllText(logFile, ex.Message);
             }
         }
         #endregion
@@ -314,63 +379,9 @@ namespace WinHubX
             formPersonalizzazioneOffice.Show();
         }
 
-
-        public static void ExtractEmbeddedResourceFolder(string resourceFolder)
+        private async void FormOffice_Load(object sender, EventArgs e)
         {
-            string tempFolderPath = Path.GetTempPath();
-            string targetFolderPath = Path.Combine(tempFolderPath, "OfficePersonalizzato");
-            Directory.CreateDirectory(targetFolderPath);
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string assemblyNamee = assembly.GetName().Name;
-            string[] resourceNames = assembly.GetManifestResourceNames();
-
-            foreach (string resourceName in resourceNames)
-            {
-                if (resourceName.StartsWith(resourceFolder))
-                {
-                    string path = Path.Combine(targetFolderPath, resourceName.Substring(assemblyNamee.Length + 1));
-                    string directory = Path.GetDirectoryName(path);
-                    Directory.CreateDirectory(directory);
-
-                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                    using (FileStream fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        stream.CopyTo(fileStream);
-                    }
-                }
-            }
-        }
-
-        private byte[] LoadEmbeddedResource1(string resourcePath)
-        {
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
-            {
-                if (stream == null)
-                {
-                    throw new InvalidOperationException($"Could not find embedded resource: {resourcePath}");
-                }
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
-                return buffer;
-            }
-        }
-
-        private void StartPowerShell1(string scriptFilePath)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "powershell.exe",
-                Arguments = $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"",
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                RedirectStandardOutput = true
-            };
-
-            using (Process process = new Process { StartInfo = startInfo })
-            {
-                process.Start();
-                string output = process.StandardOutput.ReadToEnd();
-            }
+            await LoadOfficeLinks();
         }
     }
 }

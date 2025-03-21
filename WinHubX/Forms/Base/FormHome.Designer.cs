@@ -37,7 +37,6 @@
             lblInfoOffice2024 = new Label();
             label1 = new Label();
             lblInfoWinAIO64 = new Label();
-            btn_winhubxmonitor = new Button();
             ((System.ComponentModel.ISupportInitialize)imgHomeLogo).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +63,7 @@
             btnChangelog.Name = "btnChangelog";
             btnChangelog.Size = new Size(279, 60);
             btnChangelog.TabIndex = 94;
-            btnChangelog.Text = "v2.4.1.0 - Changelog";
+            btnChangelog.Text = "v2.4.2.0 - Changelog";
             btnChangelog.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnChangelog.UseVisualStyleBackColor = true;
             btnChangelog.Click += btnChangelog_Click;
@@ -77,7 +76,7 @@
             btnKofi.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnKofi.ForeColor = Color.Coral;
             btnKofi.Image = Properties.Resources.pngCoffee;
-            btnKofi.Location = new Point(2, 303);
+            btnKofi.Location = new Point(2, 336);
             btnKofi.Margin = new Padding(3, 2, 3, 2);
             btnKofi.Name = "btnKofi";
             btnKofi.Size = new Size(280, 64);
@@ -93,7 +92,7 @@
             tgWinHubX.FlatStyle = FlatStyle.Flat;
             tgWinHubX.ForeColor = Color.FromArgb(37, 38, 39);
             tgWinHubX.Image = Properties.Resources.pngTelegram;
-            tgWinHubX.Location = new Point(779, 401);
+            tgWinHubX.Location = new Point(772, 401);
             tgWinHubX.Margin = new Padding(3, 2, 3, 2);
             tgWinHubX.Name = "tgWinHubX";
             tgWinHubX.Size = new Size(57, 43);
@@ -129,11 +128,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Italic);
             label1.ForeColor = Color.Coral;
-            label1.Location = new Point(753, 336);
+            label1.Location = new Point(803, 336);
             label1.Name = "label1";
-            label1.Size = new Size(136, 20);
+            label1.Size = new Size(76, 20);
             label1.TabIndex = 99;
-            label1.Text = "Italian Developers";
+            label1.Text = "MrNico98";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblInfoWinAIO64
@@ -141,39 +140,20 @@
             lblInfoWinAIO64.AutoSize = true;
             lblInfoWinAIO64.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblInfoWinAIO64.ForeColor = Color.White;
-            lblInfoWinAIO64.Location = new Point(13, 13);
+            lblInfoWinAIO64.Location = new Point(2, 9);
             lblInfoWinAIO64.MaximumSize = new Size(595, 0);
             lblInfoWinAIO64.Name = "lblInfoWinAIO64";
-            lblInfoWinAIO64.Size = new Size(541, 104);
+            lblInfoWinAIO64.Size = new Size(593, 312);
             lblInfoWinAIO64.TabIndex = 92;
             lblInfoWinAIO64.Text = resources.GetString("lblInfoWinAIO64.Text");
             lblInfoWinAIO64.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // btn_winhubxmonitor
-            // 
-            btn_winhubxmonitor.Cursor = Cursors.Hand;
-            btn_winhubxmonitor.FlatAppearance.BorderSize = 0;
-            btn_winhubxmonitor.FlatStyle = FlatStyle.Flat;
-            btn_winhubxmonitor.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_winhubxmonitor.ForeColor = Color.Coral;
-            btn_winhubxmonitor.Image = (Image)resources.GetObject("btn_winhubxmonitor.Image");
-            btn_winhubxmonitor.Location = new Point(12, 130);
-            btn_winhubxmonitor.Margin = new Padding(3, 2, 3, 2);
-            btn_winhubxmonitor.Name = "btn_winhubxmonitor";
-            btn_winhubxmonitor.Size = new Size(362, 66);
-            btn_winhubxmonitor.TabIndex = 105;
-            btn_winhubxmonitor.Text = "WinHubX_SystemMonitorApp";
-            btn_winhubxmonitor.TextImageRelation = TextImageRelation.TextBeforeImage;
-            btn_winhubxmonitor.UseVisualStyleBackColor = true;
-            btn_winhubxmonitor.Click += btn_winhubxmonitor_Click;
-            // 
             // FormHome
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
-            Controls.Add(btn_winhubxmonitor);
             Controls.Add(label1);
             Controls.Add(lblInfoOffice2024);
             Controls.Add(tgWinHubX);
@@ -201,6 +181,5 @@
         private Label lblInfoOffice2024;
         private Label label1;
         private Label lblInfoWinAIO64;
-        private Button btn_winhubxmonitor;
     }
 }

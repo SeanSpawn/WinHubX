@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Management;
 using System.Reflection;
@@ -10,11 +11,14 @@ namespace WinHubX.Forms.Base
     public partial class FormSettaggi : Form
     {
         private Form1 form1;
-
+        private string wsa11x64;
+        private string wsa11arm64;
+        private string wsa10x64;
         public FormSettaggi(Form1 form1)
         {
             InitializeComponent();
             this.form1 = form1;
+            LoadJsonLinks();
         }
 
         private void btnPrivacy_Click(object sender, EventArgs e)
@@ -67,61 +71,103 @@ namespace WinHubX.Forms.Base
             formRipristinoSO.Show();
         }
 
+        private async void LoadJsonLinks()
+        {
+            string url = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject data = JObject.Parse(json);
+
+                    wsa11x64 = data["WSA"]["win11x64"]?.ToString();
+                    wsa11arm64 = data["WSA"]["win11arm64"]?.ToString();
+                    wsa10x64 = data["WSA"]["win10x64"]?.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore nel caricamento dei link: {ex.Message}");
+            }
+        }
+
         private void btnAttivaWSA_Click(object sender, EventArgs e)
         {
             string systemType = GetSystemType();
             string downloadUrl = "";
             string zipFileName = "";
 
+            // Determina il link di download e il nome del file zip
             if (systemType.Contains("Windows 11"))
             {
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    downloadUrl = "https://devuploads.com/jyeuf99l0xam";
+                    downloadUrl = wsa11x64;
                     zipFileName = "WSAwin11x64.zip";
                 }
                 else
                 {
-                    downloadUrl = "https://devuploads.com/9wc374ebojwq";
+                    downloadUrl = wsa11arm64;
                     zipFileName = "WSAwin11arm64.zip";
                 }
             }
             else if (systemType.Contains("Windows 10"))
             {
-                downloadUrl = "https://devuploads.com/hnbn1p7eiekf";
+                downloadUrl = wsa10x64;
                 zipFileName = "WSAwin10x64.zip";
             }
 
             if (!string.IsNullOrEmpty(downloadUrl))
             {
-                Process.Start(new ProcessStartInfo(downloadUrl) { UseShellExecute = true });
-                MessageBox.Show("Salva lo zip nella cartealla Downloads e premi 'OK' quando il download è finito.");
-
-                string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-                string zipFilePath = Path.Combine(downloadsPath, zipFileName);
-                string extractPath = Path.Combine(Path.GetTempPath(), "WSA");
-
-                if (File.Exists(zipFilePath))
+                try
                 {
-                    ZipFile.ExtractToDirectory(zipFilePath, extractPath, true);
-                    string batFilePath = Path.Combine(extractPath, "Run.bat");
-                    if (File.Exists(batFilePath))
+                    // Avvia il download del file
+                    Process.Start(new ProcessStartInfo(downloadUrl) { UseShellExecute = true });
+                    MessageBox.Show("Salva lo zip nella cartella Downloads e premi 'OK' quando il download è finito.");
+
+                    string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                    string zipFilePath = Path.Combine(downloadsPath, zipFileName);
+                    string extractPath = Path.Combine(Path.GetTempPath(), "WSA");
+
+                    if (File.Exists(zipFilePath))
                     {
-                        Process.Start(new ProcessStartInfo(batFilePath) { UseShellExecute = true }).WaitForExit();
+                        ZipFile.ExtractToDirectory(zipFilePath, extractPath, true); // Estrai nella cartella temporanea
+                        string batFilePath = Path.Combine(extractPath, "Run.bat");
+                        if (File.Exists(batFilePath))
+                        {
+                            var process = Process.Start(new ProcessStartInfo(batFilePath) { UseShellExecute = true });
+                            process?.WaitForExit(); // Attendi la fine del processo
+                        }
+                        else
+                        {
+                            MessageBox.Show("Il file 'Run.bat' non è stato trovato nella directory estratta.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("File non trovato nella cartella Downloads. Assicurati di aver salvato il file.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("File non trovato nella cartella DOWNLOAD. Assicurarsi di aver salavato il file nella cartella Downloads.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Errore durante l'elaborazione: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            PacManDialog PacManDialog = new PacManDialog()
+            else
+            {
+                MessageBox.Show("Impossibile determinare il link per il download.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Mostra la finestra di dialogo PacMan
+            PacManDialog pacManDialog = new PacManDialog
             {
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            PacManDialog.ShowDialog();
+            pacManDialog.ShowDialog();
         }
 
         private string GetSystemType()
@@ -184,6 +230,16 @@ namespace WinHubX.Forms.Base
                 process.Start();
                 string output = process.StandardOutput.ReadToEnd();
             }
+        }
+
+        private void btnPersonalizzazione_Click(object sender, EventArgs e)
+        {
+            form1.lblPanelTitle.Text = "Personalizzazione";
+            form1.PnlFormLoader.Controls.Clear();
+            FormPersonalizzazione formPersonalizzazione = new FormPersonalizzazione(this, form1) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            formPersonalizzazione.FormBorderStyle = FormBorderStyle.None;
+            form1.PnlFormLoader.Controls.Add(formPersonalizzazione);
+            formPersonalizzazione.Show();
         }
     }
 }

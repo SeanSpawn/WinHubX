@@ -40,8 +40,12 @@
             btnBack = new Button();
             btnWin11ARM64 = new Button();
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btn24h2ProLite = new Button();
+            btn_win1124h2 = new Button();
+            btnLTSCLite24h2 = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +66,7 @@
             btnInfoWin11Lite.Cursor = Cursors.Hand;
             btnInfoWin11Lite.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
             btnInfoWin11Lite.ForeColor = Color.Coral;
-            btnInfoWin11Lite.Location = new Point(685, 303);
+            btnInfoWin11Lite.Location = new Point(670, 274);
             btnInfoWin11Lite.Name = "btnInfoWin11Lite";
             btnInfoWin11Lite.Size = new Size(46, 29);
             btnInfoWin11Lite.TabIndex = 61;
@@ -76,9 +80,9 @@
             lblInfoWin11Lite.ForeColor = Color.Coral;
             lblInfoWin11Lite.Location = new Point(205, 274);
             lblInfoWin11Lite.Name = "lblInfoWin11Lite";
-            lblInfoWin11Lite.Size = new Size(448, 58);
+            lblInfoWin11Lite.Size = new Size(448, 29);
             lblInfoWin11Lite.TabIndex = 60;
-            lblInfoWin11Lite.Text = "      Edizioni incluse: Pro\r\nPer il dettaglio su questa versione, clicca";
+            lblInfoWin11Lite.Text = "Per il dettaglio su questa versione, clicca";
             lblInfoWin11Lite.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnWin11Lite64
@@ -88,7 +92,7 @@
             btnWin11Lite64.FlatStyle = FlatStyle.Flat;
             btnWin11Lite64.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWin11Lite64.ForeColor = Color.White;
-            btnWin11Lite64.Location = new Point(207, 346);
+            btnWin11Lite64.Location = new Point(18, 346);
             btnWin11Lite64.Margin = new Padding(3, 2, 3, 2);
             btnWin11Lite64.Name = "btnWin11Lite64";
             btnWin11Lite64.Size = new Size(221, 53);
@@ -203,48 +207,105 @@
             label1.Text = "Edizioni incluse: Pro ed Enterprise";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btn24h2ProLite
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Enabled = false;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(500, 346);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(221, 53);
-            button1.TabIndex = 65;
-            button1.Text = "64bit-24H2";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            btn24h2ProLite.Cursor = Cursors.Hand;
+            btn24h2ProLite.FlatAppearance.BorderSize = 0;
+            btn24h2ProLite.FlatStyle = FlatStyle.Flat;
+            btn24h2ProLite.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn24h2ProLite.ForeColor = Color.White;
+            btn24h2ProLite.Location = new Point(355, 346);
+            btn24h2ProLite.Margin = new Padding(3, 2, 3, 2);
+            btn24h2ProLite.Name = "btn24h2ProLite";
+            btn24h2ProLite.Size = new Size(221, 53);
+            btn24h2ProLite.TabIndex = 65;
+            btn24h2ProLite.Text = "64bit-24H2";
+            btn24h2ProLite.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn24h2ProLite.UseVisualStyleBackColor = true;
+            btn24h2ProLite.MouseUp += btn24h2ProLite_MouseUp;
             // 
-            // button2
+            // btn_win1124h2
             // 
-            button2.Cursor = Cursors.Hand;
-            button2.Enabled = false;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(663, 138);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(214, 53);
-            button2.TabIndex = 66;
-            button2.Text = "64bit-24H2";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            btn_win1124h2.Cursor = Cursors.Hand;
+            btn_win1124h2.FlatAppearance.BorderSize = 0;
+            btn_win1124h2.FlatStyle = FlatStyle.Flat;
+            btn_win1124h2.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_win1124h2.ForeColor = Color.White;
+            btn_win1124h2.Location = new Point(663, 138);
+            btn_win1124h2.Margin = new Padding(3, 2, 3, 2);
+            btn_win1124h2.Name = "btn_win1124h2";
+            btn_win1124h2.Size = new Size(214, 53);
+            btn_win1124h2.TabIndex = 66;
+            btn_win1124h2.Text = "64bit-24H2";
+            btn_win1124h2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_win1124h2.UseVisualStyleBackColor = true;
+            btn_win1124h2.MouseUp += btn_win1124h2_MouseUp;
+            // 
+            // btnLTSCLite24h2
+            // 
+            btnLTSCLite24h2.Cursor = Cursors.Hand;
+            btnLTSCLite24h2.FlatAppearance.BorderSize = 0;
+            btnLTSCLite24h2.FlatStyle = FlatStyle.Flat;
+            btnLTSCLite24h2.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLTSCLite24h2.ForeColor = Color.White;
+            btnLTSCLite24h2.Location = new Point(670, 346);
+            btnLTSCLite24h2.Margin = new Padding(3, 2, 3, 2);
+            btnLTSCLite24h2.Name = "btnLTSCLite24h2";
+            btnLTSCLite24h2.Size = new Size(221, 53);
+            btnLTSCLite24h2.TabIndex = 67;
+            btnLTSCLite24h2.Text = "64bit-24H2";
+            btnLTSCLite24h2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLTSCLite24h2.UseVisualStyleBackColor = true;
+            btnLTSCLite24h2.MouseUp += btnLTSCLite24h2_MouseUp;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Coral;
+            label2.Location = new Point(74, 315);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 29);
+            label2.TabIndex = 68;
+            label2.Text = "Pro Lite";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Coral;
+            label3.Location = new Point(408, 315);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 29);
+            label3.TabIndex = 69;
+            label3.Text = "Pro Lite";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Coral;
+            label4.Location = new Point(714, 315);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 29);
+            label4.TabIndex = 70;
+            label4.Text = "LTSC Lite";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormWin11
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(btnLTSCLite24h2);
+            Controls.Add(btn_win1124h2);
+            Controls.Add(btn24h2ProLite);
             Controls.Add(btnWin11ARM64);
             Controls.Add(label1);
             Controls.Add(lblHashInfo);
@@ -280,7 +341,11 @@
         private Button btnBack;
         private Button btnWin11ARM64;
         private Label label1;
-        private Button button1;
-        private Button button2;
+        private Button btn24h2ProLite;
+        private Button btn_win1124h2;
+        private Button btnLTSCLite24h2;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

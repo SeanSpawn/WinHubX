@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System.Diagnostics;
 using WinHubX.Forms.Base;
 
 namespace WinHubX.Forms.Settaggi
@@ -115,28 +116,13 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaDownloadAutomaticoWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\" -Name \"AUOptions\" -Type DWord -Value 2",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    // Modifica per entrambe le architetture
+                    ModificaDownloadAutomatico(RegistryView.Registry32);
+                    ModificaDownloadAutomatico(RegistryView.Registry64);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -152,10 +138,10 @@ namespace WinHubX.Forms.Settaggi
                     {
                         FileName = "powershell.exe",
                         Arguments = @"
-                         If ((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object { $_.ServiceID -eq ""7971f918-a847-4430-9279-4a52d1efe18d""}) {
-                         (New-Object -ComObject Microsoft.Update.ServiceManager).RemoveService(""7971f918-a847-4430-9279-4a52d1efe18d"")
-                           }
-                            ",
+                        If ((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object { $_.ServiceID -eq ""7971f918-a847-4430-9279-4a52d1efe18d""}) {
+                        (New-Object -ComObject Microsoft.Update.ServiceManager).RemoveService(""7971f918-a847-4430-9279-4a52d1efe18d"")
+                          }
+                           ",
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
@@ -171,9 +157,9 @@ namespace WinHubX.Forms.Settaggi
                         var error = process.StandardError.ReadToEnd();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -185,68 +171,38 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = @"
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata"" -Name ""PreventDeviceMetadataFromNetwork"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""SearchOrderConfig"" -Type DWord -Value 0;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"" -Name ""ExcludeWUDriversInQualityUpdate"" -Type DWord -Value 1
-            ",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    // Modifiche per entrambe le architetture
+                    ModificaChiaveRegistro(RegistryView.Registry32);
+                    ModificaChiaveRegistro(RegistryView.Registry64);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
             {
                 SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", false);
             }
+
+            // Modifica per disabilitare il riavvio automatico di Windows Update
             if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Riavvio Automatico Windows Update"))
             {
                 SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
+                    using (var key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", true))
                     {
-                        FileName = "powershell.exe",
-                        Arguments = @"
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""NoAutoRebootWithLoggedOnUsers"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""AUPowerManagement"" -Type DWord -Value 0
-            ",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
+                        if (key != null)
+                        {
+                            key.SetValue("NoAutoRebootWithLoggedOnUsers", 1, RegistryValueKind.DWord);
+                            key.SetValue("AUPowerManagement", 0, RegistryValueKind.DWord);
+                        }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -258,61 +214,29 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("DisabilitaNotificheUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "cmd.exe",
-                        Arguments = @"/c takeown /F ""%WinDIR%\System32\MusNotification.exe"" && icacls ""%WinDIR%\System32\MusNotification.exe"" /deny ""%EveryOne%:(X)"" && takeown /F ""%WinDIR%\System32\MusNotificationUx.exe"" && icacls ""%WinDIR%\System32\MusNotificationUx.exe"" /deny ""%EveryOne%:(X)""",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    ModificaNotificheUpdate(false);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
             {
                 SetCheckboxState("DisabilitaNotificheUpdate", false);
             }
+
+            // Abilita Download Automatico Windows Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Automatico Windows Update"))
             {
                 SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\" -Name \"AUOptions\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    RimuoviAUOptions();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -343,9 +267,9 @@ namespace WinHubX.Forms.Settaggi
                         var error = process.StandardError.ReadToEnd();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -357,98 +281,47 @@ namespace WinHubX.Forms.Settaggi
                 SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = @"
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata"" -Name ""PreventDeviceMetadataFromNetwork"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""SearchOrderConfig"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"" -Name ""ExcludeWUDriversInQualityUpdate"" -ErrorAction SilentlyContinue
-            ",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    RimuoviDriverUpdate();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
             {
                 SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", false);
             }
+
+            // Abilita Riavvio Automatico Windows Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Riavvio Automatico Windows Update"))
             {
                 SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "Remove-ItemProperty -Path \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\MusNotification.exe\" -Name \"Debugger\" -ErrorAction SilentlyContinue",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    RimuoviRiavvioAutomatico();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
             {
                 SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", false);
             }
+
+            // Abilita Notifiche Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Notifiche Update"))
             {
                 SetCheckboxState("AbilitaNotificheUpdate", true);
                 try
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "cmd.exe",
-                        Arguments = @"/c takeown /F ""%WinDIR%\System32\MusNotification.exe"" && icacls ""%WinDIR%\System32\MusNotification.exe"" /allow ""%EveryOne%:(X)"" && takeown /F ""%WinDIR%\System32\MusNotificationUx.exe"" && icacls ""%WinDIR%\System32\MusNotificationUx.exe"" /allow ""%EveryOne%:(X)""",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
+                    ModificaNotificheUpdate(true);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+
                 }
             }
             else
@@ -462,87 +335,271 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                var startInfo = new System.Diagnostics.ProcessStartInfo()
+                // Elenco delle chiavi da modificare
+                var registryChanges = new (string Path, string Name, int Value)[]
                 {
-                    FileName = "powershell.exe",
-                    Arguments = @"
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata"" -Name ""PreventDeviceMetadataFromNetwork"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DontPromptForWindowsUpdate"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DontSearchWindowsUpdate"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DriverUpdateWizardWuSearchEnabled"" -Type DWord -Value 0;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"" -Name ""ExcludeWUDriversInQualityUpdate"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""NoAutoRebootWithLoggedOnUsers"" -Type DWord -Value 1;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""AUPowerManagement"" -Type DWord -Value 0
-            ",
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata", "PreventDeviceMetadataFromNetwork", 1),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DontPromptForWindowsUpdate", 1),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DontSearchWindowsUpdate", 1),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DriverUpdateWizardWuSearchEnabled", 0),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", "ExcludeWUDriversInQualityUpdate", 1),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "NoAutoRebootWithLoggedOnUsers", 1),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "AUPowerManagement", 0)
                 };
 
-                using (var process = System.Diagnostics.Process.Start(startInfo))
+                // Aggiorna il registro a 64 bit
+                foreach (var change in registryChanges)
                 {
-                    process.WaitForExit();
+                    UpdateRegistry(change.Path, change.Name, change.Value, true);
+                }
 
-                    var output = process.StandardOutput.ReadToEnd();
-                    var error = process.StandardError.ReadToEnd();
+                // Aggiorna il registro a 32 bit
+                foreach (var change in registryChanges)
+                {
+                    UpdateRegistry(change.Path, change.Name, change.Value, false);
+                }
+
+                MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void UpdateRegistry(string path, string name, int value, bool is64Bit)
+        {
+            var regPath = is64Bit ? path : path.Replace("SOFTWARE", "SOFTWARE\\WOW6432Node");
+
+            var startInfo = new System.Diagnostics.ProcessStartInfo()
+            {
+                FileName = "reg.exe",
+                Arguments = $"add \"{regPath}\" /v \"{name}\" /t REG_DWORD /d {value} /f",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using (var process = System.Diagnostics.Process.Start(startInfo))
+            {
+                process.WaitForExit();
+
+                var output = process.StandardOutput.ReadToEnd();
+                var error = process.StandardError.ReadToEnd();
+
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception($"Failed to update registry: {error}");
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnResetUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                var startInfo = new System.Diagnostics.ProcessStartInfo()
+                // Chiavi e valori da ripristinare
+                var registryChanges = new (string Path, string Name, int Value)[]
                 {
-                    FileName = "powershell.exe",
-                    Arguments = @"
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""NoAutoUpdate"" -Type DWord -Value 0;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""AUOptions"" -Type DWord -Value 3;
-                Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config"" -Name ""DODownloadMode"" -Type DWord -Value 1;
-                $services = @(
-                    ""BITS"",
-                    ""wuauserv""
-                );
-                foreach ($service in $services) {
-                    Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Automatic;
-                }
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata"" -Name ""PreventDeviceMetadataFromNetwork"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DontPromptForWindowsUpdate"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DontSearchWindowsUpdate"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching"" -Name ""DriverUpdateWizardWuSearchEnabled"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"" -Name ""ExcludeWUDriversInQualityUpdate"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""NoAutoRebootWithLoggedOnUsers"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"" -Name ""AUPowerManagement"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"" -Name ""BranchReadinessLevel"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"" -Name ""DeferFeatureUpdatesPeriodInDays"" -ErrorAction SilentlyContinue;
-                Remove-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings"" -Name ""DeferQualityUpdatesPeriodInDays"" -ErrorAction SilentlyContinue
-            ",
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "NoAutoUpdate", 0),
+            (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "AUOptions", 3),
+            (@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config", "DODownloadMode", 1)
                 };
 
-                using (var process = System.Diagnostics.Process.Start(startInfo))
+                // Aggiorna il registro a 64 bit
+                foreach (var change in registryChanges)
                 {
-                    process.WaitForExit();
+                    UpdateRegistry(change.Path, change.Name, change.Value, true);
+                }
 
-                    var output = process.StandardOutput.ReadToEnd();
-                    var error = process.StandardError.ReadToEnd();
+                // Aggiorna il registro a 32 bit
+                foreach (var change in registryChanges)
+                {
+                    UpdateRegistry(change.Path, change.Name, change.Value, false);
+                }
+
+                // Avvia i servizi richiesti
+                StartService("BITS");
+                StartService("wuauserv");
+
+                // Rimuovi le proprietà specificate dal registro
+                var registryRemovals = new[]
+                {
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata", "PreventDeviceMetadataFromNetwork",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DontPromptForWindowsUpdate",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DontSearchWindowsUpdate",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching", "DriverUpdateWizardWuSearchEnabled",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", "ExcludeWUDriversInQualityUpdate",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "NoAutoRebootWithLoggedOnUsers",
+            @"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "AUPowerManagement",
+            @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "BranchReadinessLevel",
+            @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "DeferFeatureUpdatesPeriodInDays",
+            @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "DeferQualityUpdatesPeriodInDays"
+        };
+
+                // Rimuovi le proprietà dal registro a 64 bit e a 32 bit
+                foreach (var removal in registryRemovals)
+                {
+                    RemoveRegistryValue(removal, true);
+                    RemoveRegistryValue(removal, false);
+                }
+
+                MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void RemoveRegistryValue(string path, bool is64Bit)
+        {
+            var regPath = is64Bit ? path : path.Replace("SOFTWARE", "SOFTWARE\\WOW6432Node");
+
+            var startInfo = new System.Diagnostics.ProcessStartInfo()
+            {
+                FileName = "reg.exe",
+                Arguments = $"delete \"{regPath}\" /f",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using (var process = System.Diagnostics.Process.Start(startInfo))
+            {
+                process.WaitForExit();
+
+                var error = process.StandardError.ReadToEnd();
+                if (process.ExitCode != 0 && !error.Contains("ERROR_FILE_NOT_FOUND"))
+                {
+                    throw new Exception($"Failed to remove registry value: {error}");
                 }
             }
-            catch (Exception ex)
+        }
+
+        private void StartService(string serviceName)
+        {
+            var startInfo = new System.Diagnostics.ProcessStartInfo()
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                FileName = "sc.exe",
+                Arguments = $"config \"{serviceName}\" start= auto",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using (var process = System.Diagnostics.Process.Start(startInfo))
+            {
+                process.WaitForExit();
+
+                var error = process.StandardError.ReadToEnd();
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception($"Failed to start service {serviceName}: {error}");
+                }
             }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ModificaChiaveRegistro(RegistryView view)
+        {
+            try
+            {
+                using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Device Metadata", true))
+                {
+                    key?.SetValue("PreventDeviceMetadataFromNetwork", 1, RegistryValueKind.DWord);
+                }
+
+                using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DriverSearching", true))
+                {
+                    key?.SetValue("SearchOrderConfig", 0, RegistryValueKind.DWord);
+                }
+
+                using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", true))
+                {
+                    key?.SetValue("ExcludeWUDriversInQualityUpdate", 1, RegistryValueKind.DWord);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private void ModificaDownloadAutomatico(RegistryView view)
+        {
+            try
+            {
+                using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", true))
+                {
+                    key?.SetValue("AUOptions", 2, RegistryValueKind.DWord); // Imposta il valore per disabilitare il download automatico
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void RimuoviDriverUpdate()
+        {
+            using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+            {
+                key64.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\Device Metadata", false);
+                key32.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\Device Metadata", false);
+                key64.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\DriverSearching", false);
+                key32.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\DriverSearching", false);
+                key64.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", false);
+                key32.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate", false);
+            }
+        }
+
+        // Funzione per rimuovere il riavvio automatico
+        private void RimuoviRiavvioAutomatico()
+        {
+            using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+            {
+                key64.DeleteValue(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MusNotification.exe", false);
+                key32.DeleteValue(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MusNotification.exe", false);
+            }
+        }
+        private void ModificaNotificheUpdate(bool enable)
+        {
+            string cmdArgument = enable
+                ? "/c takeown /F \"%WinDIR%\\System32\\MusNotification.exe\" && icacls \"%WinDIR%\\System32\\MusNotification.exe\" /allow \"%EveryOne%:(X)\" && takeown /F \"%WinDIR%\\System32\\MusNotificationUx.exe\" && icacls \"%WinDIR%\\System32\\MusNotificationUx.exe\" /allow \"%EveryOne%:(X)\""
+                : "/c takeown /F \"%WinDIR%\\System32\\MusNotification.exe\" && icacls \"%WinDIR%\\System32\\MusNotification.exe\" /deny \"%EveryOne%:(X)\" && takeown /F \"%WinDIR%\\System32\\MusNotificationUx.exe\" && icacls \"%WinDIR%\\System32\\MusNotificationUx.exe\" /deny \"%EveryOne%:(X)\"";
+
+            var startInfo = new ProcessStartInfo()
+            {
+                FileName = "cmd.exe",
+                Arguments = cmdArgument,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                Verb = "runas"
+            };
+
+            using (var process = Process.Start(startInfo))
+            {
+                process.WaitForExit();
+                var output = process.StandardOutput.ReadToEnd();
+                var error = process.StandardError.ReadToEnd();
+            }
+        }
+
+        // Funzione per rimuovere AUOptions
+        private void RimuoviAUOptions()
+        {
+            using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+            {
+                key64.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", false);
+                key32.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", false);
+            }
         }
     }
 }

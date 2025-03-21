@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using WinHubX.Dialog;
 
 namespace WinHubX
@@ -8,6 +9,11 @@ namespace WinHubX
         private Form1 form1;
         private FormWin formWin;
         private NotifyIcon notifyIcon;
+        private string linkWin7AIO32;
+        private string linkWin7AIO64;
+        private string linkWin7Lite32;
+        private string linkWin7Lite64;
+
         public FormWin7(FormWin formWin, Form1 form1)
         {
             InitializeComponent();
@@ -18,6 +24,30 @@ namespace WinHubX
                 Icon = SystemIcons.Information,
                 Visible = true
             };
+            LoadJsonLinks();
+        }
+
+        private async void LoadJsonLinks()
+        {
+            string url = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject data = JObject.Parse(json);
+
+                    linkWin7AIO64 = data["FormWin7"]["7Stockx64"]?.ToString();
+                    linkWin7AIO32 = data["FormWin7"]["7Stockx32"]?.ToString();
+                    linkWin7Lite32 = data["FormWin7"]["7Litex32"]?.ToString();
+                    linkWin7Lite64 = data["FormWin7"]["7Litex64"]?.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore nel caricamento dei link: {ex.Message}");
+            }
         }
 
         public void btnBack_Click(object sender, EventArgs e)
@@ -100,19 +130,7 @@ namespace WinHubX
             }
             else if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = "https://devuploads.com/41w9l7f5vs2d",
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-                }
+                OpenLink(linkWin7AIO32);
             }
         }
 
@@ -129,19 +147,7 @@ namespace WinHubX
             }
             else if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = "https://devuploads.com/ko5pb0sa4qyp",
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-                }
+                OpenLink(linkWin7AIO64);
             }
         }
 
@@ -158,19 +164,7 @@ namespace WinHubX
             }
             else if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = "https://devuploads.com/y6s3hecbocv9",
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-                }
+                OpenLink(linkWin7Lite32);
             }
         }
 
@@ -187,11 +181,18 @@ namespace WinHubX
             }
             else if (e.Button == MouseButtons.Left)
             {
+                OpenLink(linkWin7Lite64);
+            }
+        }
+        private void OpenLink(string url)
+        {
+            if (!string.IsNullOrEmpty(url))
+            {
                 try
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/clygv5m5lq67",
+                        FileName = url,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
@@ -201,8 +202,10 @@ namespace WinHubX
                     MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
                 }
             }
+            else
+            {
+                MessageBox.Show("URL non disponibile.");
+            }
         }
-
-
     }
 }

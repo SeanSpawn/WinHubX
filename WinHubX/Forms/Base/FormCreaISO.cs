@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.IO.Compression;
+using System.Text.Json;
 
 namespace WinHubX.Forms.Base
 {
@@ -49,123 +51,151 @@ namespace WinHubX.Forms.Base
             {
             }
         }
-
-        private void btn_CreaISO_Click(object sender, EventArgs e)
+        private async Task<string> GetZipUrlFromJsonAsync(string jsonUrl)
         {
-            ExecuteCommand("Dismount-DiskImage -ImagePath " + "\"" + selectedFile + "\"", false);
-            new Thread(() =>
+            using (HttpClient client = new HttpClient())
             {
-                string ComboSelected = "";
-                string comboxstr = comboBox1.Text;
-
-                int index = comboxstr.IndexOf(' ');
-                ComboSelected = comboxstr.Substring(0, index);
-
-                string windowsVersion = "";
-                string edgeRemovalPreference = "";
-                string defenderPreference = "";
-                string Processi = "";
-                string Unattend = "Bypass";
-                string Architettura = "x64";
-                string DebloatApp = "";
-
-                if (Win10Rad.Checked)
-                {
-                    windowsVersion = "10";
-                }
-                else if (Win11Rad.Checked)
-                {
-                    windowsVersion = "11";
-                }
-
-                if (RemEdgeRad.Checked)
-                {
-                    edgeRemovalPreference = "RemoveEdge";
-                }
-                else if (NotRemEdgeRad.Checked)
-                {
-                    edgeRemovalPreference = "SiEdge";
-                }
-
-                if (DisWindDefRad.Checked)
-                {
-                    defenderPreference = "DisableWindowsDefender";
-                }
-                else if (NotDisWinDefRad.Checked)
-                {
-                    defenderPreference = "SiDefender";
-                }
-
-                if (RemProcRad.Checked)
-                {
-                    Processi = "RimuoviProcessi";
-                }
-                else if (NotRemProcRad.Checked)
-                {
-                    Processi = "NonRimuovereProcessi";
-                }
-
-                if (SixforArchRad.Checked)
-                {
-                    Architettura = "x64";
-                }
-                else if (ThirTwoRad.Checked)
-                {
-                    Architettura = "x32";
-                }
-
-                if (DebAppRad.Checked)
-                {
-                    DebloatApp = "Debloat";
-                }
-                else if (StockAppRad.Checked)
-                {
-                    DebloatApp = "NonDebloat";
-                }
-
-                if (Win11BypassRad.Checked)
-                {
-                    Unattend = "Bypass";
-                }
-                else if (Win11StockRad.Checked)
-                {
-                    Unattend = "Stock";
-                }
-
-                string argsList = $"\"{selectedFile}\" {windowsVersion} {edgeRemovalPreference} {defenderPreference} {ComboSelected} {Processi} {Unattend} {Architettura} {DebloatApp}";
-
-                string tempPath = Path.GetTempPath();
-                string batchFileName = Win10Rad.Checked ? "isotool10.bat" : "isotool11.bat";
-                string batchFilePath = Path.Combine(tempPath, "RisorseCreaISO", batchFileName);
-
-                if (!File.Exists(batchFilePath))
-                {
-                    MessageBox.Show($"Batch file not found: {batchFilePath}");
-                    return;
-                }
-                var startInfo = new ProcessStartInfo()
-                {
-                    FileName = batchFilePath,
-                    Arguments = argsList,
-                    UseShellExecute = true,
-                    CreateNoWindow = false, // Ensures the command prompt window is visible
-                    WorkingDirectory = Path.GetDirectoryName(batchFilePath)
-                };
-
                 try
                 {
-                    using (var process = Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
+                    // Fetch the JSON data
+                    string jsonResponse = await client.GetStringAsync(jsonUrl);
 
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
+                    // Parse the JSON and get the value for "creaiso" under "CreaISOWIN"
+                    using (JsonDocument doc = JsonDocument.Parse(jsonResponse))
+                    {
+                        JsonElement root = doc.RootElement;
+                        string zipUrl = root.GetProperty("CreaISOWIN").GetProperty("creaiso").GetString();
+                        return zipUrl;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    // Handle exceptions (optional)
+                    MessageBox.Show("Errore nel recupero dell'URL: " + ex.Message);
+                    return string.Empty;
                 }
-            }).Start();
+            }
+        }
+        private async void btn_CreaISO_Click(object sender, EventArgs e)
+        {
+            // Smonta l'immagine disco
+            ExecuteCommand("Dismount-DiskImage -ImagePath " + "\"" + selectedFile + "\"", false);
+
+            // Ottieni la selezione dal ComboBox
+            string ComboSelected = "";
+            string comboxstr = comboBox1.Text;
+            int index = comboxstr.IndexOf(' ');
+            if (index > 0)
+            {
+                ComboSelected = comboxstr.Substring(0, index);
+            }
+
+            // Ottieni le preferenze selezionate
+            string windowsVersion = Win10Rad.Checked ? "10" : Win11Rad.Checked ? "11" : "";
+            string edgeRemovalPreference = RemEdgeRad.Checked ? "RemoveEdge" : NotRemEdgeRad.Checked ? "SiEdge" : "";
+            string defenderPreference = DisWindDefRad.Checked ? "DisableWindowsDefender" : NotDisWinDefRad.Checked ? "SiDefender" : "";
+            string Processi = RemProcRad.Checked ? "RimuoviProcessi" : NotRemProcRad.Checked ? "NonRimuovereProcessi" : "";
+            string Unattend = Win11BypassRad.Checked ? "Bypass" : Win11StockRad.Checked ? "Stock" : "";
+            string Architettura = SixforArchRad.Checked ? "x64" : ThirTwoRad.Checked ? "x32" : "";
+            string DebloatApp = DebAppRad.Checked ? "Debloat" : StockAppRad.Checked ? "NonDebloat" : "";
+
+            string zipUrl = await GetZipUrlFromJsonAsync("https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json");
+            string zipFilePath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO.zip");
+
+            try
+            {
+                // Scarica il file zip solo se non esiste già
+                if (!File.Exists(zipFilePath))
+                {
+                    await ScaricaFileAsync(zipUrl, zipFilePath);
+                }
+
+                string tempPath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO");
+
+                // Verifica se la cartella di destinazione esiste, se no la crea
+                if (!Directory.Exists(tempPath))
+                {
+                    Directory.CreateDirectory(tempPath);
+                }
+
+                using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
+                {
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        string destinazioneFile = Path.Combine(tempPath, entry.FullName);
+
+                        // Se l'entry è una directory, salta
+                        if (string.IsNullOrEmpty(entry.Name))
+                        {
+                            continue; // Salta se è una cartella
+                        }
+
+                        // Estrai il file direttamente nella cartella RisorseCreaISO
+                        string directoryPath = Path.GetDirectoryName(destinazioneFile);
+                        if (!Directory.Exists(directoryPath))
+                        {
+                            Directory.CreateDirectory(directoryPath); // Crea la directory se non esiste
+                        }
+
+                        entry.ExtractToFile(destinazioneFile, overwrite: true); // Estrai il file
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore durante il download o l'estrazione: {ex.Message}");
+                return;
+            }
+            string tempExtractionPath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO"); // Usa il nuovo nome
+            string batchFileName = Win10Rad.Checked ? "isotool10.bat" : "isotool11.bat";
+            string batchFilePath = Path.Combine(tempExtractionPath, batchFileName);
+
+            if (!File.Exists(batchFilePath))
+            {
+                MessageBox.Show($"File batch non trovato: {batchFilePath}");
+                return;
+            }
+
+            // Prepara gli argomenti da passare al batch
+            string argsList = $"\"{selectedFile}\" {windowsVersion} {edgeRemovalPreference} {defenderPreference} " +
+                              $"{ComboSelected} {Processi} {Unattend} {Architettura} {DebloatApp}";
+
+            // Configura ed esegui il file batch
+            var startInfo = new ProcessStartInfo()
+            {
+                FileName = batchFilePath,
+                Arguments = argsList,
+                UseShellExecute = true,
+                CreateNoWindow = false,
+                WorkingDirectory = tempExtractionPath
+            };
+
+            try
+            {
+                using (var process = Process.Start(startInfo))
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore durante l'esecuzione del batch: {ex.Message}");
+            }
+        }
+
+        private async Task ScaricaFileAsync(string url, string destinazione)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                using (HttpResponseMessage response = await client.GetAsync(url))
+                {
+                    response.EnsureSuccessStatusCode();
+                    using (FileStream fs = new FileStream(destinazione, FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        await response.Content.CopyToAsync(fs);
+                    }
+                }
+            }
         }
 
         private void btn_browser_Click(object sender, EventArgs e)
@@ -184,7 +214,7 @@ namespace WinHubX.Forms.Base
                 var startInfo = new ProcessStartInfo()
                 {
                     FileName = "powershell.exe",
-                    Arguments = "(Get-DiskImage -ImagePath " + selectedFile + " | Get-Volume).DriveLetter",
+                    Arguments = "(Get-DiskImage -ImagePath \"" + selectedFile + "\" | Get-Volume).DriveLetter",
                     UseShellExecute = false,
                     CreateNoWindow = true,
                     RedirectStandardOutput = true,
@@ -220,7 +250,7 @@ namespace WinHubX.Forms.Base
                     var startInfoThi = new ProcessStartInfo()
                     {
                         FileName = "powershell.exe",
-                        Arguments = "dism /english /Get-WimInfo /WimFile:" + installwimpath,
+                        Arguments = "dism /english /Get-WimInfo /WimFile:\"" + installwimpath + "\"",
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,

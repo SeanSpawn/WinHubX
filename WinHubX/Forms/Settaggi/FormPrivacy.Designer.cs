@@ -55,12 +55,13 @@
             // 
             DisabilitaPrivacy.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaPrivacy.BorderStyle = BorderStyle.None;
+            DisabilitaPrivacy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DisabilitaPrivacy.ForeColor = Color.White;
             DisabilitaPrivacy.FormattingEnabled = true;
-            DisabilitaPrivacy.Items.AddRange(new object[] { "Disabilita Opzioni Lingua", "Disabilita Suggerimenti App", "Disabilita Telemetria", "Disabilita Tracking", "Disabilita Segnalazione Errori", "Disabilita Tracking Diagnostica", "Disabilita WAP Push Service", "Disbailita Home Group", "Disabilita Assistenza Remota", "Disabilita Storage Check", "Disabilita Superfetch", "Disabilita Ibernazione", "Disabilita Ottimizzazione FullScreen", "Disbailita Schedul Defrag", "Disabilita Xbox Features", "Disabilita Avvio Rapido", "Normal Bandwidth", "Disabilita Auto Manteinance", "Disabilita Spazio Riservato", "Disabilita Tweaks Game DVR", "Disabilita Storia Attivita" });
+            DisabilitaPrivacy.Items.AddRange(new object[] { "Disabilita Opzioni Lingua", "Disabilita Suggerimenti App", "Disabilita Telemetria", "Disabilita Tracking", "Disabilita Segnalazione Errori", "Disabilita Tracking Diagnostica", "Disabilita WAP Push Service", "Disbailita Home Group", "Disabilita Assistenza Remota", "Disbailita Schedul Defrag", "Disabilita Xbox Features", "Disabilita Auto Manteinance", "Disabilita Spazio Riservato", "Disabilita Tweaks Game DVR", "Disabilita Storia Attivita" });
             DisabilitaPrivacy.Location = new Point(122, 37);
             DisabilitaPrivacy.Name = "DisabilitaPrivacy";
-            DisabilitaPrivacy.Size = new Size(259, 378);
+            DisabilitaPrivacy.Size = new Size(259, 360);
             DisabilitaPrivacy.TabIndex = 7;
             // 
             // btnAvviaSelezionati
@@ -70,7 +71,7 @@
             btnAvviaSelezionati.FlatStyle = FlatStyle.Flat;
             btnAvviaSelezionati.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAvviaSelezionati.ForeColor = Color.White;
-            btnAvviaSelezionati.Location = new Point(718, 11);
+            btnAvviaSelezionati.Location = new Point(708, 11);
             btnAvviaSelezionati.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionati.Name = "btnAvviaSelezionati";
             btnAvviaSelezionati.Size = new Size(181, 75);
@@ -106,18 +107,19 @@
             // 
             AbilitaPrivacy.BackColor = Color.FromArgb(37, 38, 39);
             AbilitaPrivacy.BorderStyle = BorderStyle.None;
+            AbilitaPrivacy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AbilitaPrivacy.ForeColor = Color.White;
             AbilitaPrivacy.FormattingEnabled = true;
-            AbilitaPrivacy.Items.AddRange(new object[] { "Abilita Opzioni Lingua", "Abilita Suggerimenti App", "Abilita Telemetria", "Abilita Tracking", "Abilita Segnalazione Errori", "Abilita Tracking Diagnostica", "Abilita WAP Push Service", "Abilita Home Group", "Abilita Assistenza Remota", "Abilita Storage Check", "Abilita Superfetch", "Abilita Ibernazione", "Abilita Ottimizzazione FullScreen", "Abilita Schedul Defrag", "Abilita Xbox Features", "Abilita Avvio Rapido", "All Bandwidth", "Abilita Auto Manteinance", "Abilita Spazio Riservato", "Abilita Tweaks Game DVR", "Abilita Storia Attivita" });
-            AbilitaPrivacy.Location = new Point(421, 37);
+            AbilitaPrivacy.Items.AddRange(new object[] { "Abilita Opzioni Lingua", "Abilita Suggerimenti App", "Abilita Telemetria", "Abilita Tracking", "Abilita Segnalazione Errori", "Abilita Tracking Diagnostica", "Abilita WAP Push Service", "Abilita Home Group", "Abilita Assistenza Remota", "Abilita Schedul Defrag", "Abilita Xbox Features", "Abilita Auto Manteinance", "Abilita Spazio Riservato", "Abilita Tweaks Game DVR", "Abilita Storia Attivita" });
+            AbilitaPrivacy.Location = new Point(421, 38);
             AbilitaPrivacy.Name = "AbilitaPrivacy";
-            AbilitaPrivacy.Size = new Size(267, 378);
+            AbilitaPrivacy.Size = new Size(254, 384);
             AbilitaPrivacy.TabIndex = 25;
             // 
             // FormPrivacy
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(AbilitaPrivacy);

@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Net;
 using WinHubX.Forms.Windows;
 
 namespace WinHubX
@@ -54,53 +55,98 @@ namespace WinHubX
             formWin11.Show();
         }
 
-        private void btnAttivaWin_Click(object sender, EventArgs e)
+        private async void btnAttivaWin_Click(object sender, EventArgs e)
         {
-            string fileName = "WinHubXWindowsAttivatore.bat";
-            string resourceName = "WinHubX.Resources.WinHubXWindowsAttivatore.bat"; string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            string tempScript = Path.Combine(Path.GetTempPath(), "tempScript.bat");
+            string logFile = Path.Combine(Path.GetTempPath(), "ScriptExecution.log");
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string primaryURL = string.Empty;
+
+            // Eliminare il file temporaneo se esiste
+            if (File.Exists(tempScript))
+            {
+                File.Delete(tempScript);
+            }
+
             try
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                using (HttpClient client = new HttpClient())
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
+                    var jsonResponse = await client.GetStringAsync(configUrl);
+                    var jsonObject = JObject.Parse(jsonResponse);
+                    primaryURL = jsonObject["FormWin"]["attivatorewin"].ToString();
                 }
-                Process.Start(tempFilePath);
+
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(primaryURL, tempScript);
+                }
+
+                // Eseguire il file batch direttamente
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = tempScript,
+                    UseShellExecute = true,
+                    CreateNoWindow = false
+                };
+
+                Process process = Process.Start(startInfo);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                File.AppendAllText(logFile, ex.Message + Environment.NewLine);
             }
         }
 
-        private void btnCambioEdizione_Click(object sender, EventArgs e)
+
+        private async void btnCambioEdizione_Click(object sender, EventArgs e)
         {
-            string fileName = "WinHubXCambioEdizione.bat";
-            string resourceName = "WinHubX.Resources.WinHubXCambioEdizione.bat"; string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            string tempScript = Path.Combine(Path.GetTempPath(), "tempScript.bat");
+            string logFile = Path.Combine(Path.GetTempPath(), "ScriptExecution.log");
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string primaryURL = string.Empty;
+
+            // Eliminare il file temporaneo se esiste
+            if (File.Exists(tempScript))
+            {
+                File.Delete(tempScript);
+            }
+
             try
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                using (HttpClient client = new HttpClient())
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
+                    var jsonResponse = await client.GetStringAsync(configUrl);
+                    var jsonObject = JObject.Parse(jsonResponse);
+                    primaryURL = jsonObject["FormWin"]["cambiowin"].ToString();
                 }
-                Process.Start(tempFilePath);
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(primaryURL, tempScript);
+                }
+
+                // Eseguire il file scaricato con cmd
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c \"{tempScript}\"",
+                    UseShellExecute = true,
+                    CreateNoWindow = false
+                };
+
+                using (Process process = Process.Start(startInfo))
+                {
+
+                }
+
+                File.AppendAllText(logFile, $"Esecuzione completata per lo script: {tempScript}{Environment.NewLine}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                File.AppendAllText(logFile, ex.Message);
             }
         }
 
@@ -120,25 +166,5 @@ namespace WinHubX
                 MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
             }
         }
-
-        //private void btnAIO32_Click(object sender, EventArgs e)
-        //{
-        //    form1.lblPanelTitle.Text = "Windows All in One - 32bit";
-        //    form1.PnlFormLoader.Controls.Clear();
-        //    FormWinAiO_32 formWinAiO_32 = new FormWinAiO_32(this, form1) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-        //    formWinAiO_32.FormBorderStyle = FormBorderStyle.None;
-        //    form1.PnlFormLoader.Controls.Add(formWinAiO_32);
-        //    formWinAiO_32.Show();
-        //}
-
-        //private void btnAIO64_Click(object sender, EventArgs e)
-        //{
-        //    form1.lblPanelTitle.Text = "Windows All in One - 64bit";
-        //    form1.PnlFormLoader.Controls.Clear();
-        //    FormWinAiO_64 formWinAiO_64 = new FormWinAiO_64(this, form1) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-        //    formWinAiO_64.FormBorderStyle = FormBorderStyle.None;
-        //    form1.PnlFormLoader.Controls.Add(formWinAiO_64);
-        //    formWinAiO_64.Show();
-        //}
     }
 }

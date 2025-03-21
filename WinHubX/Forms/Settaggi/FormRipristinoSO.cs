@@ -1,5 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Management;
+using System.Windows.Forms;
 using WinHubX.Forms.Base;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinHubX.Forms.Settaggi
 {
@@ -7,11 +10,19 @@ namespace WinHubX.Forms.Settaggi
     {
         private Form1 form1;
         private FormSettaggi formSettaggi;
+        private CancellationTokenSource cts = new();
+        private System.Windows.Forms.Timer countdownTimer;
+        private int remainingTime;
+        private CancellationTokenSource cancellationTokenSource;
+
         public FormRipristinoSO(FormSettaggi formSettaggi, Form1 form1)
         {
             InitializeComponent();
             this.form1 = form1;
             this.formSettaggi = formSettaggi;
+            dateTimePicker1.Format = DateTimePickerFormat.Time;
+            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker1.Value = DateTime.Today.AddMinutes(30); // Imposta il valore predefinito a 30 minuti
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -29,367 +40,575 @@ namespace WinHubX.Forms.Settaggi
             formSettaggi.Show();
         }
 
-        private void btnSFC_Click(object sender, EventArgs e)
+        private async void buttonStart_Click(object sender, EventArgs e)
         {
-            string fileName = "sfc.exe";
-            string arguments = "/scannow";
-            ProcessStartInfo psi = new ProcessStartInfo(fileName, arguments);
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = false;
-            psi.Verb = "runus";
-            psi.RedirectStandardOutput = false;
-            psi.RedirectStandardError = false;
-            using (Process process = new Process())
-            {
-                process.StartInfo = psi;
-                process.Start();
-            }
-        }
+            button1.Visible = false;
+            btnStop.Visible = true;
+            progressBar1.Value = 0;
 
-        private void btnDISM_Click(object sender, EventArgs e)
-        {
-            RunDismCommand("/online /cleanup-image /checkhealth");
-            RunDismCommand("/online /cleanup-image /scanhealth");
-            RunDismCommand("/online /cleanup-image /RestoreHealth");
-        }
+            cancellationTokenSource = new CancellationTokenSource();
 
-        static void RunDismCommand(string arguments)
-        {
-            string fileName = "dism.exe";
-
-            ProcessStartInfo psi = new ProcessStartInfo(fileName, arguments)
-            {
-                UseShellExecute = false,
-                CreateNoWindow = false,
-                Verb = "runus",
-                RedirectStandardOutput = false,
-                RedirectStandardError = false
-            };
-            Process process = new Process();
-            process.StartInfo = psi;
-            process.Start();
-        }
-
-        private void btnEliminaDeallocati_Click(object sender, EventArgs e)
-        {
-            {
-                string fileName = "cipher.exe";
-                string arguments = "/w:c";
-                ProcessStartInfo psi = new ProcessStartInfo(fileName, arguments);
-                psi.UseShellExecute = false;
-                psi.CreateNoWindow = false;
-                psi.Verb = "runus";
-                psi.RedirectStandardOutput = false;
-                psi.RedirectStandardError = false;
-                using (Process process = new Process())
-                {
-                    process.StartInfo = psi;
-                    process.Start();
-                }
-            }
-        }
-
-        private void btnStatoDisco_Click(object sender, EventArgs e)
-        {
-            string fileName = "chkdsk.exe";
-            string arguments = "/x /r /f";
-            ProcessStartInfo psi = new ProcessStartInfo(fileName, arguments);
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = false;
-            psi.Verb = "runus";
-            psi.RedirectStandardOutput = false;
-            psi.RedirectStandardError = false;
-            using (Process process = new Process())
-            {
-                process.StartInfo = psi;
-                process.Start();
-            }
-        }
-
-        private void btnBios_Click(object sender, EventArgs e)
-        {
-            string fileName = "shutdown.exe";
-            string arguments = "/t 0 /r /fw";
-            ProcessStartInfo psi = new ProcessStartInfo(fileName, arguments);
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = false;
-            psi.Verb = "runus";
-            psi.RedirectStandardOutput = false;
-            psi.RedirectStandardError = false;
-            using (Process process = new Process())
-            {
-                process.StartInfo = psi;
-                process.Start();
-            }
-        }
-
-        private void btnVerificaRam_Click(object sender, EventArgs e)
-        {
             try
             {
-                string fileName = @"C:\Windows\System32\mdsched.exe";
-
-                if (!System.IO.File.Exists(fileName))
+                if (checkBox_sw.Checked)
                 {
-                    MessageBox.Show("Il file mdsched.exe non esiste nel percorso specificato.");
-                    return;
+                    await StartScanAsyncSW(cancellationTokenSource.Token);
                 }
-
-                ProcessStartInfo psi = new ProcessStartInfo(fileName)
+                if (checkBox_hw.Checked)
                 {
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    Verb = "runas"
-                };
-
-                using (Process process = new Process())
-                {
-                    process.StartInfo = psi;
-                    process.Start();
+                    label3.Visible = true;
+                    await StartScanAsync(cancellationTokenSource.Token);
                 }
             }
-            catch (Exception ex)
+            catch (OperationCanceledException)
             {
-                MessageBox.Show("Errore: " + ex.Message);
-            }
-        }
-
-        private void btnPuliziaUpdate_Click(object sender, EventArgs e)
-        {
-            ExecutePowerShellCommand("Stop-Service", "wuauserv", true);
-            ExecutePowerShellCommand("DISM.exe", "/Online /Cleanup-Image /StartComponentCleanup /ResetBase", true);
-            ExecutePowerShellCommand("cleanmgr.exe", "/sagerun:1", true);
-            System.Threading.Thread.Sleep(10000);
-            ExecutePowerShellCommand("Remove-Item", "C:\\Windows\\SoftwareDistribution\\Download", true);
-            ExecutePowerShellCommand("Start-Service", "wuauserv", true);
-        }
-
-
-        private void btnPuliziaCronologiaDef_Click(object sender, EventArgs e)
-        {
-            ExecutePowerShellCommand("Set-MpPreference", "-DisableRealtimeMonitoring $false", true);
-            ExecutePowerShellCommand("Remove-MpPreference", "-RemoveHistory", true);
-            ExecutePowerShellCommand("Set-MpPreference", "-DisableRealtimeMonitoring $true", true);
-        }
-
-        private void ExecutePowerShellCommand(string command, string arguments, bool waitForExit = false)
-        {
-            using (Process process = new Process())
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo
-                {
-                    FileName = "powershell.exe",
-                    Arguments = $"-Command \"{command} {arguments}\"",
-                    UseShellExecute = false,
-                    CreateNoWindow = false,
-                    Verb = "runus",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
-                };
-
-                process.StartInfo = startInfo;
-                process.Start();
-
-                string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-
-                MessageBox.Show("Output:");
-                MessageBox.Show(output);
-
-                if (!string.IsNullOrEmpty(error))
-                {
-                    MessageBox.Show("Error:");
-                    MessageBox.Show(error);
-                }
-            }
-        }
-
-
-        static void ExecuteCommand(string command, string arguments)
-        {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                FileName = command,
-                Arguments = arguments,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                Verb = "runus",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true
-            };
-
-            using (Process process = Process.Start(processStartInfo))
-            {
-                process.WaitForExit();
-                MessageBox.Show(process.StandardOutput.ReadToEnd());
-                MessageBox.Show(process.StandardError.ReadToEnd());
-            }
-        }
-
-        static void RegisterModules(string directory)
-        {
-            string[] modules = new string[]
-            {
-            "atl.dll", "urlmon.dll", "mshtml.dll", "shdocvw.dll", "browseui.dll", "jscript.dll", "vbscript.dll",
-            "scrrun.dll", "msxml.dll", "msxml3.dll", "msxml6.dll", "actxprxy.dll", "softpub.dll", "wintrust.dll",
-            "dssenh.dll", "rsaenh.dll", "gpkcsp.dll", "sccbase.dll", "slbcsp.dll", "cryptdlg.dll", "oleaut32.dll",
-            "ole32.dll", "shell32.dll", "initpki.dll", "wuapi.dll", "wuaueng.dll", "wuaueng1.dll", "wucltui.dll",
-            "wups.dll", "wups2.dll", "wuweb.dll", "qmgr.dll", "qmgrprxy.dll", "wucltux.dll", "muweb.dll", "wuwebv.dll"
-            };
-
-            foreach (string module in modules)
-            {
-                ExecuteCommand("regsvr32.exe", $"/s \"{Path.Combine(directory, module)}\"");
-            }
-        }
-
-        static void ConfigureServices()
-        {
-            ExecuteCommand("sc.exe", "config wuauserv start= auto");
-            ExecuteCommand("sc.exe", "config bits start= delayed-auto");
-            ExecuteCommand("sc.exe", "config cryptsvc start= auto");
-            ExecuteCommand("sc.exe", "config TrustedInstaller start= demand");
-            ExecuteCommand("sc.exe", "config DcomLaunch start= auto");
-        }
-
-        private void btnSalvaDriver_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string driverDirectory = @"C:\DriverPC";
-                if (!Directory.Exists(driverDirectory))
-                {
-                    Directory.CreateDirectory(driverDirectory);
-                    MessageBox.Show($"Cartella creata: {driverDirectory}");
-                }
-                var dismProcess = Process.Start(new ProcessStartInfo
-                {
-                    FileName = "dism.exe",
-                    Arguments = $"/online /export-driver /destination:{driverDirectory}",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = false,
-                    Verb = "runus",
-                    CreateNoWindow = false
-                });
-                string outputPath = Path.Combine(driverDirectory, "driver.txt");
-                using (var commandProcess = new Process())
-                {
-                    commandProcess.StartInfo.FileName = "cmd.exe";
-                    commandProcess.StartInfo.Arguments = $"/c driverquery > \"{outputPath}\"";
-                    commandProcess.StartInfo.UseShellExecute = false;
-                    commandProcess.StartInfo.CreateNoWindow = true;
-                    commandProcess.Start();
-                    commandProcess.WaitForExit();
-                }
+                UpdateLabel("Operazione annullata dall'utente.");
             }
             finally
             {
-                MessageBox.Show("Trovi la cartella in C:\\DriverPC");
-                MessageBox.Show("Per ripristinare tutti i driver, salvati la cartella su USB e, con ISO installata, usa \"pnputil /add-driver 'percorsodriver\\*.inf' /subdirs /install /reboot\".");
+                button1.Visible = true;
+                btnStop.Visible = false;
+                label3.Visible = false;
             }
         }
 
-        private void btnStatoBatt_Click(object sender, EventArgs e)
+        private async Task StartScanAsyncSW(CancellationToken cancellationToken)
         {
-            GenerateBatteryReport(@"C:\battery_report.html");
+            int totalSteps = 7;
+            int currentStep = 0;
+
+            UpdateLabel("Backup del registro in corso...");
+            await BackupRegistryAsync(cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Controllo file di sistema...");
+            await RunCommandAsync("DISM /Online /Cleanup-Image /CheckHealth", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Scansione per errori di sistema...");
+            await RunCommandAsync("DISM /Online /Cleanup-Image /ScanHealth", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Ripristino dei file di sistema...");
+            await RunCommandAsync("DISM /Online /Cleanup-Image /RestoreHealth", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Esecuzione SFC...");
+            await RunCommandAsync("sfc /scannow", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Pulizia della cartella WinSxS...");
+            await RunCommandAsync("Dism.exe /online /Cleanup-Image /StartComponentCleanup", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Controllo e riparazione del file system...");
+            await RunCommandAsync("chkdsk C: /F /R /X", cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Registrazione DLL di sistema...");
+            await RegisterSystemDLLs(cancellationToken);
+            UpdateProgress(++currentStep, totalSteps, cancellationToken);
+
+            UpdateLabel("Ripristino completato! Riavvia il PC.");
+            MessageBox.Show("Ripristino completato! Riavvia il PC per applicare le modifiche.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void GenerateBatteryReport(string filePath)
+        private async Task BackupRegistryAsync(CancellationToken cancellationToken)
         {
-            string command = "powercfg /batteryreport /output " + filePath;
+            string backupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "RegistryBackup.reg");
 
-            ProcessStartInfo psi = new ProcessStartInfo("cmd.exe");
-            psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
-            psi.RedirectStandardInput = true;
-            psi.RedirectStandardOutput = true;
-            psi.Verb = "runus";
-            psi.RedirectStandardError = true;
+            await RunCommandAsync($"reg export HKLM\\SOFTWARE {backupPath} /y", cancellationToken);
+            await RunCommandAsync($"reg export HKCU {backupPath} /y", cancellationToken);
 
-            using (Process process = new Process())
+            LogMessage($"Backup del registro salvato in: {backupPath}");
+        }
+
+        private async Task RegisterSystemDLLs(CancellationToken cancellationToken)
+        {
+            string[] dlls = { "atl.dll", "jscript.dll", "msxml3.dll", "shell32.dll", "shdocvw.dll", "urlmon.dll", "vbscript.dll", "wintrust.dll" };
+
+            foreach (var dll in dlls)
             {
-                process.StartInfo = psi;
-                process.Start();
-                process.StandardInput.WriteLine(command);
-                process.StandardInput.Flush();
-                process.StandardInput.Close();
-
-                process.WaitForExit();
+                await RunCommandAsync($"regsvr32 /s {dll}", cancellationToken);
+                LogMessage($"Registrata DLL: {dll}");
             }
-            if (File.Exists(filePath))
+        }
+
+        private async Task RunCommandAsync(string command, CancellationToken cancellationToken)
+        {
+            await Task.Run(() =>
             {
-                MessageBox.Show("Battery report generated successfully.");
+                if (cancellationToken.IsCancellationRequested)
+                    throw new OperationCanceledException();
+
+                try
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $"/c {command}",
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    };
+
+                    using (Process process = new Process { StartInfo = psi })
+                    {
+                        process.OutputDataReceived += (sender, e) => AppendToRichTextBox2(e.Data);
+                        process.ErrorDataReceived += (sender, e) => AppendToRichTextBox2($"[ERRORE] {e.Data}");
+
+                        process.Start();
+                        process.BeginOutputReadLine();
+                        process.BeginErrorReadLine();
+
+                        process.WaitForExit();
+
+                        if (cancellationToken.IsCancellationRequested)
+                            throw new OperationCanceledException();
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    AppendToRichTextBox2("Operazione annullata.");
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    AppendToRichTextBox2($"Errore: {ex.Message}");
+                }
+            }, cancellationToken);
+        }
+
+        private async Task StartScanAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                int testDurationMinutes = (int)dateTimePicker1.Value.TimeOfDay.TotalMinutes;
+                remainingTime = testDurationMinutes;
+
+                progressBar1.Visible = true;
+                label2.Visible = true;
+                label2.Text = $"Scansione in corso... ({remainingTime} min)";
+
+                richTextBox1.Clear();
+
+                cancellationTokenSource = new CancellationTokenSource(); // Creiamo un nuovo token di annullamento
+                CancellationToken token = cancellationTokenSource.Token;
+
+                if (checkBox_hw.Checked)
+                {
+                    if (countdownTimer == null)
+                    {
+                        countdownTimer = new System.Windows.Forms.Timer();
+                        countdownTimer.Interval = 1000;
+                        countdownTimer.Tick += UpdateCountdown;
+                    }
+                    remainingTime = testDurationMinutes * 60;
+                    countdownTimer.Start();
+
+                    await RunStressTestsContinuously(testDurationMinutes, token);
+                }
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText($"Errore: {ex.Message}\n");
+            }
+            finally
+            {
+                label2.Text = "Completato!";
+                progressBar1.Visible = false;
+                countdownTimer?.Dispose();
+            }
+        }
+
+        private async Task RunStressTestsContinuously(int testDurationMinutes, CancellationToken token)
+        {
+            await VerifyDiskStatusAsync();
+
+            Task cpuTestTask = StressTestCPUAsync(token);
+            Task ramTestTask = TestRAMAsync(token);
+
+            await Task.WhenAll(cpuTestTask, ramTestTask);
+        }
+
+        private void UpdateCountdown(object sender, EventArgs e)
+        {
+            if (remainingTime > 0)
+            {
+                remainingTime--;
+
+                // Convertire il tempo rimanente in ore:minuti:secondi
+                TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
+                string formattedTime = timeSpan.ToString(@"hh\:mm\:ss");
+
+                label2.Text = $"Scansione in corso...";
+                label3.Text = $"Tempo rimanente: {formattedTime}";
             }
             else
             {
-                MessageBox.Show("Failed to generate battery report.");
+                countdownTimer?.Stop();
+                label2.Text = "Scansione completata!";
+                label3.Text = "Tempo scaduto!";
             }
         }
 
-        private void btnEliminaTempor_Click(object sender, EventArgs e)
-        {
-            ClearTempFolders();
-            RunDiskCleanup();
-        }
+        #region Hardware
+        // **Verifica Hardware**
 
-        static void ClearTempFolders()
+        // 1. Stress test CPU (Async)
+        // Modifica il metodo StressTestCPUAsync per accettare testDurationMinutes
+        public async Task StressTestCPUAsync(CancellationToken token)
         {
+            UpdateLabel("Avvio stress test CPU...");
+            LogMessage("Preparazione stress test CPU...");
+
             try
             {
-                Process.Start("cmd.exe", "/c del /s /f /q \"%TEMP%\\*.*\"");
-                Process.Start("cmd.exe", "/c del /s /f /q \"%SYSTEMROOT%\\Temp\\*.*\"");
-                MessageBox.Show("Temp folders cleared successfully.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error clearing temp folders: {ex.Message}");
-            }
-        }
+                int numThreads = Environment.ProcessorCount; // Usa i core disponibili
+                LogMessage($"Utilizzando {numThreads} thread per il test.");
 
-        static void RunDiskCleanup()
-        {
-            try
-            {
-                Process.Start("cleanmgr.exe", "/verylowdisk").WaitForExit();
-                MessageBox.Show("Disk Cleanup completed successfully.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error running Disk Cleanup: {ex.Message}");
-            }
-        }
+                Task monitorTask = MonitorCPUUsageAsync(token);
 
-        private void btnResetWinSxS_Click(object sender, EventArgs e)
-        {
-            RunDISMCommand();
-        }
-
-        static void RunDISMCommand()
-        {
-            try
-            {
-                ProcessStartInfo psi = new ProcessStartInfo
+                List<Task> tasks = new();
+                for (int i = 0; i < numThreads; i++)
                 {
-                    FileName = "DISM.exe",
-                    Arguments = "/Online /Cleanup-Image /StartComponentCleanup",
-                    UseShellExecute = false,
-                    CreateNoWindow = false,
-                    Verb = "runus"
-                };
-
-                using (Process process = new Process())
-                {
-                    process.StartInfo = psi;
-                    process.Start();
-                    process.WaitForExit();
+                    tasks.Add(Task.Run(() =>
+                    {
+                        Thread.CurrentThread.Priority = ThreadPriority.BelowNormal; // Abbassa la priorità
+                        double result = 0;
+                        while (!token.IsCancellationRequested)
+                        {
+                            for (int j = 0; j < 10_000_000; j++)
+                            {
+                                result += Math.Sqrt(j) * Math.Sin(j);
+                                if (j % 1_000_000 == 0 && token.IsCancellationRequested)
+                                    return; // Controlla il token più spesso
+                            }
+                            Thread.Yield(); // Lascia spazio ad altri thread (incluso l'UI)
+                        }
+                    }, token));
                 }
 
-                MessageBox.Show("DISM command completed successfully.");
+                await Task.WhenAll(tasks);
+                monitorTask.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error running DISM command: {ex.Message}");
+                LogError($"Errore test CPU: {ex.Message}");
             }
+        }
+
+        // Monitoraggio della CPU in tempo reale
+        private async Task MonitorCPUUsageAsync(CancellationToken token)
+        {
+            const int thermalThreshold = 90; // Soglia di temperatura per il thermal throttling (adatta la temperatura a seconda della tua CPU)
+
+            while (!token.IsCancellationRequested)
+            {
+                try
+                {
+                    var cpuUsage = GetCPUUsage();
+                    var cpuTemp = GetCPUTemperature();
+
+                    // Verifica se la CPU sta andando in thermal throttling
+                    if (cpuTemp > thermalThreshold)
+                    {
+                        LogMessage($"ATTENZIONE: CPU in thermal throttling! Temp: {cpuTemp}°C");
+                    }
+                    else
+                    {
+                        LogMessage($"CPU Usage: {cpuUsage}%");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogError($"Errore monitoraggio CPU: {ex.Message}");
+                }
+
+                await Task.Delay(6000, token); // Aggiorna ogni 2 secondi
+            }
+        }
+        // Ottiene l'uso della CPU
+        private static float GetCPUUsage()
+        {
+            using PerformanceCounter cpuCounter = new("Processor", "% Processor Time", "_Total");
+            cpuCounter.NextValue();
+            Task.Delay(500).Wait(); // Attendi per ottenere un valore valido
+            return cpuCounter.NextValue();
+        }
+
+        // Ottiene la temperatura della CPU (tramite WMI)
+        private static float GetCPUTemperature()
+        {
+            try
+            {
+                using ManagementObjectSearcher searcher = new("root\\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    double tempK = Convert.ToDouble(obj["CurrentTemperature"]);
+                    return (float)((tempK - 2732) / 10.0); // Converti da Kelvin a Celsius
+                }
+            }
+            catch { }
+            return -1; // Errore nel recupero della temperatura
+        }
+
+        // 2. Test RAM migliorato
+        public async Task TestRAMAsync(CancellationToken token)
+        {
+            UpdateLabel("Avvio test RAM...");
+            LogMessage("Preparazione test RAM...");
+
+            try
+            {
+                int blockSize = 1024 * 1024 * 50; // 50MB per blocco
+                long maxRam = GetTotalRAM() * 80 / 100; // Usa solo l'80% della RAM totale
+                long allocatedRam = 0;
+
+                LogMessage($"Allocazione fino a {maxRam / (1024 * 1024)} MB di RAM...");
+                Queue<byte[]> memoryBlocks = new();
+
+                while (!token.IsCancellationRequested && allocatedRam < maxRam)
+                {
+                    byte[] block = new byte[blockSize];
+                    for (int i = 0; i < block.Length; i += 4096)
+                    {
+                        block[i] = (byte)(i % 256); // Simula utilizzo memoria
+                    }
+
+                    memoryBlocks.Enqueue(block);
+                    allocatedRam += blockSize;
+
+                    // Log ogni 500MB allocati
+                    if (allocatedRam % (1024 * 1024 * 500) == 0)
+                    {
+                        LogMessage($"RAM allocata: {allocatedRam / (1024 * 1024)} MB...");
+                    }
+
+                    await Task.Delay(20, token); // Piccola pausa per evitare lock-up
+                }
+
+                LogMessage("Liberazione memoria...");
+                memoryBlocks.Clear();
+                GC.Collect();
+
+                UpdateLabel("Test RAM completato.");
+            }
+            catch (Exception ex)
+            {
+                LogError($"Errore test RAM: {ex.Message}");
+            }
+        }
+
+        // Recupera la quantità totale di RAM disponibile
+        private static long GetTotalRAM()
+        {
+            try
+            {
+                using ManagementObjectSearcher searcher = new("SELECT TotalPhysicalMemory FROM Win32_ComputerSystem");
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    return Convert.ToInt64(obj["TotalPhysicalMemory"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Errore lettura RAM: {ex.Message}");
+            }
+
+            return 8L * 1024 * 1024 * 1024; // Default: 8GB se errore
+        }
+
+        // 3. Verifica stato SMART del disco con API Windows
+        public async Task VerifyDiskStatusAsync()
+        {
+            UpdateLabel("Verifica stato del disco...");
+            LogMessage("Inizio controllo avanzato del disco...");
+
+            try
+            {
+                using ManagementObjectSearcher searcher = new("SELECT * FROM Win32_DiskDrive");
+                foreach (ManagementObject disk in searcher.Get())
+                {
+                    string deviceId = disk["DeviceID"]?.ToString() ?? "Sconosciuto";
+                    string model = disk["Model"]?.ToString() ?? "Modello sconosciuto";
+                    long diskSize = Convert.ToInt64(disk["Size"] ?? 0) / (1024 * 1024 * 1024); // Converti in GB
+
+                    string diskInfo = $"Disco rilevato: {model} ({deviceId}) - {diskSize} GB";
+                    LogMessage(diskInfo);
+                    UpdateLabel($"Analisi {model}...");
+
+                    AppendToRichTextBox2(diskInfo + Environment.NewLine);
+
+                    // Controlla stato SMART
+                    string NamespacePath = @"\\.\root\cimv2";
+                    string ClassName = "Win32_DiskDrive";
+                    ManagementClass oClass = new ManagementClass(NamespacePath + ":" + ClassName);
+
+                    foreach (ManagementObject oObject in oClass.GetInstances())
+                    {
+                        var sign = Convert.ToString(oObject["Signature"]);
+                        var smartModel = Convert.ToString(oObject["Model"]);
+                        var status = Convert.ToString(oObject["Status"]);
+
+                        if (Equals(sign, ""))
+                        {
+                            AppendToRichTextBox2("DISK model: " + smartModel);
+                            AppendToRichTextBox2("Status: " + status);
+                            AppendToRichTextBox2(Environment.NewLine);
+                        }
+                    }
+
+                    // Test velocità lettura/scrittura
+                    string speedResults = DiskSpeedTest(deviceId);
+                    AppendToRichTextBox2(speedResults + Environment.NewLine);
+
+                    LogMessage("-------------------------------------------------");
+                    AppendToRichTextBox2("-------------------------------------------------" + Environment.NewLine);
+                }
+
+                UpdateLabel("Verifica disco completata.");
+                LogMessage("Verifica disco completata con successo.");
+            }
+            catch (Exception ex)
+            {
+                LogError($"Errore verifica disco: {ex.Message}");
+            }
+        }
+
+        // **Metodo per aggiornare il RichTextBox in modo sicuro**
+        private void AppendToRichTextBox2(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            if (richTextBox2.InvokeRequired)
+            {
+                richTextBox2.Invoke(new Action(() => AppendToRichTextBox2(message)));
+            }
+            else
+            {
+                richTextBox2.AppendText($"{DateTime.Now:HH:mm:ss} - {message}\n");
+                richTextBox2.ScrollToCaret();
+            }
+        }
+
+        // **Test velocità disco con scrittura/lettura di un file temporaneo**
+        private string DiskSpeedTest(string deviceId)
+        {
+            try
+            {
+                string tempFile = Path.Combine(Path.GetTempPath(), "disk_speed_test.tmp");
+                byte[] data = new byte[1024 * 1024 * 50]; // 50MB di dati casuali
+                new Random().NextBytes(data);
+
+                // Misura velocità scrittura
+                Stopwatch stopwatch = Stopwatch.StartNew();
+                File.WriteAllBytes(tempFile, data);
+                stopwatch.Stop();
+                double writeSpeed = (50.0 / (stopwatch.ElapsedMilliseconds / 1000.0)); // MB/s
+
+                // Misura velocità lettura
+                stopwatch.Restart();
+                _ = File.ReadAllBytes(tempFile);
+                stopwatch.Stop();
+                double readSpeed = (50.0 / (stopwatch.ElapsedMilliseconds / 1000.0)); // MB/s
+
+                File.Delete(tempFile); // Rimuove il file temporaneo
+
+                string speedResult = $"Velocità scrittura: {writeSpeed:F2} MB/s | Velocità lettura: {readSpeed:F2} MB/s";
+                LogMessage(speedResult);
+                return speedResult;
+            }
+            catch (Exception ex)
+            {
+                LogError($"Errore test velocità disco: {ex.Message}");
+                return "Errore test velocità disco";
+            }
+        }
+
+
+        #endregion
+        // Funzioni di supporto
+        private void UpdateLabel(string message)
+        {
+            if (label2.InvokeRequired)
+            {
+                label2.Invoke(new Action(() => label2.Text = message));
+            }
+            else
+            {
+                label2.Text = message;
+            }
+
+            LogMessage(message);
+        }
+        private void checkBox_hw_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.Visible = true;
+            label1.Visible = true;
+        }
+
+        private void UpdateProgress(int step, int totalSteps, CancellationToken cancellationToken)
+        {
+            if (cancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
+
+            int progress = (step * 100) / totalSteps;
+            if (progressBar1.InvokeRequired)
+            {
+                progressBar1.Invoke(new Action(() => progressBar1.Value = progress));
+            }
+            else
+            {
+                progressBar1.Value = progress;
+            }
+        }
+
+        private void LogMessage(string message)
+        {
+            if (richTextBox1.InvokeRequired)
+            {
+                richTextBox1.Invoke(new Action(() => LogMessage(message)));
+            }
+            else
+            {
+                richTextBox1.AppendText($"{DateTime.Now:HH:mm:ss} - {message}\n");
+                richTextBox1.ScrollToCaret();
+            }
+        }
+
+        private void LogError(string message)
+        {
+            if (richTextBox1.InvokeRequired)
+            {
+                richTextBox1.Invoke(new Action(() => LogError(message)));
+            }
+            else
+            {
+                richTextBox1.AppendText($"{DateTime.Now}: [ERRORE] {message}\n");
+                richTextBox1.ScrollToCaret();
+            }
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            button1.Visible = true;
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+            }
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+                LogMessage("Scansione interrotta dall'utente.");
+                label2.Text = "Scansione interrotta!";
+                label3.Text = "Test annullato.";
+                countdownTimer?.Stop();
+                progressBar1.Visible = false;
+            }
+            btnStop.Visible = false;
         }
     }
 }

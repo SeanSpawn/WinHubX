@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Net;
 
 namespace WinHubX.Dialog.Tools
 {
@@ -33,30 +34,34 @@ namespace WinHubX.Dialog.Tools
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            string fileName = "Rufus4Lite.exe";
-            string resourceName = "WinHubX.Resources.Rufus4Lite.exe";
-            string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            try
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string tempFilePath = Path.Combine(Path.GetTempPath(), "RufusLite.exe");
+
+            using (WebClient client = new WebClient())
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                try
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
-                }
+                    // Scarica il JSON di configurazione
+                    string json = client.DownloadString(configUrl);
 
-                Process.Start(tempFilePath);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                    // Analizza il JSON per ottenere l'URL di RufusLite
+                    JObject configData = JObject.Parse(json);
+                    string rufusLiteUrl = configData["Dialog"]["RufusLite"].ToString();
+
+                    // Scarica il file eseguibile RufusLite
+                    client.DownloadFile(rufusLiteUrl, tempFilePath);
+
+                    // Esegui l'applicazione RufusLite
+                    Process.Start(tempFilePath);
+
+                    MessageBox.Show("RufusLite avviato con successo!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errore durante il download o l'avvio di RufusLite: " + ex.Message);
+                }
             }
         }
     }

@@ -74,16 +74,5 @@ namespace WinHubX
             };
             dialogRSTDriver.ShowDialog();
         }
-
-        private void btnCheckHW_Click(object sender, EventArgs e)
-        {
-            DialogCheckHW dialogCheckHW = new DialogCheckHW()
-            {
-                TopMost = true,
-                FormBorderStyle = FormBorderStyle.None,
-                StartPosition = FormStartPosition.CenterScreen
-            };
-            dialogCheckHW.ShowDialog();
-        }
     }
 }

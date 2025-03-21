@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Net;
 
 namespace WinHubX.Dialog.Tools
 {
@@ -37,50 +38,63 @@ namespace WinHubX.Dialog.Tools
             this.Close();
         }
 
-        private void btnDownload_Click(object sender, EventArgs e)
+        private async void btnDownload_Click(object sender, EventArgs e)
         {
-            notifyIcon.BalloonTipTitle = "Download di WIMToolKit!";
-            notifyIcon.BalloonTipText = "WIMToolKit verrà scaricato e aperto, attendi.";
-            notifyIcon.ShowBalloonTip(1000);
+            // Imposta il protocollo di sicurezza su TLS 1.2
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            string fileName = "WIMToolkit.ps1";
-            string resourceName = "WinHubX.Resources.WIMToolkit.ps1";
-            string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            // URL del JSON di configurazione online
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+
+            using (WebClient client = new WebClient())
+            {
+                try
+                {
+                    // Scarica il JSON di configurazione
+                    string json = client.DownloadString(configUrl);
+
+                    // Analizza il JSON per ottenere l'URL di WimToolkit
+                    JObject configData = JObject.Parse(json);
+                    string wimToolkitUrl = configData["Dialog"]["WimToolkit"].ToString();
+
+                    // Scarica lo script dal URL di WimToolkit
+                    string script = client.DownloadString(wimToolkitUrl);
+
+                    // Salva lo script in un file temporaneo
+                    string tempScriptPath = Path.GetTempPath() + "WIMtoolkitDowload.ps1";
+                    File.WriteAllText(tempScriptPath, script);
+
+                    // Esegui lo script PowerShell in modo asincrono
+                    await Task.Run(() => ExecutePowerShellScript(tempScriptPath));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errore durante il download o l'esecuzione dello script: " + ex.Message);
+                }
+            }
+        }
+
+        private void ExecutePowerShellScript(string scriptPath)
+        {
+            // Crea un nuovo processo per eseguire PowerShell
+            ProcessStartInfo processInfo = new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = $"-ExecutionPolicy Bypass -File \"{scriptPath}\"", // Usa Bypass per eseguire script non firmati
+                UseShellExecute = true, // Rende visibile la finestra di PowerShell
+                CreateNoWindow = false // Non crea una finestra nascosta
+            };
 
             try
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                using (Process process = Process.Start(processInfo))
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
+                    process.WaitForExit(); // Aspetta che il processo finisca
                 }
-
-                ProcessStartInfo psi = new ProcessStartInfo
-                {
-                    FileName = "powershell.exe",
-                    Verb = "runas",
-                    UseShellExecute = false,
-                    Arguments = $"-ExecutionPolicy Bypass -File \"{tempFilePath}\""
-                };
-
-                Process process = new Process
-                {
-                    StartInfo = psi,
-                    EnableRaisingEvents = true
-                };
-
-                process.Start();
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                MessageBox.Show("Errore durante l'esecuzione dello script PowerShell: " + ex.Message);
             }
         }
     }

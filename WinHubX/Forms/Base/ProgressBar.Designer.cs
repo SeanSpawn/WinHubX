@@ -37,12 +37,14 @@ namespace WinHubX.Forms.Base
             lblStatus.AutoSize = true;
             lblStatus.Location = new Point(12, 9);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(151, 20);
+            lblStatus.Size = new Size(121, 15);
             lblStatus.TabIndex = 1;
             lblStatus.Text = "Operazione in corso...";
             // 
             // ProgressForm
             // 
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(284, 75);
             Controls.Add(lblStatus);
             Controls.Add(progressBar);

@@ -61,7 +61,7 @@
             DisabilitaDefender.Font = new Font("Segoe UI", 10.2F);
             DisabilitaDefender.ForeColor = Color.White;
             DisabilitaDefender.FormattingEnabled = true;
-            DisabilitaDefender.Items.AddRange(new object[] { "Disabilita Controllo Accesso Cartella", "Disabilita Isolamento Core", "Disabilita Applicazione Defender Guard", "Disabilita Protezione Account Warning", "Disabilita Blocco Download Files", "Disabilita Windows Script Host", "Disabilita .NET Strong Cryptography", "Disabilita Meltdown CVE-2017-5754", "Livello Minimo UAC", "Disabilita Implicit Administrative Sheres", "Disabilita Windows Firewall", "Disabilita Windows Defender CLoud", "Disabilita Windows Defender SysTray", "Disabilita Windows Defender Services" });
+            DisabilitaDefender.Items.AddRange(new object[] { "Disabilita Controllo Accesso Cartella", "Disabilita Isolamento Core", "Disabilita Applicazione Defender Guard", "Disabilita Protezione Account Warning", "Disabilita Blocco Download Files", "Disabilita Windows Script Host", "Disabilita .NET Strong Cryptography", "Livello Minimo UAC", "Disabilita Implicit Administrative Sheres", "Disabilita Windows Firewall", "Disabilita Windows Defender CLoud", "Disabilita Windows Defender SysTray", "Disabilita Windows Defender Services" });
             DisabilitaDefender.Location = new Point(158, 38);
             DisabilitaDefender.Name = "DisabilitaDefender";
             DisabilitaDefender.Size = new Size(303, 294);
@@ -125,7 +125,7 @@
             AbilitaDefender.Font = new Font("Segoe UI", 10.2F);
             AbilitaDefender.ForeColor = Color.White;
             AbilitaDefender.FormattingEnabled = true;
-            AbilitaDefender.Items.AddRange(new object[] { "Abilita Controllo Accesso Cartella", "Abilita Isolamento Core", "Abilita Applicazione Defender Guard", "Abilita Protezione Account Warning", "Abilita Blocco Download Files", "Abilita Windows Script Host", "Abilita .NET Strong Cryptography", "Abilita Meltdown CVE-2017-5754", "Livello Massimo UAC", "Abilita Implicit Administrative Sheres", "Abilita Windows Firewall", "Abilita Windows Defender CLoud", "Abilita Windows Defender SysTray", "Abilita Windows Defender Services" });
+            AbilitaDefender.Items.AddRange(new object[] { "Abilita Controllo Accesso Cartella", "Abilita Isolamento Core", "Abilita Applicazione Defender Guard", "Abilita Protezione Account Warning", "Abilita Blocco Download Files", "Abilita Windows Script Host", "Abilita .NET Strong Cryptography", "Livello Massimo UAC", "Abilita Implicit Administrative Sheres", "Abilita Windows Firewall", "Abilita Windows Defender CLoud", "Abilita Windows Defender SysTray", "Abilita Windows Defender Services" });
             AbilitaDefender.Location = new Point(502, 42);
             AbilitaDefender.Name = "AbilitaDefender";
             AbilitaDefender.Size = new Size(303, 294);
@@ -167,8 +167,8 @@
             // 
             // FormDefender
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(btnProtezioneMinima);

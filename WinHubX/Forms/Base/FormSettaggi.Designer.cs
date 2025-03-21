@@ -43,6 +43,8 @@
             btnAttivaWSA = new Button();
             btnAttivaWSL = new Button();
             label7 = new Label();
+            btnPersonalizzazione = new Button();
+            label4 = new Label();
             SuspendLayout();
             // 
             // btnPrivacy
@@ -202,7 +204,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Coral;
-            label6.Location = new Point(544, 313);
+            label6.Location = new Point(546, 419);
             label6.Name = "label6";
             label6.Size = new Size(258, 24);
             label6.TabIndex = 58;
@@ -218,7 +220,7 @@
             btnAttivaWSA.ForeColor = Color.White;
             btnAttivaWSA.Image = (Image)resources.GetObject("btnAttivaWSA.Image");
             btnAttivaWSA.ImageAlign = ContentAlignment.MiddleRight;
-            btnAttivaWSA.Location = new Point(453, 259);
+            btnAttivaWSA.Location = new Point(455, 365);
             btnAttivaWSA.Margin = new Padding(3, 2, 3, 2);
             btnAttivaWSA.Name = "btnAttivaWSA";
             btnAttivaWSA.Size = new Size(424, 52);
@@ -237,10 +239,10 @@
             btnAttivaWSL.ForeColor = Color.White;
             btnAttivaWSL.Image = (Image)resources.GetObject("btnAttivaWSL.Image");
             btnAttivaWSL.ImageAlign = ContentAlignment.MiddleRight;
-            btnAttivaWSL.Location = new Point(235, 367);
+            btnAttivaWSL.Location = new Point(21, 365);
             btnAttivaWSL.Margin = new Padding(3, 2, 3, 2);
             btnAttivaWSL.Name = "btnAttivaWSL";
-            btnAttivaWSL.Size = new Size(424, 52);
+            btnAttivaWSL.Size = new Size(416, 52);
             btnAttivaWSL.TabIndex = 59;
             btnAttivaWSL.Text = "Attiva WSL";
             btnAttivaWSL.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -252,19 +254,51 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Coral;
-            label7.Location = new Point(337, 420);
+            label7.Location = new Point(123, 418);
             label7.Name = "label7";
             label7.Size = new Size(237, 24);
             label7.TabIndex = 60;
             label7.Text = "Installa il sottosistema Linux";
             label7.TextAlign = ContentAlignment.BottomCenter;
             // 
+            // btnPersonalizzazione
+            // 
+            btnPersonalizzazione.Cursor = Cursors.Hand;
+            btnPersonalizzazione.FlatAppearance.BorderSize = 0;
+            btnPersonalizzazione.FlatStyle = FlatStyle.Flat;
+            btnPersonalizzazione.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPersonalizzazione.ForeColor = Color.White;
+            btnPersonalizzazione.Image = (Image)resources.GetObject("btnPersonalizzazione.Image");
+            btnPersonalizzazione.Location = new Point(472, 253);
+            btnPersonalizzazione.Margin = new Padding(3, 2, 3, 2);
+            btnPersonalizzazione.Name = "btnPersonalizzazione";
+            btnPersonalizzazione.Size = new Size(380, 58);
+            btnPersonalizzazione.TabIndex = 61;
+            btnPersonalizzazione.Text = "Personalizzazione";
+            btnPersonalizzazione.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnPersonalizzazione.UseVisualStyleBackColor = true;
+            btnPersonalizzazione.Click += btnPersonalizzazione_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Coral;
+            label4.Location = new Point(512, 314);
+            label4.Name = "label4";
+            label4.Size = new Size(323, 24);
+            label4.TabIndex = 62;
+            label4.Text = "Personalizza alcuni settaggi Windows";
+            label4.TextAlign = ContentAlignment.BottomCenter;
+            // 
             // FormSettaggi
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
+            Controls.Add(btnPersonalizzazione);
+            Controls.Add(label4);
             Controls.Add(btnUpdate);
             Controls.Add(btnAttivaWSL);
             Controls.Add(label7);
@@ -302,5 +336,7 @@
         private Button btnAttivaWSA;
         private Button btnAttivaWSL;
         private Label label7;
+        private Button btnPersonalizzazione;
+        private Label label4;
     }
 }

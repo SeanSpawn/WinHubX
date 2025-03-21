@@ -1,6 +1,7 @@
 ﻿
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
-using System.Reflection;
+using System.Net;
 
 namespace WinHubX.Dialog.Tools
 {
@@ -34,33 +35,41 @@ namespace WinHubX.Dialog.Tools
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            string fileName = "MSPCManagerSetup.msixbundle";
-            string resourceName = "WinHubX.Resources.MSPCManagerSetup.msixbundle";
-            string tempPath = Path.GetTempPath();
-            string tempFilePath = Path.Combine(tempPath, fileName);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            try
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string tempFilePath = Path.Combine(Path.GetTempPath(), "microsoft-pc-manager.msixbundle");
+
+            using (WebClient client = new WebClient())
             {
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                try
                 {
-                    if (resourceStream != null)
-                    {
-                        using (FileStream fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                        {
-                            resourceStream.CopyTo(fileStream);
-                        }
-                    }
-                }
+                    // Scarica il JSON di configurazione
+                    string json = client.DownloadString(configUrl);
 
-                // Use explorer.exe to handle the msixbundle installation
-                Process.Start("explorer.exe", tempFilePath);
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Errore nell'avviare l'applicazione: {ex.Message}");
+                    // Analizza il JSON per ottenere l'URL di Microsoft PC Manager
+                    JObject configData = JObject.Parse(json);
+                    string pcManagerUrl = configData["Dialog"]["managersetupmicrosoft"].ToString();
+
+                    // Scarica il file msixbundle
+                    client.DownloadFile(pcManagerUrl, tempFilePath);
+
+                    // Esegui l'installazione del pacchetto msixbundle
+                    Process installProcess = new Process();
+                    installProcess.StartInfo.FileName = "powershell";
+                    installProcess.StartInfo.Arguments = $"-Command \"Add-AppxPackage -Path '{tempFilePath}'\"";
+                    installProcess.StartInfo.UseShellExecute = false;
+                    installProcess.StartInfo.CreateNoWindow = true;
+                    installProcess.Start();
+
+                    installProcess.WaitForExit();
+                    MessageBox.Show("Installazione completata!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errore durante il download o l'installazione: " + ex.Message);
+                }
             }
         }
-
     }
 }

@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
-            btnupdate = new Button();
+            btnReinstallaApp = new Button();
+            btnmonitoraggio = new Button();
             btnTools = new Button();
             btnCreaISO = new Button();
             btnDebloat = new Button();
@@ -54,8 +55,10 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.BackColor = Color.FromArgb(64, 60, 59);
-            panel1.Controls.Add(btnupdate);
+            panel1.Controls.Add(btnReinstallaApp);
+            panel1.Controls.Add(btnmonitoraggio);
             panel1.Controls.Add(btnTools);
             panel1.Controls.Add(btnCreaISO);
             panel1.Controls.Add(btnDebloat);
@@ -64,17 +67,26 @@
             panel1.Controls.Add(btnWin);
             panel1.Controls.Add(btnHome);
             panel1.Controls.Add(panel2);
-            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // btnupdate
+            // btnReinstallaApp
             // 
-            resources.ApplyResources(btnupdate, "btnupdate");
-            btnupdate.FlatAppearance.BorderSize = 0;
-            btnupdate.ForeColor = SystemColors.Window;
-            btnupdate.Name = "btnupdate";
-            btnupdate.UseVisualStyleBackColor = true;
-            btnupdate.Click += btnupdate_Click;
+            resources.ApplyResources(btnReinstallaApp, "btnReinstallaApp");
+            btnReinstallaApp.FlatAppearance.BorderSize = 0;
+            btnReinstallaApp.ForeColor = SystemColors.Window;
+            btnReinstallaApp.Image = Properties.Resources.pngAddApp;
+            btnReinstallaApp.Name = "btnReinstallaApp";
+            btnReinstallaApp.UseVisualStyleBackColor = true;
+            btnReinstallaApp.Click += btnReinstallaApp_Click;
+            // 
+            // btnmonitoraggio
+            // 
+            resources.ApplyResources(btnmonitoraggio, "btnmonitoraggio");
+            btnmonitoraggio.FlatAppearance.BorderSize = 0;
+            btnmonitoraggio.ForeColor = SystemColors.Window;
+            btnmonitoraggio.Name = "btnmonitoraggio";
+            btnmonitoraggio.UseVisualStyleBackColor = true;
+            btnmonitoraggio.Click += btnmonitoraggio_Click;
             // 
             // btnTools
             // 
@@ -120,7 +132,6 @@
             btnOffice.Name = "btnOffice";
             btnOffice.UseVisualStyleBackColor = true;
             btnOffice.Click += btnOffice_Click;
-            btnOffice.Leave += btnOffice_Leave;
             // 
             // btnWin
             // 
@@ -166,9 +177,9 @@
             // 
             // btnClose
             // 
+            resources.ApplyResources(btnClose, "btnClose");
             btnClose.Cursor = Cursors.Hand;
             btnClose.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnClose, "btnClose");
             btnClose.Image = Properties.Resources.pngClose;
             btnClose.Name = "btnClose";
             btnClose.UseMnemonic = false;
@@ -202,7 +213,7 @@
             // Form1
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             Controls.Add(lblPanelTitle);
             Controls.Add(pictureBox2);
@@ -213,6 +224,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
+            Resize += Form1_Resize;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -239,6 +251,7 @@
         private Button btnDebloat;
         private Button btnCreaISO;
         private Button btnTools;
-        private Button btnupdate;
+        private Button btnmonitoraggio;
+        private Button btnReinstallaApp;
     }
 }

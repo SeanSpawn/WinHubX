@@ -35,7 +35,6 @@
             btnDaRT = new Button();
             btnMPM = new Button();
             btnRSTDriver = new Button();
-            btnCheckHW = new Button();
             SuspendLayout();
             // 
             // btnKasperky
@@ -138,7 +137,7 @@
             btnRSTDriver.Font = new Font("Microsoft Sans Serif", 22.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRSTDriver.ForeColor = Color.White;
             btnRSTDriver.ImageAlign = ContentAlignment.MiddleRight;
-            btnRSTDriver.Location = new Point(591, 317);
+            btnRSTDriver.Location = new Point(595, 327);
             btnRSTDriver.Margin = new Padding(3, 2, 3, 2);
             btnRSTDriver.Name = "btnRSTDriver";
             btnRSTDriver.Size = new Size(204, 43);
@@ -148,31 +147,12 @@
             btnRSTDriver.UseVisualStyleBackColor = true;
             btnRSTDriver.Click += btnRSTDriver_Click;
             // 
-            // btnCheckHW
-            // 
-            btnCheckHW.Cursor = Cursors.Hand;
-            btnCheckHW.FlatAppearance.BorderSize = 0;
-            btnCheckHW.FlatStyle = FlatStyle.Flat;
-            btnCheckHW.Font = new Font("Microsoft Sans Serif", 22.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCheckHW.ForeColor = Color.White;
-            btnCheckHW.ImageAlign = ContentAlignment.MiddleRight;
-            btnCheckHW.Location = new Point(591, 377);
-            btnCheckHW.Margin = new Padding(3, 2, 3, 2);
-            btnCheckHW.Name = "btnCheckHW";
-            btnCheckHW.Size = new Size(204, 43);
-            btnCheckHW.TabIndex = 74;
-            btnCheckHW.Text = "Check HW";
-            btnCheckHW.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCheckHW.UseVisualStyleBackColor = true;
-            btnCheckHW.Click += btnCheckHW_Click;
-            // 
             // FormTools
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
-            Controls.Add(btnCheckHW);
             Controls.Add(btnRSTDriver);
             Controls.Add(btnMPM);
             Controls.Add(btnDaRT);
@@ -194,6 +174,5 @@
         private Button btnDaRT;
         private Button btnMPM;
         private Button btnRSTDriver;
-        private Button btnCheckHW;
     }
 }

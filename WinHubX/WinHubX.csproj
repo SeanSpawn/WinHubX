@@ -7,11 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
-    <AssemblyVersion>2.4.0.8</AssemblyVersion>
-    <FileVersion>2.4.0.8</FileVersion>
+    <AssemblyVersion>2.4.2.0</AssemblyVersion>
+    <FileVersion>2.4.2.0</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
+	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
+	<ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -76,11 +76,11 @@
     <None Remove="Images\pngWSA.png" />
     <None Remove="Images\pngXtndLogo_WinHubX.png" />
     <None Remove="Images\Rufus-4Lite.png" />
+    <None Remove="Images\term_giallo.png" />
+    <None Remove="Images\term_rosso.png" />
+    <None Remove="Images\term_verde.png" />
     <None Remove="Images\update.png" />
-    <None Remove="Resources\CheckHW.bat" />
-    <None Remove="Resources\DriverRST.zip" />
     <None Remove="Resources\icoWinHubX.ico" />
-    <None Remove="Resources\MSPCManagerSetup.msixbundle" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2021x32.xml" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2021x64.xml" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2024x32.xml" />
@@ -100,35 +100,10 @@
     <None Remove="Resources\PowerRun.exe" />
     <None Remove="Resources\Product Sans Black.ttf" />
     <None Remove="Resources\Product Sans.ttf" />
-    <None Remove="Resources\RisorseCreaISO\isotool10.bat" />
-    <None Remove="Resources\RisorseCreaISO\isotool11.bat" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\7z.dll" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\7z.exe" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\img0.jpg" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\lower-ram-usage.reg" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\OperaGXSetup.exe" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\oscdimg.exe" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\PowerRun.exe" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\PowerRunEdge.exe" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\start.ps1" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\start10.ps1" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\tweaks.bat" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\tweaks10.bat" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\unattend.xml" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\unattend10.xml" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\unattendstock.xml" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\unattendx32.xml" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\unpin_start_tiles.ps1" />
-    <None Remove="Resources\RisorseCreaISO\Risorse\[AIMODS]-Store.exe" />
-    <None Remove="Resources\RisorseCreaISO\WinHubXOfficeScrubber.ps1" />
-    <None Remove="Resources\Rufus4Lite.exe" />
-    <None Remove="Resources\WIMToolkit.ps1" />
     <None Remove="Resources\WinCustomizer.ps1" />
-    <None Remove="Resources\WinHubXCambioEdizione.bat" />
-    <None Remove="Resources\WinHubXOfficeAttivatore.cmd" />
     <None Remove="Resources\WinHubXOfficeScrubber.ps1" />
     <None Remove="Resources\WinHubXScrubber.cmd" />
-    <None Remove="Resources\WinHubXWindowsAttivatore.bat" />
+    <None Remove="Resources\WinHubXStatoAttivazione.cmd" />
     <None Remove="Resources\WinHubXWSL.ps1" />
   </ItemGroup>
 
@@ -289,21 +264,21 @@
     <Content Include="Images\pngWindows11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\term_giallo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\term_rosso.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\term_verde.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\update.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\pngWinhubxsystemmonitor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Resources\CheckHW.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\DriverRST.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\MSPCManagerSetup.msixbundle">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\OfficePersonalizzato\Configurazione2021x32.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -358,63 +333,6 @@
     <EmbeddedResource Include="Resources\Product Sans.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\isotool10.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\isotool11.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\7z.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\7z.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\lower-ram-usage.reg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\OperaGXSetup.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\oscdimg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\PowerRun.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\start.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\start10.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\tweaks.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\tweaks10.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\unattend.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\unattendx32.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\unattend10.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\unattendstock.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\RisorseCreaISO\Risorse\unpin_start_tiles.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Rufus4Lite.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\WIMToolkit.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -457,16 +375,10 @@
     <EmbeddedResource Include="Resources\Product Sans Black.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\WinHubXCambioEdizione.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\WinHubXOfficeAttivatore.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\WinHubXOfficeScrubber.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\WinHubXWindowsAttivatore.bat">
+    <EmbeddedResource Include="Resources\WinHubXStatoAttivazione.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\WinHubXWSL.ps1">
@@ -475,8 +387,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.4-pre348" />
     <PackageReference Include="Microsoft.PowerShell.Native" Version="7.4.0" />
-    <PackageReference Include="System.Management.Automation" Version="7.4.1" />
+    <PackageReference Include="System.Management.Automation" Version="7.4.6" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.1" />
+    <PackageReference Include="TaskScheduler" Version="2.11.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -485,6 +400,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -492,6 +412,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

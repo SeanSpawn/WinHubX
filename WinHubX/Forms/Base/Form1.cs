@@ -1,116 +1,113 @@
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Principal;
+using System.Windows.Forms;
 using WinHubX.Forms.Base;
+using WinHubX.Forms.ReinstallaAPP;
 
 namespace WinHubX
 {
     public partial class Form1 : Form
     {
-        #region movable without borders
+        private static readonly HttpClient client = new HttpClient();
+        private readonly List<Button> bottoni = new();
         private const int WM_NCHITTEST = 0x84;
-        //private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-                m.Result = HT_CAPTION;
-        }
-        #endregion
-
-        #region navigation panel bar
-
-        private List<Button> bottoni = new List<Button>();
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,
-            int nTopRect,
-            int nRightRect,
-            int nBottomRect,
-            int nWidthEllipse,
-            int nHeightEllipse
-        );
-        private void swap_pnlNav(Button btn)
+        protected override void WndProc(ref Message m)
         {
-            List<Button> swapBottoni = new List<Button>(bottoni);
-            swapBottoni.Remove(btn);
-            foreach (Button b in swapBottoni)
-            {
-                b.BackColor = Color.FromArgb(64, 60, 59);
-            }
-            pnlNav.Height = btn.Height;
-            pnlNav.Top = btn.Top;
-            pnlNav.Left = btn.Left;
-            btn.BackColor = Color.FromArgb(46, 51, 73);
+            if (m.Msg == WM_NCHITTEST)
+                m.Result = (IntPtr)HT_CAPTION;
+            else
+                base.WndProc(ref m);
         }
-        #endregion
-
+        private NotifyIcon notifyIcon; // Dichiara la variabile a livello di classe
+        private ContextMenuStrip trayIconContextMenu;
         public Form1()
         {
             InitializeComponent();
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
-            bottoni.Add(btnHome);
-            bottoni.Add(btnWin);
-            bottoni.Add(btnOffice);
-            bottoni.Add(btnSettaggi);
-            bottoni.Add(btnDebloat);
-            bottoni.Add(btnCreaISO);
-            bottoni.Add(btnTools);
-            bottoni.Add(btnupdate);
-
-            swap_pnlNav(btnHome);
-
-            lblPanelTitle.Text = "Home";
-            PnlFormLoader.Controls.Clear();
-            FormHome formHome = new FormHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formHome.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formHome);
-            formHome.Show();
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            bottoni.AddRange(new[] { btnHome, btnWin, btnOffice, btnSettaggi, btnDebloat, btnCreaISO, btnTools, btnmonitoraggio });
+            LoadForm(new FormHome(), btnHome, "Home");
             CheckForUpdatesOnStartup();
+            InitializeTrayIcon();
+        }
+        private void ShowFromTray()
+        {
+            // Logica per mostrare la finestra principale
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
+            notifyIcon.Visible = false; // Nascondi l'icona del tray quando la finestra è visibile
         }
 
-        private async void CheckForUpdatesOnStartup()
+        private void InitializeTrayIcon()
         {
-            // Chiama il nuovo metodo per verificare gli aggiornamenti
-            await CheckForUpdatesAsync();
+            Icon appIcon = Properties.Resources.icoLogoWhite;
+
+            // Inizializza l'icona del system tray
+            notifyIcon = new NotifyIcon
+            {
+                Icon = appIcon,  // Imposta l'icona personalizzata
+                Visible = false   // Rendi l'icona invisibile finché non viene minimizzata
+            };
+
+            // Aggiungi un menu contestuale per l'icona
+            trayIconContextMenu = new ContextMenuStrip();
+            trayIconContextMenu.Items.Add("Apri", null, (s, e) => ShowFromTray());
+            trayIconContextMenu.Items.Add("Esci", null, (s, e) => Application.Exit());
+
+            // Assegna il ContextMenuStrip all'icona
+            notifyIcon.ContextMenuStrip = trayIconContextMenu;
+
+            // Gestisci il doppio clic sull'icona
+            notifyIcon.DoubleClick += (s, e) => ShowFromTray();
         }
+
+        private void swap_pnlNav(Button activeButton)
+        {
+            foreach (var button in bottoni)
+                button.BackColor = (button == activeButton) ? Color.FromArgb(46, 51, 73) : Color.FromArgb(64, 60, 59);
+
+            pnlNav.SetBounds(activeButton.Left, activeButton.Top, pnlNav.Width, activeButton.Height);
+        }
+
+        private void LoadForm(Form form, Button button, string title)
+        {
+            swap_pnlNav(button);
+            lblPanelTitle.Text = title;
+            PnlFormLoader.Controls.Clear();
+            form.Dock = DockStyle.Fill;
+            form.TopLevel = false;
+            form.TopMost = true;
+            form.FormBorderStyle = FormBorderStyle.None;
+            PnlFormLoader.Controls.Add(form);
+            form.Show();
+        }
+
+        private async void CheckForUpdatesOnStartup() => await CheckForUpdatesAsync();
 
         private async Task CheckForUpdatesAsync()
         {
-            string updateInfoUrl = "https://raw.githubusercontent.com/Italian-Developer/WinHubX/refs/heads/main/update.json";
-            string currentVersion = "2.4.1.0"; // Inserisci qui il numero di versione corrente dell'applicazione
-
+            string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+            string currentVersion = "2.4.2.0";
             try
             {
-                using (var client = new HttpClient())
+                var configResponse = await client.GetStringAsync(configUrl);
+                dynamic configData = JsonConvert.DeserializeObject(configResponse);
+                string updateInfoUrl = configData.Form1.updateInfoUrl;
+
+                var response = await client.GetStringAsync(updateInfoUrl);
+                dynamic updateInfo = JsonConvert.DeserializeObject(response);
+                string latestVersion = updateInfo.version;
+
+                if (latestVersion != currentVersion && MessageBox.Show($"Nuova versione ({latestVersion}) disponibile. Vuoi aggiornare?", "Aggiornamento Disponibile", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    var response = await client.GetStringAsync(updateInfoUrl);
-                    dynamic updateInfo = JsonConvert.DeserializeObject(response);
-
-                    string latestVersion = updateInfo.version;
-
-                    if (latestVersion != currentVersion)
-                    {
-                        DialogResult result = MessageBox.Show($"Nuova versione ({latestVersion}) disponibile. Note di rilascio: {updateInfo.releaseNotes}. Vuoi aggiornare?", "Aggiornamento Disponibile", MessageBoxButtons.YesNo);
-
-                        if (result == DialogResult.Yes)
-                        {
-                            string updateUrl = updateInfo.updateUrl;
-                            await DownloadAndUpdate(updateUrl, latestVersion);
-                        }
-                    }
-                    else
-                    {
-
-                    }
+                    await DownloadAndUpdate(updateInfo.updateUrl, latestVersion);
                 }
             }
             catch (Exception ex)
@@ -119,216 +116,20 @@ namespace WinHubX
             }
         }
 
-        public static void RemoveRegistryKeys()
-        {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\YourAppName", true);
-            if (key != null)
-            {
-                key.DeleteSubKeyTree("SubKeyName");
-                key.Close();
-            }
-        }
-
-        public void btnHome_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnHome);
-
-            lblPanelTitle.Text = "Home";
-            PnlFormLoader.Controls.Clear();
-            FormHome formHome = new FormHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formHome.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formHome);
-            formHome.Show();
-        }
-
-
-        private void btnWin_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnWin);
-
-            lblPanelTitle.Text = "Windows";
-            PnlFormLoader.Controls.Clear();
-            FormWin formWin = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formWin.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formWin);
-            formWin.Show();
-        }
-
-        private void btnOffice_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnOffice);
-
-            lblPanelTitle.Text = "Office";
-            PnlFormLoader.Controls.Clear();
-            FormOffice formOffice = new FormOffice(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formOffice.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formOffice);
-            formOffice.Show();
-        }
-        private void btnOffice_Leave(object sender, EventArgs e)
-        {
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnMnmz_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnSettaggi_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnSettaggi);
-
-            lblPanelTitle.Text = "Settaggi";
-            PnlFormLoader.Controls.Clear();
-            FormSettaggi formSettaggi = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formSettaggi.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formSettaggi);
-            formSettaggi.Show();
-        }
-
-        private void btnDebloat_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnDebloat);
-
-            lblPanelTitle.Text = "Debloat";
-            PnlFormLoader.Controls.Clear();
-            FormDebloat formDebloat = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formDebloat.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formDebloat);
-            formDebloat.Show();
-        }
-
-        private void btnCreaISO_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnCreaISO);
-            string assemblyNamee = Assembly.GetExecutingAssembly().GetName().Name;
-            ExtractEmbeddedResourceFolder($"{assemblyNamee}.Resources.RisorseCreaISO");
-            lblPanelTitle.Text = "Crea ISO";
-            PnlFormLoader.Controls.Clear();
-            FormCreaISO formcreaiso = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formcreaiso.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formcreaiso);
-            formcreaiso.Show();
-        }
-
-        public static void ExtractEmbeddedResourceFolder(string resourceFolder)
-        {
-            string tempFolderPath = Path.GetTempPath();
-            string targetFolderPath = Path.Combine(tempFolderPath, "RisorseCreaISO");
-            Directory.CreateDirectory(targetFolderPath);
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string[] resourceNames = assembly.GetManifestResourceNames();
-            foreach (string resourceName in resourceNames)
-            {
-                if (resourceName.StartsWith(resourceFolder))
-                {
-                    string relativePath = resourceName.Substring(resourceFolder.Length + 1).Replace("Risorse.", "");
-                    string path = Path.Combine(targetFolderPath, relativePath);
-                    string directory = Path.GetDirectoryName(path);
-                    Directory.CreateDirectory(directory);
-                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                    using (FileStream fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        stream.CopyTo(fileStream);
-                    }
-                }
-            }
-        }
-
-        private void btnTools_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnTools);
-
-            lblPanelTitle.Text = "Tools";
-            PnlFormLoader.Controls.Clear();
-            FormTools formTools = new FormTools() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formTools.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formTools);
-            formTools.Show();
-        }
-
-
-        private async void btnupdate_Click(object sender, EventArgs e)
-        {
-            swap_pnlNav(btnupdate);
-
-            string updateInfoUrl = "https://raw.githubusercontent.com/Italian-Developer/WinHubX/refs/heads/main/update.json";
-            string currentVersion = "2.4.1.0"; // Inserisci qui il numero di versione corrente dell'applicazione
-
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    var response = await client.GetStringAsync(updateInfoUrl);
-                    dynamic updateInfo = JsonConvert.DeserializeObject(response);
-
-                    string latestVersion = updateInfo.version;
-
-                    if (latestVersion != currentVersion)
-                    {
-                        DialogResult result = MessageBox.Show($"Nuova versione ({latestVersion}) disponibile. Note di rilascio: {updateInfo.releaseNotes}. Vuoi aggiornare?", "Aggiornamento Disponibile", MessageBoxButtons.YesNo);
-
-                        if (result == DialogResult.Yes)
-                        {
-                            string updateUrl = updateInfo.updateUrl;
-                            await DownloadAndUpdate(updateUrl, latestVersion);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Stai usando l'ultima versione disponibile", "Non ci sono aggiornamenti");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error checking for updates: {ex.Message}", "Error");
-            }
-        }
         private async Task DownloadAndUpdate(string updateUrl, string version)
         {
-            string updateFileName = $"WinHubX{version}.exe";
-            string updateFilePath = Path.Combine(Path.GetTempPath(), updateFileName);
-
+            string updateFilePath = Path.Combine(Path.GetTempPath(), $"WinHubX{version}.exe");
             using (var progressForm = new ProgressForm())
             {
                 progressForm.Show();
                 progressForm.SetMarquee();
-
                 try
                 {
-                    using (var client = new HttpClient())
-                    {
-                        // Scarica il file di aggiornamento
-                        progressForm.SetStatus("Download file di aggiornamento...", 0);
-                        await DownloadFileWithProgress(client, updateUrl, updateFilePath, progressForm);
-                    }
+                    await DownloadFileWithProgress(updateUrl, updateFilePath, progressForm);
                     string currentExecutablePath = Application.ExecutablePath;
-                    string oldExecutablePath = Path.ChangeExtension(currentExecutablePath, ".old");
-                    if (File.Exists(oldExecutablePath))
-                    {
-                        File.Delete(oldExecutablePath);
-                    }
-                    File.Move(currentExecutablePath, oldExecutablePath);
+                    File.Move(currentExecutablePath, Path.ChangeExtension(currentExecutablePath, ".old"), true);
                     File.Move(updateFilePath, currentExecutablePath);
                     Process.Start(currentExecutablePath);
-                    Task.Run(async () =>
-                    {
-                        await Task.Delay(5000);
-                        if (File.Exists(oldExecutablePath))
-                        {
-                            File.Delete(oldExecutablePath);
-                        }
-                        if (File.Exists(updateFilePath))
-                        {
-                            File.Delete(updateFilePath);
-                        }
-                    });
                     Application.Exit();
                 }
                 catch (Exception ex)
@@ -342,28 +143,144 @@ namespace WinHubX
             }
         }
 
-        private async Task DownloadFileWithProgress(HttpClient client, string url, string filePath, ProgressForm progressForm)
+        private async Task DownloadFileWithProgress(string url, string filePath, ProgressForm progressForm)
         {
-            using (var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
+            using var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            var totalBytes = response.Content.Headers.ContentLength.GetValueOrDefault();
+            using var contentStream = await response.Content.ReadAsStreamAsync();
+            using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+            var buffer = new byte[8192];
+            long bytesRead = 0;
+            int read;
+            while ((read = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
-                response.EnsureSuccessStatusCode();
-                var totalBytes = response.Content.Headers.ContentLength.GetValueOrDefault();
-                var buffer = new byte[8192];
-                var bytesRead = 0L;
-                using (var contentStream = await response.Content.ReadAsStreamAsync())
-                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, buffer.Length, true))
+                await fileStream.WriteAsync(buffer, 0, read);
+                bytesRead += read;
+                progressForm.Invoke(new Action(() => progressForm.SetStatus("Download in corso...", (int)((bytesRead * 100) / totalBytes))));
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e) => LoadForm(new FormHome(), btnHome, "Home");
+        private void btnWin_Click(object sender, EventArgs e) => LoadForm(new FormWin(this), btnWin, "Windows");
+        private void btnOffice_Click(object sender, EventArgs e) => LoadForm(new FormOffice(this), btnOffice, "Office");
+        private void btnSettaggi_Click(object sender, EventArgs e)
+        {
+            // Verifica se la chiave esiste e se il valore è impostato a 1
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
+            {
+                if (key != null)
                 {
-                    int read;
-                    while ((read = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    object value = key.GetValue("SettaggiRiavviati");
+                    if (value != null && value.ToString() == "1")
                     {
-                        await fileStream.WriteAsync(buffer, 0, read);
-                        bytesRead += read;
-                        // Aggiorna la barra di avanzamento
-                        var percentComplete = (int)((bytesRead * 100) / totalBytes);
-                        progressForm.Invoke(new Action(() => progressForm.SetStatus("Download in corso...", percentComplete)));
+                        // Salta il MessageBox e carica il form Settaggi
+                        LoadSettingsForm();
+                        return;
                     }
                 }
             }
+
+            // Mostra un MessageBox per confermare il riavvio
+            var result = MessageBox.Show("È necessario consentire l'accesso a WinHubX nel Registro per apportare le modifiche presenti in questo menù. " +
+                                          "Per fare ciò, è necessario il riavvio del PC. Vuoi riavviarlo?",
+                                          "Riavvio necessario",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Applica le modifiche al servizio UCPD
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c sc config UCPD start=disabled && schtasks /change /Enable /TN \"\\Microsoft\\Windows\\AppxDeploymentClient\\UCPD velocity\" && shutdown /r /t 0",
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                });
+
+                // Imposta la chiave nel registro per indicare che il riavvio è stato effettuato
+                using (RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\WinHubX"))
+                {
+                    regKey.SetValue("SettaggiRiavviati", 1);
+                }
+
+                // Termina l'applicazione (opzionale, se necessario)
+                Application.Exit();
+            }
+            else
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
+                {
+                    if (key != null)
+                    {
+                        object value = key.GetValue("SettaggiRiavviati");
+                        if (value != null && value.ToString() == "0")
+                        {
+                            MessageBox.Show("Per entrare in questo menù necessito dell'accesso al registro");
+                        }
+                    }
+                }
+                ;
+            }
         }
+
+        // Metodo per caricare il form Settaggi
+        private void LoadSettingsForm()
+        {
+            swap_pnlNav(btnSettaggi);
+
+            lblPanelTitle.Text = "Settaggi";
+            PnlFormLoader.Controls.Clear();
+            FormSettaggi formSettaggi = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            formSettaggi.FormBorderStyle = FormBorderStyle.None;
+            PnlFormLoader.Controls.Add(formSettaggi);
+            formSettaggi.Show();
+        }
+        private void btnDebloat_Click(object sender, EventArgs e) => LoadForm(new FormDebloat(this), btnDebloat, "Debloat");
+        private void btnCreaISO_Click(object sender, EventArgs e) => LoadForm(new FormCreaISO(this), btnCreaISO, "Crea ISO");
+        private void btnTools_Click(object sender, EventArgs e) => LoadForm(new FormTools(), btnTools, "Tools");
+        private void btnmonitoraggio_Click(object sender, EventArgs e) => LoadForm(new FormMonitoraggio(this), btnmonitoraggio, "Monitoraggio");
+        private void btnReinstallaApp_Click(object sender, EventArgs e) => LoadForm(new FormReinstallaAPP(), btnReinstallaApp, "Installa App");
+        private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
+        private void btnMnmz_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.MinimizeToTray)
+            {
+                // Minimizza nella system tray
+                this.Hide(); // La finestra non è visibile, ma l'icona della system tray sarà visibile
+                notifyIcon.Visible = true; // Assicurati che l'icona del tray sia visibile
+            }
+            else
+            {
+                // Minimizza sulla taskbar
+                WindowState = FormWindowState.Minimized;
+            }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                if (Properties.Settings.Default.MinimizeToTray)
+                {
+                    // Nasconde la finestra e la mostra solo nell'icona della system tray
+                    this.Hide();
+                    notifyIcon.Visible = true;
+                }
+                else
+                {
+                    // Finestra visibile sulla taskbar
+                    notifyIcon.Visible = false;
+                }
+            }
+            else
+            {
+                notifyIcon.Visible = false;
+            }
+        }
+
     }
 }

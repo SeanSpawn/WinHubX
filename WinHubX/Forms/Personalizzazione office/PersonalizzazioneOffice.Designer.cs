@@ -103,6 +103,7 @@
             radioButton_office2024.TabStop = true;
             radioButton_office2024.Text = "Office 2024";
             radioButton_office2024.UseVisualStyleBackColor = true;
+            radioButton_office2024.CheckedChanged += radioButton_office2024_CheckedChanged;
             // 
             // label3
             // 
@@ -129,6 +130,7 @@
             radiobutton_office365.TabStop = true;
             radiobutton_office365.Text = "Office 365";
             radiobutton_office365.UseVisualStyleBackColor = true;
+            radiobutton_office365.CheckedChanged += radiobutton_office365_CheckedChanged;
             // 
             // radiobutton_office2021
             // 
@@ -143,6 +145,7 @@
             radiobutton_office2021.TabStop = true;
             radiobutton_office2021.Text = "Office 2021";
             radiobutton_office2021.UseVisualStyleBackColor = true;
+            radiobutton_office2021.CheckedChanged += radiobutton_office2021_CheckedChanged;
             // 
             // panel2
             // 
@@ -467,9 +470,9 @@
             // 
             // progressBar_office
             // 
-            progressBar_office.Location = new Point(367, 364);
+            progressBar_office.Location = new Point(268, 364);
             progressBar_office.Name = "progressBar_office";
-            progressBar_office.Size = new Size(506, 23);
+            progressBar_office.Size = new Size(605, 23);
             progressBar_office.TabIndex = 4;
             // 
             // label2
@@ -477,7 +480,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Italic);
             label2.ForeColor = Color.Coral;
-            label2.Location = new Point(66, 361);
+            label2.Location = new Point(12, 361);
             label2.Name = "label2";
             label2.Size = new Size(243, 26);
             label2.TabIndex = 82;
@@ -501,8 +504,8 @@
             // 
             // PersonalizzazioneOffice
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(885, 419);
             Controls.Add(btnBack);

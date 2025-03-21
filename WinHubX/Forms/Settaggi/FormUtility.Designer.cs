@@ -55,26 +55,26 @@
             // 
             DisabilitaUtility.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaUtility.BorderStyle = BorderStyle.None;
-            DisabilitaUtility.Font = new Font("Segoe UI", 12F);
+            DisabilitaUtility.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DisabilitaUtility.ForeColor = Color.White;
             DisabilitaUtility.FormattingEnabled = true;
-            DisabilitaUtility.Items.AddRange(new object[] { "Disabilita Background App", "Disabilita Feedback", "Disabilita Advertising ID", "Disabilita Filtro Smart Screen", "Disabilita Wifi Sense", "Disabilita Desktop Remoto", "Disabilita attivazione del Numlock in avvio", "Disabilita News e Interessi", "Disabilita Index File", "Disabilita Edge PDF", "Disabilita Mappe", "Disabilita UWP apps", "Disabilita Esperienze Personalizzate Microsoft" });
-            DisabilitaUtility.Location = new Point(79, 42);
+            DisabilitaUtility.Items.AddRange(new object[] { "Disabilita Background App", "Disabilita Feedback", "Disabilita Advertising ID", "Disabilita Filtro Smart Screen", "Disabilita Wifi Sense", "Disabilita Desktop Remoto", "Disabilita attivazione del Numlock in avvio", "Disabilita News e Interessi", "Disabilita Index File", "Disabilita Edge PDF", "Disabilita Mappe", "Disabilita UWP apps", "Disabilita Esperienze Personalizzate Microsoft", "Disabilita Storage Check", "Disabilita Superfetch", "Disabilita Iberanazione", "Disabilita Ottimizzazione FullScreen", "Disabilita Avvio Rapido", "Normal Bandwidth" });
+            DisabilitaUtility.Location = new Point(79, 32);
             DisabilitaUtility.Name = "DisabilitaUtility";
-            DisabilitaUtility.Size = new Size(392, 312);
+            DisabilitaUtility.Size = new Size(346, 399);
             DisabilitaUtility.TabIndex = 8;
             // 
             // AbilitaUtility
             // 
             AbilitaUtility.BackColor = Color.FromArgb(37, 38, 39);
             AbilitaUtility.BorderStyle = BorderStyle.None;
-            AbilitaUtility.Font = new Font("Segoe UI", 12F);
+            AbilitaUtility.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AbilitaUtility.ForeColor = Color.White;
             AbilitaUtility.FormattingEnabled = true;
-            AbilitaUtility.Items.AddRange(new object[] { "Abilita Background App", "Abilita Feedback", "Abilita Advertising ID", "Abilita Filtro Smart Screen", "Abilita Wifi Sense", "Abilita Desktop Remoto", "Abilita attivazione del Numlock in avvio", "Abilita News e Interessi", "Abilita Risparmio Energetico Personalizzato", "Abilita Mappe", "Abilita UWP apps", "Abilita Esperienze Personalizzate Microsoft", "Migliora uso SSD" });
-            AbilitaUtility.Location = new Point(506, 44);
+            AbilitaUtility.Items.AddRange(new object[] { "Abilita Background App", "Abilita Feedback", "Abilita Advertising ID", "Abilita Filtro Smart Screen", "Abilita Wifi Sense", "Abilita Desktop Remoto", "Abilita attivazione del Numlock in avvio", "Abilita News e Interessi", "Abilita Index File", "Abilita Risparmio Energetico Personalizzato", "Abilita Mappe", "Abilita UWP apps", "Abilita Esperienze Personalizzate Microsoft", "Abilita Storage Check", "Abilita Ibernazione", "Abilita Ottimizzazione FullScreen", "Abilita Avvio Rapido", "Abilita Superfetch", "All Bandwidth", "Migliora uso SSD" });
+            AbilitaUtility.Location = new Point(429, 32);
             AbilitaUtility.Name = "AbilitaUtility";
-            AbilitaUtility.Size = new Size(377, 312);
+            AbilitaUtility.Size = new Size(309, 420);
             AbilitaUtility.TabIndex = 9;
             // 
             // btnAvviaSelezionatiUti
@@ -84,10 +84,10 @@
             btnAvviaSelezionatiUti.FlatStyle = FlatStyle.Flat;
             btnAvviaSelezionatiUti.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAvviaSelezionatiUti.ForeColor = Color.White;
-            btnAvviaSelezionatiUti.Location = new Point(358, 419);
+            btnAvviaSelezionatiUti.Location = new Point(735, 11);
             btnAvviaSelezionatiUti.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionatiUti.Name = "btnAvviaSelezionatiUti";
-            btnAvviaSelezionatiUti.Size = new Size(233, 36);
+            btnAvviaSelezionatiUti.Size = new Size(154, 74);
             btnAvviaSelezionatiUti.TabIndex = 23;
             btnAvviaSelezionatiUti.Text = "Avvia Selezionati";
             btnAvviaSelezionatiUti.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -99,7 +99,7 @@
             lblWin7Lite.AutoSize = true;
             lblWin7Lite.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWin7Lite.ForeColor = Color.White;
-            lblWin7Lite.Location = new Point(79, 7);
+            lblWin7Lite.Location = new Point(79, -2);
             lblWin7Lite.Name = "lblWin7Lite";
             lblWin7Lite.Size = new Size(218, 31);
             lblWin7Lite.TabIndex = 24;
@@ -110,7 +110,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(506, 9);
+            label1.Location = new Point(429, -2);
             label1.Name = "label1";
             label1.Size = new Size(178, 31);
             label1.TabIndex = 25;
@@ -118,8 +118,8 @@
             // 
             // FormUtility
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(label1);

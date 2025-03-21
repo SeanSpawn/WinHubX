@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Net;
 
@@ -76,6 +77,7 @@ namespace WinHubX.Dialog
         {
             try
             {
+                // Percorsi per il download e l'estrazione
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string zipFilePath = Path.Combine(desktopPath, "pacman-main.zip");
                 string extractPath = desktopPath;
@@ -84,16 +86,28 @@ namespace WinHubX.Dialog
 
                 if (!Directory.Exists(destinationDirectory))
                 {
+                    // Scarica il JSON
                     using (WebClient client = new WebClient())
                     {
-                        client.DownloadFile("https://github.com/MrNico98/pacman/archive/refs/heads/main.zip", zipFilePath);
+                        string json = client.DownloadString("https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json");
+
+                        // Deserializza il JSON per ottenere il link di download
+                        JObject jsonObject = JObject.Parse(json);
+                        string downloadLink = jsonObject["PacMan"]["DownloadFile"].ToString();
+
+                        // Scarica il file zip
+                        client.DownloadFile(downloadLink, zipFilePath);
                     }
 
+                    // Estrai e sposta il contenuto
                     ZipFile.ExtractToDirectory(zipFilePath, extractPath, true);
                     Directory.Move(sourceDirectory, destinationDirectory);
 
+                    // Pulisci i file temporanei
                     Directory.Delete(Path.Combine(desktopPath, "pacman-main"), true);
                     File.Delete(zipFilePath);
+
+                    // Avvia l'applicazione
                     Process.Start(Path.Combine(destinationDirectory, "WSA-pacman.exe"));
                 }
                 else

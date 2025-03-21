@@ -89,7 +89,7 @@ namespace WinHubX.Forms.Windows
             btnWin10Lite64.FlatStyle = FlatStyle.Flat;
             btnWin10Lite64.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWin10Lite64.ForeColor = Color.White;
-            btnWin10Lite64.Location = new Point(474, 337);
+            btnWin10Lite64.Location = new Point(474, 341);
             btnWin10Lite64.Margin = new Padding(3, 2, 3, 2);
             btnWin10Lite64.Name = "btnWin10Lite64";
             btnWin10Lite64.Size = new Size(136, 53);
@@ -106,7 +106,7 @@ namespace WinHubX.Forms.Windows
             btnWin10Lite32.FlatStyle = FlatStyle.Flat;
             btnWin10Lite32.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWin10Lite32.ForeColor = Color.White;
-            btnWin10Lite32.Location = new Point(289, 337);
+            btnWin10Lite32.Location = new Point(289, 341);
             btnWin10Lite32.Margin = new Padding(3, 2, 3, 2);
             btnWin10Lite32.Name = "btnWin10Lite32";
             btnWin10Lite32.Size = new Size(136, 53);
@@ -121,7 +121,7 @@ namespace WinHubX.Forms.Windows
             lblWin10Lite.AutoSize = true;
             lblWin10Lite.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWin10Lite.ForeColor = Color.White;
-            lblWin10Lite.Location = new Point(283, 240);
+            lblWin10Lite.Location = new Point(291, 240);
             lblWin10Lite.Name = "lblWin10Lite";
             lblWin10Lite.Size = new Size(285, 39);
             lblWin10Lite.TabIndex = 45;
@@ -132,11 +132,11 @@ namespace WinHubX.Forms.Windows
             lblInfoWin10AIO.AutoSize = true;
             lblInfoWin10AIO.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblInfoWin10AIO.ForeColor = Color.Coral;
-            lblInfoWin10AIO.Location = new Point(477, 104);
+            lblInfoWin10AIO.Location = new Point(529, 104);
             lblInfoWin10AIO.Name = "lblInfoWin10AIO";
-            lblInfoWin10AIO.Size = new Size(392, 29);
+            lblInfoWin10AIO.Size = new Size(304, 29);
             lblInfoWin10AIO.TabIndex = 44;
-            lblInfoWin10AIO.Text = "Edizioni incluse: Consumer e LTSC";
+            lblInfoWin10AIO.Text = "Edizioni incluse: Consumer\r\n";
             lblInfoWin10AIO.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnWin10AIO64
@@ -240,8 +240,8 @@ namespace WinHubX.Forms.Windows
             // 
             // FormWin10
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(btnWin10ARM64);

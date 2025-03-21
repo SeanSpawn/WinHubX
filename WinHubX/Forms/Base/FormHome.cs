@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Net;
 using WinHubX.Dialog;
 
 namespace WinHubX
@@ -20,6 +19,87 @@ namespace WinHubX
             #region descrizione WinHubX 
 
             string description = "Changelog WinHubX\n\n" +
+                                    "19/02/2025 - v2.4.2.0:\n" +
+                                    "- Aggiunto winhubx al path cmd e ampliati i comandi digitare winhubx /help per maggiori info\n" +
+                                    "- Aggiornate tutte le iso di Win10/11 Stock\n" +
+                                    "- Sezione 'Ripristino SO' migliorata con verifica HW/SW e stress test\n" +
+                                    "- Sezione 'Debloat' aggiornata: rilevamento dinamico app e modalità avanzata\n" +
+                                    "- Opzione per mostrare il monitoraggio in barra applicazioni o area notifiche\n" +
+                                    "- Fix installazione WinGet su 'Installa App'\n" +
+                                    "- Fix scritte rosse su ottimizzazione ISO\n" +
+                                    "- Verifica automatica HDD/SSD per compattazione sistema\n" +
+                                    "- Aggiornamenti per installazioni Office\n" +
+                                    "- Nuove ISO Windows 10/11 Lite aggiornate a Febbraio 2025\n" +
+                                    "- Nuovo metodo di attivazione offline permanente\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "20/12/2024 - v2.4.1.9:\n" +
+                                    "- Fixato Creazione ISO in quanto non accettava lo spazio nel percorso iso\n" +
+                                    "- Inserita logica installazione APP\n" +
+                                    "- Aggiornamento WSA\n" +
+                                    "- Fix rilevazione tipo di disco\n" +
+                                    "- Aggiornamento codice batch crea iso\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "19/11/2024 - v2.4.1.8:\n" +
+                                    "- Ora l'ottimizzazione distingue SSD e HDD agendo in modo differente\n" +
+                                    "- Corretto link ISO Win11 2H2 Stock\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "11/11/2024 - v2.4.1.7:\n" +
+                                    "- Corretta personalizzazione Office2024\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "30/10/2024 - v2.4.1.6:\n" +
+                                    "- Corretto attivazione Windows\n" +
+                                    "- Corretto attivazione Office\n" +
+                                    "- Corretto Disinstalla office\n" +
+                                    "- Corretto menù e sottomenù Settaggi\n" +
+                                    "- Corretto cambio edizione\n" +
+                                    "- Corretto gestione cartella Crea ISO\n" +
+                                    "- Fix Rimozione/Abilitazione Windows Defender\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "30/10/2024 - v2.4.1.5:\n" +
+                                    "- Rivisitazione generale codice ed eliminazione codice superfluo\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "03/10/2024 - v2.4.1.4:\n" +
+                                    "- Fix pulsanti lite disabilitati\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "03/10/2024 - v2.4.1.3:\n" +
+                                    "- Aggiunta iso Lite 24h2 LTSC & Pro\n" +
+                                    "- Integrazione Monitoraggio\n" +
+                                    "- Aggiunta nuova schermata Settaggi-->Personalizzazione\n" +
+                                    "- Aggiornato disinstallatore office\n" +
+                                    "- Aggiornato attivatore windows\n" +
+                                    "- Implementata logica per usare winhubx sul cmd (prova winhubx.exe /help)\n" +
+                                    "- Implementata verifica attivazione windows/office tramite comando cmd\n" +
+                                    "- Aggiunta iso stock ENT LTSC win10 x64 tramite comando cmd\n" +
+                                    "- Aggiunta iso stock IoT ENT LTSC win10 x64 tramite comando cmd\n" +
+                                    "- Aggiunta iso stock ENT LTSC win11 tramite comando cmd\n" +
+                                    "- Aggiunta iso stock IoT ENT LTSC win11 tramite comando cmd\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "30/09/2024 - v2.4.1.2:\n" +
+                                    "- Aggiunta iso stock Win11 24h2\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "30/09/2024 - v2.4.1.1:\n" +
+                                    "- Fixato visualizzazione installer office2024 personalizzato\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
                                     "26/09/2024 - v2.4.1.0:\n" +
                                     "- Office 2024\n" +
                                     "- Personalizzazione office 2024\n" +
@@ -259,38 +339,6 @@ namespace WinHubX
             catch (Exception ex)
             {
                 MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-            }
-        }
-
-        private void btn_winhubxmonitor_Click(object sender, EventArgs e)
-        {
-            // Definisci l'URL del file da scaricare
-            string fileUrl = "https://github.com/MrNico98/WinHubX-Resources/releases/download/WinHubX_SystemMonitorApp/WinHubX_SystemMonitorApp.exe";
-
-            // Configura il dialogo per il salvataggio del file
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "WinHubX_SystemMonitorApp.exe";
-            saveFileDialog.Filter = "Executable Files|*.exe";
-            saveFileDialog.Title = "Scegli dove salvare il file";
-
-            // Mostra il dialogo e controlla se l'utente ha selezionato un percorso valido
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-
-                // Usa WebClient per scaricare il file dal link specificato
-                using (WebClient webClient = new WebClient())
-                {
-                    try
-                    {
-                        webClient.DownloadFile(fileUrl, filePath);
-                        MessageBox.Show("Download completato!", "Successo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Errore durante il download: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
             }
         }
     }

@@ -41,7 +41,7 @@
             btnOfficeOnline64.FlatStyle = FlatStyle.Flat;
             btnOfficeOnline64.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOfficeOnline64.ForeColor = Color.White;
-            btnOfficeOnline64.Location = new Point(262, 128);
+            btnOfficeOnline64.Location = new Point(290, 146);
             btnOfficeOnline64.Margin = new Padding(3, 2, 3, 2);
             btnOfficeOnline64.Name = "btnOfficeOnline64";
             btnOfficeOnline64.Size = new Size(136, 53);
@@ -58,7 +58,7 @@
             btnOfficeOnline32.FlatStyle = FlatStyle.Flat;
             btnOfficeOnline32.Font = new Font("Microsoft Sans Serif", 25.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOfficeOnline32.ForeColor = Color.White;
-            btnOfficeOnline32.Location = new Point(262, 60);
+            btnOfficeOnline32.Location = new Point(290, 78);
             btnOfficeOnline32.Margin = new Padding(3, 2, 3, 2);
             btnOfficeOnline32.Name = "btnOfficeOnline32";
             btnOfficeOnline32.Size = new Size(136, 53);
@@ -74,9 +74,9 @@
             lblOnline.ForeColor = Color.White;
             lblOnline.Image = Properties.Resources.pngOnline;
             lblOnline.ImageAlign = ContentAlignment.MiddleLeft;
-            lblOnline.Location = new Point(28, 149);
+            lblOnline.Location = new Point(65, 9);
             lblOnline.Name = "lblOnline";
-            lblOnline.Size = new Size(185, 53);
+            lblOnline.Size = new Size(172, 58);
             lblOnline.TabIndex = 76;
             lblOnline.Text = "Online";
             lblOnline.TextAlign = ContentAlignment.MiddleRight;
@@ -86,7 +86,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(438, 255);
+            ClientSize = new Size(438, 275);
             Controls.Add(lblOnline);
             Controls.Add(btnOfficeOnline32);
             Controls.Add(btnOfficeOnline64);

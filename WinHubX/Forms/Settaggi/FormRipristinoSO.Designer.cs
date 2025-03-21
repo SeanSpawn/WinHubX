@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             btnBack = new Button();
-            btnSFC = new Button();
-            btnDISM = new Button();
-            btnEliminaDeallocati = new Button();
-            btnStatoDisco = new Button();
-            btnBios = new Button();
-            btnVerificaRam = new Button();
-            btnPuliziaUpdate = new Button();
-            btnPuliziaCronologiaDef = new Button();
-            btnSalvaDriver = new Button();
-            btnStatoBatt = new Button();
-            btnEliminaTempor = new Button();
-            btnResetWinSxS = new Button();
+            label2 = new Label();
+            progressBar1 = new ProgressBar();
+            richTextBox1 = new RichTextBox();
+            button1 = new Button();
+            checkBox_hw = new CheckBox();
+            checkBox_sw = new CheckBox();
+            dateTimePicker1 = new DateTimePicker();
+            label1 = new Label();
+            richTextBox2 = new RichTextBox();
+            label3 = new Label();
+            btnStop = new Button();
             SuspendLayout();
             // 
             // btnBack
@@ -58,250 +57,169 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
-            // btnSFC
+            // label2
             // 
-            btnSFC.Cursor = Cursors.Hand;
-            btnSFC.FlatAppearance.BorderSize = 0;
-            btnSFC.FlatStyle = FlatStyle.Flat;
-            btnSFC.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnSFC.ForeColor = Color.White;
-            btnSFC.Location = new Point(64, 55);
-            btnSFC.Margin = new Padding(3, 2, 3, 2);
-            btnSFC.Name = "btnSFC";
-            btnSFC.Size = new Size(327, 36);
-            btnSFC.TabIndex = 42;
-            btnSFC.Text = "Ripristina System32 con SFC";
-            btnSFC.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSFC.UseVisualStyleBackColor = true;
-            btnSFC.Click += btnSFC_Click;
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Coral;
+            label2.Location = new Point(245, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(187, 26);
+            label2.TabIndex = 82;
+            label2.Text = "Verifica Computer";
+            label2.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // btnDISM
+            // progressBar1
             // 
-            btnDISM.Cursor = Cursors.Hand;
-            btnDISM.FlatAppearance.BorderSize = 0;
-            btnDISM.FlatStyle = FlatStyle.Flat;
-            btnDISM.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnDISM.ForeColor = Color.White;
-            btnDISM.Location = new Point(59, 95);
-            btnDISM.Margin = new Padding(3, 2, 3, 2);
-            btnDISM.Name = "btnDISM";
-            btnDISM.Size = new Size(381, 36);
-            btnDISM.TabIndex = 43;
-            btnDISM.Text = "Ripristina Windows metodo DISM";
-            btnDISM.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDISM.UseVisualStyleBackColor = true;
-            btnDISM.Click += btnDISM_Click;
+            progressBar1.Location = new Point(6, 347);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(883, 23);
+            progressBar1.TabIndex = 83;
             // 
-            // btnEliminaDeallocati
+            // richTextBox1
             // 
-            btnEliminaDeallocati.Cursor = Cursors.Hand;
-            btnEliminaDeallocati.FlatAppearance.BorderSize = 0;
-            btnEliminaDeallocati.FlatStyle = FlatStyle.Flat;
-            btnEliminaDeallocati.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnEliminaDeallocati.ForeColor = Color.White;
-            btnEliminaDeallocati.Location = new Point(73, 132);
-            btnEliminaDeallocati.Margin = new Padding(3, 2, 3, 2);
-            btnEliminaDeallocati.Name = "btnEliminaDeallocati";
-            btnEliminaDeallocati.Size = new Size(255, 32);
-            btnEliminaDeallocati.TabIndex = 44;
-            btnEliminaDeallocati.Text = "Elimina i file deallocati";
-            btnEliminaDeallocati.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEliminaDeallocati.UseVisualStyleBackColor = true;
-            btnEliminaDeallocati.Click += btnEliminaDeallocati_Click;
+            richTextBox1.BackColor = Color.FromArgb(37, 38, 39);
+            richTextBox1.ForeColor = Color.White;
+            richTextBox1.Location = new Point(6, 70);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(543, 271);
+            richTextBox1.TabIndex = 84;
+            richTextBox1.Text = "";
             // 
-            // btnStatoDisco
+            // button1
             // 
-            btnStatoDisco.Cursor = Cursors.Hand;
-            btnStatoDisco.FlatAppearance.BorderSize = 0;
-            btnStatoDisco.FlatStyle = FlatStyle.Flat;
-            btnStatoDisco.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnStatoDisco.ForeColor = Color.White;
-            btnStatoDisco.Location = new Point(64, 168);
-            btnStatoDisco.Margin = new Padding(3, 2, 3, 2);
-            btnStatoDisco.Name = "btnStatoDisco";
-            btnStatoDisco.Size = new Size(290, 32);
-            btnStatoDisco.TabIndex = 45;
-            btnStatoDisco.Text = "Controlla stato SSD/HDD";
-            btnStatoDisco.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnStatoDisco.UseVisualStyleBackColor = true;
-            btnStatoDisco.Click += btnStatoDisco_Click;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(470, 399);
+            button1.Name = "button1";
+            button1.Size = new Size(114, 45);
+            button1.TabIndex = 85;
+            button1.Text = "Avvia";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += buttonStart_Click;
             // 
-            // btnBios
+            // checkBox_hw
             // 
-            btnBios.Cursor = Cursors.Hand;
-            btnBios.FlatAppearance.BorderSize = 0;
-            btnBios.FlatStyle = FlatStyle.Flat;
-            btnBios.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnBios.ForeColor = Color.White;
-            btnBios.Location = new Point(43, 204);
-            btnBios.Margin = new Padding(3, 2, 3, 2);
-            btnBios.Name = "btnBios";
-            btnBios.Size = new Size(206, 35);
-            btnBios.TabIndex = 46;
-            btnBios.Text = "Vai nel BIOS";
-            btnBios.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnBios.UseVisualStyleBackColor = true;
-            btnBios.Click += btnBios_Click;
+            checkBox_hw.AutoSize = true;
+            checkBox_hw.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            checkBox_hw.ForeColor = Color.White;
+            checkBox_hw.Location = new Point(15, 397);
+            checkBox_hw.Name = "checkBox_hw";
+            checkBox_hw.Size = new Size(134, 25);
+            checkBox_hw.TabIndex = 86;
+            checkBox_hw.Text = "Test Hardware";
+            checkBox_hw.UseVisualStyleBackColor = true;
+            checkBox_hw.CheckedChanged += checkBox_hw_CheckedChanged;
             // 
-            // btnVerificaRam
+            // checkBox_sw
             // 
-            btnVerificaRam.Cursor = Cursors.Hand;
-            btnVerificaRam.FlatAppearance.BorderSize = 0;
-            btnVerificaRam.FlatStyle = FlatStyle.Flat;
-            btnVerificaRam.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnVerificaRam.ForeColor = Color.White;
-            btnVerificaRam.Location = new Point(58, 241);
-            btnVerificaRam.Margin = new Padding(3, 2, 3, 2);
-            btnVerificaRam.Name = "btnVerificaRam";
-            btnVerificaRam.Size = new Size(265, 35);
-            btnVerificaRam.TabIndex = 47;
-            btnVerificaRam.Text = "Verifica integrita RAM";
-            btnVerificaRam.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnVerificaRam.UseVisualStyleBackColor = true;
-            btnVerificaRam.Click += btnVerificaRam_Click;
+            checkBox_sw.AutoSize = true;
+            checkBox_sw.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            checkBox_sw.ForeColor = Color.White;
+            checkBox_sw.Location = new Point(15, 428);
+            checkBox_sw.Name = "checkBox_sw";
+            checkBox_sw.Size = new Size(126, 25);
+            checkBox_sw.TabIndex = 87;
+            checkBox_sw.Text = "Test Software";
+            checkBox_sw.UseVisualStyleBackColor = true;
             // 
-            // btnPuliziaUpdate
+            // dateTimePicker1
             // 
-            btnPuliziaUpdate.Cursor = Cursors.Hand;
-            btnPuliziaUpdate.FlatAppearance.BorderSize = 0;
-            btnPuliziaUpdate.FlatStyle = FlatStyle.Flat;
-            btnPuliziaUpdate.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnPuliziaUpdate.ForeColor = Color.White;
-            btnPuliziaUpdate.Location = new Point(73, 280);
-            btnPuliziaUpdate.Margin = new Padding(3, 2, 3, 2);
-            btnPuliziaUpdate.Name = "btnPuliziaUpdate";
-            btnPuliziaUpdate.Size = new Size(274, 36);
-            btnPuliziaUpdate.TabIndex = 48;
-            btnPuliziaUpdate.Text = "Pulizia Windows Update";
-            btnPuliziaUpdate.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnPuliziaUpdate.UseVisualStyleBackColor = true;
-            btnPuliziaUpdate.Click += btnPuliziaUpdate_Click;
+            dateTimePicker1.Location = new Point(170, 398);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(59, 23);
+            dateTimePicker1.TabIndex = 88;
+            dateTimePicker1.Visible = false;
             // 
-            // btnPuliziaCronologiaDef
+            // label1
             // 
-            btnPuliziaCronologiaDef.Cursor = Cursors.Hand;
-            btnPuliziaCronologiaDef.FlatAppearance.BorderSize = 0;
-            btnPuliziaCronologiaDef.FlatStyle = FlatStyle.Flat;
-            btnPuliziaCronologiaDef.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnPuliziaCronologiaDef.ForeColor = Color.White;
-            btnPuliziaCronologiaDef.Location = new Point(68, 320);
-            btnPuliziaCronologiaDef.Margin = new Padding(3, 2, 3, 2);
-            btnPuliziaCronologiaDef.Name = "btnPuliziaCronologiaDef";
-            btnPuliziaCronologiaDef.Size = new Size(417, 36);
-            btnPuliziaCronologiaDef.TabIndex = 49;
-            btnPuliziaCronologiaDef.Text = "Pulizia Cronologia Windows Defender";
-            btnPuliziaCronologiaDef.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnPuliziaCronologiaDef.UseVisualStyleBackColor = true;
-            btnPuliziaCronologiaDef.Click += btnPuliziaCronologiaDef_Click;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(230, 399);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 20);
+            label1.TabIndex = 89;
+            label1.Text = "/min";
+            label1.Visible = false;
             // 
-            // btnSalvaDriver
+            // richTextBox2
             // 
-            btnSalvaDriver.Cursor = Cursors.Hand;
-            btnSalvaDriver.FlatAppearance.BorderSize = 0;
-            btnSalvaDriver.FlatStyle = FlatStyle.Flat;
-            btnSalvaDriver.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnSalvaDriver.ForeColor = Color.White;
-            btnSalvaDriver.Location = new Point(563, 56);
-            btnSalvaDriver.Margin = new Padding(3, 2, 3, 2);
-            btnSalvaDriver.Name = "btnSalvaDriver";
-            btnSalvaDriver.Size = new Size(229, 35);
-            btnSalvaDriver.TabIndex = 51;
-            btnSalvaDriver.Text = "Salva i driver del PC";
-            btnSalvaDriver.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSalvaDriver.UseVisualStyleBackColor = true;
-            btnSalvaDriver.Click += btnSalvaDriver_Click;
+            richTextBox2.BackColor = Color.FromArgb(37, 38, 39);
+            richTextBox2.ForeColor = Color.White;
+            richTextBox2.Location = new Point(555, 70);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(334, 271);
+            richTextBox2.TabIndex = 90;
+            richTextBox2.Text = "";
             // 
-            // btnStatoBatt
+            // label3
             // 
-            btnStatoBatt.Cursor = Cursors.Hand;
-            btnStatoBatt.FlatAppearance.BorderSize = 0;
-            btnStatoBatt.FlatStyle = FlatStyle.Flat;
-            btnStatoBatt.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnStatoBatt.ForeColor = Color.White;
-            btnStatoBatt.Location = new Point(563, 96);
-            btnStatoBatt.Margin = new Padding(3, 2, 3, 2);
-            btnStatoBatt.Name = "btnStatoBatt";
-            btnStatoBatt.Size = new Size(236, 35);
-            btnStatoBatt.TabIndex = 52;
-            btnStatoBatt.Text = "Verifica stato batteria";
-            btnStatoBatt.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnStatoBatt.UseVisualStyleBackColor = true;
-            btnStatoBatt.Click += btnStatoBatt_Click;
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Coral;
+            label3.Location = new Point(617, 31);
+            label3.Name = "label3";
+            label3.Size = new Size(136, 20);
+            label3.TabIndex = 91;
+            label3.Text = "Verifica Computer";
+            label3.TextAlign = ContentAlignment.BottomCenter;
+            label3.Visible = false;
             // 
-            // btnEliminaTempor
+            // btnStop
             // 
-            btnEliminaTempor.Cursor = Cursors.Hand;
-            btnEliminaTempor.FlatAppearance.BorderSize = 0;
-            btnEliminaTempor.FlatStyle = FlatStyle.Flat;
-            btnEliminaTempor.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnEliminaTempor.ForeColor = Color.White;
-            btnEliminaTempor.Location = new Point(564, 134);
-            btnEliminaTempor.Margin = new Padding(3, 2, 3, 2);
-            btnEliminaTempor.Name = "btnEliminaTempor";
-            btnEliminaTempor.Size = new Size(267, 36);
-            btnEliminaTempor.TabIndex = 53;
-            btnEliminaTempor.Text = "Elimina i file temporanei";
-            btnEliminaTempor.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEliminaTempor.UseVisualStyleBackColor = true;
-            btnEliminaTempor.Click += btnEliminaTempor_Click;
-            // 
-            // btnResetWinSxS
-            // 
-            btnResetWinSxS.Cursor = Cursors.Hand;
-            btnResetWinSxS.FlatAppearance.BorderSize = 0;
-            btnResetWinSxS.FlatStyle = FlatStyle.Flat;
-            btnResetWinSxS.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
-            btnResetWinSxS.ForeColor = Color.White;
-            btnResetWinSxS.Location = new Point(563, 174);
-            btnResetWinSxS.Margin = new Padding(3, 2, 3, 2);
-            btnResetWinSxS.Name = "btnResetWinSxS";
-            btnResetWinSxS.Size = new Size(309, 32);
-            btnResetWinSxS.TabIndex = 54;
-            btnResetWinSxS.Text = "Ripristina la cartella WinSxS";
-            btnResetWinSxS.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnResetWinSxS.UseVisualStyleBackColor = true;
-            btnResetWinSxS.Click += btnResetWinSxS_Click;
+            btnStop.FlatStyle = FlatStyle.Flat;
+            btnStop.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStop.ForeColor = Color.White;
+            btnStop.Location = new Point(623, 399);
+            btnStop.Name = "btnStop";
+            btnStop.Size = new Size(114, 45);
+            btnStop.TabIndex = 92;
+            btnStop.Text = "STOP";
+            btnStop.UseVisualStyleBackColor = true;
+            btnStop.Visible = false;
+            btnStop.Click += btnStop_Click;
             // 
             // FormRipristinoSO
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
-            Controls.Add(btnResetWinSxS);
-            Controls.Add(btnEliminaTempor);
-            Controls.Add(btnStatoBatt);
-            Controls.Add(btnSalvaDriver);
-            Controls.Add(btnPuliziaCronologiaDef);
-            Controls.Add(btnPuliziaUpdate);
-            Controls.Add(btnVerificaRam);
-            Controls.Add(btnBios);
-            Controls.Add(btnStatoDisco);
-            Controls.Add(btnEliminaDeallocati);
-            Controls.Add(btnDISM);
-            Controls.Add(btnSFC);
+            Controls.Add(btnStop);
+            Controls.Add(label3);
+            Controls.Add(richTextBox2);
+            Controls.Add(label1);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(checkBox_sw);
+            Controls.Add(checkBox_hw);
+            Controls.Add(button1);
+            Controls.Add(richTextBox1);
+            Controls.Add(progressBar1);
+            Controls.Add(label2);
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormRipristinoSO";
             Text = "FormRipristinoSO";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnBack;
-        private Button btnSFC;
-        private Button btnDISM;
-        private Button btnEliminaDeallocati;
-        private Button btnStatoDisco;
-        private Button btnBios;
-        private Button btnVerificaRam;
-        private Button btnPuliziaUpdate;
-        private Button btnPuliziaCronologiaDef;
-        private Button btnSalvaDriver;
-        private Button btnStatoBatt;
-        private Button btnEliminaTempor;
-        private Button btnResetWinSxS;
+        private Label label2;
+        private ProgressBar progressBar1;
+        private RichTextBox richTextBox1;
+        private Button button1;
+        private CheckBox checkBox_hw;
+        private CheckBox checkBox_sw;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
+        private RichTextBox richTextBox2;
+        private Label label3;
+        private Button btnStop;
     }
 }

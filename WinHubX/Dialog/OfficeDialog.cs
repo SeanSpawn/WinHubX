@@ -54,20 +54,21 @@ namespace WinHubX.Dialog
 
         public void openDialog(Label lblOffice, string link32, string link64)
         {
+            // Imposta il link di download per la versione a 32 bit
+            this.dlLink32 = link32;
+            this.dlLink64 = link64;
+
+            // Crea e configura le etichette e i pulsanti come prima
             Label infoLabel = new Label();
             infoLabel.Image = lblOffice.Image;
             infoLabel.Text = lblOffice.Text;
             infoLabel.Font = lblOffice.Font;
-            infoLabel.Size = new Size(211, 110); // Imposta una dimensione predefinita o calcolala
-            infoLabel.Location = new Point(50, 70); // Imposta una posizione nel dialogo
+            infoLabel.Size = new Size(211, 110);
+            infoLabel.Location = new Point(50, 70);
             infoLabel.ForeColor = lblOffice.ForeColor;
             infoLabel.BackColor = lblOffice.BackColor;
             infoLabel.TextAlign = ContentAlignment.MiddleRight;
             infoLabel.ImageAlign = ContentAlignment.MiddleLeft;
-
-            this.dlLink32 = link32;
-            this.dlLink64 = link64;
-
 
             this.Controls.Add(infoLabel);
             infoLabel.BringToFront();

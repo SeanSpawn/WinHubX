@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using WinHubX.Dialog;
 
 namespace WinHubX.Forms.Windows
@@ -8,6 +9,13 @@ namespace WinHubX.Forms.Windows
         private Form1 form1;
         private FormWin formWin;
         private NotifyIcon notifyIcon;
+        private string linkWin11Arm64;
+        private string linkWin11AIO64;
+        private string linkWin11Lite64;
+        private string linkWin11Stock6424h2;
+        private string linkWin11Lite6424h2Pro;
+        private string linkWin11Lite6424h2LTSC;
+
         public FormWin11(FormWin formWin, Form1 form1)
         {
             InitializeComponent();
@@ -18,6 +26,32 @@ namespace WinHubX.Forms.Windows
                 Icon = SystemIcons.Information,
                 Visible = true
             };
+            LoadJsonLinks();
+        }
+
+        private async void LoadJsonLinks()
+        {
+            string url = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject data = JObject.Parse(json);
+
+                    linkWin11Arm64 = data["FormWin11"]["11Arm64"]?.ToString();
+                    linkWin11AIO64 = data["FormWin11"]["11Stockx64"]?.ToString();
+                    linkWin11Lite64 = data["FormWin11"]["11Litex64"]?.ToString();
+                    linkWin11Stock6424h2 = data["FormWin11"]["11Stockx6424h2"]?.ToString();
+                    linkWin11Lite6424h2Pro = data["FormWin11"]["11Litex6424h2PRO"]?.ToString();
+                    linkWin11Lite6424h2LTSC = data["FormWin11"]["11Litex6424h2LTSC"]?.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Errore nel caricamento dei link: {ex.Message}");
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -131,20 +165,7 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = "https://devuploads.com/91gwccktiv1f",
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                    MessageBox.Show("Se possibile esporta i driver del pc cosi da non incorrere a problemi futuri. Per farlo puoi usare l'app DataLock presente in AIMODS-Store", "Informazione");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-                }
+                OpenLink(linkWin11AIO64);
             }
         }
 
@@ -161,24 +182,9 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo
-                    {
-                        FileName = "https://devuploads.com/zgwc0mgcld5g",
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                    MessageBox.Show("Usa 'Rufus4Lite' presente nella sezione Tools.", "Informazione");
-                    MessageBox.Show("Se possibile esporta i driver del pc cosi da non incorrere a problemi futuri. Per farlo puoi usare l'app DataLock presente in AIMODS-Store", "Informazione");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
-                }
+                OpenLink(linkWin11Lite64);
             }
         }
-
         private void btnWin11ARM64_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -192,20 +198,78 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                OpenLink(linkWin11Arm64);
+            }
+        }
+        private void btn_win1124h2_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                Clipboard.SetText("d95ec65ec06b4036835c7571fe0108159848d2883ef5da3a67e480130b1f5862");
+
+                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
+                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.ShowBalloonTip(1000);
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                OpenLink(linkWin11Stock6424h2);
+            }
+        }
+        private void btn24h2ProLite_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                Clipboard.SetText("d95ec65ec06b4036835c7571fe0108159848d2883ef5da3a67e480130b1f5862");
+
+                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
+                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.ShowBalloonTip(1000);
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                OpenLink(linkWin11Lite6424h2Pro);
+            }
+        }
+        private void btnLTSCLite24h2_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                Clipboard.SetText("273d9bbcbc8df87eda6ffcb7518cede63f0f9a0e80afa74b1d397010e1032f14");
+
+                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
+                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.ShowBalloonTip(1000);
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                OpenLink(linkWin11Lite6424h2LTSC);
+            }
+        }
+        private void OpenLink(string url)
+        {
+            if (!string.IsNullOrEmpty(url))
+            {
                 try
                 {
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        FileName = "https://devuploads.com/tro32p5g6t2p",
+                        FileName = url,
                         UseShellExecute = true
                     };
                     Process.Start(psi);
-                    MessageBox.Show("Se possibile esporta i driver del pc cosi da non incorrere a problemi futuri. Per farlo puoi usare l'app DataLock presente in AIMODS-Store", "Informazione");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
                 }
+            }
+            else
+            {
+                MessageBox.Show("URL non disponibile.");
             }
         }
     }

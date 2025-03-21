@@ -3,11 +3,11 @@ using System.Drawing.Drawing2D;
 
 namespace WinHubX.Forms.Bottoni
 {
-    internal class CircularProgressBar : Control
+    public class CircularProgressBar : Control
     {
         private int _minimum = 0;
         private int _maximum = 100;
-        private int _value = 30;  // Impostato a 30 per il test iniziale
+        private int _value = 30;
 
         [Category("Appearance")]
         public int Minimum
@@ -60,29 +60,41 @@ namespace WinHubX.Forms.Bottoni
             g.SmoothingMode = SmoothingMode.AntiAlias;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
+            // Dimensioni per la progress bar e per il fondo
+            int margin = 20;
+            int circleSize = Math.Min(this.Width, this.Height) - margin * 2;
+            Rectangle rect = new Rectangle((this.Width - circleSize) / 2, (this.Height - circleSize) / 2, circleSize, circleSize);
             float progressAngle = 360.0f * (_value - _minimum) / (_maximum - _minimum);
 
-            // Dimensioni per la progress bar e per il fondo
-            int margin = 10;
-            int circleSize = Math.Min(this.Width, this.Height) - margin * 2;
-            Rectangle rectBackground = new Rectangle((this.Width - circleSize) / 2, (this.Height - circleSize) / 2, circleSize, circleSize);
-
             // Background Circle
-            using (SolidBrush brushBackground = new SolidBrush(Color.FromArgb(240, 240, 240))) // Colore del fondo
+            using (LinearGradientBrush brushBackground = new LinearGradientBrush(rect, Color.FromArgb(230, 230, 230), Color.FromArgb(200, 200, 200), 45f))
             {
-                g.FillEllipse(brushBackground, rectBackground);
+                g.FillEllipse(brushBackground, rect);
             }
 
             // Progress Circle
-            using (Pen penProgress = new Pen(Color.FromArgb(0, 120, 215), 12)) // Colore del progresso e spessore
+            using (LinearGradientBrush brushProgress = new LinearGradientBrush(rect, Color.FromArgb(0, 150, 136), Color.FromArgb(0, 188, 212), 45f))
+            using (Pen penProgress = new Pen(brushProgress, 12))
             {
-                g.DrawArc(penProgress, rectBackground, -90, progressAngle);
+                g.DrawArc(penProgress, rect, -90, progressAngle);
+            }
+
+            // Shadow
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddEllipse(rect);
+                using (PathGradientBrush brushShadow = new PathGradientBrush(path))
+                {
+                    brushShadow.CenterColor = Color.FromArgb(50, Color.Black);
+                    brushShadow.SurroundColors = new Color[] { Color.Transparent };
+                    g.FillEllipse(brushShadow, rect);
+                }
             }
 
             // Text Center
             string text = $"{Value}%";
-            using (Font font = new Font(FontFamily.GenericSansSerif, 20f, FontStyle.Bold))
-            using (Brush brushText = new SolidBrush(Color.FromArgb(0, 120, 215)))
+            using (Font font = new Font("Segoe UI", 20f, FontStyle.Bold))
+            using (Brush brushText = new SolidBrush(Color.FromArgb(0, 150, 136)))
             {
                 SizeF textSize = g.MeasureString(text, font);
                 PointF textLocation = new PointF(this.Width / 2 - textSize.Width / 2,

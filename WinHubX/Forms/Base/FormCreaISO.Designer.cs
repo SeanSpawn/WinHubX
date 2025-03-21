@@ -174,7 +174,7 @@
             ThirTwoRad.ForeColor = Color.White;
             ThirTwoRad.Location = new Point(3, 52);
             ThirTwoRad.Name = "ThirTwoRad";
-            ThirTwoRad.Size = new Size(43, 19);
+            ThirTwoRad.Size = new Size(42, 19);
             ThirTwoRad.TabIndex = 6;
             ThirTwoRad.TabStop = true;
             ThirTwoRad.Text = "x32";
@@ -186,7 +186,7 @@
             SixforArchRad.ForeColor = Color.White;
             SixforArchRad.Location = new Point(3, 27);
             SixforArchRad.Name = "SixforArchRad";
-            SixforArchRad.Size = new Size(43, 19);
+            SixforArchRad.Size = new Size(42, 19);
             SixforArchRad.TabIndex = 5;
             SixforArchRad.TabStop = true;
             SixforArchRad.Text = "x64";
@@ -472,8 +472,8 @@
             // 
             // FormCreaISO
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
             Controls.Add(label1);

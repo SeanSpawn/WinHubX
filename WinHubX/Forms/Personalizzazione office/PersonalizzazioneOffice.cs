@@ -233,11 +233,11 @@ namespace WinHubX.Forms.Personalizzazione_office
 
                     if (checkBox_visio.Checked)
                     {
-                        AddElementToXml2024(xmlFilePath, CreateVisioXml365());
+                        AddElementToXml2024(xmlFilePath, CreateVisioXml24());
                     }
                     if (checkBox_project.Checked)
                     {
-                        AddElementToXml2024(xmlFilePath, CreateProjectXml365());
+                        AddElementToXml2024(xmlFilePath, CreateProjectXml24());
                     }
                     if (checkBox_word.Checked)
                     {
@@ -282,11 +282,11 @@ namespace WinHubX.Forms.Personalizzazione_office
 
                     if (checkBox_visio.Checked)
                     {
-                        AddElementToXml2024(xmlFilePath, CreateVisioXml365());
+                        AddElementToXml2024(xmlFilePath, CreateVisioXml24());
                     }
                     if (checkBox_project.Checked)
                     {
-                        AddElementToXml2024(xmlFilePath, CreateProjectXml365());
+                        AddElementToXml2024(xmlFilePath, CreateProjectXml24());
                     }
                     if (checkBox_word.Checked)
                     {
@@ -346,7 +346,7 @@ namespace WinHubX.Forms.Personalizzazione_office
                 ExtractAndSaveResource("Configurazione2024x64.xml", Path.Combine(tempFolder, "Configurazione2024x64.xml"));
                 ExtractAndSaveResource("Configurazione2024x32.xml", Path.Combine(tempFolder, "Configurazione2024x32.xml"));
                 ExtractAndSaveResource("bin.exe", Path.Combine(tempFolder, "bin.exe"));
- }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"Errore durante l'estrazione della cartella: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -476,6 +476,27 @@ namespace WinHubX.Forms.Personalizzazione_office
             }
         }
 
+        private string CreateVisioXml24()
+        {
+            // XML da aggiungere per il prodotto Visio
+            string visioXml = @"
+                <Product ID=""VisioPro2024Volume"" PIDKEY=""B7TN8-FJ8V3-7QYCP-HQPMV-YY89G"">
+                    <Language ID=""it-it"" />
+                    <ExcludeApp ID=""Access"" />
+                    <ExcludeApp ID=""Excel"" />
+                    <ExcludeApp ID=""Lync"" />
+                    <ExcludeApp ID=""OneDrive"" />
+                    <ExcludeApp ID=""OneNote"" />
+                    <ExcludeApp ID=""Outlook"" />
+                    <ExcludeApp ID=""PowerPoint"" />
+                    <ExcludeApp ID=""Publisher"" />
+                    <ExcludeApp ID=""Word"" />
+                </Product>
+            ";
+
+            return visioXml;
+        }
+
         private string CreateVisioXml()
         {
             // XML da aggiungere per il prodotto Visio
@@ -557,6 +578,27 @@ namespace WinHubX.Forms.Personalizzazione_office
       <ExcludeApp ID=""PowerPoint"" />
       <ExcludeApp ID=""Publisher"" />
       <ExcludeApp ID=""Teams"" />
+      <ExcludeApp ID=""Word"" />
+    </Product>
+            ";
+
+            return projectXml;
+        }
+
+        private string CreateProjectXml24()
+        {
+            // XML da aggiungere per il prodotto Project
+            string projectXml = @"
+    <Product ID=""ProjectPro2024Volume"" PIDKEY=""FQQ23-N4YCY-73HQ3-FM9WC-76HF4"">
+      <Language ID=""it-it"" />
+      <ExcludeApp ID=""Access"" />
+      <ExcludeApp ID=""Excel"" />
+      <ExcludeApp ID=""Lync"" />
+      <ExcludeApp ID=""OneDrive"" />
+      <ExcludeApp ID=""OneNote"" />
+      <ExcludeApp ID=""Outlook"" />
+      <ExcludeApp ID=""PowerPoint"" />
+      <ExcludeApp ID=""Publisher"" />
       <ExcludeApp ID=""Word"" />
     </Product>
             ";
@@ -689,6 +731,21 @@ namespace WinHubX.Forms.Personalizzazione_office
             progressBar_office.Maximum = 100;
             progressBar_office.Step = 1;
             Controls.Add(progressBar_office);
+        }
+
+        private void radioButton_office2024_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox_publisher.Enabled = false;
+        }
+
+        private void radiobutton_office365_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox_publisher.Enabled = true;
+        }
+
+        private void radiobutton_office2021_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox_publisher.Enabled = true;
         }
     }
 }
