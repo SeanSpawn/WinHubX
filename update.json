@@ -1,5 +1,5 @@
 { 
-    "version": "2.4.2.0", 
-    "releaseNotes": "Major Update", 
+    "version": "2.4.2.1", 
+    "releaseNotes": "Fix Ripristina SO", 
     "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX/WinHubX.exe" 
 }
