@@ -63,7 +63,7 @@
             btnChangelog.Name = "btnChangelog";
             btnChangelog.Size = new Size(279, 60);
             btnChangelog.TabIndex = 94;
-            btnChangelog.Text = "v2.4.2.0 - Changelog";
+            btnChangelog.Text = "v2.4.2.2 - Changelog";
             btnChangelog.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnChangelog.UseVisualStyleBackColor = true;
             btnChangelog.Click += btnChangelog_Click;

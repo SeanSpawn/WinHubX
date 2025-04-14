@@ -101,8 +101,8 @@ namespace WinHubX.Forms.Settaggi
             await RunCommandAsync("Dism.exe /online /Cleanup-Image /StartComponentCleanup", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Controllo e riparazione del file system...");
-            await RunCommandAsync("chkdsk C: /F /R /X", cancellationToken);
+            UpdateLabel("Pianificazione controllo del file system...");
+            await RunCommandAsync("fsutil dirty set C:", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
             UpdateLabel("Registrazione DLL di sistema...");

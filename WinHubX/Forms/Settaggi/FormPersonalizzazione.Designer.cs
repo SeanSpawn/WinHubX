@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             radio_mostraoradata = new RadioButton();
             radio_nascondioradata = new RadioButton();
@@ -37,6 +38,9 @@
             label4 = new Label();
             btnAvviaSelezionati = new Button();
             panel2 = new Panel();
+            panel14 = new Panel();
+            radio_abilitaendtask = new RadioButton();
+            radio_disabilitaendtask = new RadioButton();
             panel5 = new Panel();
             radio_apripowershell = new RadioButton();
             radio_eliminapowershell = new RadioButton();
@@ -48,6 +52,9 @@
             radio_destrodefault = new RadioButton();
             label1 = new Label();
             panel7 = new Panel();
+            panel10 = new Panel();
+            radio_abilicopilot = new RadioButton();
+            radio_disacopilot = new RadioButton();
             panel6 = new Panel();
             radio_abilitarecall = new RadioButton();
             radio_disabilitarecall = new RadioButton();
@@ -70,12 +77,16 @@
             label3 = new Label();
             label5 = new Label();
             progressBar1 = new ProgressBar();
+            toolTip1 = new ToolTip(components);
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel14.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
+            panel10.SuspendLayout();
             panel6.SuspendLayout();
             panel9.SuspendLayout();
             panel11.SuspendLayout();
@@ -92,7 +103,7 @@
             panel1.Controls.Add(radio_mostradatasecondi);
             panel1.Controls.Add(radio_mostrasecondi);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(12, 45);
+            panel1.Location = new Point(12, 40);
             panel1.Name = "panel1";
             panel1.Size = new Size(330, 159);
             panel1.TabIndex = 0;
@@ -108,6 +119,7 @@
             radio_mostraoradata.TabIndex = 68;
             radio_mostraoradata.TabStop = true;
             radio_mostraoradata.Text = "Mostra ora e data";
+            toolTip1.SetToolTip(radio_mostraoradata, "Mostra ora e data sull'orologio di windows");
             radio_mostraoradata.UseVisualStyleBackColor = true;
             // 
             // radio_nascondioradata
@@ -121,6 +133,7 @@
             radio_nascondioradata.TabIndex = 67;
             radio_nascondioradata.TabStop = true;
             radio_nascondioradata.Text = "Nascondi ora e data";
+            toolTip1.SetToolTip(radio_nascondioradata, "Nasconde la data e i socondi sull'orologio windows");
             radio_nascondioradata.UseVisualStyleBackColor = true;
             // 
             // radio_orologiostandard
@@ -134,6 +147,7 @@
             radio_orologiostandard.TabIndex = 66;
             radio_orologiostandard.TabStop = true;
             radio_orologiostandard.Text = "Orologio Standard";
+            toolTip1.SetToolTip(radio_orologiostandard, "Orologio default Windows");
             radio_orologiostandard.UseVisualStyleBackColor = true;
             // 
             // radio_mostradatasecondi
@@ -147,6 +161,7 @@
             radio_mostradatasecondi.TabIndex = 65;
             radio_mostradatasecondi.TabStop = true;
             radio_mostradatasecondi.Text = "Mostra data e secondi";
+            toolTip1.SetToolTip(radio_mostradatasecondi, "Mostra data e socondi sull'orologio windows");
             radio_mostradatasecondi.UseVisualStyleBackColor = true;
             // 
             // radio_mostrasecondi
@@ -157,9 +172,10 @@
             radio_mostrasecondi.Location = new Point(3, 46);
             radio_mostrasecondi.Name = "radio_mostrasecondi";
             radio_mostrasecondi.Size = new Size(121, 23);
-            radio_mostrasecondi.TabIndex = 64;
+            radio_mostrasecondi.TabIndex = 80;
             radio_mostrasecondi.TabStop = true;
             radio_mostrasecondi.Text = "Mostra secondi";
+            toolTip1.SetToolTip(radio_mostrasecondi, "Mostra secondi nell'orologio");
             radio_mostrasecondi.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -193,14 +209,52 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(panel14);
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(12, 232);
+            panel2.Location = new Point(12, 209);
             panel2.Name = "panel2";
-            panel2.Size = new Size(380, 174);
+            panel2.Size = new Size(380, 211);
             panel2.TabIndex = 70;
+            // 
+            // panel14
+            // 
+            panel14.Controls.Add(radio_abilitaendtask);
+            panel14.Controls.Add(radio_disabilitaendtask);
+            panel14.Location = new Point(0, 171);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(380, 38);
+            panel14.TabIndex = 72;
+            // 
+            // radio_abilitaendtask
+            // 
+            radio_abilitaendtask.AutoSize = true;
+            radio_abilitaendtask.Font = new Font("Segoe UI", 10.2F);
+            radio_abilitaendtask.ForeColor = Color.White;
+            radio_abilitaendtask.Location = new Point(3, 7);
+            radio_abilitaendtask.Name = "radio_abilitaendtask";
+            radio_abilitaendtask.Size = new Size(117, 23);
+            radio_abilitaendtask.TabIndex = 64;
+            radio_abilitaendtask.TabStop = true;
+            radio_abilitaendtask.Text = "Abilita EndTask";
+            toolTip1.SetToolTip(radio_abilitaendtask, "Aggiunge il comando per chiudere le finestre forzatamente");
+            radio_abilitaendtask.UseVisualStyleBackColor = true;
+            // 
+            // radio_disabilitaendtask
+            // 
+            radio_disabilitaendtask.AutoSize = true;
+            radio_disabilitaendtask.Font = new Font("Segoe UI", 10.2F);
+            radio_disabilitaendtask.ForeColor = Color.White;
+            radio_disabilitaendtask.Location = new Point(172, 7);
+            radio_disabilitaendtask.Name = "radio_disabilitaendtask";
+            radio_disabilitaendtask.Size = new Size(134, 23);
+            radio_disabilitaendtask.TabIndex = 66;
+            radio_disabilitaendtask.TabStop = true;
+            radio_disabilitaendtask.Text = "Disabilita EndTask";
+            toolTip1.SetToolTip(radio_disabilitaendtask, "Disattiva il comando per chiudere le finestre forzatamente");
+            radio_disabilitaendtask.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -222,6 +276,7 @@
             radio_apripowershell.TabIndex = 64;
             radio_apripowershell.TabStop = true;
             radio_apripowershell.Text = "Apri Powershell qui";
+            toolTip1.SetToolTip(radio_apripowershell, "Aggiunge al tasto destro \"apri powershell\"");
             radio_apripowershell.UseVisualStyleBackColor = true;
             // 
             // radio_eliminapowershell
@@ -235,6 +290,7 @@
             radio_eliminapowershell.TabIndex = 66;
             radio_eliminapowershell.TabStop = true;
             radio_eliminapowershell.Text = "Elimina apri Powershell qui";
+            toolTip1.SetToolTip(radio_eliminapowershell, "Elimina dal tasto destro \"apri powershell\"");
             radio_eliminapowershell.UseVisualStyleBackColor = true;
             // 
             // panel4
@@ -257,6 +313,7 @@
             radio_apricmd.TabIndex = 64;
             radio_apricmd.TabStop = true;
             radio_apricmd.Text = "Apri CMD qui";
+            toolTip1.SetToolTip(radio_apricmd, "Aggiunge al tasto destro \"apri cmd\"");
             radio_apricmd.UseVisualStyleBackColor = true;
             // 
             // radio_eliminaapricmd
@@ -270,6 +327,7 @@
             radio_eliminaapricmd.TabIndex = 66;
             radio_eliminaapricmd.TabStop = true;
             radio_eliminaapricmd.Text = "Elimina apri CMD qui";
+            toolTip1.SetToolTip(radio_eliminaapricmd, "Elimina dal tasto destro \"apri cmd\"");
             radio_eliminaapricmd.UseVisualStyleBackColor = true;
             // 
             // panel3
@@ -292,6 +350,7 @@
             radio_destrolegacy.TabIndex = 64;
             radio_destrolegacy.TabStop = true;
             radio_destrolegacy.Text = "Tasto destro legacy";
+            toolTip1.SetToolTip(radio_destrolegacy, "Tasto destro come Win10");
             radio_destrolegacy.UseVisualStyleBackColor = true;
             // 
             // radio_destrodefault
@@ -305,6 +364,7 @@
             radio_destrodefault.TabIndex = 66;
             radio_destrodefault.TabStop = true;
             radio_destrodefault.Text = "Tasto destro default";
+            toolTip1.SetToolTip(radio_destrodefault, "Tasto destro nuovo di Win11");
             radio_destrodefault.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -321,6 +381,7 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(panel10);
             panel7.Controls.Add(panel6);
             panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel11);
@@ -328,8 +389,45 @@
             panel7.Controls.Add(panel8);
             panel7.Location = new Point(398, 10);
             panel7.Name = "panel7";
-            panel7.Size = new Size(340, 318);
+            panel7.Size = new Size(340, 360);
             panel7.TabIndex = 71;
+            // 
+            // panel10
+            // 
+            panel10.Controls.Add(radio_abilicopilot);
+            panel10.Controls.Add(radio_disacopilot);
+            panel10.Location = new Point(0, 303);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(340, 38);
+            panel10.TabIndex = 74;
+            // 
+            // radio_abilicopilot
+            // 
+            radio_abilicopilot.AutoSize = true;
+            radio_abilicopilot.Font = new Font("Segoe UI", 10.2F);
+            radio_abilicopilot.ForeColor = Color.White;
+            radio_abilicopilot.Location = new Point(3, 7);
+            radio_abilicopilot.Name = "radio_abilicopilot";
+            radio_abilicopilot.Size = new Size(113, 23);
+            radio_abilicopilot.TabIndex = 64;
+            radio_abilicopilot.TabStop = true;
+            radio_abilicopilot.Text = "Abilita Copilot";
+            toolTip1.SetToolTip(radio_abilicopilot, "Abilita Copilot IA di windows");
+            radio_abilicopilot.UseVisualStyleBackColor = true;
+            // 
+            // radio_disacopilot
+            // 
+            radio_disacopilot.AutoSize = true;
+            radio_disacopilot.Font = new Font("Segoe UI", 10.2F);
+            radio_disacopilot.ForeColor = Color.White;
+            radio_disacopilot.Location = new Point(168, 7);
+            radio_disacopilot.Name = "radio_disacopilot";
+            radio_disacopilot.Size = new Size(130, 23);
+            radio_disacopilot.TabIndex = 66;
+            radio_disacopilot.TabStop = true;
+            radio_disacopilot.Text = "Disabilita Copilot";
+            toolTip1.SetToolTip(radio_disacopilot, "Disabilita Copilot IA di windows");
+            radio_disacopilot.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -351,6 +449,7 @@
             radio_abilitarecall.TabIndex = 64;
             radio_abilitarecall.TabStop = true;
             radio_abilitarecall.Text = "Abilita Recall";
+            toolTip1.SetToolTip(radio_abilitarecall, "Abilita la funzione RECALL di windows");
             radio_abilitarecall.UseVisualStyleBackColor = true;
             // 
             // radio_disabilitarecall
@@ -364,6 +463,7 @@
             radio_disabilitarecall.TabIndex = 66;
             radio_disabilitarecall.TabStop = true;
             radio_disabilitarecall.Text = "Disabilita Recall";
+            toolTip1.SetToolTip(radio_disabilitarecall, "Disattiva la funzione RECALL di windows");
             radio_disabilitarecall.UseVisualStyleBackColor = true;
             // 
             // panel9
@@ -386,6 +486,7 @@
             radio_abilitasuggeriti.TabIndex = 64;
             radio_abilitasuggeriti.TabStop = true;
             radio_abilitasuggeriti.Text = "Abilita Suggeriti";
+            toolTip1.SetToolTip(radio_abilitasuggeriti, "Mostra suggeriti su start");
             radio_abilitasuggeriti.UseVisualStyleBackColor = true;
             // 
             // radio_disabilitasuggeriti
@@ -399,6 +500,7 @@
             radio_disabilitasuggeriti.TabIndex = 66;
             radio_disabilitasuggeriti.TabStop = true;
             radio_disabilitasuggeriti.Text = "Disabilita Suggeriti";
+            toolTip1.SetToolTip(radio_disabilitasuggeriti, "Disattiva suggeriti su start");
             radio_disabilitasuggeriti.UseVisualStyleBackColor = true;
             // 
             // panel11
@@ -420,6 +522,7 @@
             radio_disabilitaricercainternet.TabIndex = 64;
             radio_disabilitaricercainternet.TabStop = true;
             radio_disabilitaricercainternet.Text = "Disabilita ricerca internet";
+            toolTip1.SetToolTip(radio_disabilitaricercainternet, "Quando ricerchi su start non verrà più effettuata la ricerca con bing");
             radio_disabilitaricercainternet.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -475,6 +578,7 @@
             radio_attivafx.TabIndex = 65;
             radio_attivafx.TabStop = true;
             radio_attivafx.Text = "Attiva Fx";
+            toolTip1.SetToolTip(radio_attivafx, "Settaggi per ottenere l'aspetto migliore");
             radio_attivafx.UseVisualStyleBackColor = true;
             // 
             // radio_disattivafx
@@ -488,6 +592,7 @@
             radio_disattivafx.TabIndex = 64;
             radio_disattivafx.TabStop = true;
             radio_disattivafx.Text = "Disattiva Visual Fx";
+            toolTip1.SetToolTip(radio_disattivafx, "Migliora le prestazioni Windows");
             radio_disattivafx.UseVisualStyleBackColor = true;
             // 
             // panel12
@@ -551,7 +656,7 @@
             btn_resetselezione.Margin = new Padding(3, 2, 3, 2);
             btn_resetselezione.Name = "btn_resetselezione";
             btn_resetselezione.Size = new Size(149, 60);
-            btn_resetselezione.TabIndex = 73;
+            btn_resetselezione.TabIndex = 1;
             btn_resetselezione.Text = "Reset selezione";
             btn_resetselezione.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_resetselezione.UseVisualStyleBackColor = true;
@@ -582,11 +687,19 @@
             // progressBar1
             // 
             progressBar1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            progressBar1.Location = new Point(17, 423);
+            progressBar1.Location = new Point(17, 426);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(720, 23);
             progressBar1.Style = ProgressBarStyle.Continuous;
             progressBar1.TabIndex = 75;
+            // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             // 
             // FormPersonalizzazione
             // 
@@ -613,6 +726,8 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -621,6 +736,8 @@
             panel3.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel9.ResumeLayout(false);
@@ -681,5 +798,13 @@
         private Label label3;
         private Label label5;
         private ProgressBar progressBar1;
+        private Panel panel10;
+        private RadioButton radio_abilicopilot;
+        private RadioButton radio_disacopilot;
+        private ToolTip toolTip1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Panel panel14;
+        private RadioButton radio_abilitaendtask;
+        private RadioButton radio_disabilitaendtask;
     }
 }

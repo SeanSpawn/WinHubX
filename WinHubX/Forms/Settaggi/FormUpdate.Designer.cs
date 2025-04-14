@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnBack = new Button();
             DisabilitaUpdate = new CheckedListBox();
             btnAvviaSelezionatiUpda = new Button();
@@ -36,6 +37,9 @@
             label1 = new Label();
             btnUpdateEssential = new Button();
             btnResetUpdate = new Button();
+            progressBar1 = new ProgressBar();
+            toolTip1 = new ToolTip(components);
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             SuspendLayout();
             // 
             // btnBack
@@ -73,7 +77,7 @@
             btnAvviaSelezionatiUpda.FlatStyle = FlatStyle.Flat;
             btnAvviaSelezionatiUpda.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAvviaSelezionatiUpda.ForeColor = Color.White;
-            btnAvviaSelezionatiUpda.Location = new Point(339, 413);
+            btnAvviaSelezionatiUpda.Location = new Point(339, 376);
             btnAvviaSelezionatiUpda.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionatiUpda.Name = "btnAvviaSelezionatiUpda";
             btnAvviaSelezionatiUpda.Size = new Size(226, 43);
@@ -125,7 +129,7 @@
             btnUpdateEssential.FlatStyle = FlatStyle.Flat;
             btnUpdateEssential.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdateEssential.ForeColor = Color.White;
-            btnUpdateEssential.Location = new Point(9, 413);
+            btnUpdateEssential.Location = new Point(9, 382);
             btnUpdateEssential.Margin = new Padding(3, 2, 3, 2);
             btnUpdateEssential.Name = "btnUpdateEssential";
             btnUpdateEssential.Size = new Size(225, 37);
@@ -142,7 +146,7 @@
             btnResetUpdate.FlatStyle = FlatStyle.Flat;
             btnResetUpdate.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnResetUpdate.ForeColor = Color.White;
-            btnResetUpdate.Location = new Point(651, 392);
+            btnResetUpdate.Location = new Point(651, 361);
             btnResetUpdate.Margin = new Padding(3, 2, 3, 2);
             btnResetUpdate.Name = "btnResetUpdate";
             btnResetUpdate.Size = new Size(237, 62);
@@ -152,12 +156,28 @@
             btnResetUpdate.UseVisualStyleBackColor = true;
             btnResetUpdate.Click += btnResetUpdate_Click;
             // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(9, 428);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(879, 23);
+            progressBar1.TabIndex = 57;
+            // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            // 
             // FormUpdate
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
+            Controls.Add(progressBar1);
             Controls.Add(btnResetUpdate);
             Controls.Add(btnUpdateEssential);
             Controls.Add(label1);
@@ -184,5 +204,8 @@
         private Label label1;
         private Button btnUpdateEssential;
         private Button btnResetUpdate;
+        private ProgressBar progressBar1;
+        private ToolTip toolTip1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

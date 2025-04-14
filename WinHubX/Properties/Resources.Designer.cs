@@ -163,6 +163,16 @@ namespace WinHubX.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngDefenderWin {
+            get {
+                object obj = ResourceManager.GetObject("pngDefenderWin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngHome {
             get {
                 object obj = ResourceManager.GetObject("pngHome", resourceCulture);
@@ -377,6 +387,26 @@ namespace WinHubX.Properties {
             get {
                 object obj = ResourceManager.GetObject("term_verde", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] TSforge_Activation {
+            get {
+                object obj = ResourceManager.GetObject("TSforge_Activation", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] TSforge_Activation_Office {
+            get {
+                object obj = ResourceManager.GetObject("TSforge_Activation_Office", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

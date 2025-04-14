@@ -17,6 +17,7 @@ namespace WinHubX.Forms.Base
         private List<string> appxNames = new List<string>();
         private Dictionary<string, string> appNameMappings = new Dictionary<string, string>();
         private Dictionary<string, string> imageUrls = new Dictionary<string, string>();
+        private int totalSteps = 0;
 
         public FormDebloat(Form1 form1)
         {
@@ -31,11 +32,14 @@ namespace WinHubX.Forms.Base
             InizializzaDati();
         }
 
-        private async void InizializzaDati()
+        private void InizializzaDati()
         {
-            await CaricaAppNameMappings();  // Assicura che i nomi leggibili siano caricati
-            await CaricaImmaginiApp();      // Assicura che le immagini siano disponibili
-            CaricaAppxPackages();           // Ora possiamo caricare la lista delle app
+            // Avvia il caricamento dei dati in background
+            Task.Run(async () =>
+            {
+                Task.WhenAll(CaricaAppNameMappings(), CaricaImmaginiApp()).Wait(); // Carica prima i dati in parallelo
+                CaricaAppxPackages();
+            });
         }
 
         private class ImmagineData
@@ -111,7 +115,10 @@ namespace WinHubX.Forms.Base
                     appxNames = output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 }
 
-                AggiornaUI(appxNames);
+                this.Invoke(new Action(() =>
+                {
+                    AggiornaUI(appxNames);
+                }));
             }
             catch (Exception ex)
             {
@@ -239,35 +246,40 @@ namespace WinHubX.Forms.Base
         }
         private void btnAvviaSelezionatiDebloat_Click(object sender, EventArgs e)
         {
-            List<string> appsToRemove = new List<string>();
+            totalSteps = 0;
 
+            // Itera su tutti i controlli nel FlowLayoutPanel
             foreach (Control control in flowLayoutPanel1.Controls)
             {
                 if (control is Panel panel)
                 {
+                    // Trova il CheckBox e il Label all'interno del Panel
                     CheckBox checkBox = panel.Controls.OfType<CheckBox>().FirstOrDefault();
                     Label lblNome = panel.Controls.OfType<Label>().FirstOrDefault();
 
+                    // Se il CheckBox è selezionato e il Label esiste, incrementa il contatore dei passi
                     if (checkBox != null && checkBox.Checked && lblNome != null)
                     {
-                        string nomeTecnico = appxNames.FirstOrDefault(app => OttieniNomeLeggibile(app) == lblNome.Text);
-                        if (!string.IsNullOrEmpty(nomeTecnico))
-                        {
-                            appsToRemove.Add(nomeTecnico);  // Aggiungi all'elenco delle app da rimuovere
-                        }
+                        totalSteps++;
                     }
                 }
             }
 
-            // Rimuove le app selezionate
-            foreach (string app in appsToRemove)
+            // Se nessun elemento è selezionato, imposta almeno 1 passo
+            if (totalSteps == 0)
             {
-                RimuoviApp(app);
-                RimuoviProvisioning(app);
+                totalSteps = 1;
             }
 
-            // Carica di nuovo la lista aggiornata delle app
-            CaricaAppxPackages(); // Questo rileggerà le app installate e aggiornerà l'interfaccia
+            // Imposta il massimo della progress bar e azzera il valore
+            progressBar1.Maximum = totalSteps;
+            progressBar1.Value = 0;
+
+            // Avvia il lavoro nel background se non è già in esecuzione
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
         }
 
         private void RimuoviApp(string nomeApp)
@@ -396,6 +408,60 @@ namespace WinHubX.Forms.Base
 
             // Mostra il form
             formDebloat.Show();
+        }
+
+        private void btnServizi_Click(object sender, EventArgs e)
+        {
+            FormServizi formServizi = new FormServizi();
+
+            // Mostra il form
+            formServizi.Show();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            int currentStep = 0;
+            List<string> appsToRemove = new List<string>();
+
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    CheckBox checkBox = panel.Controls.OfType<CheckBox>().FirstOrDefault();
+                    Label lblNome = panel.Controls.OfType<Label>().FirstOrDefault();
+
+                    if (checkBox != null && checkBox.Checked && lblNome != null)
+                    {
+                        string nomeTecnico = appxNames.FirstOrDefault(app => OttieniNomeLeggibile(app) == lblNome.Text);
+                        if (!string.IsNullOrEmpty(nomeTecnico))
+                        {
+                            appsToRemove.Add(nomeTecnico);  // Aggiungi all'elenco delle app da rimuovere
+
+                        }
+                    }
+                }
+            }
+
+            foreach (string app in appsToRemove)
+            {
+                RimuoviApp(app);
+                RimuoviProvisioning(app);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+
+            // Carica di nuovo la lista aggiornata delle app
+            CaricaAppxPackages(); // Questo rileggerà le app installate e aggiornerà l'interfaccia
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = Math.Min(e.ProgressPercentage, progressBar1.Maximum);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

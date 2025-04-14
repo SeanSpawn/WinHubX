@@ -1,14 +1,78 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\utente\\Downloads\\1.WinHubX\\",
+  "WorkspaceRootPath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\1.winhubx\\winhubx\\forms\\base\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\formwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\formoffice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formoffice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\base\\formwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\progressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\progressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\base\\progressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\progressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\base\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\base\\formsettaggi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formsettaggi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\base\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\1.winhubx\\winhubx\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\debloatavanzato\\formservizi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\debloatavanzato\\formservizi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\winhubx.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\winhubx.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\base\\formdebloat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\base\\formdebloat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|C:\\Users\\utente\\Downloads\\WinHubX-main\\winhubx\\forms\\debloatavanzato\\formdebloatavanzato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\debloatavanzato\\formdebloatavanzato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\debloatavanzato\\formservizi.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\debloatavanzato\\formservizi.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|c:\\users\\utente\\downloads\\winhubx-main\\winhubx\\forms\\debloatavanzato\\formservizi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D10BE9B5-EB77-4F88-99BE-64BC17961D27}|WinHubX\\WinHubX.csproj|solutionrelative:winhubx\\forms\\debloatavanzato\\formservizi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +90,226 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormHome.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\1.WinHubX\\WinHubX\\Forms\\Base\\FormHome.cs",
-              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormHome.cs",
-              "ToolTip": "C:\\Users\\utente\\Downloads\\1.WinHubX\\WinHubX\\Forms\\Base\\FormHome.cs [Progettazione]",
-              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormHome.cs [Progettazione]",
+              "DocumentIndex": 5,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "WinHubX\\Properties\\Resources.Designer.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAcwGIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T07:48:27.227Z",
+              "WhenOpened": "2025-04-14T10:05:48.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormWin.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormWin.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormWin.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormWin.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormWin.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:15:48.882Z",
               "EditorCaption": " [Progettazione]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\1.WinHubX\\WinHubX\\Program.cs",
-              "RelativeDocumentMoniker": "WinHubX\\Program.cs",
-              "ToolTip": "C:\\Users\\utente\\Downloads\\1.WinHubX\\WinHubX\\Program.cs",
-              "RelativeToolTip": "WinHubX\\Program.cs",
-              "ViewState": "AgIAAAACAAAAAAAAAAAiwCUCAAAVAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\Form1.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\Form1.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\Form1.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\Form1.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAgwHgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T13:43:25.188Z",
+              "WhenOpened": "2025-04-14T07:49:43.172Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormHome.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormHome.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormHome.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormHome.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormHome.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:21:23.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormWin.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormWin.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormWin.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormWin.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormWin.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAUwKcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:17:22.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "WinHubX\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Properties\\Resources.resx",
+              "RelativeToolTip": "WinHubX\\Properties\\Resources.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-04-14T10:01:57.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormOffice.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormOffice.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormOffice.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormOffice.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormOffice.cs",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAkwDMBAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T10:09:13.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProgressBar.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\ProgressBar.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\ProgressBar.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T09:33:32.235Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProgressBar.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\ProgressBar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T09:33:33.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FormSettaggi.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormSettaggi.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormSettaggi.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormSettaggi.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormSettaggi.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T08:12:28.357Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\Form1.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\Form1.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\Form1.cs [Design]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:49:40.874Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FormHome.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormHome.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormHome.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormHome.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormHome.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:49:57.693Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FormServizi.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:27:45.021Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WinHubX",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
+              "RelativeDocumentMoniker": "WinHubX\\WinHubX.csproj",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
+              "RelativeToolTip": "WinHubX\\WinHubX.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-14T07:50:06.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FormDebloat.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormDebloat.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\Base\\FormDebloat.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\Base\\FormDebloat.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\Base\\FormDebloat.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:48:09.4Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FormDebloatAvanzato.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormDebloatAvanzato.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\DebloatAvanzato\\FormDebloatAvanzato.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormDebloatAvanzato.cs [Progettazione]",
+              "RelativeToolTip": "WinHubX\\Forms\\DebloatAvanzato\\FormDebloatAvanzato.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:48:00.058Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FormServizi.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.Designer.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.Designer.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.Designer.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.Designer.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAhwEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:27:33.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FormServizi.cs",
+              "DocumentMoniker": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "RelativeDocumentMoniker": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "ToolTip": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "RelativeToolTip": "WinHubX\\Forms\\DebloatAvanzato\\FormServizi.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAawJAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T07:08:40.4Z"
             }
           ]
         },

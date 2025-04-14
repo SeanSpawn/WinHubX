@@ -7,11 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <AssemblyVersion>2.4.2.0</AssemblyVersion>
-    <FileVersion>2.4.2.0</FileVersion>
+    <AssemblyVersion>2.4.2.2</AssemblyVersion>
+    <FileVersion>2.4.2.2</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
 	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
+	<Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -100,6 +101,8 @@
     <None Remove="Resources\PowerRun.exe" />
     <None Remove="Resources\Product Sans Black.ttf" />
     <None Remove="Resources\Product Sans.ttf" />
+    <None Remove="Resources\TSforge_Activation.cmd" />
+    <None Remove="Resources\TSforge_Activation_Office.cmd" />
     <None Remove="Resources\WinCustomizer.ps1" />
     <None Remove="Resources\WinHubXOfficeScrubber.ps1" />
     <None Remove="Resources\WinHubXScrubber.cmd" />
@@ -373,6 +376,12 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Product Sans Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TSforge_Activation.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TSforge_Activation_Office.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\WinHubXOfficeScrubber.ps1">

@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnBack = new Button();
             DisabilitaPrivacy = new CheckedListBox();
             btnAvviaSelezionati = new Button();
             lblWin7Lite = new Label();
             label1 = new Label();
             AbilitaPrivacy = new CheckedListBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            progressBar1 = new ProgressBar();
+            toolTip1 = new ToolTip(components);
             SuspendLayout();
             // 
             // btnBack
@@ -55,13 +59,14 @@
             // 
             DisabilitaPrivacy.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaPrivacy.BorderStyle = BorderStyle.None;
-            DisabilitaPrivacy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DisabilitaPrivacy.Cursor = Cursors.Hand;
+            DisabilitaPrivacy.Font = new Font("Segoe UI", 10F);
             DisabilitaPrivacy.ForeColor = Color.White;
             DisabilitaPrivacy.FormattingEnabled = true;
-            DisabilitaPrivacy.Items.AddRange(new object[] { "Disabilita Opzioni Lingua", "Disabilita Suggerimenti App", "Disabilita Telemetria", "Disabilita Tracking", "Disabilita Segnalazione Errori", "Disabilita Tracking Diagnostica", "Disabilita WAP Push Service", "Disbailita Home Group", "Disabilita Assistenza Remota", "Disbailita Schedul Defrag", "Disabilita Xbox Features", "Disabilita Auto Manteinance", "Disabilita Spazio Riservato", "Disabilita Tweaks Game DVR", "Disabilita Storia Attivita" });
-            DisabilitaPrivacy.Location = new Point(122, 37);
+            DisabilitaPrivacy.Items.AddRange(new object[] { "Disabilita Opzioni Lingua", "Disabilita Suggerimenti App", "Disabilita Telemetria", "Disabilita Tracking", "Disabilita Segnalazione Errori", "Disabilita Tracking Diagnostica", "Disabilita WAP Push Service", "Disbailita Home Group", "Disabilita Assistenza Remota", "Disbailita Schedul Defrag", "Disabilita Xbox Features", "Disabilita Auto Manteinance", "Disabilita Spazio Riservato", "Disabilita Tweaks Game DVR", "Disabilita Storia Attivita", "Disabilita Wifi-Sense", "Disabilita Notifiche Tray/Calendario" });
+            DisabilitaPrivacy.Location = new Point(122, 38);
             DisabilitaPrivacy.Name = "DisabilitaPrivacy";
-            DisabilitaPrivacy.Size = new Size(259, 360);
+            DisabilitaPrivacy.Size = new Size(240, 360);
             DisabilitaPrivacy.TabIndex = 7;
             // 
             // btnAvviaSelezionati
@@ -107,14 +112,30 @@
             // 
             AbilitaPrivacy.BackColor = Color.FromArgb(37, 38, 39);
             AbilitaPrivacy.BorderStyle = BorderStyle.None;
-            AbilitaPrivacy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AbilitaPrivacy.Cursor = Cursors.Hand;
+            AbilitaPrivacy.Font = new Font("Segoe UI", 10F);
             AbilitaPrivacy.ForeColor = Color.White;
             AbilitaPrivacy.FormattingEnabled = true;
-            AbilitaPrivacy.Items.AddRange(new object[] { "Abilita Opzioni Lingua", "Abilita Suggerimenti App", "Abilita Telemetria", "Abilita Tracking", "Abilita Segnalazione Errori", "Abilita Tracking Diagnostica", "Abilita WAP Push Service", "Abilita Home Group", "Abilita Assistenza Remota", "Abilita Schedul Defrag", "Abilita Xbox Features", "Abilita Auto Manteinance", "Abilita Spazio Riservato", "Abilita Tweaks Game DVR", "Abilita Storia Attivita" });
+            AbilitaPrivacy.Items.AddRange(new object[] { "Abilita Opzioni Lingua", "Abilita Suggerimenti App", "Abilita Telemetria", "Abilita Tracking", "Abilita Segnalazione Errori", "Abilita Tracking Diagnostica", "Abilita WAP Push Service", "Abilita Home Group", "Abilita Assistenza Remota", "Abilita Schedul Defrag", "Abilita Xbox Features", "Abilita Auto Manteinance", "Abilita Spazio Riservato", "Abilita Tweaks Game DVR", "Abilita Storia Attivita", "Abilita Wifi-Sense", "Abilita Notifiche Tray/Calendario" });
             AbilitaPrivacy.Location = new Point(421, 38);
             AbilitaPrivacy.Name = "AbilitaPrivacy";
-            AbilitaPrivacy.Size = new Size(254, 384);
+            AbilitaPrivacy.Size = new Size(254, 360);
             AbilitaPrivacy.TabIndex = 25;
+            // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 423);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(877, 23);
+            progressBar1.TabIndex = 26;
             // 
             // FormPrivacy
             // 
@@ -122,6 +143,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
+            Controls.Add(progressBar1);
             Controls.Add(AbilitaPrivacy);
             Controls.Add(label1);
             Controls.Add(lblWin7Lite);
@@ -143,5 +165,8 @@
         private Label lblWin7Lite;
         private Label label1;
         private CheckedListBox AbilitaPrivacy;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private ProgressBar progressBar1;
+        private ToolTip toolTip1;
     }
 }

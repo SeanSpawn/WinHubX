@@ -94,7 +94,7 @@ namespace WinHubX
         private async Task CheckForUpdatesAsync()
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-            string currentVersion = "2.4.2.0";
+            string currentVersion = "2.4.2.2";
             try
             {
                 var configResponse = await client.GetStringAsync(configUrl);
@@ -103,11 +103,24 @@ namespace WinHubX
 
                 var response = await client.GetStringAsync(updateInfoUrl);
                 dynamic updateInfo = JsonConvert.DeserializeObject(response);
-                string latestVersion = updateInfo.version;
+                string latestVersion = (string)updateInfo.version;
+                string updateUrl = (string)updateInfo.updateUrl;
 
-                if (latestVersion != currentVersion && MessageBox.Show($"Nuova versione ({latestVersion}) disponibile. Vuoi aggiornare?", "Aggiornamento Disponibile", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                // Ora 'releaseNotes' è già un array, non è necessario fare il ToObject
+                var releaseNotes = updateInfo.releaseNotes;
+                string releaseNotesText = string.Join("\n", releaseNotes);
+
+                if (latestVersion != currentVersion)
                 {
-                    await DownloadAndUpdate(updateInfo.updateUrl, latestVersion);
+                    // Mostra prima le release notes e poi la domanda per l'aggiornamento
+                    DialogResult dialogResult = MessageBox.Show($"Nuova versione ({latestVersion}) disponibile.\n\nChangelog:\n{releaseNotesText}\n\nVuoi aggiornare?",
+                                                                "Aggiornamento Disponibile",
+                                                                MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        await DownloadAndUpdate(updateUrl, latestVersion);
+                    }
                 }
             }
             catch (Exception ex)
@@ -115,6 +128,7 @@ namespace WinHubX
                 MessageBox.Show($"Errore durante il controllo degli aggiornamenti: {ex.Message}", "Errore");
             }
         }
+
 
         private async Task DownloadAndUpdate(string updateUrl, string version)
         {
@@ -166,79 +180,86 @@ namespace WinHubX
         private void btnOffice_Click(object sender, EventArgs e) => LoadForm(new FormOffice(this), btnOffice, "Office");
         private void btnSettaggi_Click(object sender, EventArgs e)
         {
-            // Verifica se la chiave esiste e se il valore è impostato a 1
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
-            {
-                if (key != null)
-                {
-                    object value = key.GetValue("SettaggiRiavviati");
-                    if (value != null && value.ToString() == "1")
-                    {
-                        // Salta il MessageBox e carica il form Settaggi
-                        LoadSettingsForm();
-                        return;
-                    }
-                }
-            }
-
-            // Mostra un MessageBox per confermare il riavvio
-            var result = MessageBox.Show("È necessario consentire l'accesso a WinHubX nel Registro per apportare le modifiche presenti in questo menù. " +
-                                          "Per fare ciò, è necessario il riavvio del PC. Vuoi riavviarlo?",
-                                          "Riavvio necessario",
-                                          MessageBoxButtons.YesNo,
-                                          MessageBoxIcon.Question);
+            var result = MessageBox.Show("Vuoi creare un punto di ripristino prima di accedere alle impostazioni?",
+                                         "Punto di Ripristino",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                // Applica le modifiche al servizio UCPD
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                try
                 {
-                    FileName = "cmd.exe",
-                    Arguments = "/c sc config UCPD start=disabled && schtasks /change /Enable /TN \"\\Microsoft\\Windows\\AppxDeploymentClient\\UCPD velocity\" && shutdown /r /t 0",
-                    CreateNoWindow = true,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
-                });
+                    string script = @"
+# Abilita System Restore sull'unità di sistema
+try {
+    Enable-ComputerRestore -Drive ""$env:SystemDrive""
+} catch {
+    Write-Host ""Errore nell'abilitazione del Ripristino configurazione di sistema: $_""
+}
 
-                // Imposta la chiave nel registro per indicare che il riavvio è stato effettuato
-                using (RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\WinHubX"))
-                {
-                    regKey.SetValue("SettaggiRiavviati", 1);
-                }
+# Imposta la frequenza di creazione dei punti di ripristino
+$exists = Get-ItemProperty -path ""HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore"" -Name ""SystemRestorePointCreationFrequency"" -ErrorAction SilentlyContinue
+if($null -eq $exists) {
+    Set-ItemProperty -Path ""HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore"" -Name ""SystemRestorePointCreationFrequency"" -Value 0 -Type DWord -Force
+}
 
-                // Termina l'applicazione (opzionale, se necessario)
-                Application.Exit();
-            }
-            else
-            {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
-                {
-                    if (key != null)
+# Importa il modulo necessario
+try {
+    Import-Module Microsoft.PowerShell.Management -ErrorAction Stop
+} catch {
+    Write-Host ""Errore nel caricamento del modulo: $_""
+    return
+}
+
+# Controlla se oggi esistono già punti di ripristino
+try {
+    $existingRestorePoints = Get-ComputerRestorePoint | Where-Object { $_.CreationTime.Date -eq (Get-Date).Date }
+} catch {
+    Write-Host ""Errore nel recupero dei punti di ripristino: $_""
+    return
+}
+
+# Crea un punto di ripristino se non ce ne sono già oggi
+if ($existingRestorePoints.Count -eq 0) {
+    Checkpoint-Computer -Description ""Punto di ripristino creato da WinHubX"" -RestorePointType MODIFY_SETTINGS
+    Write-Host ""Punto di ripristino creato correttamente""
+}
+";
+
+                    string tempScriptPath = Path.Combine(Path.GetTempPath(), "CreateRestorePoint.ps1");
+                    File.WriteAllText(tempScriptPath, script);
+
+                    ProcessStartInfo psi = new ProcessStartInfo()
                     {
-                        object value = key.GetValue("SettaggiRiavviati");
-                        if (value != null && value.ToString() == "0")
-                        {
-                            MessageBox.Show("Per entrare in questo menù necessito dell'accesso al registro");
-                        }
-                    }
+                        FileName = "powershell.exe",
+                        Arguments = $"-ExecutionPolicy Bypass -NoProfile -File \"{tempScriptPath}\"",
+                        UseShellExecute = true,
+                        Verb = "runas" // Esegui come amministratore
+                    };
+
+                    Process.Start(psi)?.WaitForExit();
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string regBackupPath = Path.Combine(desktopPath, $"BackupRegistroWinHubX_{DateTime.Now:yyyyMMdd_HHmmss}.reg");
+
+                    ProcessStartInfo regExport = new ProcessStartInfo()
+                    {
+                        FileName = "reg.exe",
+                        Arguments = $"export HKLM \"{regBackupPath}\" /y",
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    };
+
+                    Process.Start(regExport)?.WaitForExit();
                 }
-                ;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errore durante la creazione del punto di ripristino:\n" + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
+            LoadForm(new FormSettaggi(this), btnSettaggi, "Settaggi");
         }
 
-        // Metodo per caricare il form Settaggi
-        private void LoadSettingsForm()
-        {
-            swap_pnlNav(btnSettaggi);
-
-            lblPanelTitle.Text = "Settaggi";
-            PnlFormLoader.Controls.Clear();
-            FormSettaggi formSettaggi = new(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            formSettaggi.FormBorderStyle = FormBorderStyle.None;
-            PnlFormLoader.Controls.Add(formSettaggi);
-            formSettaggi.Show();
-        }
         private void btnDebloat_Click(object sender, EventArgs e) => LoadForm(new FormDebloat(this), btnDebloat, "Debloat");
         private void btnCreaISO_Click(object sender, EventArgs e) => LoadForm(new FormCreaISO(this), btnCreaISO, "Crea ISO");
         private void btnTools_Click(object sender, EventArgs e) => LoadForm(new FormTools(), btnTools, "Tools");
@@ -266,21 +287,18 @@ namespace WinHubX
             {
                 if (Properties.Settings.Default.MinimizeToTray)
                 {
-                    // Nasconde la finestra e la mostra solo nell'icona della system tray
                     this.Hide();
-                    notifyIcon.Visible = true;
+                    if (notifyIcon != null) notifyIcon.Visible = true;
                 }
                 else
                 {
-                    // Finestra visibile sulla taskbar
-                    notifyIcon.Visible = false;
+                    if (notifyIcon != null) notifyIcon.Visible = false;
                 }
             }
             else
             {
-                notifyIcon.Visible = false;
+                if (notifyIcon != null) notifyIcon.Visible = false;
             }
         }
-
     }
 }

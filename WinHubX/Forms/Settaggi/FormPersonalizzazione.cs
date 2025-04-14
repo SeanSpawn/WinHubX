@@ -15,6 +15,7 @@ namespace WinHubX.Forms.Settaggi
         private FormSettaggi formSettaggi;
         private string tempFolder = Path.Combine(Path.GetTempPath(), "WinHubX");
         private bool isSSD = false;
+        private int totalSteps = 0;
         public FormPersonalizzazione(FormSettaggi formSettaggi, Form1 form1)
         {
             InitializeComponent();
@@ -177,175 +178,161 @@ namespace WinHubX.Forms.Settaggi
 
         private async void btnAvviaSelezionati_Click(object sender, EventArgs e)
         {
-            string registryPath = @"HKEY_CURRENT_USER\Software\WinHubX\Personalizzazione";
-            bool opzioneSelezionata = false; // Variabile per controllare se è stata selezionata un'opzione
-            progressBar1.Value = 1;
+            totalSteps = 0;
 
-            if (radio_mostrasecondi.Checked)
+            // Lista dei tuoi pannelli
+            List<Panel> pannelli = new List<Panel>
+    {
+        panel1, panel3, panel4, panel5, panel6,
+        panel8, panel9, panel10, panel11, panel12, panel13
+    };
+
+            // Conta quanti RadioButton sono selezionati
+            foreach (var pannello in pannelli)
             {
-                AvviaProcessoMostraSecondi();
-                Registry.SetValue(registryPath, "RadioSelected", "MostraSecondi");
-                opzioneSelezionata = true; // Imposta a true se un'opzione è stata selezionata
-                progressBar1.Value = 2;
-            }
-            if (radio_mostradatasecondi.Checked)
-            {
-                AvviaProcessoMostraDataSecondi();
-                Registry.SetValue(registryPath, "RadioSelected", "MostraDataSecondi");
-                opzioneSelezionata = true;
-                progressBar1.Value = 3;
-            }
-            if (radio_orologiostandard.Checked)
-            {
-                AvviaProcessoOrologioStandard();
-                Registry.SetValue(registryPath, "RadioSelected", "OrologioStandard");
-                opzioneSelezionata = true;
-                progressBar1.Value = 4;
-            }
-            if (radio_nascondioradata.Checked)
-            {
-                AvviaProcessoNascondiOraData();
-                Registry.SetValue(registryPath, "RadioSelected", "NascondiOraData");
-                opzioneSelezionata = true;
-                progressBar1.Value = 5;
-            }
-            if (radio_mostraoradata.Checked)
-            {
-                AvviaProcessoMostraOraData();
-                Registry.SetValue(registryPath, "RadioSelected", "MostraOraData");
-                opzioneSelezionata = true;
-                progressBar1.Value = 6;
-            }
-            if (radio_destrolegacy.Checked)
-            {
-                AvviaProcessoDestroLegacy();
-                Registry.SetValue(registryPath, "RadioSelected", "DestroLegacy");
-                opzioneSelezionata = true;
-                progressBar1.Value = 10;
-            }
-            if (radio_destrodefault.Checked)
-            {
-                AvviaProcessoDestroDefault();
-                Registry.SetValue(registryPath, "RadioSelected", "DestroDefault");
-                opzioneSelezionata = true;
-                progressBar1.Value = 15;
-            }
-            if (radio_apricmd.Checked)
-            {
-                await AvviaProcessoConRegFile("cmdsi.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "ApriCMD");
-                opzioneSelezionata = true;
-                progressBar1.Value = 20;
-            }
-            if (radio_eliminaapricmd.Checked)
-            {
-                await AvviaProcessoConRegFile("cmdno.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "EliminaApriCMD");
-                opzioneSelezionata = true;
-                progressBar1.Value = 25;
-            }
-            if (radio_apripowershell.Checked)
-            {
-                await AvviaProcessoConRegFile("powershellsi.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "ApriPowershell");
-                opzioneSelezionata = true;
-                progressBar1.Value = 30;
-            }
-            if (radio_eliminapowershell.Checked)
-            {
-                await AvviaProcessoConRegFile("powershellno.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "EliminaPowershell");
-                opzioneSelezionata = true;
-                progressBar1.Value = 35;
-            }
-            if (radio_ottimizzawindows.Checked)
-            {
-                if (isSSD)
+                foreach (Control control in pannello.Controls)
                 {
-                    // Se è un SSD o SSD NVMe, esegui ottimizzazione per SSD
-                    await AvviaProcessoConRegFile("ottimizzazioni_ssd.reg");
+                    if (control is RadioButton radioButton && radioButton.Checked)
+                    {
+                        totalSteps++;
+                    }
                 }
-                else
+            }
+
+            if (totalSteps == 0)
+            {
+                totalSteps = 1;  // Imposta almeno 1 passo
+            }
+
+            progressBar1.Maximum = totalSteps;
+            progressBar1.Value = 0;
+
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+        private void DisabilitaEndTask()
+        {
+            try
+            {
+                using (RegistryKey currentUserKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
                 {
-                    // Se è un HDD, esegui ottimizzazione per HDD
-                    await AvviaProcessoConRegFile("ottimizzazioni_hdd.reg");
+                    using (RegistryKey taskbarSettings = currentUserKey.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings"))
+                    {
+                        taskbarSettings?.SetValue("TaskbarEndTask", 0, RegistryValueKind.DWord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Si è verificato un errore durante la disabilitazione del pulsante 'Termina attività': " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void AbiliaEndTask()
+        {
+            try
+            {
+                using (RegistryKey currentUserKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
+                {
+                    using (RegistryKey taskbarSettings = currentUserKey.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings"))
+                    {
+                        taskbarSettings?.SetValue("TaskbarEndTask", 1, RegistryValueKind.DWord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Si è verificato un errore durante l'abilitazione del pulsante 'Termina attività': " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AvviaProcessoRimuoviCopilot()
+        {
+            try
+            {
+                // Scrive nel registro a 32 bit, anche su sistemi a 64 bit
+                using (RegistryKey localMachineKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+                using (RegistryKey windowsCopilotLM = localMachineKey.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"))
+                {
+                    windowsCopilotLM?.SetValue("TurnOffWindowsCopilot", 1, RegistryValueKind.DWord);
                 }
 
-                Registry.SetValue(registryPath, "RadioSelected", "OttimazzazioneWindows");
-                opzioneSelezionata = true;
-                progressBar1.Value = 40;
-            }
-            if (radio_disattivafx.Checked)
-            {
-                await AvviaProcessoConRegFile("disabilita_tutti_visual_fx.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "DisattivaFx");
-                opzioneSelezionata = true;
-                progressBar1.Value = 45;
-            }
-            if (radio_attivafx.Checked)
-            {
-                await AvviaProcessoConRegFile("abilita_visual_fx.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "AttivaFx");
-                opzioneSelezionata = true;
-                progressBar1.Value = 50;
-            }
-            if (radio_ripristinaottimizzazionewin.Checked)
-            {
-                await AvviaProcessoConRegFile("ripristina_impostazioni_windows.reg");
-                Registry.SetValue(registryPath, "RadioSelected", "RipristinoOttWindows");
-                opzioneSelezionata = true;
-                progressBar1.Value = 55;
-            }
-            if (radio_disabilitaricercainternet.Checked)
-            {
-                AvviaProcessoDisabilitaRicercaInternet();
-                Registry.SetValue(registryPath, "RadioSelected", "DisabilitaRicercaInternet");
-                opzioneSelezionata = true;
-                progressBar1.Value = 60;
-            }
-            if (radio_abilitasuggeriti.Checked)
-            {
-                AvviaProcessoAbilitaSuggeriti();
-                Registry.SetValue(registryPath, "RadioSelected", "AbilitaSuggeriti");
-                opzioneSelezionata = true;
-                progressBar1.Value = 75;
-            }
-            if (radio_disabilitasuggeriti.Checked)
-            {
-                AvviaProcessoDisabilitaSuggeriti();
-                Registry.SetValue(registryPath, "RadioSelected", "DisabilitaSuggeriti");
-                opzioneSelezionata = true;
-                progressBar1.Value = 80;
-            }
-            if (radio_ottimizzaricerca.Checked)
-            {
-                AvviaProcessoOttimizzaRicerca();
-                Registry.SetValue(registryPath, "RadioSelected", "OttimizzaRicerca");
-                opzioneSelezionata = true;
-                progressBar1.Value = 85;
-            }
-            if (radio_abilitarecall.Checked)
-            {
-                AvviaProcessoAbilitaecall();
-                Registry.SetValue(registryPath, "RadioSelected", "AvviaRecall");
-                opzioneSelezionata = true;
-                progressBar1.Value = 90;
-            }
-            if (radio_disabilitarecall.Checked)
-            {
-                AvviaProcessoRimuovirecall();
-                Registry.SetValue(registryPath, "RadioSelected", "DisabilitaRecall");
-                opzioneSelezionata = true;
-                progressBar1.Value = 95;
-            }
-            if (!opzioneSelezionata)
-            {
-                MessageBox.Show("Nessuna opzione selezionata!", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            progressBar1.Value = 100;
+                using (RegistryKey currentUserKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
+                {
+                    using (RegistryKey windowsCopilotCU = currentUserKey.CreateSubKey(@"Software\Policies\Microsoft\Windows\WindowsCopilot"))
+                    {
+                        windowsCopilotCU?.SetValue("TurnOffWindowsCopilot", 1, RegistryValueKind.DWord);
+                    }
 
-            MessageBox.Show("Fatto", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (RegistryKey explorerAdvanced = currentUserKey.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                    {
+                        explorerAdvanced?.SetValue("ShowCopilotButton", 0, RegistryValueKind.DWord);
+                    }
+                }
+
+                // Comando DISM per rimuovere Copilot
+                ProcessStartInfo processInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c dism /online /remove-package /package-name:Microsoft.Windows.Copilot",
+                    Verb = "runas",
+                    UseShellExecute = true,
+                    CreateNoWindow = false,
+                    WindowStyle = ProcessWindowStyle.Normal
+                };
+
+                Process.Start(processInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AvviaProcessoAggiungiCopilot()
+        {
+            try
+            {
+                // Ripristina chiavi nel registro a 32 bit
+                using (RegistryKey localMachineKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+                using (RegistryKey windowsCopilotLM = localMachineKey.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"))
+                {
+                    windowsCopilotLM?.SetValue("TurnOffWindowsCopilot", 0, RegistryValueKind.DWord);
+                }
+
+                using (RegistryKey currentUserKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
+                {
+                    using (RegistryKey windowsCopilotCU = currentUserKey.CreateSubKey(@"Software\Policies\Microsoft\Windows\WindowsCopilot"))
+                    {
+                        windowsCopilotCU?.SetValue("TurnOffWindowsCopilot", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey explorerAdvanced = currentUserKey.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                    {
+                        explorerAdvanced?.SetValue("ShowCopilotButton", 1, RegistryValueKind.DWord);
+                    }
+                }
+
+                // Comando DISM per aggiungere nuovamente il pacchetto (se disponibile)
+                ProcessStartInfo processInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c dism /online /add-package /package-name:Microsoft.Windows.Copilot",
+                    Verb = "runas",
+                    UseShellExecute = true,
+                    CreateNoWindow = false,
+                    WindowStyle = ProcessWindowStyle.Normal
+                };
+
+                Process.Start(processInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AvviaProcessoAbilitaecall()
@@ -661,7 +648,6 @@ namespace WinHubX.Forms.Settaggi
             {
 
             }
-            RestartExplorer();
         }
 
         private void AvviaProcessoDestroLegacy()
@@ -719,7 +705,6 @@ namespace WinHubX.Forms.Settaggi
             {
 
             }
-            RestartExplorer();
         }
 
         private void AvviaProcessoMostraSecondi()
@@ -810,29 +795,11 @@ namespace WinHubX.Forms.Settaggi
 
         private static void RestartExplorer()
         {
-            try
+            foreach (var process in Process.GetProcessesByName("explorer"))
             {
-                // Chiude tutti i processi explorer.exe in esecuzione
-                foreach (var process in Process.GetProcessesByName("explorer"))
-                {
-                    process.Kill();
-                }
-
-                // Aspetta un attimo per garantire che tutti i processi siano effettivamente chiusi
-                System.Threading.Thread.Sleep(500);
-
-                // Rilancia explorer.exe usando ShellExecute
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = "explorer.exe",
-                    UseShellExecute = true,
-                });
+                process.Kill();
             }
-            catch (Exception ex)
-            {
-                // Log dell'errore se necessario
-                MessageBox.Show(ex.Message);
-            }
+            System.Diagnostics.Process.Start("explorer.exe");
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -874,104 +841,67 @@ namespace WinHubX.Forms.Settaggi
             radio_attivafx.Checked = false;
             radio_disattivafx.Checked = false;
             radio_ripristinaottimizzazionewin.Checked = false;
+            radio_disacopilot.Checked = false;
+            radio_abilicopilot.Checked = false;
+            radio_abilitaendtask.Checked = false;
+            radio_disabilitaendtask.Checked = false;
 
             try
             {
                 // Try to delete the registry value
                 RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\WinHubX\Personalizzazione", true);
-                if (key != null)
-                {
-                    key.DeleteValue("RadioSelected", false);  // 'false' avoids throwing an error if the value doesn't exist
-                    key.Close();
-                }
             }
             catch (Exception)
             {
 
             }
+        }
 
-            // Optional: Display confirmation
-
+        private bool GetCheckboxState(string itemName)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX\\Personalizzazione"))
+            {
+                if (key != null)
+                {
+                    object value = key.GetValue(itemName);
+                    if (value != null)
+                    {
+                        return (int)value == 1;
+                    }
+                }
+            }
+            return false;
         }
 
         private void FormPersonalizzazione_Load(object sender, EventArgs e)
         {
-            string registryPath = @"HKEY_CURRENT_USER\Software\WinHubX\Personalizzazione";
-            string selectedOption = (string)Registry.GetValue(registryPath, "RadioSelected", null);
-
-            if (selectedOption != null)
-            {
-                switch (selectedOption)
-                {
-                    case "MostraSecondi":
-                        radio_mostrasecondi.Checked = true;
-                        break;
-                    case "MostraDataSecondi":
-                        radio_mostradatasecondi.Checked = true;
-                        break;
-                    case "OrologioStandard":
-                        radio_orologiostandard.Checked = true;
-                        break;
-                    case "NascondiOraData":
-                        radio_nascondioradata.Checked = true;
-                        break;
-                    case "MostraOraData":
-                        radio_mostraoradata.Checked = true;
-                        break;
-                    case "DestroLegacy":
-                        radio_destrolegacy.Checked = true;
-                        break;
-                    case "DestroDefault":
-                        radio_destrodefault.Checked = true;
-                        break;
-                    case "ApriCMD":
-                        radio_apricmd.Checked = true;
-                        break;
-                    case "EliminaApriCMD":
-                        radio_eliminaapricmd.Checked = true;
-                        break;
-                    case "ApriPowershell":
-                        radio_apripowershell.Checked = true;
-                        break;
-                    case "EliminaPowershell":
-                        radio_eliminapowershell.Checked = true;
-                        break;
-                    case "OttimazzazioneWindows":
-                        radio_ottimizzawindows.Checked = true;
-                        break;
-                    case "DisattivaFx":
-                        radio_disattivafx.Checked = true;
-                        break;
-                    case "AttivaFx":
-                        radio_attivafx.Checked = true;
-                        break;
-                    case "RipristinoOttWindows":
-                        radio_ripristinaottimizzazionewin.Checked = true;
-                        break;
-                    case "DisabilitaRicercaInternet":
-                        radio_disabilitaricercainternet.Checked = true;
-                        break;
-                    case "AbilitaSuggeriti":
-                        radio_abilitasuggeriti.Checked = true;
-                        break;
-                    case "DisabilitaSuggeriti":
-                        radio_disabilitasuggeriti.Checked = true;
-                        break;
-                    case "OttimizzaRicerca":
-                        radio_ottimizzaricerca.Checked = true;
-                        break;
-                    case "AvviaRecall":
-                        radio_abilitarecall.Checked = true;
-                        break;
-                    case "DisabilitaRecall":
-                        radio_disabilitarecall.Checked = true;
-                        break;
-                    default:
-                        MessageBox.Show("Opzione salvata non riconosciuta.");
-                        break;
-                }
-            }
+            radio_mostrasecondi.Checked = GetCheckboxState("MostraSecondi");
+            radio_mostradatasecondi.Checked = GetCheckboxState("MostraDataSecondi");
+            radio_orologiostandard.Checked = GetCheckboxState("OrologioStandard");
+            radio_nascondioradata.Checked = GetCheckboxState("NascondiOraData");
+            radio_mostraoradata.Checked = GetCheckboxState("MostraOraData");
+            radio_destrolegacy.Checked = GetCheckboxState("DestroLegacy");
+            radio_destrodefault.Checked = GetCheckboxState("DestroDefault");
+            radio_apricmd.Checked = GetCheckboxState("ApriCMD");
+            radio_eliminaapricmd.Checked = GetCheckboxState("EliminaApriCMD");
+            radio_apripowershell.Checked = GetCheckboxState("ApriPowerShell");
+            radio_eliminapowershell.Checked = GetCheckboxState("EliminaPowerShell");
+            radio_ottimizzawindows.Checked = GetCheckboxState("OttimizzaWindows");
+            radio_ripristinaottimizzazionewin.Checked = GetCheckboxState("RipristinaOttimizzazioneWin");
+            radio_attivafx.Checked = GetCheckboxState("AttivaFX");
+            radio_disattivafx.Checked = GetCheckboxState("DisattivaFx");
+            radio_disabilitaricercainternet.Checked = GetCheckboxState("DisabilitaRicercaInternet");
+            radio_abilitasuggeriti.Checked = GetCheckboxState("AbilitaSuggeriti");
+            radio_disabilitasuggeriti.Checked = GetCheckboxState("DisabilitaSuggeriti");
+            radio_ottimizzaricerca.Checked = GetCheckboxState("OttimizzaRicerca");
+            radio_abilitarecall.Checked = GetCheckboxState("AbilitaRecall");
+            radio_disabilitarecall.Checked = GetCheckboxState("DisabilitaRecall");
+            radio_abilicopilot.Checked = GetCheckboxState("AbilitaCopilot");
+            radio_disacopilot.Checked = GetCheckboxState("DisablitaCopilot");
+            radio_abilitaendtask.Checked = GetCheckboxState("AbiliEndTask");
+            radio_disabilitaendtask.Checked = GetCheckboxState("DisabilEndTask");
         }
+
 
         public void SetStringRegistryValue(string path, string valueName, string value, RegistryView view)
         {
@@ -985,7 +915,7 @@ namespace WinHubX.Forms.Settaggi
                     }
                     else
                     {
-                        throw new Exception("Chiave di registro non trovata.");
+
                     }
                 }
             }
@@ -1011,7 +941,7 @@ namespace WinHubX.Forms.Settaggi
                     }
                     else
                     {
-                        throw new Exception("Chiave di registro non trovata.");
+
                     }
                 }
             }
@@ -1028,7 +958,7 @@ namespace WinHubX.Forms.Settaggi
                 }
                 else
                 {
-                    MessageBox.Show("Chiave di registro non trovata.", "DeleteRegistryKey");
+
                 }
             }
         }
@@ -1089,43 +1019,239 @@ namespace WinHubX.Forms.Settaggi
                 }
             }
         }
-        private static void CreateRegistryValue(string path, string name, object value, RegistryValueKind kind, RegistryView view)
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view))
+            bool opzioneSelezionata = false;
+            int currentStep = 0;
+            if (radio_mostrasecondi.Checked)
             {
-                using (var key = baseKey.CreateSubKey(path))
-                {
-                    key?.SetValue(name, value, kind);
-                }
+                AvviaProcessoMostraSecondi();
+                SetCheckboxState("MostraSecondi", radio_mostrasecondi.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
             }
-        }
-        private static void DeleteRegistryValue2arg(string path, RegistryView view)
-        {
-            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view))
+            if (radio_mostradatasecondi.Checked)
             {
-                // Prova a eliminare la chiave
-                baseKey.DeleteSubKeyTree(path, false);
+                AvviaProcessoMostraDataSecondi();
+                SetCheckboxState("MostraDataSecondi", radio_mostradatasecondi.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_orologiostandard.Checked)
+            {
+                AvviaProcessoOrologioStandard();
+                SetCheckboxState("OrologioStandard", radio_orologiostandard.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_nascondioradata.Checked)
+            {
+                AvviaProcessoNascondiOraData();
+                SetCheckboxState("NascondiOraData", radio_nascondioradata.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_mostraoradata.Checked)
+            {
+                AvviaProcessoMostraOraData();
+                SetCheckboxState("MostraOraData", radio_mostraoradata.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_destrolegacy.Checked)
+            {
+                AvviaProcessoDestroLegacy();
+                SetCheckboxState("DestroLegacy", radio_destrolegacy.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_destrodefault.Checked)
+            {
+                AvviaProcessoDestroDefault();
+                SetCheckboxState("DestroDefault", radio_destrodefault.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_apricmd.Checked)
+            {
+                AvviaProcessoConRegFile("cmdsi.reg");
+                SetCheckboxState("ApriCMD", radio_apricmd.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_eliminaapricmd.Checked)
+            {
+                AvviaProcessoConRegFile("cmdno.reg");
+                SetCheckboxState("EliminaApriCMD", radio_eliminaapricmd.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_apripowershell.Checked)
+            {
+                AvviaProcessoConRegFile("powershellsi.reg");
+                SetCheckboxState("ApriPowershell", radio_apripowershell.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_eliminapowershell.Checked)
+            {
+                AvviaProcessoConRegFile("powershellno.reg");
+                SetCheckboxState("EliminaPowershell", radio_eliminapowershell.Checked);
+  
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_ottimizzawindows.Checked)
+            {
+                if (isSSD)
+                {
+                    // Se è un SSD o SSD NVMe, esegui ottimizzazione per SSD
+                    AvviaProcessoConRegFile("ottimizzazioni_ssd.reg");
+                }
+                else
+                {
+                    // Se è un HDD, esegui ottimizzazione per HDD
+                    AvviaProcessoConRegFile("ottimizzazioni_hdd.reg");
+                }
+                SetCheckboxState("OttimazzazioneWindows", radio_ottimizzawindows.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disattivafx.Checked)
+            {
+                AvviaProcessoConRegFile("disabilita_tutti_visual_fx.reg");
+                SetCheckboxState("DisattivaFx", radio_disattivafx.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_attivafx.Checked)
+            {
+                AvviaProcessoConRegFile("abilita_visual_fx.reg");
+                SetCheckboxState("AttivaFx", radio_attivafx.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_ripristinaottimizzazionewin.Checked)
+            {
+                AvviaProcessoConRegFile("ripristina_impostazioni_windows.reg");
+                SetCheckboxState("RipristinaOttimizzazioneWin", radio_ripristinaottimizzazionewin.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disabilitaricercainternet.Checked)
+            {
+                AvviaProcessoDisabilitaRicercaInternet();
+                SetCheckboxState("DisabilitaRicercaInternet", radio_disabilitaricercainternet.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_abilitasuggeriti.Checked)
+            {
+                AvviaProcessoAbilitaSuggeriti();
+                SetCheckboxState("AbilitaSuggeriti", radio_abilitasuggeriti.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disabilitasuggeriti.Checked)
+            {
+                AvviaProcessoDisabilitaSuggeriti();
+                SetCheckboxState("DisabilitaSuggeriti", radio_disabilitasuggeriti.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_ottimizzaricerca.Checked)
+            {
+                AvviaProcessoOttimizzaRicerca();
+                SetCheckboxState("OttimizzaRicerca", radio_ottimizzaricerca.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_abilitarecall.Checked)
+            {
+                AvviaProcessoAbilitaecall();
+                SetCheckboxState("AbilitaRecall", radio_abilitarecall.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disabilitarecall.Checked)
+            {
+                AvviaProcessoRimuovirecall();
+                SetCheckboxState("DisabilitaRecall", radio_disabilitarecall.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_abilicopilot.Checked)
+            {
+                AvviaProcessoAggiungiCopilot();
+                SetCheckboxState("AbilitaCopilot", radio_abilicopilot.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disacopilot.Checked)
+            {
+                AvviaProcessoRimuoviCopilot();
+                SetCheckboxState("DisablitaCopilot", radio_disacopilot.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_abilitaendtask.Checked)
+            {
+                AbiliaEndTask();
+                SetCheckboxState("AbiliEndTask", radio_disacopilot.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+            }
+            if (radio_disabilitaendtask.Checked)
+            {
+                DisabilitaEndTask();
+                SetCheckboxState("DisabilEndTask", radio_disacopilot.Checked);
+                opzioneSelezionata = true;
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
             }
         }
 
-        private static void AddRegistryValue(string path, RegistryView view)
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view))
-            {
-                // Crea la chiave se non esiste
-                using (var subKey = baseKey.CreateSubKey(path))
-                {
-                    // Imposta il valore predefinito della chiave
-                    subKey.SetValue("", "", RegistryValueKind.String);
-                }
-            }
+            progressBar1.Value = Math.Min(e.ProgressPercentage, progressBar1.Maximum);
         }
 
-        private void CreateRegistryValuedestro(string path, string name, string value, RegistryView view)
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            using (var registryKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, view).CreateSubKey(path))
+            RestartExplorer();
+            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void SetCheckboxState(string itemName, bool isChecked)
+        {
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\WinHubX\\Personalizzazione"))
             {
-                registryKey?.SetValue(name, value);
+                key.SetValue(itemName, isChecked ? 1 : 0, RegistryValueKind.DWord);
             }
         }
     }

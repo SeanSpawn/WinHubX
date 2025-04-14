@@ -34,6 +34,9 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             textBox1 = new TextBox();
             btnDebloatAvanzato = new Button();
+            btnServizi = new Button();
+            progressBar1 = new ProgressBar();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             SuspendLayout();
             // 
             // btnAvviaSelezionatiDebloat
@@ -60,7 +63,7 @@
             btnDebloatAuto.FlatStyle = FlatStyle.Flat;
             btnDebloatAuto.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDebloatAuto.ForeColor = Color.White;
-            btnDebloatAuto.Location = new Point(737, 161);
+            btnDebloatAuto.Location = new Point(737, 154);
             btnDebloatAuto.Margin = new Padding(3, 2, 3, 2);
             btnDebloatAuto.Name = "btnDebloatAuto";
             btnDebloatAuto.Size = new Size(154, 61);
@@ -75,7 +78,7 @@
             lblInfoWin12.AutoSize = true;
             lblInfoWin12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblInfoWin12.ForeColor = Color.Coral;
-            lblInfoWin12.Location = new Point(682, 224);
+            lblInfoWin12.Location = new Point(682, 217);
             lblInfoWin12.Name = "lblInfoWin12";
             lblInfoWin12.Size = new Size(209, 34);
             lblInfoWin12.TabIndex = 80;
@@ -109,7 +112,7 @@
             btnDebloatAvanzato.FlatStyle = FlatStyle.Flat;
             btnDebloatAvanzato.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDebloatAvanzato.ForeColor = Color.White;
-            btnDebloatAvanzato.Location = new Point(735, 364);
+            btnDebloatAvanzato.Location = new Point(735, 268);
             btnDebloatAvanzato.Margin = new Padding(3, 2, 3, 2);
             btnDebloatAvanzato.Name = "btnDebloatAvanzato";
             btnDebloatAvanzato.Size = new Size(154, 61);
@@ -119,12 +122,46 @@
             btnDebloatAvanzato.UseVisualStyleBackColor = true;
             btnDebloatAvanzato.Click += btnDebloatAvanzato_Click;
             // 
+            // btnServizi
+            // 
+            btnServizi.Cursor = Cursors.Hand;
+            btnServizi.FlatAppearance.BorderSize = 0;
+            btnServizi.FlatStyle = FlatStyle.Flat;
+            btnServizi.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnServizi.ForeColor = Color.White;
+            btnServizi.Location = new Point(735, 386);
+            btnServizi.Margin = new Padding(3, 2, 3, 2);
+            btnServizi.Name = "btnServizi";
+            btnServizi.Size = new Size(154, 61);
+            btnServizi.TabIndex = 84;
+            btnServizi.Text = "Modifica Servizi";
+            btnServizi.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnServizi.UseVisualStyleBackColor = true;
+            btnServizi.Click += btnServizi_Click;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 5);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(467, 23);
+            progressBar1.TabIndex = 85;
+            // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            // 
             // FormDebloat
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
+            Controls.Add(progressBar1);
+            Controls.Add(btnServizi);
             Controls.Add(btnDebloatAvanzato);
             Controls.Add(textBox1);
             Controls.Add(flowLayoutPanel1);
@@ -146,5 +183,8 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox textBox1;
         private Button btnDebloatAvanzato;
+        private Button btnServizi;
+        private ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

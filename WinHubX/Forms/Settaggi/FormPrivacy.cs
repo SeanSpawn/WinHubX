@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using System.ComponentModel;
 using System.ServiceProcess;
+using System.Windows.Forms;
 using WinHubX.Forms.Base;
 
 namespace WinHubX.Forms.Settaggi
@@ -9,14 +11,134 @@ namespace WinHubX.Forms.Settaggi
     {
         private Form1 form1;
         private FormSettaggi formSettaggi;
+        private int tIndex = -1;
+        private int totalSteps = 0;
         public FormPrivacy(FormSettaggi formSettaggi, Form1 form1)
         {
             InitializeComponent();
             this.form1 = form1;
             this.formSettaggi = formSettaggi;
             LoadCheckboxStates();
+            DisabilitaPrivacy.MouseMove += new MouseEventHandler(checkedListBox1_MouseMove);
+            AbilitaPrivacy.MouseMove += new MouseEventHandler(checkedListBox2_MouseMove);
 
         }
+
+        private void checkedListBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = DisabilitaPrivacy.IndexFromPoint(e.Location);
+            if (tIndex != index)
+            {
+                tIndex = index;
+                if (tIndex > -1)
+                {
+                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
+                    string tooltipText = GetTooltipTextDisa(tIndex);
+                    toolTip1.SetToolTip(DisabilitaPrivacy, tooltipText);
+                }
+            }
+        }
+
+        private void checkedListBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = AbilitaPrivacy.IndexFromPoint(e.Location);
+            if (tIndex != index)
+            {
+                tIndex = index;
+                if (tIndex > -1)
+                {
+                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
+                    string tooltipText = GetTooltipTextAbil(tIndex);
+                    toolTip1.SetToolTip(AbilitaPrivacy, tooltipText);
+                }
+            }
+        }
+
+        private string GetTooltipTextDisa(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Disabilita le opzioni relative alla lingua nel sistema, impedendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.";
+                case 1:
+                    return "Disabilita i suggerimenti e le raccomandazioni dell'app, evitando notifiche e consigli da parte delle applicazioni.";
+                case 2:
+                    return "Disabilita la raccolta e l'invio dei dati di telemetria al fine di migliorare il sistema operativo, proteggendo la privacy dell'utente.";
+                case 3:
+                    return "Disabilita il tracciamento delle attività dell'utente da parte del sistema, evitando la registrazione delle azioni e comportamenti.";
+                case 4:
+                    return "Disabilita la segnalazione automatica degli errori e dei bug al sistema, impedendo l'invio di report ai server di Microsoft.";
+                case 5:
+                    return "Disabilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, evitando l'invio di report diagnostici.";
+                case 6:
+                    return "Disabilita il servizio di messaggistica WAP Push, impedendo l'invio e la ricezione di notifiche push tramite il servizio.";
+                case 7:
+                    return "Disabilita la funzionalità di HomeGroup, evitando la creazione e gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.";
+                case 8:
+                    return "Disabilita l'assistenza remota, impedendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.";
+                case 9:
+                    return "Disabilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, impedendo la deframmentazione automatica dei file.";
+                case 10:
+                    return "Disabilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.";
+                case 11:
+                    return "Disabilita la manutenzione automatica, impedendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.";
+                case 12:
+                    return "Disabilita la gestione dello spazio riservato sul sistema, impedendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.";
+                case 13:
+                    return "Disabilita i miglioramenti delle performance di gioco tramite Game DVR, evitando la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.";
+                case 14:
+                    return "Disabilita la cronologia delle attività, impedendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.";
+                case 15:
+                    return "Disabilita WiFi Sense, impedendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.";
+                case 16:
+                    return "Disabilita la barra delle notifiche e il calendario, impedendo la visualizzazione delle notifiche di sistema e delle informazioni sul calendario.";
+                default:
+                    return string.Empty;
+            }
+        }
+        private string GetTooltipTextAbil(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Abilita le opzioni linguistiche e regionali nel sistema, consentendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.";
+                case 1:
+                    return "Abilita i suggerimenti e le raccomandazioni dell'app, mostrando notifiche e consigli da parte delle applicazioni.";
+                case 2:
+                    return "Abilita la raccolta e l'invio dei dati di telemetria, contribuendo al miglioramento del sistema operativo e dei prodotti Microsoft.";
+                case 3:
+                    return "Abilita il tracciamento delle attività dell'utente, registrando le azioni e i comportamenti all'interno del sistema.";
+                case 4:
+                    return "Abilita la segnalazione automatica degli errori e dei bug al sistema, inviando report ai server di Microsoft per miglioramenti.";
+                case 5:
+                    return "Abilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, consentendo la raccolta dei dati diagnostici.";
+                case 6:
+                    return "Abilita il servizio di messaggistica WAP Push, consentendo l'invio e la ricezione di notifiche push tramite il servizio.";
+                case 7:
+                    return "Abilita la funzionalità di HomeGroup, permettendo la creazione e la gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.";
+                case 8:
+                    return "Abilita l'assistenza remota, permettendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.";
+                case 9:
+                    return "Abilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, consentendo la deframmentazione automatica dei file.";
+                case 10:
+                    return "Abilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.";
+                case 11:
+                    return "Abilita la manutenzione automatica, consentendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.";
+                case 12:
+                    return "Abilita la gestione dello spazio riservato sul sistema, consentendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.";
+                case 13:
+                    return "Abilita i miglioramenti delle performance di gioco tramite Game DVR, consentendo la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.";
+                case 14:
+                    return "Abilita la cronologia delle attività, consentendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.";
+                case 15:
+                    return "Abilita WiFi Sense, consentendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.";
+                case 16:
+                    return "Abilita la barra delle notifiche e il calendario, mostronado le notifiche di sistema e le informazioni sul calendario.";
+                default:
+                    return string.Empty;
+            }
+        }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -114,6 +236,7 @@ namespace WinHubX.Forms.Settaggi
             {
                 DisabilitaPrivacy.SetItemChecked(index, GetCheckboxState("DisabilitaXboxFeatures"));
             }
+            index = DisabilitaPrivacy.Items.IndexOf("Disabilita Auto Manteinance");
             if (index != -1)
             {
                 DisabilitaPrivacy.SetItemChecked(index, GetCheckboxState("DisabilitaAutoManteinance"));
@@ -132,6 +255,16 @@ namespace WinHubX.Forms.Settaggi
             if (index != -1)
             {
                 DisabilitaPrivacy.SetItemChecked(index, GetCheckboxState("DisabilitaStoriaAttivita"));
+            }
+            index = DisabilitaPrivacy.Items.IndexOf("Disabilita Wifi-Sense");
+            if (index != -1)
+            {
+                DisabilitaPrivacy.SetItemChecked(index, GetCheckboxState("DisabilitaWifiSense"));
+            }
+            index = DisabilitaPrivacy.Items.IndexOf("Disabilita Notifiche Tray/Calendario");
+            if (index != -1)
+            {
+                DisabilitaPrivacy.SetItemChecked(index, GetCheckboxState("DisabilitaNotificheTrayCalendario"));
             }
             index = AbilitaPrivacy.Items.IndexOf("Abilita Opzioni Lingua");
             if (index != -1)
@@ -207,6 +340,16 @@ namespace WinHubX.Forms.Settaggi
             {
                 AbilitaPrivacy.SetItemChecked(index, GetCheckboxState("AbilitaStoriaAttivita"));
             }
+            index = AbilitaPrivacy.Items.IndexOf("Abilita Wifi-Sense");
+            if (index != -1)
+            {
+                AbilitaPrivacy.SetItemChecked(index, GetCheckboxState("AbilitaWifiSense"));
+            }
+            index = AbilitaPrivacy.Items.IndexOf("Abilita Notifiche Tray/Calendario");
+            if (index != -1)
+            {
+                AbilitaPrivacy.SetItemChecked(index, GetCheckboxState("AbilitaNotificheTrayCalendario"));
+            }
         }
 
         private void ExecutePowerShellScript(string script, bool use32BitRegistry = false)
@@ -244,14 +387,12 @@ namespace WinHubX.Forms.Settaggi
                             // Log o gestisci output e errori
                             if (!string.IsNullOrEmpty(output))
                             {
-                                Console.WriteLine("Output:");
-                                Console.WriteLine(output);
+
                             }
 
                             if (!string.IsNullOrEmpty(error))
                             {
-                                Console.WriteLine("Error:");
-                                Console.WriteLine(error);
+
                             }
                         }
                         else
@@ -268,14 +409,51 @@ namespace WinHubX.Forms.Settaggi
 
             thread.Start();
         }
-
-
         private void btnAvviaSelezionati_Click(object sender, EventArgs e)
         {
+            // Conta i passi basati sugli oggetti checked
+            totalSteps = 0;
+            foreach (var item in DisabilitaPrivacy.CheckedItems)
+            {
+                totalSteps++;
+            }
+            foreach (var item in AbilitaPrivacy.CheckedItems)
+            {
+                totalSteps++;
+            }
+
+            if (totalSteps == 0)
+            {
+                totalSteps = 1;  // Imposta almeno 1 passo
+            }
+
+            progressBar1.Maximum = totalSteps;
+            progressBar1.Value = 0;
+
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        private async void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            // Non usare direttamente e.ProgressPercentage se può essere > Maximum
+            progressBar1.Value = Math.Min(e.ProgressPercentage, progressBar1.Maximum);
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int currentStep = 0;
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Opzioni Lingua"))
             {
                 SetCheckboxState("DisabilitaOpzioniLingua", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore nella vista a 64-bit
@@ -304,7 +482,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Suggerimenti App"))
             {
                 SetCheckboxState("DisabilitaSuggerimentiApp", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Dizionario contenente i percorsi e i valori da impostare nel registro
@@ -373,7 +552,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Telemetria"))
             {
                 SetCheckboxState("DisabilitaTelemetria", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore nella vista a 64-bit
@@ -401,6 +581,73 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key32_2?.SetValue("AllowTelemetry", 0, RegistryValueKind.DWord);
                     }
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"))
+                    {
+                        key.SetValue("ContentDeliveryAllowed", 0, RegistryValueKind.DWord);
+                        key.SetValue("OemPreInstalledAppsEnabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("PreInstalledAppsEnabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("PreInstalledAppsEverEnabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SilentInstalledAppsEnabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SubscribedContent-338387Enabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SubscribedContent-338388Enabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SubscribedContent-338389Enabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SubscribedContent-353698Enabled", 0, RegistryValueKind.DWord);
+                        key.SetValue("SystemPaneSuggestionsEnabled", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Siuf\Rules"))
+                    {
+                        key.SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
+                    {
+                        key.SetValue("DoNotShowFeedbackNotifications", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\CloudContent"))
+                    {
+                        key.SetValue("DisableTailoredExperiencesWithDiagnosticData", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo"))
+                    {
+                        key.SetValue("DisabledByGroupPolicy", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\Windows Error Reporting"))
+                    {
+                        key.SetValue("Disabled", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config"))
+                    {
+                        key.SetValue("DODownloadMode", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Remote Assistance"))
+                    {
+                        key.SetValue("fAllowToGetHelp", 0, RegistryValueKind.DWord);
+                    }
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"))
+                    {
+                        key.SetValue("EnableFeeds", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Feeds"))
+                    {
+                        key.SetValue("ShellFeedsTaskbarViewMode", 2, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"))
+                    {
+                        key.SetValue("HideSCAMeetNow", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement"))
+                    {
+                        key.SetValue("ScoobeSystemSettingEnabled", 0, RegistryValueKind.DWord);
+                    }
 
                     // Disabilita i task pianificati relativi alla telemetria
                     ExecutePowerShellScript(@"
@@ -410,6 +657,13 @@ namespace WinHubX.Forms.Settaggi
             Disable-ScheduledTask -TaskName ""Microsoft\Windows\Customer Experience Improvement Program\Consolidator"";
             Disable-ScheduledTask -TaskName ""Microsoft\Windows\Customer Experience Improvement Program\UsbCeip"";
             Disable-ScheduledTask -TaskName ""Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Feedback\Siuf\DmClient"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Windows Error Reporting\QueueReporting"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Application Experience\MareBackup"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Application Experience\StartupAppTask"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Application Experience\PcaPatchDbTask"";
+    Disable-ScheduledTask -TaskName ""Microsoft\Windows\Maps\MapsUpdateTask"";
         ");
                 }
                 catch (Exception ex)
@@ -424,7 +678,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Tracking"))
             {
                 SetCheckboxState("DisabilitaTracking", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore nella vista a 64-bit
@@ -477,7 +732,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Segnalazione Errori"))
             {
                 SetCheckboxState("DisabilitaSegnalazioneErrori", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore nella vista a 64-bit
@@ -516,7 +772,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Tracking Diagnostica"))
             {
                 SetCheckboxState("DisabilitaTrackingDiagnostica", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Ferma il servizio "DiagTrack"
@@ -555,7 +812,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita WAP Push Service"))
             {
                 SetCheckboxState("DisabilitaWAPPushService", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Ferma il servizio "dmwappushservice"
@@ -595,7 +853,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disbailita Home Group"))
             {
                 SetCheckboxState("DisbailitaHomeGroup", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Ferma i servizi HomeGroup
@@ -643,7 +902,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Assistenza Remota"))
             {
                 SetCheckboxState("DisabilitaAssistenzaRemota", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore nel registro per la vista a 64-bit
@@ -671,6 +931,8 @@ namespace WinHubX.Forms.Settaggi
             }
             if (DisabilitaPrivacy.CheckedItems.Contains("Disbailita Schedul Defrag"))
             {
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 SetCheckboxState("DisbailitaSchedulDefrag", true);
                 ExecutePowerShellScript(@"Disable-ScheduledTask -TaskName \""Microsoft\\Windows\\Defrag\\ScheduledDefrag\""");
             }
@@ -681,7 +943,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Xbox Features"))
             {
                 SetCheckboxState("DisabilitaXboxFeatures", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Rimuovi le app Xbox
@@ -719,7 +982,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Auto Manteinance"))
             {
                 SetCheckboxState("DisabilitaAutoManteinance", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta il valore MaintenanceDisabled nel registro a 64-bit
@@ -748,7 +1012,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Spazio Riservato"))
             {
                 SetCheckboxState("DisabilitaSpazioRiservato", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Esegui il comando PowerShell per disabilitare lo spazio riservato
@@ -780,7 +1045,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Tweaks Game DVR"))
             {
                 SetCheckboxState("DisabilitaTweaksGameDVR", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Esegui il comando PowerShell per impostare le proprietà di Game DVR per entrambe le architetture
@@ -836,7 +1102,8 @@ namespace WinHubX.Forms.Settaggi
             if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Storia Attivita"))
             {
                 SetCheckboxState("DisabilitaStoriaAttivita", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta le chiavi di registro per la configurazione a 64-bit
@@ -872,10 +1139,145 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaStoriaAttivita", false);
             }
+            if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Wifi-Sense"))
+            {
+                SetCheckboxState("DisabilitaWifiSense", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Imposta le chiavi di registro per la configurazione a 64-bit
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("AllowWiFiHotSpotReporting", 0, RegistryValueKind.DWord);
+                            key64.SetValue("AllowAutoConnectToWiFiSenseHotspots", 0, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    // Imposta le chiavi di registro per WiFi HotSpot Reporting e AutoConnect nella configurazione a 32-bit
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("AllowWiFiHotSpotReporting", 0, RegistryValueKind.DWord);
+                            key32.SetValue("AllowAutoConnectToWiFiSenseHotspots", 0, RegistryValueKind.DWord);
+                        }
+                    }
+                    using (RegistryKey key32WiFiHotSpot = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting", true))
+                    {
+                        key32WiFiHotSpot?.SetValue("Value", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64WiFiHotSpot = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting", true))
+                    {
+                        key64WiFiHotSpot?.SetValue("Value", 0, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots -> Value
+                    using (RegistryKey key32AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
+                    {
+                        key32AutoConnect?.SetValue("Value", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
+                    {
+                        key64AutoConnect?.SetValue("Value", 0, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> AutoConnectAllowedOEM
+                    using (RegistryKey key32OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key32OEM?.SetValue("AutoConnectAllowedOEM", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key64OEM?.SetValue("AutoConnectAllowedOEM", 0, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> WiFISenseAllowed
+                    using (RegistryKey key32SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key32SenseAllowed?.SetValue("WiFISenseAllowed", 0, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key64SenseAllowed?.SetValue("WiFISenseAllowed", 0, RegistryValueKind.DWord);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaWifiSense", false);
+            }
+            if (DisabilitaPrivacy.CheckedItems.Contains("Disabilita Notifiche Tray/Calendario"))
+            {
+                SetCheckboxState("DisabilitaNotificheTrayCalendario", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Imposta le chiavi di registro per la configurazione a 64-bit
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("DisableNotificationCenter", 1, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\PushNotifications"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("ToastEnabled", 0, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    // Imposta le chiavi di registro per disabilitare il Notification Center e le Toast Notifications nella configurazione a 32-bit
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("DisableNotificationCenter", 1, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\PushNotifications"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("ToastEnabled", 0, RegistryValueKind.DWord);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaNotificheTrayCalendario", false);
+            }
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Opzioni Lingua"))
             {
                 SetCheckboxState("AbilitaOpzioniLingua", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta la chiave di registro per abilitare le opzioni lingua a livello di utente
@@ -896,7 +1298,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Suggerimenti App"))
             {
                 SetCheckboxState("AbilitaSuggerimentiApp", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Chiave di registro per le impostazioni del ContentDeliveryManager
@@ -941,7 +1344,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Telemetria"))
             {
                 SetCheckboxState("AbilitaTelemetria", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Chiave di registro per la telemetria
@@ -981,7 +1385,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Tracking"))
             {
                 SetCheckboxState("AbilitaTracking", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Chiave di registro per la configurazione del tracking
@@ -1019,7 +1424,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Segnalazione Errori"))
             {
                 SetCheckboxState("AbilitaSegnalazioneErrori", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Rimuovi la chiave 'Disabled' per il registro 64 bit
@@ -1063,7 +1469,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Tracking Diagnostica"))
             {
                 SetCheckboxState("AbilitaTrackingDiagnostica", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta le chiavi di registro per la Tracking Diagnostica nel registro 64 bit
@@ -1102,7 +1509,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita WAP Push Service"))
             {
                 SetCheckboxState("AbilitaWAPPushService", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta le chiavi di registro per WAP Push Service nel registro 64 bit
@@ -1141,7 +1549,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Home Group"))
             {
                 SetCheckboxState("AbilitaHomeGroup", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Ferma i servizi HomeGroupListener e HomeGroupProvider se sono in esecuzione
@@ -1171,7 +1580,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Assistenza Remota"))
             {
                 SetCheckboxState("AbilitaAssistenzaRemota", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Percorso del registro per l'assistenza remota
@@ -1206,7 +1616,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Schedul Defrag"))
             {
                 SetCheckboxState("AbilitaSchedulDefrag", true);
-
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Abilitare il Task di Defrag
@@ -1245,6 +1656,8 @@ namespace WinHubX.Forms.Settaggi
             }
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Xbox Features"))
             {
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 SetCheckboxState("AbilitaXboxFeatures", true);
                 ExecutePowerShellScript(@"Get-AppxPackage -AllUsers """"Microsoft.XboxApp"""" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register """"$($_.InstallLocation)\AppXManifest.xml""""};
                      Get-AppxPackage -AllUsers """"Microsoft.XboxIdentityProvider"""" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register """"$($_.InstallLocation)\AppXManifest.xml""""};
@@ -1261,6 +1674,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Auto Manteinance"))
             {
                 SetCheckboxState("AbilitaAutoManteinance", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Modifica le chiavi di registro per abilitare Auto Maintenance nel registro 64 bit
@@ -1304,16 +1719,22 @@ namespace WinHubX.Forms.Settaggi
             }
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Spazio Riservato"))
             {
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 SetCheckboxState("AbilitaSpazioRiservato", true);
                 ExecutePowerShellScript(@"Set-WindowsReservedStorageState -State Enabled");
             }
             else
             {
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 SetCheckboxState("AbilitaSpazioRiservato", false);
             }
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Tweaks Game DVR"))
             {
                 SetCheckboxState("AbilitaTweaksGameDVR", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Rimuovi le proprietà nel registro 64 bit
@@ -1364,6 +1785,8 @@ namespace WinHubX.Forms.Settaggi
             if (AbilitaPrivacy.CheckedItems.Contains("Abilita Storie Attivita"))
             {
                 SetCheckboxState("AbilitaStoriaAttivita", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
                     // Imposta le chiavi di registro nel registro 64 bit
@@ -1409,7 +1832,148 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaStoriaAttivita", false);
             }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (AbilitaPrivacy.CheckedItems.Contains("Abilita Wifi-Sense"))
+            {
+                SetCheckboxState("AbilitaWifiSense", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Imposta le chiavi di registro nel registro 64 bit
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("AllowWiFiHotSpotReporting", 1, RegistryValueKind.DWord);
+                            key64.SetValue("AllowAutoConnectToWiFiSenseHotspots", 1, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    // Imposta le chiavi di registro per WiFi HotSpot Reporting e AutoConnect nella configurazione a 32-bit
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("AllowWiFiHotSpotReporting", 1, RegistryValueKind.DWord);
+                            key32.SetValue("AllowAutoConnectToWiFiSenseHotspots", 1, RegistryValueKind.DWord);
+                        }
+                    }
+                    using (RegistryKey key32WiFiHotSpot = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting", true))
+                    {
+                        key32WiFiHotSpot?.SetValue("Value", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64WiFiHotSpot = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting", true))
+                    {
+                        key64WiFiHotSpot?.SetValue("Value", 1, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots -> Value
+                    using (RegistryKey key32AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
+                    {
+                        key32AutoConnect?.SetValue("Value", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
+                    {
+                        key64AutoConnect?.SetValue("Value", 1, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> AutoConnectAllowedOEM
+                    using (RegistryKey key32OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key32OEM?.SetValue("AutoConnectAllowedOEM", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key64OEM?.SetValue("AutoConnectAllowedOEM", 1, RegistryValueKind.DWord);
+                    }
+
+                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> WiFISenseAllowed
+                    using (RegistryKey key32SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key32SenseAllowed?.SetValue("WiFISenseAllowed", 1, RegistryValueKind.DWord);
+                    }
+
+                    using (RegistryKey key64SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
+                    {
+                        key64SenseAllowed?.SetValue("WiFISenseAllowed", 1, RegistryValueKind.DWord);
+                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaStoriaAttivita", false);
+            }
+            if (AbilitaPrivacy.CheckedItems.Contains("Abilita Notifiche Tray/Calendario"))
+            {
+                SetCheckboxState("AbilitaNotificheTrayCalendario", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Imposta le chiavi di registro nel registro 64 bit
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("DisableNotificationCenter", 0, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
+                                                             .CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\PushNotifications"))
+                    {
+                        if (key64 != null)
+                        {
+                            key64.SetValue("ToastEnabled", 1, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    // Imposta le chiavi di registro per disabilitare il Notification Center e le Toast Notifications nella configurazione a 32-bit
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("DisableNotificationCenter", 0, RegistryValueKind.DWord);
+                        }
+                    }
+
+                    using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
+                                                             .CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\PushNotifications"))
+                    {
+                        if (key32 != null)
+                        {
+                            key32.SetValue("ToastEnabled", 1, RegistryValueKind.DWord);
+                        }
+                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaNotificheTrayCalendario", false);
+            }
         }
 
         private void StopService(string serviceName)

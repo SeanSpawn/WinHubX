@@ -19,6 +19,23 @@ namespace WinHubX
             #region descrizione WinHubX 
 
             string description = "Changelog WinHubX\n\n" +
+                                    "15/04/2025 - v2.4.2.2:\n" +
+                                    "- Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo \n" +
+                                    "- Inserita progressbar su tutti i settaggi per avere un responso visivo \n" +
+                                    "- Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione\n" +
+                                    "- Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria \n" +
+                                    "- Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows \n" +
+                                    "- Inserito su Debloat la gestione dei servizi (beta) \n" +
+                                    "- Attivazione diretta windows (online e offline) \n" +
+                                    "- Attivazione diretta office (online e offline) \n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "10/04/2025 - v2.4.2.1:\n" +
+                                    "- Fix Ripristino SO, il codice non proseguiva\n" +
+                                    "\n" +
+                                    "\n" +
+                                    "\n" +
                                     "19/02/2025 - v2.4.2.0:\n" +
                                     "- Aggiunto winhubx al path cmd e ampliati i comandi digitare winhubx /help per maggiori info\n" +
                                     "- Aggiornate tutte le iso di Win10/11 Stock\n" +

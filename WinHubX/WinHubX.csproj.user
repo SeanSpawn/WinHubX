@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\utente\Downloads\1.WinHubX %281%29\1.WinHubX\WinHubX\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\utente\Downloads\WinHubX-main\WinHubX\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Dialog\InfoDialog.cs">
@@ -71,6 +71,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Forms\DebloatAvanzato\FormDebloatAvanzato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\DebloatAvanzato\FormServizi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Personalizzazione office\PersonalizzazioneOffice.cs">

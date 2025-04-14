@@ -8,12 +8,84 @@ namespace WinHubX.Forms.Settaggi
     {
         private Form1 form1;
         private FormSettaggi formSettaggi;
+        private int totalSteps = 0;
+        private int tIndex = -1;
         public FormUpdate(FormSettaggi formSettaggi, Form1 form1)
         {
             InitializeComponent();
             this.form1 = form1;
             this.formSettaggi = formSettaggi;
             LoadCheckboxStates();
+            DisabilitaUpdate.MouseMove += new MouseEventHandler(checkedListBox1_MouseMove);
+            AbilitaUpdate.MouseMove += new MouseEventHandler(checkedListBox2_MouseMove);
+        }
+
+        private void checkedListBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = DisabilitaUpdate.IndexFromPoint(e.Location);
+            if (tIndex != index)
+            {
+                tIndex = index;
+                if (tIndex > -1)
+                {
+                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
+                    string tooltipText = GetTooltipTextDisa(tIndex);
+                    toolTip1.SetToolTip(DisabilitaUpdate, tooltipText);
+                }
+            }
+        }
+
+        private void checkedListBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = AbilitaUpdate.IndexFromPoint(e.Location);
+            if (tIndex != index)
+            {
+                tIndex = index;
+                if (tIndex > -1)
+                {
+                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
+                    string tooltipText = GetTooltipTextAbil(tIndex);
+                    toolTip1.SetToolTip(AbilitaUpdate, tooltipText);
+                }
+            }
+        }
+
+        private string GetTooltipTextDisa(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Disabilita il download automatico degli aggiornamenti di Windows, impedendo al sistema di scaricare e installare aggiornamenti senza autorizzazione.";
+                case 1:
+                    return "Disabilita l'aggiornamento automatico dei prodotti Microsoft tramite Windows Update (es. Office), limitando gli aggiornamenti solo a Windows.";
+                case 2:
+                    return "Disabilita il download automatico dei driver tramite Windows Update, utile se si desidera gestire manualmente i driver del sistema.";
+                case 3:
+                    return "Disabilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, evitando interruzioni improvvise.";
+                case 4:
+                    return "Disabilita le notifiche relative agli aggiornamenti di Windows, nascondendo avvisi su nuovi aggiornamenti disponibili.";
+                default:
+                    return "Nessuna descrizione disponibile.";
+            }
+        }
+
+        private string GetTooltipTextAbil(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Abilita il download automatico degli aggiornamenti di Windows, garantendo che il sistema resti aggiornato con le ultime patch di sicurezza.";
+                case 1:
+                    return "Abilita l'aggiornamento automatico anche dei prodotti Microsoft (es. Office) tramite Windows Update.";
+                case 2:
+                    return "Abilita il download automatico dei driver tramite Windows Update, assicurando che l'hardware sia sempre aggiornato.";
+                case 3:
+                    return "Abilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, per completare correttamente le modifiche.";
+                case 4:
+                    return "Abilita le notifiche di aggiornamento, avvisando l'utente della disponibilità di nuovi update.";
+                default:
+                    return "Nessuna descrizione disponibile.";
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -111,224 +183,29 @@ namespace WinHubX.Forms.Settaggi
 
         private void btnAvviaSelezionatiUpda_Click(object sender, EventArgs e)
         {
-            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Download Automatico Windows Update"))
+            // Conta i passi basati sugli oggetti checked
+            totalSteps = 0;
+            foreach (var item in DisabilitaUpdate.CheckedItems)
             {
-                SetCheckboxState("DisabilitaDownloadAutomaticoWindowsUpdate", true);
-                try
-                {
-                    // Modifica per entrambe le architetture
-                    ModificaDownloadAutomatico(RegistryView.Registry32);
-                    ModificaDownloadAutomatico(RegistryView.Registry64);
-                }
-                catch (Exception)
-                {
-
-                }
+                totalSteps++;
             }
-            else
+            foreach (var item in AbilitaUpdate.CheckedItems)
             {
-                SetCheckboxState("DisabilitaDownloadAutomaticoWindowsUpdate", false);
-            }
-            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Update Prodotti Microsoft"))
-            {
-                SetCheckboxState("DisabilitaUpdateProdottiMicrosoft", true);
-                try
-                {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = @"
-                        If ((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object { $_.ServiceID -eq ""7971f918-a847-4430-9279-4a52d1efe18d""}) {
-                        (New-Object -ComObject Microsoft.Update.ServiceManager).RemoveService(""7971f918-a847-4430-9279-4a52d1efe18d"")
-                          }
-                           ",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("DisabilitaUpdateProdottiMicrosoft", false);
-            }
-            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Download Driver Windows Update"))
-            {
-                SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", true);
-                try
-                {
-                    // Modifiche per entrambe le architetture
-                    ModificaChiaveRegistro(RegistryView.Registry32);
-                    ModificaChiaveRegistro(RegistryView.Registry64);
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", false);
+                totalSteps++;
             }
 
-            // Modifica per disabilitare il riavvio automatico di Windows Update
-            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Riavvio Automatico Windows Update"))
+            if (totalSteps == 0)
             {
-                SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", true);
-                try
-                {
-                    using (var key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", true))
-                    {
-                        if (key != null)
-                        {
-                            key.SetValue("NoAutoRebootWithLoggedOnUsers", 1, RegistryValueKind.DWord);
-                            key.SetValue("AUPowerManagement", 0, RegistryValueKind.DWord);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", false);
-            }
-            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Notifiche Update"))
-            {
-                SetCheckboxState("DisabilitaNotificheUpdate", true);
-                try
-                {
-                    ModificaNotificheUpdate(false);
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("DisabilitaNotificheUpdate", false);
+                totalSteps = 1;  // Imposta almeno 1 passo
             }
 
-            // Abilita Download Automatico Windows Update
-            if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Automatico Windows Update"))
-            {
-                SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", true);
-                try
-                {
-                    RimuoviAUOptions();
-                }
-                catch (Exception)
-                {
+            progressBar1.Maximum = totalSteps;
+            progressBar1.Value = 0;
 
-                }
-            }
-            else
+            if (!backgroundWorker1.IsBusy)
             {
-                SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", false);
+                backgroundWorker1.RunWorkerAsync();
             }
-            if (AbilitaUpdate.CheckedItems.Contains("Abilita Update Prodotti Microsoft"))
-            {
-                SetCheckboxState("AbilitaUpdateProdottiMicrosoft", true);
-                try
-                {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo()
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = "(New-Object -ComObject Microsoft.Update.ServiceManager).AddService2(\"7971f918-a847-4430-9279-4a52d1efe18d\", 7, \"\")",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        Verb = "runus"
-                    };
-
-                    using (var process = System.Diagnostics.Process.Start(startInfo))
-                    {
-                        process.WaitForExit();
-
-                        var output = process.StandardOutput.ReadToEnd();
-                        var error = process.StandardError.ReadToEnd();
-                    }
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("AbilitaUpdateProdottiMicrosoft", false);
-            }
-            if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Driver Windows Update"))
-            {
-                SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", true);
-                try
-                {
-                    RimuoviDriverUpdate();
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", false);
-            }
-
-            // Abilita Riavvio Automatico Windows Update
-            if (AbilitaUpdate.CheckedItems.Contains("Abilita Riavvio Automatico Windows Update"))
-            {
-                SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", true);
-                try
-                {
-                    RimuoviRiavvioAutomatico();
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", false);
-            }
-
-            // Abilita Notifiche Update
-            if (AbilitaUpdate.CheckedItems.Contains("Abilita Notifiche Update"))
-            {
-                SetCheckboxState("AbilitaNotificheUpdate", true);
-                try
-                {
-                    ModificaNotificheUpdate(true);
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-            else
-            {
-                SetCheckboxState("AbilitaNotificheUpdate", false);
-            }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnUpdateEssential_Click(object sender, EventArgs e)
@@ -600,6 +477,258 @@ namespace WinHubX.Forms.Settaggi
                 key64.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", false);
                 key32.DeleteValue(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", false);
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            int currentStep = 0;
+            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Download Automatico Windows Update"))
+            {
+                SetCheckboxState("DisabilitaDownloadAutomaticoWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Modifica per entrambe le architetture
+                    ModificaDownloadAutomatico(RegistryView.Registry32);
+                    ModificaDownloadAutomatico(RegistryView.Registry64);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaDownloadAutomaticoWindowsUpdate", false);
+            }
+            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Update Prodotti Microsoft"))
+            {
+                SetCheckboxState("DisabilitaUpdateProdottiMicrosoft", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    var startInfo = new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = "powershell.exe",
+                        Arguments = @"
+                        If ((New-Object -ComObject Microsoft.Update.ServiceManager).Services | Where-Object { $_.ServiceID -eq ""7971f918-a847-4430-9279-4a52d1efe18d""}) {
+                        (New-Object -ComObject Microsoft.Update.ServiceManager).RemoveService(""7971f918-a847-4430-9279-4a52d1efe18d"")
+                          }
+                           ",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        Verb = "runus"
+                    };
+
+                    using (var process = System.Diagnostics.Process.Start(startInfo))
+                    {
+                        process.WaitForExit();
+
+                        var output = process.StandardOutput.ReadToEnd();
+                        var error = process.StandardError.ReadToEnd();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaUpdateProdottiMicrosoft", false);
+            }
+            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Download Driver Windows Update"))
+            {
+                SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    // Modifiche per entrambe le architetture
+                    ModificaChiaveRegistro(RegistryView.Registry32);
+                    ModificaChiaveRegistro(RegistryView.Registry64);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", false);
+            }
+
+            // Modifica per disabilitare il riavvio automatico di Windows Update
+            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Riavvio Automatico Windows Update"))
+            {
+                SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    using (var key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", true))
+                    {
+                        if (key != null)
+                        {
+                            key.SetValue("NoAutoRebootWithLoggedOnUsers", 1, RegistryValueKind.DWord);
+                            key.SetValue("AUPowerManagement", 0, RegistryValueKind.DWord);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", false);
+            }
+            if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Notifiche Update"))
+            {
+                SetCheckboxState("DisabilitaNotificheUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    ModificaNotificheUpdate(false);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("DisabilitaNotificheUpdate", false);
+            }
+
+            // Abilita Download Automatico Windows Update
+            if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Automatico Windows Update"))
+            {
+                SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    RimuoviAUOptions();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", false);
+            }
+            if (AbilitaUpdate.CheckedItems.Contains("Abilita Update Prodotti Microsoft"))
+            {
+                SetCheckboxState("AbilitaUpdateProdottiMicrosoft", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    var startInfo = new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = "powershell.exe",
+                        Arguments = "(New-Object -ComObject Microsoft.Update.ServiceManager).AddService2(\"7971f918-a847-4430-9279-4a52d1efe18d\", 7, \"\")",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        Verb = "runus"
+                    };
+
+                    using (var process = System.Diagnostics.Process.Start(startInfo))
+                    {
+                        process.WaitForExit();
+
+                        var output = process.StandardOutput.ReadToEnd();
+                        var error = process.StandardError.ReadToEnd();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaUpdateProdottiMicrosoft", false);
+            }
+            if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Driver Windows Update"))
+            {
+                SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    RimuoviDriverUpdate();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", false);
+            }
+
+            // Abilita Riavvio Automatico Windows Update
+            if (AbilitaUpdate.CheckedItems.Contains("Abilita Riavvio Automatico Windows Update"))
+            {
+                SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    RimuoviRiavvioAutomatico();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", false);
+            }
+
+            // Abilita Notifiche Update
+            if (AbilitaUpdate.CheckedItems.Contains("Abilita Notifiche Update"))
+            {
+                SetCheckboxState("AbilitaNotificheUpdate", true);
+                currentStep++;
+                backgroundWorker1.ReportProgress(currentStep);
+                try
+                {
+                    ModificaNotificheUpdate(true);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            else
+            {
+                SetCheckboxState("AbilitaNotificheUpdate", false);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = Math.Min(e.ProgressPercentage, progressBar1.Maximum);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

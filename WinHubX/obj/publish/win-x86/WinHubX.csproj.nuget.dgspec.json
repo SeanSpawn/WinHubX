@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\utente\\Downloads\\1.WinHubX (1)\\1.WinHubX\\WinHubX\\WinHubX.csproj": {}
+    "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj": {}
   },
   "projects": {
-    "C:\\Users\\utente\\Downloads\\1.WinHubX (1)\\1.WinHubX\\WinHubX\\WinHubX.csproj": {
-      "version": "1.0.0",
+    "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj": {
+      "version": "2.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\utente\\Downloads\\1.WinHubX (1)\\1.WinHubX\\WinHubX\\WinHubX.csproj",
+        "projectUniqueName": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
         "projectName": "WinHubX",
-        "projectPath": "C:\\Users\\utente\\Downloads\\1.WinHubX (1)\\1.WinHubX\\WinHubX\\WinHubX.csproj",
+        "projectPath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
         "packagesPath": "C:\\Users\\utente\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\utente\\Downloads\\1.WinHubX (1)\\1.WinHubX\\WinHubX\\obj\\publish\\win-x86\\",
+        "outputPath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\obj\\publish\\win-x86\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

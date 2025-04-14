@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnBack = new Button();
             DisabilitaDefender = new CheckedListBox();
             btnAvviaSelezionatiDef = new Button();
@@ -37,6 +38,9 @@
             label1 = new Label();
             label2 = new Label();
             label4 = new Label();
+            progressBar1 = new ProgressBar();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            toolTip1 = new ToolTip(components);
             SuspendLayout();
             // 
             // btnBack
@@ -74,7 +78,7 @@
             btnAvviaSelezionatiDef.FlatStyle = FlatStyle.Flat;
             btnAvviaSelezionatiDef.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnAvviaSelezionatiDef.ForeColor = Color.White;
-            btnAvviaSelezionatiDef.Location = new Point(343, 395);
+            btnAvviaSelezionatiDef.Location = new Point(344, 368);
             btnAvviaSelezionatiDef.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionatiDef.Name = "btnAvviaSelezionatiDef";
             btnAvviaSelezionatiDef.Size = new Size(208, 56);
@@ -91,7 +95,7 @@
             btnProtezioneMinima.FlatStyle = FlatStyle.Flat;
             btnProtezioneMinima.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnProtezioneMinima.ForeColor = Color.White;
-            btnProtezioneMinima.Location = new Point(9, 401);
+            btnProtezioneMinima.Location = new Point(10, 374);
             btnProtezioneMinima.Margin = new Padding(3, 2, 3, 2);
             btnProtezioneMinima.Name = "btnProtezioneMinima";
             btnProtezioneMinima.Size = new Size(220, 50);
@@ -108,7 +112,7 @@
             btnRipristinaDefender.FlatStyle = FlatStyle.Flat;
             btnRipristinaDefender.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnRipristinaDefender.ForeColor = Color.White;
-            btnRipristinaDefender.Location = new Point(658, 395);
+            btnRipristinaDefender.Location = new Point(659, 368);
             btnRipristinaDefender.Margin = new Padding(3, 2, 3, 2);
             btnRipristinaDefender.Name = "btnRipristinaDefender";
             btnRipristinaDefender.Size = new Size(230, 56);
@@ -156,14 +160,29 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic);
             label4.ForeColor = Color.Coral;
-            label4.Location = new Point(16, 348);
+            label4.Location = new Point(18, 329);
             label4.Name = "label4";
-            label4.Size = new Size(187, 51);
+            label4.Size = new Size(164, 45);
             label4.TabIndex = 55;
             label4.Text = "Attenzione!\r\nsarai maggiormente esposto\r\nad eventuali virus";
             label4.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(10, 429);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(879, 23);
+            progressBar1.TabIndex = 56;
+            // 
+            // backgroundWorker1
+            // 
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             // 
             // FormDefender
             // 
@@ -171,6 +190,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
             ClientSize = new Size(901, 458);
+            Controls.Add(progressBar1);
             Controls.Add(btnProtezioneMinima);
             Controls.Add(label4);
             Controls.Add(label2);
@@ -199,5 +219,8 @@
         private Label label1;
         private Label label2;
         private Label label4;
+        private ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private ToolTip toolTip1;
     }
 }
