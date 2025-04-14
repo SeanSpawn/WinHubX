@@ -1,14 +1,14 @@
 { 
     "version": "2.4.2.1",  
     "releaseNotes": [
-  "Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo",
-  "Inserita progressbar su tutti i settaggi per avere un responso visivo",
-  "Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione",
-  "Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria",
-  "Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows",
-  "Inserito su Debloat la gestione dei servizi (beta)",
-  "Attivazione diretta windows (online e offline)",
-  "Attivazione diretta office (online e offline)"
+  "- Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo",
+  "- Inserita progressbar su tutti i settaggi per avere un responso visivo",
+  "- Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione",
+  "- Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria",
+  "- Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows",
+  "- Inserito su Debloat la gestione dei servizi (beta)",
+  "- Attivazione diretta windows (online e offline)",
+  "-Attivazione diretta office (online e offline)"
      ],
     "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX/WinHubX.exe" 
 }
