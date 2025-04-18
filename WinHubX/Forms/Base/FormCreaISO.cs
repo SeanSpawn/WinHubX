@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO.Compression;
 using System.Text.Json;
+using WinHubX.Dialog;
 
 namespace WinHubX.Forms.Base
 {
@@ -57,10 +58,7 @@ namespace WinHubX.Forms.Base
             {
                 try
                 {
-                    // Fetch the JSON data
                     string jsonResponse = await client.GetStringAsync(jsonUrl);
-
-                    // Parse the JSON and get the value for "creaiso" under "CreaISOWIN"
                     using (JsonDocument doc = JsonDocument.Parse(jsonResponse))
                     {
                         JsonElement root = doc.RootElement;
@@ -70,18 +68,14 @@ namespace WinHubX.Forms.Base
                 }
                 catch (Exception ex)
                 {
-                    // Handle exceptions (optional)
-                    MessageBox.Show("Errore nel recupero dell'URL: " + ex.Message);
+                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return string.Empty;
                 }
             }
         }
         private async void btn_CreaISO_Click(object sender, EventArgs e)
         {
-            // Smonta l'immagine disco
             ExecuteCommand("Dismount-DiskImage -ImagePath " + "\"" + selectedFile + "\"", false);
-
-            // Ottieni la selezione dal ComboBox
             string ComboSelected = "";
             string comboxstr = comboBox1.Text;
             int index = comboxstr.IndexOf(' ');
@@ -111,8 +105,6 @@ namespace WinHubX.Forms.Base
                 }
 
                 string tempPath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO");
-
-                // Verifica se la cartella di destinazione esiste, se no la crea
                 if (!Directory.Exists(tempPath))
                 {
                     Directory.CreateDirectory(tempPath);
@@ -123,36 +115,37 @@ namespace WinHubX.Forms.Base
                     foreach (ZipArchiveEntry entry in archive.Entries)
                     {
                         string destinazioneFile = Path.Combine(tempPath, entry.FullName);
-
-                        // Se l'entry è una directory, salta
                         if (string.IsNullOrEmpty(entry.Name))
                         {
-                            continue; // Salta se è una cartella
+                            continue;
                         }
-
-                        // Estrai il file direttamente nella cartella RisorseCreaISO
                         string directoryPath = Path.GetDirectoryName(destinazioneFile);
                         if (!Directory.Exists(directoryPath))
                         {
-                            Directory.CreateDirectory(directoryPath); // Crea la directory se non esiste
+                            Directory.CreateDirectory(directoryPath);
                         }
 
-                        entry.ExtractToFile(destinazioneFile, overwrite: true); // Estrai il file
+                        entry.ExtractToFile(destinazioneFile, overwrite: true);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante il download o l'estrazione: {ex.Message}");
+
                 return;
             }
-            string tempExtractionPath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO"); // Usa il nuovo nome
+            string tempExtractionPath = Path.Combine(Path.GetTempPath(), "RisorseCreaISO");
             string batchFileName = Win10Rad.Checked ? "isotool10.bat" : "isotool11.bat";
             string batchFilePath = Path.Combine(tempExtractionPath, batchFileName);
 
             if (!File.Exists(batchFilePath))
             {
-                MessageBox.Show($"File batch non trovato: {batchFilePath}");
+                string messaggio = string.Format(
+                    LanguageManager.GetTranslation("CreaISO", "batcherror"),
+                    batchFilePath
+                );
+
+                MessageBox.Show(messaggio);
                 return;
             }
 
@@ -179,7 +172,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'esecuzione del batch: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -321,6 +314,19 @@ namespace WinHubX.Forms.Base
             {
                 ExecuteCommand("Dismount-DiskImage -ImagePath " + "\"" + selectedFile + "\"", false);
             }
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            string description = LanguageManager.GetTranslation("FormCreaISO", "domanda");
+
+            InfoDialog creaisodescription = new InfoDialog(description)
+            {
+                TopMost = true,
+                FormBorderStyle = FormBorderStyle.None,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            creaisodescription.Show();
         }
     }
 }

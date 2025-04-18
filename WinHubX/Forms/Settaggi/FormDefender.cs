@@ -30,7 +30,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextDisa(tIndex);
                     toolTip1.SetToolTip(DisabilitaDefender, tooltipText);
                 }
@@ -45,7 +44,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextAbil(tIndex);
                     toolTip1.SetToolTip(AbilitaDefender, tooltipText);
                 }
@@ -54,78 +52,27 @@ namespace WinHubX.Forms.Settaggi
 
         private string GetTooltipTextDisa(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Disabilita il Controllo Accesso Cartella (Controlled Folder Access), una funzionalità di sicurezza che protegge i file da modifiche non autorizzate. Disabilitandola, si rimuove questa protezione.";
-                case 1:
-                    return "Disabilita l'Isolamento Core, una funzionalità che protegge il sistema da attacchi sofisticati isolando processi critici. Non raccomandato disattivarla a meno di necessità specifiche.";
-                case 2:
-                    return "Disabilita l'applicazione Defender Application Guard, una funzione di sicurezza che isola il browser per una navigazione più sicura.";
-                case 3:
-                    return "Disabilita gli avvisi di protezione dell'account (Account Protection Warning), che notificano la mancanza di funzionalità di sicurezza attivate.";
-                case 4:
-                    return "Disabilita il blocco dei file scaricati, evitando l'applicazione del flag 'Mark of the Web' che Windows usa per segnalare potenziali rischi.";
-                case 5:
-                    return "Disabilita Windows Script Host, impedendo l'esecuzione di script VBScript o JScript, utile per bloccare script potenzialmente pericolosi.";
-                case 6:
-                    return "Disabilita la crittografia forte in .NET, forzando l'uso di algoritmi meno sicuri. Generalmente usato per compatibilità con software legacy.";
-                case 7:
-                    return "Imposta il livello minimo di UAC (User Account Control), riducendo le notifiche di controllo dell'account utente. Potrebbe diminuire la sicurezza.";
-                case 8:
-                    return "Disabilita la creazione delle condivisioni amministrative implicite (come C$, ADMIN$), usate per la gestione remota del sistema.";
-                case 9:
-                    return "Disabilita il Firewall di Windows, rimuovendo la protezione integrata contro traffico di rete non autorizzato.";
-                case 10:
-                    return "Disabilita l'integrazione cloud di Windows Defender, che invia dati a Microsoft per migliorare la rilevazione di malware.";
-                case 11:
-                    return "Disabilita l'icona di Windows Defender nell'area di notifica (SysTray), nascondendone la presenza senza disattivare il servizio.";
-                case 12:
-                    return "Disabilita completamente i servizi di Windows Defender, rimuovendo la protezione antivirus in tempo reale offerta dal sistema.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            string key = $"desc{index}";
+            return LanguageManager.GetTranslation("FormDefender", key);
+
         }
+
 
         private string GetTooltipTextAbil(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Abilita il Controllo Accesso Cartella (Controlled Folder Access), proteggendo i file da modifiche non autorizzate da parte di app sconosciute.";
-                case 1:
-                    return "Abilita l'Isolamento Core, migliorando la sicurezza del sistema isolando i processi critici da minacce sofisticate.";
-                case 2:
-                    return "Abilita l'applicazione Defender Application Guard, che consente di eseguire il browser in un ambiente isolato per una navigazione più sicura.";
-                case 3:
-                    return "Abilita gli avvisi di protezione dell'account (Account Protection Warning), che segnalano la mancanza di componenti di sicurezza importanti.";
-                case 4:
-                    return "Abilita il blocco dei file scaricati, applicando il flag 'Mark of the Web' per segnalare file provenienti da internet come potenzialmente rischiosi.";
-                case 5:
-                    return "Abilita Windows Script Host, permettendo l'esecuzione di script VBScript e JScript. Utile per strumenti di amministrazione e script automatizzati.";
-                case 6:
-                    return "Abilita la crittografia forte in .NET (Strong Cryptography), migliorando la sicurezza nelle comunicazioni e nell'elaborazione dei dati.";
-                case 7:
-                    return "Imposta il livello massimo di UAC (User Account Control), fornendo il massimo controllo sulle modifiche apportate al sistema.";
-                case 8:
-                    return "Abilita la creazione delle condivisioni amministrative implicite (come C$, ADMIN$), utili per la gestione remota dei dispositivi in rete.";
-                case 9:
-                    return "Abilita il Firewall di Windows, proteggendo il sistema dal traffico di rete indesiderato o potenzialmente dannoso.";
-                case 10:
-                    return "Abilita l'integrazione cloud di Windows Defender, che aiuta a identificare rapidamente nuove minacce grazie all'intelligenza artificiale di Microsoft.";
-                case 11:
-                    return "Abilita l'icona di Windows Defender nell'area di notifica (SysTray), permettendo all'utente di monitorare facilmente lo stato della protezione.";
-                case 12:
-                    return "Abilita tutti i servizi di Windows Defender, assicurando una protezione antivirus in tempo reale contro malware e minacce.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            string key = $"abil{index}";
+            return LanguageManager.GetTranslation("FormDefender", key);
         }
 
 
         private void loadmsginziale()
         {
-            MessageBox.Show("Per disinstallare Windows Defender recati nella sezione Debloat APP", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                LanguageManager.GetTranslation("FormDefender", "msgDisinstallaDefender"),
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -304,7 +251,6 @@ namespace WinHubX.Forms.Settaggi
 
         private void btnAvviaSelezionatiDef_Click(object sender, EventArgs e)
         {
-            // Conta i passi basati sugli oggetti checked
             totalSteps = 0;
             foreach (var item in DisabilitaDefender.CheckedItems)
             {
@@ -317,7 +263,7 @@ namespace WinHubX.Forms.Settaggi
 
             if (totalSteps == 0)
             {
-                totalSteps = 1;  // Imposta almeno 1 passo
+                totalSteps = 1;
             }
 
             progressBar1.Maximum = totalSteps;
@@ -333,17 +279,12 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Disabilita Controlled Folder Access
                 SetMpPreference("EnableControlledFolderAccess", false);
-
-                // Rimuove vari valori di registro su Registry64 e Registry32, dove applicabile
                 DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", RegistryView.Registry64);
                 DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
                 DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
                 DeleteRegistryKey3arg(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
                 DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat", "cadca5fe-87d3-4b96-b7fb-a231484277cc", RegistryView.Registry64);
-
-                // Imposta i valori di registro richiesti su entrambi i RegistryView dove applicabile
                 SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry64);
                 SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry64);
                 SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry32);
@@ -364,7 +305,13 @@ namespace WinHubX.Forms.Settaggi
             {
 
             }
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         static void DeleteRegistryKey(string keyPath, RegistryView registryView)
@@ -387,10 +334,8 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Apri la chiave di registro principale
                 using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
                 {
-                    // Elimina la sottochiave specificata
                     baseKey.DeleteSubKey(Path.Combine(keyPath, subKeyName), throwOnMissingSubKey: false);
                 }
             }
@@ -427,13 +372,10 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Rimuovi la chiave per Registry64
                 using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(keyPath, writable: true))
                 {
                     key64?.DeleteValue(valueName, throwOnMissingValue: false);
                 }
-
-                // Rimuovi la chiave per Registry32
                 using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(keyPath, writable: true))
                 {
                     key32?.DeleteValue(valueName, throwOnMissingValue: false);
@@ -449,28 +391,16 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Ottieni la chiave di registro
                 using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView).OpenSubKey(keyPath, writable: true))
                 {
                     if (key != null)
                     {
-                        // Ottieni la security access control della chiave
                         RegistrySecurity security = key.GetAccessControl();
-
-                        // Ottieni il SID dell'utente corrente
                         WindowsIdentity identity = WindowsIdentity.GetCurrent();
                         SecurityIdentifier sid = identity.User;
-
-                        // Aggiungi il permesso di prendere possesso della chiave
                         security.AddAccessRule(new RegistryAccessRule(sid, RegistryRights.TakeOwnership, AccessControlType.Allow));
-
-                        // Applica le modifiche alla chiave di registro
                         key.SetAccessControl(security);
-
-                        // Prendi possesso della chiave
                         key.SetAccessControl(new RegistrySecurity { });
-
-                        // Imposta i permessi per l'utente corrente
                         key.SetAccessControl(new RegistrySecurity());
 
                     }
@@ -761,31 +691,21 @@ namespace WinHubX.Forms.Settaggi
                 try
                 {
                     string systrayKeyPath = @"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray";
-
-                    // Crea o apri la chiave per Registry64
                     using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).CreateSubKey(systrayKeyPath, writable: true))
                     {
-                        // Imposta il valore della chiave di registro per HideSystray
                         key64?.SetValue("HideSystray", 1, RegistryValueKind.DWord);
                     }
-
-                    // Crea o apri la chiave per Registry32
                     using (var key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).CreateSubKey(systrayKeyPath, writable: true))
                     {
-                        // Imposta il valore della chiave di registro per HideSystray
                         key32?.SetValue("HideSystray", 1, RegistryValueKind.DWord);
                     }
-
-                    // Controlla la versione del sistema operativo
                     var osVersion = Environment.OSVersion.Version;
                     if (osVersion.Build == 14393)
                     {
-                        // Rimuovi la chiave di registro per Windows Defender
                         RemoveRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender");
                     }
                     else if (osVersion.Build >= 15063)
                     {
-                        // Rimuovi la chiave di registro per SecurityHealth
                         RemoveRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth");
                     }
                 }
@@ -1064,28 +984,22 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Elimina la proprietà "HideSystray"
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray", "HideSystray", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray", "HideSystray", RegistryView.Registry32);
-
-                    // Ottieni la versione di build del sistema operativo
                     var buildVersion = Environment.OSVersion.Version.Build;
 
                     if (buildVersion == 14393)
                     {
-                        // Imposta il valore "WindowsDefender" con il percorso specifico
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry64);
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "WindowsDefender", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry32);
                     }
                     else if (buildVersion >= 15063 && buildVersion <= 17134)
                     {
-                        // Imposta il valore "SecurityHealth" per build tra 15063 e 17134
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry64);
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%ProgramFiles%\Windows Defender\MSASCuiL.exe", RegistryView.Registry32);
                     }
                     else if (buildVersion >= 17763)
                     {
-                        // Imposta il valore "SecurityHealth" per build 17763 o superiori
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%windir%\system32\SecurityHealthSystray.exe", RegistryView.Registry64);
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%windir%\system32\SecurityHealthSystray.exe", RegistryView.Registry32);
                     }
@@ -1106,10 +1020,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Prendi il controllo delle chiavi di registro richieste
                     TakeOwnRegistry(@"SYSTEM\CurrentControlSet\Services\WinDefend");
-
-                    // Imposta i valori di registro richiesti
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "Start", 3, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WinDefend", "AutorunsDisabled", 4, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\WdNisSvc", "Start", 3, RegistryView.Registry64);
@@ -1138,10 +1049,7 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Disabilita Controlled Folder Access
                 SetMpPreference("EnableControlledFolderAccess", false);
-
-                // Rimuove vari valori di registro
                 DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", RegistryView.Registry64);
                 DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
                 DeleteRegistryKey3arg(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
@@ -1180,7 +1088,13 @@ namespace WinHubX.Forms.Settaggi
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

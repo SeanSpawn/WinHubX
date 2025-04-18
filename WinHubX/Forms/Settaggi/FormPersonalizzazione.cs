@@ -81,12 +81,11 @@ namespace WinHubX.Forms.Settaggi
                 }
                 catch
                 {
-                    // Ignoriamo l'eccezione, lasceremo che il tipo di disco rimanga "Unknown"
+
                 }
 
                 if (!isDriveDetected)
                 {
-                    // Mostra il mini-form per selezionare il tipo di disco
                     Invoke(new Action(() =>
                     {
                         using (var selectorForm = new DiskTypeSelectorForm())
@@ -102,8 +101,6 @@ namespace WinHubX.Forms.Settaggi
 
                 ulong ramBytes = new ComputerInfo().TotalPhysicalMemory;
                 string ramSizeGB = $"{ramBytes / (1024 * 1024 * 1024)} GB RAM";
-
-                // Aggiorna le Label sul thread principale
                 Invoke(new Action(() =>
                 {
                     label3.Text = driveType;
@@ -112,7 +109,6 @@ namespace WinHubX.Forms.Settaggi
             });
         }
 
-        // Funzione per ottenere la lettera del disco di sistema
         private string GetDriveLetter(ManagementObject partition)
         {
             try
@@ -127,18 +123,17 @@ namespace WinHubX.Forms.Settaggi
             }
             catch
             {
-                // In caso di errore restituisci una stringa vuota
+
             }
             return string.Empty;
         }
 
-        // Funzione per ottenere la lettera del disco di sistema da una chiave di registro
+
         private string GetSystemDrive()
         {
             string systemDrive = "C"; // Default
             try
             {
-                // Tentiamo prima di leggere dalla chiave di registro per sistemi a 64 bit
                 using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
                 {
                     if (key != null)
@@ -147,13 +142,11 @@ namespace WinHubX.Forms.Settaggi
                         if (systemRoot != null)
                         {
                             string path = systemRoot.ToString();
-                            systemDrive = path.Substring(0, 1); // Estrae la lettera del disco, ad esempio C:
+                            systemDrive = path.Substring(0, 1);
                         }
                     }
                 }
-
-                // Se non siamo riusciti a trovare la chiave, proviamo con la versione a 32 bit su sistemi a 64 bit
-                if (systemDrive == "C") // Se non è stato trovato un risultato, cerchiamo nel percorso WOW6432Node
+                if (systemDrive == "C")
                 {
                     using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion"))
                     {
@@ -163,7 +156,7 @@ namespace WinHubX.Forms.Settaggi
                             if (systemRoot != null)
                             {
                                 string path = systemRoot.ToString();
-                                systemDrive = path.Substring(0, 1); // Estrae la lettera del disco
+                                systemDrive = path.Substring(0, 1);
                             }
                         }
                     }
@@ -171,7 +164,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch
             {
-                // In caso di errore, lascia C come predefinito
+
             }
             return systemDrive;
         }
@@ -179,15 +172,11 @@ namespace WinHubX.Forms.Settaggi
         private async void btnAvviaSelezionati_Click(object sender, EventArgs e)
         {
             totalSteps = 0;
-
-            // Lista dei tuoi pannelli
             List<Panel> pannelli = new List<Panel>
     {
         panel1, panel3, panel4, panel5, panel6,
         panel8, panel9, panel10, panel11, panel12, panel13
     };
-
-            // Conta quanti RadioButton sono selezionati
             foreach (var pannello in pannelli)
             {
                 foreach (Control control in pannello.Controls)
@@ -201,7 +190,7 @@ namespace WinHubX.Forms.Settaggi
 
             if (totalSteps == 0)
             {
-                totalSteps = 1;  // Imposta almeno 1 passo
+                totalSteps = 1;
             }
 
             progressBar1.Maximum = totalSteps;
@@ -226,7 +215,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Si è verificato un errore durante la disabilitazione del pulsante 'Termina attività': " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -253,7 +242,6 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Scrive nel registro a 32 bit, anche su sistemi a 64 bit
                 using (RegistryKey localMachineKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
                 using (RegistryKey windowsCopilotLM = localMachineKey.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"))
                 {
@@ -272,8 +260,6 @@ namespace WinHubX.Forms.Settaggi
                         explorerAdvanced?.SetValue("ShowCopilotButton", 0, RegistryValueKind.DWord);
                     }
                 }
-
-                // Comando DISM per rimuovere Copilot
                 ProcessStartInfo processInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
@@ -288,7 +274,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -296,13 +282,11 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Ripristina chiavi nel registro a 32 bit
                 using (RegistryKey localMachineKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
                 using (RegistryKey windowsCopilotLM = localMachineKey.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"))
                 {
                     windowsCopilotLM?.SetValue("TurnOffWindowsCopilot", 0, RegistryValueKind.DWord);
                 }
-
                 using (RegistryKey currentUserKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
                 {
                     using (RegistryKey windowsCopilotCU = currentUserKey.CreateSubKey(@"Software\Policies\Microsoft\Windows\WindowsCopilot"))
@@ -315,8 +299,6 @@ namespace WinHubX.Forms.Settaggi
                         explorerAdvanced?.SetValue("ShowCopilotButton", 1, RegistryValueKind.DWord);
                     }
                 }
-
-                // Comando DISM per aggiungere nuovamente il pacchetto (se disponibile)
                 ProcessStartInfo processInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
@@ -331,7 +313,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -342,20 +324,18 @@ namespace WinHubX.Forms.Settaggi
                 // Configura il processo
                 ProcessStartInfo processInfo = new ProcessStartInfo
                 {
-                    FileName = "cmd.exe", // Usa cmd.exe per aprire una finestra del terminale
-                    Arguments = "/c dism /online /enable-feature /featurename:Recall", // Esegui il comando
-                    Verb = "runas", // Esegui come amministratore
-                    UseShellExecute = true, // Consente l'esecuzione in una nuova finestra
-                    CreateNoWindow = false, // Mostra la finestra del terminale
-                    WindowStyle = ProcessWindowStyle.Normal // Mostra la finestra in modo normale
+                    FileName = "cmd.exe",
+                    Arguments = "/c dism /online /enable-feature /featurename:Recall",
+                    Verb = "runas",
+                    UseShellExecute = true,
+                    CreateNoWindow = false,
+                    WindowStyle = ProcessWindowStyle.Normal
                 };
-
-                // Avvia il processo
-                Process.Start(processInfo); // Non è necessario l'uso di using qui, poiché vogliamo che la finestra rimanga aperta
+                Process.Start(processInfo);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -363,23 +343,20 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Configura il processo
                 ProcessStartInfo processInfo = new ProcessStartInfo
                 {
-                    FileName = "cmd.exe", // Usa cmd.exe per aprire una finestra del terminale
-                    Arguments = "/c dism /online /disable-feature /featurename:Recall", // Esegui il comando
-                    Verb = "runas", // Esegui come amministratore
-                    UseShellExecute = true, // Consente l'esecuzione in una nuova finestra
-                    CreateNoWindow = false, // Mostra la finestra del terminale
-                    WindowStyle = ProcessWindowStyle.Normal // Mostra la finestra in modo normale
+                    FileName = "cmd.exe",
+                    Arguments = "/c dism /online /disable-feature /featurename:Recall",
+                    Verb = "runas",
+                    UseShellExecute = true,
+                    CreateNoWindow = false,
+                    WindowStyle = ProcessWindowStyle.Normal
                 };
-
-                // Avvia il processo
-                Process.Start(processInfo); // Non è necessario l'uso di using qui, poiché vogliamo che la finestra rimanga aperta
+                Process.Start(processInfo);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Si è verificato un errore: " + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -387,14 +364,12 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Imposta il valore della chiave di registro FolderType in entrambe le viste di registro 64 e 32 bit
                 SetStringRegistryValue(@"SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell", "FolderType", "NotSpecified", RegistryView.Registry64);
                 SetStringRegistryValue(@"SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell", "FolderType", "NotSpecified", RegistryView.Registry32);
             }
             catch (Exception ex)
             {
-                // Gestisci eventuali eccezioni
-                MessageBox.Show($"Errore: {ex.Message}", "FolderType");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -402,19 +377,14 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Percorso della chiave di registro
                 string registryPath = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
-                // Nome del valore da eliminare
                 string valueName = "DisableSearchBoxSuggestions";
-
-                // Elimina il valore specificato in entrambe le viste di registro
                 DeleteRegistryValue(registryPath, valueName, RegistryView.Registry64);
                 DeleteRegistryValue(registryPath, valueName, RegistryView.Registry32);
             }
             catch (Exception ex)
             {
-                // Gestisci eventuali eccezioni
-                MessageBox.Show($"Errore: {ex.Message}", "DisableSearchBoxSuggestions");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -422,42 +392,30 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Percorso della chiave di registro
                 string registryPath = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
-                // Nome del valore da impostare
                 string valueName = "DisableSearchBoxSuggestions";
-                // Nuovo valore da impostare
                 string newValue = "1";
-
-                // Imposta il valore nella chiave di registro in entrambe le viste di registro
                 SetStringRegistryValue(registryPath, valueName, newValue, RegistryView.Registry64);
                 SetStringRegistryValue(registryPath, valueName, newValue, RegistryView.Registry32);
             }
             catch (Exception ex)
             {
-                // Gestisci eventuali eccezioni
-                MessageBox.Show($"Errore: {ex.Message}", "DisableSearchBoxSuggestions");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void AvviaProcessoDisabilitaRicercaInternet()
         {
             try
             {
-                // Percorso della chiave di registro
                 string registryPath = @"SOFTWARE\Policies\Microsoft\Windows\Explorer";
-                // Nome del valore da impostare
                 string valueName = "DisableSearchBoxSuggestions";
-                // Nuovo valore da impostare
                 string newValue = "1";
-
-                // Imposta il valore nella chiave di registro in entrambe le viste di registro
                 SetStringRegistryValue(registryPath, valueName, newValue, RegistryView.Registry64);
                 SetStringRegistryValue(registryPath, valueName, newValue, RegistryView.Registry32);
             }
             catch (Exception ex)
             {
-                // Gestisci eventuali eccezioni
-                MessageBox.Show($"Errore: {ex.Message}", "DisableSearchBoxSuggestions");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -469,38 +427,29 @@ namespace WinHubX.Forms.Settaggi
             if (!string.IsNullOrEmpty(zipFileUrl))
             {
                 string zipFilePath = Path.Combine(tempFolder, "resources.zip");
-
-                // Scarica il file ZIP
                 await ScaricaFile(zipFileUrl, zipFilePath);
-                await Task.Delay(1000); // Attesa di 1 secondo per garantire che il file sia stato scaricato
-
-                // Estrai il file .reg corrispondente
+                await Task.Delay(1000);
                 string regFilePath = EstraiFileReg(zipFilePath, regFileName);
                 if (regFilePath != null)
                 {
-                    // Esegui il file .reg
                     EseguiFileReg(regFilePath);
-                    await Task.Delay(3000); // Attesa di 1 secondo per garantire che il file .reg sia stato eseguito
+                    await Task.Delay(3000);
                 }
                 else
                 {
                     throw new FileNotFoundException($"File .reg '{regFileName}' non trovato nel file ZIP.");
                 }
-
-                // Elimina il file ZIP
                 if (File.Exists(zipFilePath))
                 {
                     File.Delete(zipFilePath);
-                    await Task.Delay(3000); // Attesa di 1 secondo dopo l'eliminazione del file ZIP
+                    await Task.Delay(3000);
                 }
-
-                // Elimina la cartella temporanea, se è vuota
                 if (Directory.Exists(tempFolder))
                 {
                     try
                     {
-                        Directory.Delete(tempFolder, true); // Elimina la cartella e tutto il suo contenuto
-                        await Task.Delay(3000); // Attesa di 1 secondo dopo l'eliminazione della cartella
+                        Directory.Delete(tempFolder, true);
+                        await Task.Delay(3000);
                     }
                     catch (IOException)
                     {
@@ -520,8 +469,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 var response = await client.GetStringAsync(jsonUrl);
                 var json = JObject.Parse(response);
-
-                // Restituisce l'URL del file ZIP dalla parte "PersonaTastoDestro"
                 return json["PersonaTastoDestro"]["PersoTastoDestro"].ToString();
             }
         }
@@ -530,13 +477,13 @@ namespace WinHubX.Forms.Settaggi
         {
             using (HttpClient client = new HttpClient())
             {
-                Directory.CreateDirectory(tempFolder); // Crea la cartella temporanea se non esiste
+                Directory.CreateDirectory(tempFolder);
                 using (var response = await client.GetAsync(url))
                 {
-                    response.EnsureSuccessStatusCode(); // Verifica che la richiesta sia andata a buon fine
+                    response.EnsureSuccessStatusCode();
                     using (var fs = new FileStream(filePath, FileMode.CreateNew))
                     {
-                        await response.Content.CopyToAsync(fs); // Scrive il contenuto del file ZIP
+                        await response.Content.CopyToAsync(fs);
                     }
                 }
             }
@@ -545,16 +492,14 @@ namespace WinHubX.Forms.Settaggi
         private string EstraiFileReg(string zipFilePath, string regFileName)
         {
             string extractedRegFilePath = Path.Combine(tempFolder, regFileName);
-
-            // Estrae solo il file .reg specificato dal file ZIP
             using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
             {
                 foreach (ZipArchiveEntry entry in archive.Entries)
                 {
                     if (entry.FullName.Equals(regFileName, StringComparison.OrdinalIgnoreCase))
                     {
-                        entry.ExtractToFile(extractedRegFilePath, true); // Estrae il file .reg
-                        return extractedRegFilePath; // Restituisce il percorso del file estratto
+                        entry.ExtractToFile(extractedRegFilePath, true);
+                        return extractedRegFilePath;
                     }
                 }
             }
@@ -565,14 +510,12 @@ namespace WinHubX.Forms.Settaggi
         private void EseguiFileReg(string filePath)
         {
             // Percorsi per le versioni di regedit
-            string regedit64Path = @"C:\Windows\System32\regedit.exe"; // Regedit per 64 bit
-            string regedit32Path = @"C:\Windows\SysWOW64\regedit.exe"; // Regedit per 32 bit
+            string regedit64Path = @"C:\Windows\System32\regedit.exe";
+            string regedit32Path = @"C:\Windows\SysWOW64\regedit.exe";
 
             try
             {
-                // Esegui il file .reg con regedit64
                 System.Diagnostics.Process.Start(regedit64Path, $"/s \"{filePath}\"");
-
             }
             catch (Exception)
             {
@@ -581,9 +524,7 @@ namespace WinHubX.Forms.Settaggi
 
             try
             {
-                // Esegui il file .reg con regedit32
                 System.Diagnostics.Process.Start(regedit32Path, $"/s \"{filePath}\"");
-
             }
             catch (Exception)
             {
@@ -595,8 +536,6 @@ namespace WinHubX.Forms.Settaggi
         private void AvviaProcessoDestroDefault()
         {
             string registryPath = @"SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}";
-
-            // Eliminare dal registro a 32 bit
             try
             {
                 using (RegistryKey key32 = Registry.CurrentUser.OpenSubKey(registryPath, true))
@@ -604,7 +543,6 @@ namespace WinHubX.Forms.Settaggi
                     if (key32 != null)
                     {
                         Registry.CurrentUser.DeleteSubKeyTree(registryPath, false);
-
                     }
                     else
                     {
@@ -620,8 +558,6 @@ namespace WinHubX.Forms.Settaggi
             {
 
             }
-
-            // Eliminare dal registro a 64 bit
             try
             {
                 using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
@@ -653,16 +589,13 @@ namespace WinHubX.Forms.Settaggi
         private void AvviaProcessoDestroLegacy()
         {
             string registryPath = @"SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32";
-
-            // Aggiungere al registro a 32 bit
             try
             {
                 using (RegistryKey key32 = Registry.CurrentUser.CreateSubKey(registryPath))
                 {
                     if (key32 != null)
                     {
-                        // Imposta il valore predefinito
-                        key32.SetValue("", "", RegistryValueKind.String); // Valore predefinito vuoto
+                        key32.SetValue("", "", RegistryValueKind.String);
 
                     }
                     else
@@ -679,17 +612,13 @@ namespace WinHubX.Forms.Settaggi
             {
 
             }
-
-            // Aggiungere al registro a 64 bit
             try
             {
                 using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64).CreateSubKey(registryPath))
                 {
                     if (key64 != null)
                     {
-                        // Imposta il valore predefinito
-                        key64.SetValue("", "", RegistryValueKind.String); // Valore predefinito vuoto
-
+                        key64.SetValue("", "", RegistryValueKind.String);
                     }
                     else
                     {
@@ -845,10 +774,8 @@ namespace WinHubX.Forms.Settaggi
             radio_abilicopilot.Checked = false;
             radio_abilitaendtask.Checked = false;
             radio_disabilitaendtask.Checked = false;
-
             try
             {
-                // Try to delete the registry value
                 RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\WinHubX\Personalizzazione", true);
             }
             catch (Exception)
@@ -902,7 +829,6 @@ namespace WinHubX.Forms.Settaggi
             radio_disabilitaendtask.Checked = GetCheckboxState("DisabilEndTask");
         }
 
-
         public void SetStringRegistryValue(string path, string valueName, string value, RegistryView view)
         {
             using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, view))
@@ -931,91 +857,17 @@ namespace WinHubX.Forms.Settaggi
                     {
                         try
                         {
-                            // Elimina il valore specificato
                             key.DeleteValue(valueName, throwOnMissingValue: false);
                         }
                         catch (ArgumentException)
                         {
-                            // Il valore non esiste; non fare nulla
+
                         }
                     }
                     else
                     {
 
                     }
-                }
-            }
-        }
-        public void DeleteRegistryKey(string registryPath, string valueName, RegistryView view)
-        {
-            // Apri la chiave di registro con la vista specificata
-            using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).OpenSubKey(registryPath, writable: true))
-            {
-                if (key != null)
-                {
-                    // Elimina il valore specificato
-                    key.DeleteValue(valueName, throwOnMissingValue: false);
-                }
-                else
-                {
-
-                }
-            }
-        }
-
-        public void RemoveRegistryKey(string registryPath, string subKeyName, RegistryView view)
-        {
-            using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view).OpenSubKey(registryPath, writable: true))
-            {
-                if (key != null)
-                {
-                    // Elimina la chiave 'command' se esiste
-                    if (key.OpenSubKey(subKeyName) != null)
-                    {
-                        key.DeleteSubKey(subKeyName, throwOnMissingSubKey: false);
-                    }
-
-                    // Elimina la chiave principale se non contiene altre sottocchiavi
-                    if (key.SubKeyCount == 0)
-                    {
-                        RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view).DeleteSubKey(registryPath, throwOnMissingSubKey: false);
-                    }
-                }
-                else
-                {
-
-                }
-            }
-        }
-
-        public void SetRegistryValues(string registryPath, string[] valueNames, string[] values, string commandValue, RegistryView view)
-        {
-            using (RegistryKey key = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, view).OpenSubKey(registryPath, writable: true))
-            {
-                if (key != null)
-                {
-                    // Imposta i valori standard
-                    for (int i = 0; i < valueNames.Length; i++)
-                    {
-                        key.SetValue(valueNames[i], values[i], RegistryValueKind.String);
-                    }
-
-                    // Imposta il valore della chiave command
-                    using (RegistryKey commandKey = key.CreateSubKey("command"))
-                    {
-                        if (commandKey != null)
-                        {
-                            commandKey.SetValue("", commandValue, RegistryValueKind.String);
-                        }
-                        else
-                        {
-
-                        }
-                    }
-                }
-                else
-                {
-
                 }
             }
         }
@@ -1108,7 +960,7 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("powershellno.reg");
                 SetCheckboxState("EliminaPowershell", radio_eliminapowershell.Checked);
-  
+
                 opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
@@ -1117,12 +969,10 @@ namespace WinHubX.Forms.Settaggi
             {
                 if (isSSD)
                 {
-                    // Se è un SSD o SSD NVMe, esegui ottimizzazione per SSD
                     AvviaProcessoConRegFile("ottimizzazioni_ssd.reg");
                 }
                 else
                 {
-                    // Se è un HDD, esegui ottimizzazione per HDD
                     AvviaProcessoConRegFile("ottimizzazioni_hdd.reg");
                 }
                 SetCheckboxState("OttimazzazioneWindows", radio_ottimizzawindows.Checked);
@@ -1244,7 +1094,14 @@ namespace WinHubX.Forms.Settaggi
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             RestartExplorer();
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         private void SetCheckboxState(string itemName, bool isChecked)

@@ -21,37 +21,29 @@ namespace WinHubX.Forms.Base
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressForm));
             progressBar = new ProgressBar();
             lblStatus = new Label();
             SuspendLayout();
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(12, 40);
+            resources.ApplyResources(progressBar, "progressBar");
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(260, 23);
-            progressBar.TabIndex = 0;
             // 
             // lblStatus
             // 
-            lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(12, 9);
+            resources.ApplyResources(lblStatus, "lblStatus");
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(121, 15);
-            lblStatus.TabIndex = 1;
-            lblStatus.Text = "Operazione in corso...";
             // 
             // ProgressForm
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(284, 75);
             Controls.Add(lblStatus);
             Controls.Add(progressBar);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "ProgressForm";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "In corso...";
             ResumeLayout(false);
             PerformLayout();
         }

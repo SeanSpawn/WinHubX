@@ -1,10 +1,12 @@
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WinHubX.Forms.Base;
 using WinHubX.Forms.ReinstallaAPP;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace WinHubX
 {
@@ -14,6 +16,7 @@ namespace WinHubX
         private readonly List<Button> bottoni = new();
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CAPTION = 0x2;
+        private bool isLoading = true;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
@@ -25,7 +28,7 @@ namespace WinHubX
             else
                 base.WndProc(ref m);
         }
-        private NotifyIcon notifyIcon; // Dichiara la variabile a livello di classe
+        private NotifyIcon notifyIcon;
         private ContextMenuStrip trayIconContextMenu;
         public Form1()
         {
@@ -35,36 +38,28 @@ namespace WinHubX
             LoadForm(new FormHome(), btnHome, "Home");
             CheckForUpdatesOnStartup();
             InitializeTrayIcon();
+            LanguageManager.LoadTranslations();
         }
         private void ShowFromTray()
         {
-            // Logica per mostrare la finestra principale
             this.Show();
             this.WindowState = FormWindowState.Normal;
             this.Activate();
-            notifyIcon.Visible = false; // Nascondi l'icona del tray quando la finestra è visibile
+            notifyIcon.Visible = false;
         }
 
         private void InitializeTrayIcon()
         {
             Icon appIcon = Properties.Resources.icoLogoWhite;
-
-            // Inizializza l'icona del system tray
             notifyIcon = new NotifyIcon
             {
-                Icon = appIcon,  // Imposta l'icona personalizzata
-                Visible = false   // Rendi l'icona invisibile finché non viene minimizzata
+                Icon = appIcon,
+                Visible = false
             };
-
-            // Aggiungi un menu contestuale per l'icona
             trayIconContextMenu = new ContextMenuStrip();
             trayIconContextMenu.Items.Add("Apri", null, (s, e) => ShowFromTray());
             trayIconContextMenu.Items.Add("Esci", null, (s, e) => Application.Exit());
-
-            // Assegna il ContextMenuStrip all'icona
             notifyIcon.ContextMenuStrip = trayIconContextMenu;
-
-            // Gestisci il doppio clic sull'icona
             notifyIcon.DoubleClick += (s, e) => ShowFromTray();
         }
 
@@ -94,7 +89,7 @@ namespace WinHubX
         private async Task CheckForUpdatesAsync()
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-            string currentVersion = "2.4.2.2";
+            string currentVersion = "2.4.2.3";
             try
             {
                 var configResponse = await client.GetStringAsync(configUrl);
@@ -105,17 +100,22 @@ namespace WinHubX
                 dynamic updateInfo = JsonConvert.DeserializeObject(response);
                 string latestVersion = (string)updateInfo.version;
                 string updateUrl = (string)updateInfo.updateUrl;
-
-                // Ora 'releaseNotes' è già un array, non è necessario fare il ToObject
                 var releaseNotes = updateInfo.releaseNotes;
                 string releaseNotesText = string.Join("\n", releaseNotes);
 
                 if (latestVersion != currentVersion)
                 {
-                    // Mostra prima le release notes e poi la domanda per l'aggiornamento
-                    DialogResult dialogResult = MessageBox.Show($"Nuova versione ({latestVersion}) disponibile.\n\nChangelog:\n{releaseNotesText}\n\nVuoi aggiornare?",
-                                                                "Aggiornamento Disponibile",
-                                                                MessageBoxButtons.YesNo);
+                    string titolo = LanguageManager.GetTranslation("Form1", "newversion");
+                    string messaggio = string.Format(
+                        LanguageManager.GetTranslation("Form1", "newversion_message"),
+                        latestVersion, releaseNotesText
+                    );
+
+                    DialogResult dialogResult = MessageBox.Show(
+                        messaggio,
+                        titolo,
+                        MessageBoxButtons.YesNo
+                    );
 
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -125,7 +125,7 @@ namespace WinHubX
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante il controllo degli aggiornamenti: {ex.Message}", "Errore");
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -148,7 +148,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore durante l'aggiornamento: {ex.Message}", "Errore");
+                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -180,10 +180,74 @@ namespace WinHubX
         private void btnOffice_Click(object sender, EventArgs e) => LoadForm(new FormOffice(this), btnOffice, "Office");
         private void btnSettaggi_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Vuoi creare un punto di ripristino prima di accedere alle impostazioni?",
-                                         "Punto di Ripristino",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
+            {
+                if (key != null)
+                {
+                    object value = key.GetValue("SettaggiRiavviati");
+                    if (value != null && value.ToString() == "1")
+                    {
+                        puntodiripristino();
+                        return;
+                    }
+                }
+            }
+            string titolo = LanguageManager.GetTranslation("Form1", "reboot_title");
+            string messaggio = LanguageManager.GetTranslation("Form1", "reboot_message");
+
+            var result = MessageBox.Show(
+                messaggio,
+                titolo,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c sc config UCPD start=disabled && schtasks /change /Enable /TN \"\\Microsoft\\Windows\\AppxDeploymentClient\\UCPD velocity\" && shutdown /r /t 0",
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                });
+
+                using (RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\WinHubX"))
+                {
+                    regKey.SetValue("SettaggiRiavviati", 1);
+                }
+                Application.Exit();
+            }
+            else
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\WinHubX"))
+                {
+                    if (key != null)
+                    {
+                        object value = key.GetValue("SettaggiRiavviati");
+                        if (value != null && value.ToString() == "0")
+                        {
+                            MessageBox.Show("Per entrare in questo menù necessito dell'accesso al registro");
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void puntodiripristino()
+        {
+            string titolo = LanguageManager.GetTranslation("Form1", "restorepoint_title");
+            string messaggio = LanguageManager.GetTranslation("Form1", "restorepoint_message");
+
+            var result = MessageBox.Show(
+                messaggio,
+                titolo,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
             if (result == DialogResult.Yes)
             {
@@ -234,7 +298,7 @@ if ($existingRestorePoints.Count -eq 0) {
                         FileName = "powershell.exe",
                         Arguments = $"-ExecutionPolicy Bypass -NoProfile -File \"{tempScriptPath}\"",
                         UseShellExecute = true,
-                        Verb = "runas" // Esegui come amministratore
+                        Verb = "runas"
                     };
 
                     Process.Start(psi)?.WaitForExit();
@@ -253,7 +317,7 @@ if ($existingRestorePoints.Count -eq 0) {
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Errore durante la creazione del punto di ripristino:\n" + ex.Message, "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -270,13 +334,11 @@ if ($existingRestorePoints.Count -eq 0) {
         {
             if (Properties.Settings.Default.MinimizeToTray)
             {
-                // Minimizza nella system tray
-                this.Hide(); // La finestra non è visibile, ma l'icona della system tray sarà visibile
-                notifyIcon.Visible = true; // Assicurati che l'icona del tray sia visibile
+                this.Hide();
+                notifyIcon.Visible = true;
             }
             else
             {
-                // Minimizza sulla taskbar
                 WindowState = FormWindowState.Minimized;
             }
         }
@@ -298,6 +360,100 @@ if ($existingRestorePoints.Count -eq 0) {
             else
             {
                 if (notifyIcon != null) notifyIcon.Visible = false;
+            }
+        }
+
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem == null) return;
+            string languageCode = "it";
+            string selectedLanguage = comboBox1.SelectedItem.ToString();
+            if (selectedLanguage == "English")
+            {
+                languageCode = "en";
+            }
+            Properties.Settings.Default.Language = languageCode;
+            Properties.Settings.Default.Save();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCode);
+            Controls.Clear();
+            InitializeComponent();
+            LoadForm(new FormHome(), btnHome, "Home");
+            string savedLanguage = Properties.Settings.Default.Language ?? "it";
+            LanguageManager.SetLanguage(savedLanguage);
+            comboBox1.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            if (savedLanguage == "it")
+            {
+                comboBox1.SelectedItem = "Italiano";
+                pictureBox3.Image = Properties.Resources.italias;
+            }
+            else if (savedLanguage == "en")
+            {
+                comboBox1.SelectedItem = "English";
+                pictureBox3.Image = Properties.Resources.englisj;
+            }
+
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            if (isLoading == false)
+            {
+                CheckForUpdatesOnStartup();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            if (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en")
+            {
+                comboBox1.SelectedItem = "English";
+            }
+            else
+            {
+                comboBox1.SelectedItem = "Italiano";
+            }
+            CheckForUpdatesOnStartup();
+            isLoading = false;
+            string savedLanguage = Properties.Settings.Default.Language ?? "it";
+            comboBox1.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            if (savedLanguage == "it")
+            {
+                comboBox1.SelectedItem = "Italiano";
+                pictureBox3.Image = Properties.Resources.italias;
+            }
+            else if (savedLanguage == "en")
+            {
+                comboBox1.SelectedItem = "English";
+                pictureBox3.Image = Properties.Resources.englisj;
+            }
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            string currentLanguage = Properties.Settings.Default.Language ?? "it";
+            string newLanguage = currentLanguage == "it" ? "en" : "it";
+            Properties.Settings.Default.Language = newLanguage;
+            Properties.Settings.Default.Save();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(newLanguage);
+            Controls.Clear();
+            InitializeComponent();
+            LoadForm(new FormHome(), btnHome, "Home");
+            LanguageManager.SetLanguage(newLanguage);
+            comboBox1.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            if (newLanguage == "it")
+            {
+                comboBox1.SelectedItem = "Italiano";
+                pictureBox3.Image = Properties.Resources.italias;
+            }
+            else if (newLanguage == "en")
+            {
+                comboBox1.SelectedItem = "English";
+                pictureBox3.Image = Properties.Resources.englisj;
+            }
+
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            if (!isLoading)
+            {
+                CheckForUpdatesOnStartup();
             }
         }
     }

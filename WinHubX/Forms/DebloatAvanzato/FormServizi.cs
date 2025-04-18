@@ -38,13 +38,13 @@ namespace WinHubX.Forms.DebloatAvanzato
                     {
                         var servizio = serviziRoot.service[i];
                         DisabilitaServizi.Items.Add(servizio.Name);
-                        DisabilitaServizi.SetItemChecked(i, true); // Spunta l'elemento
+                        DisabilitaServizi.SetItemChecked(i, true);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Errore nel caricamento dei servizi: " + ex.Message);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,7 +56,7 @@ namespace WinHubX.Forms.DebloatAvanzato
 
             progressBar1.Maximum = totalSteps;
             progressBar1.Value = 0;
-            richTextBox1.Clear(); // Pulisce il RichTextBox all'inizio
+            richTextBox1.Clear();
 
             await EseguiModificaServiziAsync();
         }
@@ -93,7 +93,7 @@ namespace WinHubX.Forms.DebloatAvanzato
                                     ProcessStartInfo psi = new ProcessStartInfo
                                     {
                                         FileName = "powershell.exe",
-                                        Arguments = $"-Command \"{stopComando}; {comando}\"", // Aggiungi il comando per fermare il servizio
+                                        Arguments = $"-Command \"{stopComando}; {comando}\"",
                                         Verb = "runas",
                                         UseShellExecute = false,
                                         CreateNoWindow = true,
@@ -109,20 +109,18 @@ namespace WinHubX.Forms.DebloatAvanzato
 
                                         if (proc.ExitCode == 0)
                                         {
-                                            // Formatta il messaggio di successo come richiesto
                                             return $"Servizio \"{servizio.Name}\" → ✅ Modificato con successo";
                                         }
                                         else
                                         {
-                                            // Estrai solo il messaggio di errore principale
                                             string errorMessage = error.Split(new[] { "\r\n" }, StringSplitOptions.None).FirstOrDefault() ?? error;
-                                            return $"❌ Errore: {errorMessage}";
+                                            return $"❌ Error: {errorMessage}";
                                         }
                                     }
                                 }
                                 catch (Exception ex)
                                 {
-                                    return $"❌ Errore: {ex.Message}";
+                                    return $"❌ Error: {ex.Message}";
                                 }
                             });
 
@@ -140,7 +138,7 @@ namespace WinHubX.Forms.DebloatAvanzato
             {
                 richTextBox1.Invoke((MethodInvoker)(() =>
                 {
-                    richTextBox1.AppendText($"❌ Errore nel recupero dei dati");
+                    richTextBox1.AppendText($"❌ Error");
                 }));
             }
         }

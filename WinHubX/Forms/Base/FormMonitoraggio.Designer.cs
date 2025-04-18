@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMonitoraggio));
             pic_termcpu = new PictureBox();
             pic_termgpu = new PictureBox();
             labelCpuTemp = new Label();
@@ -50,169 +51,114 @@
             // 
             // pic_termcpu
             // 
+            resources.ApplyResources(pic_termcpu, "pic_termcpu");
             pic_termcpu.Image = Properties.Resources.term_giallo;
-            pic_termcpu.Location = new Point(628, 286);
             pic_termcpu.Name = "pic_termcpu";
-            pic_termcpu.Size = new Size(57, 112);
-            pic_termcpu.SizeMode = PictureBoxSizeMode.Zoom;
-            pic_termcpu.TabIndex = 3;
             pic_termcpu.TabStop = false;
             // 
             // pic_termgpu
             // 
+            resources.ApplyResources(pic_termgpu, "pic_termgpu");
             pic_termgpu.Image = Properties.Resources.term_giallo;
-            pic_termgpu.Location = new Point(108, 286);
             pic_termgpu.Name = "pic_termgpu";
-            pic_termgpu.Size = new Size(57, 112);
-            pic_termgpu.SizeMode = PictureBoxSizeMode.Zoom;
-            pic_termgpu.TabIndex = 4;
             pic_termgpu.TabStop = false;
             // 
             // labelCpuTemp
             // 
-            labelCpuTemp.AutoSize = true;
-            labelCpuTemp.Location = new Point(633, 247);
+            resources.ApplyResources(labelCpuTemp, "labelCpuTemp");
             labelCpuTemp.Name = "labelCpuTemp";
-            labelCpuTemp.Size = new Size(38, 15);
-            labelCpuTemp.TabIndex = 5;
-            labelCpuTemp.Text = "label1";
             // 
             // labelGpuTemp
             // 
-            labelGpuTemp.AutoSize = true;
-            labelGpuTemp.Location = new Point(108, 247);
+            resources.ApplyResources(labelGpuTemp, "labelGpuTemp");
             labelGpuTemp.Name = "labelGpuTemp";
-            labelGpuTemp.Size = new Size(38, 15);
-            labelGpuTemp.TabIndex = 6;
-            labelGpuTemp.Text = "label2";
             // 
             // BarRAM
             // 
-            BarRAM.Location = new Point(67, 98);
+            resources.ApplyResources(BarRAM, "BarRAM");
             BarRAM.Maximum = 100;
             BarRAM.Minimum = 0;
             BarRAM.Name = "BarRAM";
-            BarRAM.Size = new Size(135, 133);
-            BarRAM.TabIndex = 7;
-            BarRAM.Text = "circularProgressBar1";
             BarRAM.Value = 30;
             // 
             // BarCPU
             // 
-            BarCPU.Location = new Point(594, 98);
+            resources.ApplyResources(BarCPU, "BarCPU");
             BarCPU.Maximum = 100;
             BarCPU.Minimum = 0;
             BarCPU.Name = "BarCPU";
-            BarCPU.Size = new Size(135, 133);
-            BarCPU.TabIndex = 9;
-            BarCPU.Text = "circularProgressBar2";
             BarCPU.Value = 30;
             // 
             // swapButton1
             // 
-            swapButton1.AutoSize = true;
-            swapButton1.Location = new Point(456, 24);
-            swapButton1.MinimumSize = new Size(45, 24);
+            resources.ApplyResources(swapButton1, "swapButton1");
             swapButton1.Name = "swapButton1";
             swapButton1.OffBackColor = Color.Gray;
             swapButton1.OffToggleColor = Color.Gainsboro;
             swapButton1.OnBackColor = Color.MediumSlateBlue;
             swapButton1.OnToggleColor = Color.WhiteSmoke;
-            swapButton1.Size = new Size(45, 24);
-            swapButton1.TabIndex = 10;
             swapButton1.UseVisualStyleBackColor = true;
             swapButton1.CheckedChanged += swapButton1_CheckedChanged;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(113, 70);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(33, 15);
-            label1.TabIndex = 11;
-            label1.Text = "RAM";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(633, 70);
+            resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            label2.Size = new Size(30, 15);
-            label2.TabIndex = 12;
-            label2.Text = "CPU";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(184, 29);
+            resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            label3.Size = new Size(138, 15);
-            label3.TabIndex = 13;
-            label3.Text = "Attivare il monitoraggio?";
             // 
             // btn_pulisciram
             // 
-            btn_pulisciram.FlatStyle = FlatStyle.Flat;
-            btn_pulisciram.Location = new Point(335, 148);
+            resources.ApplyResources(btn_pulisciram, "btn_pulisciram");
             btn_pulisciram.Name = "btn_pulisciram";
-            btn_pulisciram.Size = new Size(125, 32);
-            btn_pulisciram.TabIndex = 14;
-            btn_pulisciram.Text = "Pulisci RAM";
             btn_pulisciram.UseVisualStyleBackColor = true;
             btn_pulisciram.Click += btn_pulisciram_Click;
             // 
             // btn_puliscicpu
             // 
-            btn_puliscicpu.FlatStyle = FlatStyle.Flat;
-            btn_puliscicpu.Location = new Point(335, 286);
+            resources.ApplyResources(btn_puliscicpu, "btn_puliscicpu");
             btn_puliscicpu.Name = "btn_puliscicpu";
-            btn_puliscicpu.Size = new Size(125, 32);
-            btn_puliscicpu.TabIndex = 15;
-            btn_puliscicpu.Text = "Pulisci CPU";
             btn_puliscicpu.UseVisualStyleBackColor = true;
             btn_puliscicpu.Click += btn_puliscicpu_Click;
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(radioButton_taskbar);
             panel1.Controls.Add(radioButton_notifica);
-            panel1.Location = new Point(709, 7);
             panel1.Name = "panel1";
-            panel1.Size = new Size(174, 63);
-            panel1.TabIndex = 16;
             // 
             // radioButton_taskbar
             // 
-            radioButton_taskbar.AutoSize = true;
+            resources.ApplyResources(radioButton_taskbar, "radioButton_taskbar");
             radioButton_taskbar.ForeColor = Color.White;
-            radioButton_taskbar.Location = new Point(7, 37);
             radioButton_taskbar.Name = "radioButton_taskbar";
-            radioButton_taskbar.Size = new Size(129, 19);
-            radioButton_taskbar.TabIndex = 1;
             radioButton_taskbar.TabStop = true;
-            radioButton_taskbar.Text = "Nascondi in taskbar";
             radioButton_taskbar.UseVisualStyleBackColor = true;
             radioButton_taskbar.CheckedChanged += radioButton_taskbar_CheckedChanged;
             // 
             // radioButton_notifica
             // 
-            radioButton_notifica.AutoSize = true;
+            resources.ApplyResources(radioButton_notifica, "radioButton_notifica");
             radioButton_notifica.ForeColor = Color.White;
-            radioButton_notifica.Location = new Point(6, 6);
             radioButton_notifica.Name = "radioButton_notifica";
-            radioButton_notifica.Size = new Size(169, 19);
-            radioButton_notifica.TabIndex = 0;
             radioButton_notifica.TabStop = true;
-            radioButton_notifica.Text = "Nascondi in area di notifica";
             radioButton_notifica.UseVisualStyleBackColor = true;
             radioButton_notifica.CheckedChanged += radioButton_notifica_CheckedChanged;
             // 
             // FormMonitoraggio
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(885, 419);
             Controls.Add(panel1);
             Controls.Add(btn_puliscicpu);
             Controls.Add(btn_pulisciram);
@@ -228,7 +174,6 @@
             Controls.Add(pic_termcpu);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMonitoraggio";
-            Text = "<";
             FormClosing += FormMonitoraggio_FormClosing;
             Load += FormMonitoraggio_Load;
             ((System.ComponentModel.ISupportInitialize)pic_termcpu).EndInit();

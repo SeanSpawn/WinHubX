@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUtility));
             btnBack = new Button();
             DisabilitaUtility = new CheckedListBox();
             AbilitaUtility = new CheckedListBox();
@@ -42,92 +43,70 @@
             // 
             // btnBack
             // 
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Image = Properties.Resources.pngBackArrow;
-            btnBack.Location = new Point(10, 9);
-            btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(48, 41);
-            btnBack.TabIndex = 7;
+            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
             // DisabilitaUtility
             // 
+            resources.ApplyResources(DisabilitaUtility, "DisabilitaUtility");
             DisabilitaUtility.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaUtility.BorderStyle = BorderStyle.None;
             DisabilitaUtility.Cursor = Cursors.Hand;
-            DisabilitaUtility.Font = new Font("Segoe UI", 9.5F);
             DisabilitaUtility.ForeColor = Color.White;
             DisabilitaUtility.FormattingEnabled = true;
-            DisabilitaUtility.Items.AddRange(new object[] { "Disabilita Background App", "Disabilita Feedback", "Disabilita Advertising ID", "Disabilita Filtro Smart Screen", "Disabilita Desktop Remoto", "Disabilita attivazione del Numlock in avvio", "Disabilita News e Interessi", "Disabilita Index File", "Disabilita Edge PDF", "Disabilita Mappe", "Disabilita UWP apps", "Disabilita Esperienze Personalizzate Microsoft", "Disabilita Storage Check", "Disabilita Superfetch", "Disabilita Ibernazione", "Disabilita Ottimizzazione FullScreen", "Disabilita Avvio Rapido", "Normal Bandwidth" });
-            DisabilitaUtility.Location = new Point(79, 32);
+            DisabilitaUtility.Items.AddRange(new object[] { resources.GetString("DisabilitaUtility.Items"), resources.GetString("DisabilitaUtility.Items1"), resources.GetString("DisabilitaUtility.Items2"), resources.GetString("DisabilitaUtility.Items3"), resources.GetString("DisabilitaUtility.Items4"), resources.GetString("DisabilitaUtility.Items5"), resources.GetString("DisabilitaUtility.Items6"), resources.GetString("DisabilitaUtility.Items7"), resources.GetString("DisabilitaUtility.Items8"), resources.GetString("DisabilitaUtility.Items9"), resources.GetString("DisabilitaUtility.Items10"), resources.GetString("DisabilitaUtility.Items11"), resources.GetString("DisabilitaUtility.Items12"), resources.GetString("DisabilitaUtility.Items13"), resources.GetString("DisabilitaUtility.Items14"), resources.GetString("DisabilitaUtility.Items15"), resources.GetString("DisabilitaUtility.Items16"), resources.GetString("DisabilitaUtility.Items17") });
             DisabilitaUtility.Name = "DisabilitaUtility";
-            DisabilitaUtility.Size = new Size(346, 380);
-            DisabilitaUtility.TabIndex = 8;
+            toolTip1.SetToolTip(DisabilitaUtility, resources.GetString("DisabilitaUtility.ToolTip"));
             // 
             // AbilitaUtility
             // 
+            resources.ApplyResources(AbilitaUtility, "AbilitaUtility");
             AbilitaUtility.BackColor = Color.FromArgb(37, 38, 39);
             AbilitaUtility.BorderStyle = BorderStyle.None;
             AbilitaUtility.Cursor = Cursors.Hand;
-            AbilitaUtility.Font = new Font("Segoe UI", 9.5F);
             AbilitaUtility.ForeColor = Color.White;
             AbilitaUtility.FormattingEnabled = true;
-            AbilitaUtility.Items.AddRange(new object[] { "Abilita Background App", "Abilita Feedback", "Abilita Advertising ID", "Abilita Filtro Smart Screen", "Abilita Desktop Remoto", "Abilita attivazione del Numlock in avvio", "Abilita News e Interessi", "Abilita Index File", "Abilita Risparmio Energetico Personalizzato", "Abilita Mappe", "Abilita UWP apps", "Abilita Esperienze Personalizzate Microsoft", "Abilita Storage Check", "Abilita Superfetch", "Abilita Ibernazione", "Abilita Ottimizzazione FullScreen", "Abilita Avvio Rapido", "All Bandwidth", "Migliora uso SSD" });
-            AbilitaUtility.Location = new Point(429, 32);
+            AbilitaUtility.Items.AddRange(new object[] { resources.GetString("AbilitaUtility.Items"), resources.GetString("AbilitaUtility.Items1"), resources.GetString("AbilitaUtility.Items2"), resources.GetString("AbilitaUtility.Items3"), resources.GetString("AbilitaUtility.Items4"), resources.GetString("AbilitaUtility.Items5"), resources.GetString("AbilitaUtility.Items6"), resources.GetString("AbilitaUtility.Items7"), resources.GetString("AbilitaUtility.Items8"), resources.GetString("AbilitaUtility.Items9"), resources.GetString("AbilitaUtility.Items10"), resources.GetString("AbilitaUtility.Items11"), resources.GetString("AbilitaUtility.Items12"), resources.GetString("AbilitaUtility.Items13"), resources.GetString("AbilitaUtility.Items14"), resources.GetString("AbilitaUtility.Items15"), resources.GetString("AbilitaUtility.Items16"), resources.GetString("AbilitaUtility.Items17"), resources.GetString("AbilitaUtility.Items18") });
             AbilitaUtility.Name = "AbilitaUtility";
-            AbilitaUtility.Size = new Size(309, 380);
-            AbilitaUtility.TabIndex = 9;
+            toolTip1.SetToolTip(AbilitaUtility, resources.GetString("AbilitaUtility.ToolTip"));
             // 
             // btnAvviaSelezionatiUti
             // 
+            resources.ApplyResources(btnAvviaSelezionatiUti, "btnAvviaSelezionatiUti");
             btnAvviaSelezionatiUti.Cursor = Cursors.Hand;
             btnAvviaSelezionatiUti.FlatAppearance.BorderSize = 0;
-            btnAvviaSelezionatiUti.FlatStyle = FlatStyle.Flat;
-            btnAvviaSelezionatiUti.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAvviaSelezionatiUti.ForeColor = Color.White;
-            btnAvviaSelezionatiUti.Location = new Point(735, 11);
-            btnAvviaSelezionatiUti.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionatiUti.Name = "btnAvviaSelezionatiUti";
-            btnAvviaSelezionatiUti.Size = new Size(154, 74);
-            btnAvviaSelezionatiUti.TabIndex = 23;
-            btnAvviaSelezionatiUti.Text = "Avvia Selezionati";
-            btnAvviaSelezionatiUti.TextImageRelation = TextImageRelation.ImageBeforeText;
+            toolTip1.SetToolTip(btnAvviaSelezionatiUti, resources.GetString("btnAvviaSelezionatiUti.ToolTip"));
             btnAvviaSelezionatiUti.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiUti.Click += btnAvviaSelezionatiUti_Click;
             // 
             // lblWin7Lite
             // 
-            lblWin7Lite.AutoSize = true;
-            lblWin7Lite.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(lblWin7Lite, "lblWin7Lite");
             lblWin7Lite.ForeColor = Color.White;
-            lblWin7Lite.Location = new Point(79, -2);
             lblWin7Lite.Name = "lblWin7Lite";
-            lblWin7Lite.Size = new Size(218, 31);
-            lblWin7Lite.TabIndex = 24;
-            lblWin7Lite.Text = "Disabilita Utility";
+            toolTip1.SetToolTip(lblWin7Lite, resources.GetString("lblWin7Lite.ToolTip"));
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
-            label1.Location = new Point(429, -2);
             label1.Name = "label1";
-            label1.Size = new Size(178, 31);
-            label1.TabIndex = 25;
-            label1.Text = "Abilita Utility";
+            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(12, 428);
+            resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(877, 23);
-            progressBar1.TabIndex = 26;
+            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -139,10 +118,9 @@
             // 
             // FormUtility
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(901, 458);
             Controls.Add(progressBar1);
             Controls.Add(label1);
             Controls.Add(lblWin7Lite);
@@ -151,9 +129,8 @@
             Controls.Add(DisabilitaUtility);
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormUtility";
-            Text = "FormUtility";
+            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

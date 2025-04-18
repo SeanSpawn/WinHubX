@@ -62,7 +62,7 @@ namespace WinHubX
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nel caricamento del JSON: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,8 +98,8 @@ namespace WinHubX
             if (e.Button == MouseButtons.Right)
             {
                 Clipboard.SetText(sha256_2019);
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -115,7 +115,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -141,8 +141,8 @@ namespace WinHubX
             if (e.Button == MouseButtons.Right)
             {
                 Clipboard.SetText(sha256_2021);
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("FormOffice", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("FormOffice", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -158,7 +158,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -183,8 +183,8 @@ namespace WinHubX
             if (e.Button == MouseButtons.Right)
             {
                 Clipboard.SetText(sha256_365);
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("FormOffice", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("FormOffice", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -200,7 +200,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -227,8 +227,8 @@ namespace WinHubX
             if (e.Button == MouseButtons.Right)
             {
                 Clipboard.SetText(sha256_2024);
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("FormOffice", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("FormOffice", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -244,7 +244,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -256,36 +256,34 @@ namespace WinHubX
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
             string primaryURL = string.Empty;
-
-            // Imposta la sicurezza TLS per la connessione
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             try
             {
-                // Controlla la connessione a Internet
                 if (IsInternetAvailable())
                 {
-                    // Ottieni il contenuto JSON da URL
                     using (HttpClient client = new HttpClient())
                     {
                         var jsonResponse = await client.GetStringAsync(configUrl);
                         var jsonObject = JObject.Parse(jsonResponse);
                         primaryURL = jsonObject["AttivatoreOffice"]["primaryURL"].ToString();
                     }
-
-                    // Avvia il comando HWID_Activation.cmd dal link ottenuto
                     await ExecuteScriptFromUrl(primaryURL);
                 }
                 else
                 {
-                    // Se non c'è connessione, usa la risorsa locale
-                    MessageBox.Show("Connessione Internet non disponibile. Utilizzo del file di attivazione locale.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        LanguageManager.GetTranslation("Global", "nointernet"),
+                        "Errore",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     ExtractAndExecuteLocalScript();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'attivazione: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -307,13 +305,13 @@ namespace WinHubX
                     {
                         FileName = tempFilePath,
                         UseShellExecute = true,
-                        Verb = "runas" // Esegui come amministratore se necessario
+                        Verb = "runas"
                     });
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'esecuzione del comando: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -337,35 +335,25 @@ namespace WinHubX
         {
             try
             {
-                // Ottieni il percorso Documenti dell'utente
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string scriptPath = Path.Combine(documentsPath, "TSforge_Activation.cmd");
-
-                // Estrai il file dalla risorsa e salvalo in Documenti
                 byte[] scriptBytes = Properties.Resources.TSforge_Activation_Office;
 
-                // Scrivi i byte su un file nella cartella Documenti
                 File.WriteAllBytes(scriptPath, scriptBytes);
-
-                // Esegui il file CMD estratto
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = scriptPath,
                     UseShellExecute = true,
-                    Verb = "runas" // Esegui come amministratore se necessario
+                    Verb = "runas"
                 });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'estrazione o l'esecuzione del file locale: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
 
-        private void btn2021Online_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnScrubber_Click(object sender, EventArgs e)
         {
@@ -375,24 +363,24 @@ namespace WinHubX
                 string resourcePath = $"{assemblyName}.Resources.WinHubXOfficeScrubber.ps1";
                 byte[] exeBytes = LoadEmbeddedResource(resourcePath);
                 string ps1FilePath = Path.Combine(Path.GetTempPath(), "WinHubXOfficeScrubber.ps1");
-
-                // Scrivi il file PowerShell nella cartella temporanea
                 File.WriteAllBytes(ps1FilePath, exeBytes);
-
-                // Controlla se il file è stato scritto correttamente
                 if (File.Exists(ps1FilePath))
                 {
                     StartPowerShell(ps1FilePath);
                 }
                 else
                 {
-                    MessageBox.Show($"Il file {ps1FilePath} non è stato estratto correttamente.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        string.Format(LanguageManager.GetTranslation("FormOffice", "fileextracterror"), ps1FilePath),
+                        "Errore",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
                 }
             }
             catch (Exception ex)
             {
-                // Gestione delle eccezioni
-                MessageBox.Show($"Si è verificato un errore: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -402,7 +390,9 @@ namespace WinHubX
             {
                 if (stream == null)
                 {
-                    throw new InvalidOperationException($"Could not find embedded resource: {resourcePath}");
+                    throw new InvalidOperationException(
+                        string.Format(LanguageManager.GetTranslation("FormOffice", "resourcenotfound"), resourcePath)
+                    );
                 }
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
@@ -430,7 +420,7 @@ namespace WinHubX
 
         private void btnPersonalizzaOffice_Click(object sender, EventArgs e)
         {
-            form1.lblPanelTitle.Text = "Personalizzazione Office";
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormOffice", "paneltitle");
             form1.PnlFormLoader.Controls.Clear();
             PersonalizzazioneOffice formPersonalizzazioneOffice = new PersonalizzazioneOffice(form1, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             formPersonalizzazioneOffice.FormBorderStyle = FormBorderStyle.None;

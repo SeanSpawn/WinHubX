@@ -38,69 +38,46 @@
             // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.Bottom;
+            resources.ApplyResources(button1, "button1");
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(237, 473);
-            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(154, 61);
-            button1.TabIndex = 86;
-            button1.Text = "Modifica Servizi";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
             button1.Click += ModificaServiziButton_Click;
             // 
             // DisabilitaServizi
             // 
-            DisabilitaServizi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(DisabilitaServizi, "DisabilitaServizi");
             DisabilitaServizi.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaServizi.BorderStyle = BorderStyle.None;
             DisabilitaServizi.Cursor = Cursors.Hand;
-            DisabilitaServizi.Font = new Font("Segoe UI", 10F);
             DisabilitaServizi.ForeColor = Color.White;
             DisabilitaServizi.FormattingEnabled = true;
-            DisabilitaServizi.Location = new Point(12, 12);
             DisabilitaServizi.Name = "DisabilitaServizi";
-            DisabilitaServizi.Size = new Size(269, 420);
-            DisabilitaServizi.TabIndex = 87;
             // 
             // richTextBox1
             // 
-            richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.BackColor = Color.FromArgb(37, 38, 39);
-            richTextBox1.Font = new Font("Segoe UI", 8F);
             richTextBox1.ForeColor = Color.White;
-            richTextBox1.Location = new Point(287, 12);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(320, 420);
-            richTextBox1.TabIndex = 88;
-            richTextBox1.Text = "";
             // 
             // progressBar1
             // 
-            progressBar1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            progressBar1.Location = new Point(12, 445);
+            resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(595, 23);
-            progressBar1.TabIndex = 89;
             // 
             // FormServizi
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(619, 545);
             Controls.Add(progressBar1);
             Controls.Add(richTextBox1);
             Controls.Add(DisabilitaServizi);
             Controls.Add(button1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormServizi";
-            Text = "WinHubX-Servizi";
             Load += FormServizi_Load;
             ResumeLayout(false);
         }

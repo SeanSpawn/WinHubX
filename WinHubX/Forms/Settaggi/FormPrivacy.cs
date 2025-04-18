@@ -32,7 +32,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextDisa(tIndex);
                     toolTip1.SetToolTip(DisabilitaPrivacy, tooltipText);
                 }
@@ -47,7 +46,7 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
+
                     string tooltipText = GetTooltipTextAbil(tIndex);
                     toolTip1.SetToolTip(AbilitaPrivacy, tooltipText);
                 }
@@ -56,89 +55,12 @@ namespace WinHubX.Forms.Settaggi
 
         private string GetTooltipTextDisa(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Disabilita le opzioni relative alla lingua nel sistema, impedendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.";
-                case 1:
-                    return "Disabilita i suggerimenti e le raccomandazioni dell'app, evitando notifiche e consigli da parte delle applicazioni.";
-                case 2:
-                    return "Disabilita la raccolta e l'invio dei dati di telemetria al fine di migliorare il sistema operativo, proteggendo la privacy dell'utente.";
-                case 3:
-                    return "Disabilita il tracciamento delle attività dell'utente da parte del sistema, evitando la registrazione delle azioni e comportamenti.";
-                case 4:
-                    return "Disabilita la segnalazione automatica degli errori e dei bug al sistema, impedendo l'invio di report ai server di Microsoft.";
-                case 5:
-                    return "Disabilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, evitando l'invio di report diagnostici.";
-                case 6:
-                    return "Disabilita il servizio di messaggistica WAP Push, impedendo l'invio e la ricezione di notifiche push tramite il servizio.";
-                case 7:
-                    return "Disabilita la funzionalità di HomeGroup, evitando la creazione e gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.";
-                case 8:
-                    return "Disabilita l'assistenza remota, impedendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.";
-                case 9:
-                    return "Disabilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, impedendo la deframmentazione automatica dei file.";
-                case 10:
-                    return "Disabilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.";
-                case 11:
-                    return "Disabilita la manutenzione automatica, impedendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.";
-                case 12:
-                    return "Disabilita la gestione dello spazio riservato sul sistema, impedendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.";
-                case 13:
-                    return "Disabilita i miglioramenti delle performance di gioco tramite Game DVR, evitando la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.";
-                case 14:
-                    return "Disabilita la cronologia delle attività, impedendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.";
-                case 15:
-                    return "Disabilita WiFi Sense, impedendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.";
-                case 16:
-                    return "Disabilita la barra delle notifiche e il calendario, impedendo la visualizzazione delle notifiche di sistema e delle informazioni sul calendario.";
-                default:
-                    return string.Empty;
-            }
+            return LanguageManager.GetTranslation("FormPrivacy", $"tooltipDisa{index}");
         }
         private string GetTooltipTextAbil(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Abilita le opzioni linguistiche e regionali nel sistema, consentendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.";
-                case 1:
-                    return "Abilita i suggerimenti e le raccomandazioni dell'app, mostrando notifiche e consigli da parte delle applicazioni.";
-                case 2:
-                    return "Abilita la raccolta e l'invio dei dati di telemetria, contribuendo al miglioramento del sistema operativo e dei prodotti Microsoft.";
-                case 3:
-                    return "Abilita il tracciamento delle attività dell'utente, registrando le azioni e i comportamenti all'interno del sistema.";
-                case 4:
-                    return "Abilita la segnalazione automatica degli errori e dei bug al sistema, inviando report ai server di Microsoft per miglioramenti.";
-                case 5:
-                    return "Abilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, consentendo la raccolta dei dati diagnostici.";
-                case 6:
-                    return "Abilita il servizio di messaggistica WAP Push, consentendo l'invio e la ricezione di notifiche push tramite il servizio.";
-                case 7:
-                    return "Abilita la funzionalità di HomeGroup, permettendo la creazione e la gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.";
-                case 8:
-                    return "Abilita l'assistenza remota, permettendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.";
-                case 9:
-                    return "Abilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, consentendo la deframmentazione automatica dei file.";
-                case 10:
-                    return "Abilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.";
-                case 11:
-                    return "Abilita la manutenzione automatica, consentendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.";
-                case 12:
-                    return "Abilita la gestione dello spazio riservato sul sistema, consentendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.";
-                case 13:
-                    return "Abilita i miglioramenti delle performance di gioco tramite Game DVR, consentendo la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.";
-                case 14:
-                    return "Abilita la cronologia delle attività, consentendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.";
-                case 15:
-                    return "Abilita WiFi Sense, consentendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.";
-                case 16:
-                    return "Abilita la barra delle notifiche e il calendario, mostronado le notifiche di sistema e le informazioni sul calendario.";
-                default:
-                    return string.Empty;
-            }
+            return LanguageManager.GetTranslation("FormPrivacy", $"tooltipAbil{index}");
         }
-
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -358,10 +280,8 @@ namespace WinHubX.Forms.Settaggi
             {
                 try
                 {
-                    // Se stai lavorando con il registro a 32 bit, modifica i percorsi delle chiavi di conseguenza
                     if (use32BitRegistry)
                     {
-                        // Modifica gli script per puntare al percorso corretto per 32 bit
                         script = script.Replace("HKLM:\\SOFTWARE\\", "HKLM:\\SOFTWARE\\WOW6432Node\\");
                     }
 
@@ -374,7 +294,6 @@ namespace WinHubX.Forms.Settaggi
                         RedirectStandardOutput = true,
                         RedirectStandardError = true
                     };
-
                     using (var process = System.Diagnostics.Process.Start(startInfo))
                     {
                         if (process != null)
@@ -383,8 +302,6 @@ namespace WinHubX.Forms.Settaggi
 
                             var output = process.StandardOutput.ReadToEnd();
                             var error = process.StandardError.ReadToEnd();
-
-                            // Log o gestisci output e errori
                             if (!string.IsNullOrEmpty(output))
                             {
 
@@ -411,7 +328,6 @@ namespace WinHubX.Forms.Settaggi
         }
         private void btnAvviaSelezionati_Click(object sender, EventArgs e)
         {
-            // Conta i passi basati sugli oggetti checked
             totalSteps = 0;
             foreach (var item in DisabilitaPrivacy.CheckedItems)
             {
@@ -424,7 +340,7 @@ namespace WinHubX.Forms.Settaggi
 
             if (totalSteps == 0)
             {
-                totalSteps = 1;  // Imposta almeno 1 passo
+                totalSteps = 1;
             }
 
             progressBar1.Maximum = totalSteps;
@@ -438,12 +354,18 @@ namespace WinHubX.Forms.Settaggi
 
         private async void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            // Non usare direttamente e.ProgressPercentage se può essere > Maximum
             progressBar1.Value = Math.Min(e.ProgressPercentage, progressBar1.Maximum);
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -456,14 +378,11 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nella vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
                                                           .OpenSubKey(@"Control Panel\International\User Profile", writable: true))
                     {
                         key64?.SetValue("HttpAcceptLanguageOptOut", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nella vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                                                           .OpenSubKey(@"Control Panel\International\User Profile", writable: true))
                     {
@@ -486,9 +405,8 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Dizionario contenente i percorsi e i valori da impostare nel registro
                     var registrySettings = new Dictionary<string, Tuple<string, int>>
-            {
+                {
                 { @"SOFTWARE\Policies\Microsoft\Windows\CloudContent", new Tuple<string, int>("DisableThirdPartySuggestions", 1) },
                 { @"SOFTWARE\Policies\Microsoft\Windows\CloudContent", new Tuple<string, int>("DisableWindowsConsumerFeatures", 1) },
                 { @"SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata", new Tuple<string, int>("PreventDeviceMetadataFromNetwork", 1) },
@@ -514,9 +432,7 @@ namespace WinHubX.Forms.Settaggi
                 { @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", new Tuple<string, int>("SubscribedContent-338387Enabled", 0) },
                 { @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", new Tuple<string, int>("SubscribedContent-338388Enabled", 0) },
                 { @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", new Tuple<string, int>("SubscribedContent-338389Enabled", 0) }
-            };
-
-                    // Applicazione delle modifiche per 64-bit e 32-bit
+                };
                     foreach (var registryView in new[] { RegistryView.Registry64, RegistryView.Registry32 })
                     {
                         foreach (var setting in registrySettings)
@@ -527,7 +443,6 @@ namespace WinHubX.Forms.Settaggi
                                 subKey?.SetValue(setting.Value.Item1, setting.Value.Item2, RegistryValueKind.DWord);
                             }
                         }
-
                         using (RegistryKey baseKeyCU = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, registryView))
                         {
                             foreach (var setting in registrySettings.Where(s => s.Key.StartsWith("Software", StringComparison.OrdinalIgnoreCase)))
@@ -556,20 +471,16 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nella vista a 64-bit
                     using (RegistryKey key64_1 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", writable: true))
                     {
                         key64_1?.SetValue("AllowTelemetry", 0, RegistryValueKind.DWord);
                     }
-
                     using (RegistryKey key64_2 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection", writable: true))
                     {
                         key64_2?.SetValue("AllowTelemetry", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nella vista a 32-bit
                     using (RegistryKey key32_1 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", writable: true))
                     {
@@ -648,8 +559,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key.SetValue("ScoobeSystemSettingEnabled", 0, RegistryValueKind.DWord);
                     }
-
-                    // Disabilita i task pianificati relativi alla telemetria
                     ExecutePowerShellScript(@"
             Disable-ScheduledTask -TaskName ""Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser"";
             Disable-ScheduledTask -TaskName ""Microsoft\Windows\Application Experience\ProgramDataUpdater"";
@@ -682,7 +591,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nella vista a 64-bit
                     using (RegistryKey key64_1 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location", writable: true))
                     {
@@ -700,20 +608,16 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64_3?.SetValue("Status", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nella vista a 32-bit
                     using (RegistryKey key32_1 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location", writable: true))
                     {
                         key32_1?.SetValue("Value", "Deny", RegistryValueKind.String);
                     }
-
                     using (RegistryKey key32_2 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}", writable: true))
                     {
                         key32_2?.SetValue("SensorPermissionState", 0, RegistryValueKind.DWord);
                     }
-
                     using (RegistryKey key32_3 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration", writable: true))
                     {
@@ -736,21 +640,16 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nella vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                               .OpenSubKey(@"SOFTWARE\Microsoft\Windows\Windows Error Reporting", writable: true))
                     {
                         key64?.SetValue("Disabled", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nella vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                               .OpenSubKey(@"SOFTWARE\Microsoft\Windows\Windows Error Reporting", writable: true))
                     {
                         key32?.SetValue("Disabled", 1, RegistryValueKind.DWord);
                     }
-
-                    // Disabilita il task schedulato "QueueReporting"
                     using (Microsoft.Win32.TaskScheduler.TaskService ts = new Microsoft.Win32.TaskScheduler.TaskService())
                     {
                         Microsoft.Win32.TaskScheduler.Task task = ts.GetTask(@"Microsoft\Windows\Windows Error Reporting\QueueReporting");
@@ -776,24 +675,18 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Ferma il servizio "DiagTrack"
                     using (ServiceController service = new ServiceController("DiagTrack"))
                     {
                         service.Stop();
                         service.WaitForStatus(ServiceControllerStatus.Stopped);
                     }
-
-                    // Imposta il tipo di avvio su disabilitato usando PowerShell
                     ExecutePowerShellScript(@"Set-Service -Name 'DiagTrack' -StartupType Disabled -ErrorAction SilentlyContinue");
-
-                    // Imposta il valore nel registro per la vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
                         key64?.SetValue("DisableDiagnostics", 1, RegistryValueKind.DWord);
                     }
 
-                    // Imposta il valore nel registro per la vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
@@ -816,25 +709,18 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Ferma il servizio "dmwappushservice"
                     using (ServiceController service = new ServiceController("dmwappushservice"))
                     {
                         service.Stop();
                         service.WaitForStatus(ServiceControllerStatus.Stopped);
                     }
-
-                    // Imposta il tipo di avvio su disabilitato usando PowerShell
                     ExecutePowerShellScript(@"Stop-Service -Name 'dmwappushservice' -WarningAction SilentlyContinue;
                 Set-Service -Name 'dmwappushservice' -StartupType Disabled");
-
-                    // Imposta il valore nel registro per la vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
                         key64?.SetValue("DisableWAPPushService", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nel registro per la vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
@@ -857,7 +743,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Ferma i servizi HomeGroup
                     using (ServiceController listenerService = new ServiceController("HomeGroupListener"))
                     {
                         listenerService.Stop();
@@ -869,21 +754,15 @@ namespace WinHubX.Forms.Settaggi
                         providerService.Stop();
                         providerService.WaitForStatus(ServiceControllerStatus.Stopped);
                     }
-
-                    // Imposta il tipo di avvio su disabilitato usando PowerShell
                     ExecutePowerShellScript(@"Stop-Service -Name 'HomeGroupListener' -WarningAction SilentlyContinue;
                 Set-Service -Name 'HomeGroupListener' -StartupType Disabled;
                 Stop-Service -Name 'HomeGroupProvider' -WarningAction SilentlyContinue;
                 Set-Service -Name 'HomeGroupProvider' -StartupType Disabled;");
-
-                    // Imposta il valore nel registro per la vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
                         key64?.SetValue("DisableHomeGroup", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nel registro per la vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                           .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", writable: true))
                     {
@@ -906,14 +785,11 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nel registro per la vista a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                           .OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Remote Assistance", writable: true))
                     {
                         key64?.SetValue("fAllowToGetHelp", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore nel registro per la vista a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                           .OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Remote Assistance", writable: true))
                     {
@@ -947,7 +823,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovi le app Xbox
                     ExecutePowerShellScript(@"
                 Get-AppxPackage ""Microsoft.XboxApp"" | Remove-AppxPackage -ErrorAction SilentlyContinue;
                 Get-AppxPackage ""Microsoft.XboxIdentityProvider"" | Remove-AppxPackage -ErrorAction SilentlyContinue;
@@ -956,14 +831,11 @@ namespace WinHubX.Forms.Settaggi
                 Get-AppxPackage ""Microsoft.Xbox.TCUI"" | Remove-AppxPackage -ErrorAction SilentlyContinue;
             ");
 
-                    // Imposta il valore GameDVR_Enabled nel registro a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                                                              .OpenSubKey(@"System\GameConfigStore", writable: true))
                     {
                         key32?.SetValue("GameDVR_Enabled", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore AllowGameDVR nel registro a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\GameDVR", writable: true))
                     {
@@ -986,14 +858,11 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore MaintenanceDisabled nel registro a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance", writable: true))
                     {
                         key64?.SetValue("MaintenanceDisabled", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore MaintenanceDisabled nel registro a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance", writable: true))
                     {
@@ -1016,17 +885,12 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Esegui il comando PowerShell per disabilitare lo spazio riservato
                     ExecutePowerShellScript(@"Set-WindowsReservedStorageState -State Disabled");
-
-                    // Imposta le chiavi di registro per la configurazione a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\ReservedStorage", writable: true))
                     {
                         key64?.SetValue("ReservedStorageState", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta le chiavi di registro per la configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\ReservedStorage", writable: true))
                     {
@@ -1049,22 +913,19 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Esegui il comando PowerShell per impostare le proprietà di Game DVR per entrambe le architetture
                     ExecutePowerShellScript(@"
                 Set-ItemProperty -Path ""HKLM:\System\GameConfigStore"" -Name ""GameDVR_DXGIHonorFSEWindowsCompatible"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\System\GameConfigStore"" -Name ""GameDVR_HonorUserFSEBehaviorMode"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\System\GameConfigStore"" -Name ""GameDVR_EFSEFeatureFlags"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\System\GameConfigStore"" -Name ""GameDVR_Enabled"" -Type DWord -Value 00000000;
-            ", false); // Chiama il PowerShell per 64 bit
+            ", false);
 
                     ExecutePowerShellScript(@"
                 Set-ItemProperty -Path ""HKLM:\SOFTWARE\WOW6432Node\System\GameConfigStore"" -Name ""GameDVR_DXGIHonorFSEWindowsCompatible"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\SOFTWARE\WOW6432Node\System\GameConfigStore"" -Name ""GameDVR_HonorUserFSEBehaviorMode"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\SOFTWARE\WOW6432Node\System\GameConfigStore"" -Name ""GameDVR_EFSEFeatureFlags"" -Type Hex -Value 00000000;
                 Set-ItemProperty -Path ""HKLM:\SOFTWARE\WOW6432Node\System\GameConfigStore"" -Name ""GameDVR_Enabled"" -Type DWord -Value 00000000;
-            ", true); // Chiama il PowerShell per 32 bit
-
-                    // Imposta le chiavi di registro per la configurazione a 64-bit
+            ", true);
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .OpenSubKey(@"SYSTEM\GameConfigStore", writable: true))
                     {
@@ -1106,7 +967,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per la configurazione a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System"))
                     {
@@ -1117,8 +977,6 @@ namespace WinHubX.Forms.Settaggi
                             key64.SetValue("UploadUserActivities", 0, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Imposta le chiavi di registro per la configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System"))
                     {
@@ -1146,7 +1004,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per la configurazione a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
                     {
@@ -1156,8 +1013,6 @@ namespace WinHubX.Forms.Settaggi
                             key64.SetValue("AllowAutoConnectToWiFiSenseHotspots", 0, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Imposta le chiavi di registro per WiFi HotSpot Reporting e AutoConnect nella configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
                     {
@@ -1176,8 +1031,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64WiFiHotSpot?.SetValue("Value", 0, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots -> Value
                     using (RegistryKey key32AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
                     {
                         key32AutoConnect?.SetValue("Value", 0, RegistryValueKind.DWord);
@@ -1187,8 +1040,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64AutoConnect?.SetValue("Value", 0, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> AutoConnectAllowedOEM
                     using (RegistryKey key32OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
                     {
                         key32OEM?.SetValue("AutoConnectAllowedOEM", 0, RegistryValueKind.DWord);
@@ -1198,8 +1049,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64OEM?.SetValue("AutoConnectAllowedOEM", 0, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> WiFISenseAllowed
                     using (RegistryKey key32SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
                     {
                         key32SenseAllowed?.SetValue("WiFISenseAllowed", 0, RegistryValueKind.DWord);
@@ -1226,7 +1075,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per la configurazione a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
                                                              .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
                     {
@@ -1244,8 +1092,6 @@ namespace WinHubX.Forms.Settaggi
                             key64.SetValue("ToastEnabled", 0, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Imposta le chiavi di registro per disabilitare il Notification Center e le Toast Notifications nella configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                                                              .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
                     {
@@ -1254,7 +1100,6 @@ namespace WinHubX.Forms.Settaggi
                             key32.SetValue("DisableNotificationCenter", 1, RegistryValueKind.DWord);
                         }
                     }
-
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                                                              .CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\PushNotifications"))
                     {
@@ -1280,7 +1125,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta la chiave di registro per abilitare le opzioni lingua a livello di utente
                     using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Control Panel\International\User Profile"))
                     {
                         key?.SetValue("HttpAcceptLanguageOptOut", 0, RegistryValueKind.DWord);
@@ -1302,10 +1146,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Chiave di registro per le impostazioni del ContentDeliveryManager
                     string contentDeliveryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
-
-                    // Imposta i valori per abilitare i suggerimenti delle app
                     using (RegistryKey key = Registry.CurrentUser.CreateSubKey(contentDeliveryPath))
                     {
                         if (key != null)
@@ -1318,14 +1159,10 @@ namespace WinHubX.Forms.Settaggi
                             key.SetValue("SubscribedContent-338388Enabled", 1, RegistryValueKind.DWord);
                             key.SetValue("SubscribedContent-338389Enabled", 1, RegistryValueKind.DWord);
                             key.SetValue("SystemPaneSuggestionsEnabled", 1, RegistryValueKind.DWord);
-
-                            // Rimuove le chiavi non necessarie, se esistono
                             key.DeleteValue("SubscribedContent-338387Enabled", false);
                             key.DeleteValue("SubscribedContent-353698Enabled", false);
                         }
                     }
-
-                    // Rimuovi la chiave dalla sezione Policies se esiste
                     string cloudContentPath = @"SOFTWARE\Policies\Microsoft\Windows\CloudContent";
                     using (RegistryKey policyKey = Registry.LocalMachine.OpenSubKey(cloudContentPath, writable: true))
                     {
@@ -1348,12 +1185,9 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Chiave di registro per la telemetria
                     string dataCollectionPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
                     string wow6432NodePath = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection";
                     string policiesPath = @"SOFTWARE\Policies\Microsoft\Windows\DataCollection";
-
-                    // Imposta i valori per abilitare la telemetria
                     using (RegistryKey key = Registry.LocalMachine.CreateSubKey(dataCollectionPath))
                     {
                         key?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord);
@@ -1368,8 +1202,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord);
                     }
-
-                    // Avvia i servizi necessari
                     StartService("DiagTrack");
                     StartService("dmwappushservice");
                 }
@@ -1389,24 +1221,17 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Chiave di registro per la configurazione del tracking
                     string capabilityAccessPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location";
                     string sensorOverridesPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}";
                     string serviceConfigurationPath = @"SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration";
-
-                    // Imposta il valore per consentire il tracking della posizione
                     using (RegistryKey key = Registry.LocalMachine.CreateSubKey(capabilityAccessPath))
                     {
                         key?.SetValue("Value", "Allow", RegistryValueKind.String);
                     }
-
-                    // Imposta lo stato del permesso del sensore
                     using (RegistryKey key = Registry.LocalMachine.CreateSubKey(sensorOverridesPath))
                     {
                         key?.SetValue("SensorPermissionState", 1, RegistryValueKind.DWord);
                     }
-
-                    // Abilita il servizio lfsvc
                     using (RegistryKey key = Registry.LocalMachine.CreateSubKey(serviceConfigurationPath))
                     {
                         key?.SetValue("Status", 1, RegistryValueKind.DWord);
@@ -1428,27 +1253,21 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovi la chiave 'Disabled' per il registro 64 bit
                     string errorReportingPath64 = @"SOFTWARE\Microsoft\Windows\Windows Error Reporting";
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(errorReportingPath64, writable: true))
                     {
                         key64?.DeleteValue("Disabled", false);
                     }
-
-                    // Rimuovi la chiave 'Disabled' per il registro 32 bit
                     string errorReportingPath32 = @"SOFTWARE\WOW6432Node\Microsoft\Windows\Windows Error Reporting";
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(errorReportingPath32, writable: true))
                     {
                         key32?.DeleteValue("Disabled", false);
                     }
-
-                    // Abilita il task pianificato per la segnalazione degli errori
                     using (var taskService = new TaskService())
                     {
                         var task = taskService.GetTask(@"Microsoft\Windows\Windows Error Reporting\QueueReporting");
                         if (task != null)
                         {
-                            // Abilita il task se è disabilitato
                             if (task.State == TaskState.Disabled)
                             {
                                 task.Enabled = true;
@@ -1473,29 +1292,21 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per la Tracking Diagnostica nel registro 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", writable: true))
                     {
-                        key64?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord); // Imposta il valore per la telemetria
+                        key64?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord);
                     }
-
-                    // Imposta le chiavi di registro per la Tracking Diagnostica nel registro 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection", writable: true))
                     {
-                        key32?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord); // Imposta il valore per la telemetria
+                        key32?.SetValue("AllowTelemetry", 3, RegistryValueKind.DWord);
                     }
-
-                    // Configura e avvia il servizio DiagTrack
                     var service = new System.ServiceProcess.ServiceController("DiagTrack");
                     if (service.Status != System.ServiceProcess.ServiceControllerStatus.Running)
                     {
                         service.Start();
                         service.WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Running);
                     }
-
-                    // Usa PowerShell per impostare il tipo di avvio su Automatico
                     ExecutePowerShellScript(@"Set-Service -Name 'DiagTrack' -StartupType 'Automatic'");
-
                 }
                 catch (Exception ex)
                 {
@@ -1513,29 +1324,21 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per WAP Push Service nel registro 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\dmwappushservice", writable: true))
                     {
-                        key64?.SetValue("DelayedAutoStart", 1, RegistryValueKind.DWord); // Imposta DelayedAutoStart
+                        key64?.SetValue("DelayedAutoStart", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta le chiavi di registro per WAP Push Service nel registro 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(@"SYSTEM\WOW6432Node\CurrentControlSet\Services\dmwappushservice", writable: true))
                     {
-                        key32?.SetValue("DelayedAutoStart", 1, RegistryValueKind.DWord); // Imposta DelayedAutoStart
+                        key32?.SetValue("DelayedAutoStart", 1, RegistryValueKind.DWord);
                     }
-
-                    // Configura e avvia il servizio dmwappushservice
                     var service = new System.ServiceProcess.ServiceController("dmwappushservice");
                     if (service.Status != System.ServiceProcess.ServiceControllerStatus.Running)
                     {
                         service.Start();
                         service.WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Running);
                     }
-
-                    // Usa PowerShell per impostare il tipo di avvio su Automatico
                     ExecutePowerShellScript(@"Set-Service -Name 'dmwappushservice' -StartupType 'Automatic'");
-
                 }
                 catch (Exception ex)
                 {
@@ -1553,14 +1356,11 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Ferma i servizi HomeGroupListener e HomeGroupProvider se sono in esecuzione
                     StopService("HomeGroupListener");
                     SetServiceStartupType("HomeGroupListener", "Manual");
 
                     StopService("HomeGroupProvider");
                     SetServiceStartupType("HomeGroupProvider", "Manual");
-
-                    // Usa PowerShell per fermare e configurare i servizi
                     ExecutePowerShellScript(@"
                 Stop-Service -Name 'HomeGroupListener' -WarningAction SilentlyContinue;
                 Set-Service -Name 'HomeGroupListener' -StartupType 'Manual';
@@ -1584,17 +1384,12 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Percorso del registro per l'assistenza remota
                     string remoteAssistanceKey64 = @"SYSTEM\CurrentControlSet\Control\Remote Assistance";
                     string remoteAssistanceKey32 = @"SOFTWARE\WOW6432Node\SYSTEM\CurrentControlSet\Control\Remote Assistance";
-
-                    // Imposta il valore per il registro a 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(remoteAssistanceKey64, true))
                     {
                         key64?.SetValue("fAllowToGetHelp", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore per il registro a 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(remoteAssistanceKey32, true))
                     {
                         key32?.SetValue("fAllowToGetHelp", 1, RegistryValueKind.DWord);
@@ -1620,26 +1415,21 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Abilitare il Task di Defrag
                     using (TaskService ts = new TaskService())
                     {
                         Microsoft.Win32.TaskScheduler.Task task = ts.FindTask("Microsoft\\Windows\\Defrag\\ScheduledDefrag");
 
                         if (task != null)
                         {
-                            // Abilita il task
                             task.Enabled = true;
-
                         }
                         else
                         {
 
                         }
                     }
-
-                    // Modifica le chiavi del registro sia a 32 che a 64 bit
-                    ModifyRegistryForDefrag(true);  // Per 32 bit
-                    ModifyRegistryForDefrag(false); // Per 64 bit
+                    ModifyRegistryForDefrag(true);
+                    ModifyRegistryForDefrag(false);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -1678,25 +1468,22 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Modifica le chiavi di registro per abilitare Auto Maintenance nel registro 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance", writable: true))
                     {
                         if (key64 != null)
                         {
-                            key64.SetValue("MaintenanceDisabled", 0, RegistryValueKind.DWord); // Imposta il valore per abilitare Auto Maintenance
+                            key64.SetValue("MaintenanceDisabled", 0, RegistryValueKind.DWord);
                         }
                         else
                         {
 
                         }
                     }
-
-                    // Modifica le chiavi di registro per abilitare Auto Maintenance nel registro 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance", writable: true))
                     {
                         if (key32 != null)
                         {
-                            key32.SetValue("MaintenanceDisabled", 0, RegistryValueKind.DWord); // Imposta il valore per abilitare Auto Maintenance
+                            key32.SetValue("MaintenanceDisabled", 0, RegistryValueKind.DWord);
                         }
                         else
                         {
@@ -1737,7 +1524,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovi le proprietà nel registro 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(@"SYSTEM\GameConfigStore", writable: true))
                     {
                         if (key64 != null)
@@ -1752,8 +1538,6 @@ namespace WinHubX.Forms.Settaggi
 
                         }
                     }
-
-                    // Rimuovi le proprietà nel registro 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\SYSTEM\GameConfigStore", writable: true))
                     {
                         if (key32 != null)
@@ -1789,7 +1573,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro nel registro 64 bit
                     using (RegistryKey key64 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System", writable: true))
                     {
                         if (key64 != null)
@@ -1803,8 +1586,6 @@ namespace WinHubX.Forms.Settaggi
 
                         }
                     }
-
-                    // Imposta le chiavi di registro nel registro 32 bit
                     using (RegistryKey key32 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\System", writable: true))
                     {
                         if (key32 != null)
@@ -1839,7 +1620,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro nel registro 64 bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                                                              .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
                     {
@@ -1849,8 +1629,6 @@ namespace WinHubX.Forms.Settaggi
                             key64.SetValue("AllowAutoConnectToWiFiSenseHotspots", 1, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Imposta le chiavi di registro per WiFi HotSpot Reporting e AutoConnect nella configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                                                              .CreateSubKey(@"Software\Microsoft\PolicyManager\default\WiFi"))
                     {
@@ -1869,8 +1647,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64WiFiHotSpot?.SetValue("Value", 1, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots -> Value
                     using (RegistryKey key32AutoConnect = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots", true))
                     {
                         key32AutoConnect?.SetValue("Value", 1, RegistryValueKind.DWord);
@@ -1880,8 +1656,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64AutoConnect?.SetValue("Value", 1, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> AutoConnectAllowedOEM
                     using (RegistryKey key32OEM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
                     {
                         key32OEM?.SetValue("AutoConnectAllowedOEM", 1, RegistryValueKind.DWord);
@@ -1891,8 +1665,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64OEM?.SetValue("AutoConnectAllowedOEM", 1, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config -> WiFISenseAllowed
                     using (RegistryKey key32SenseAllowed = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config", true))
                     {
                         key32SenseAllowed?.SetValue("WiFISenseAllowed", 1, RegistryValueKind.DWord);
@@ -1923,7 +1695,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro nel registro 64 bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64)
                                                              .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
                     {
@@ -1941,8 +1712,6 @@ namespace WinHubX.Forms.Settaggi
                             key64.SetValue("ToastEnabled", 1, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Imposta le chiavi di registro per disabilitare il Notification Center e le Toast Notifications nella configurazione a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                                                              .CreateSubKey(@"Software\Policies\Microsoft\Windows\Explorer"))
                     {
@@ -1985,8 +1754,6 @@ namespace WinHubX.Forms.Settaggi
                 service.WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Stopped);
             }
         }
-
-        // Metodo per impostare il tipo di avvio di un servizio
         private void SetServiceStartupType(string serviceName, string startupType)
         {
             ExecutePowerShellScript($"Set-Service -Name '{serviceName}' -StartupType '{startupType}'");
@@ -2000,14 +1767,12 @@ namespace WinHubX.Forms.Settaggi
                 {
                     if (serviceController.Status != ServiceControllerStatus.Running)
                     {
-                        // Imposta il tipo di avvio del servizio su Automatic
                         serviceController.Start();
                         serviceController.WaitForStatus(ServiceControllerStatus.Running);
                     }
-                    // Setta il tipo di avvio su Automatic
                     using (RegistryKey key = Registry.LocalMachine.OpenSubKey($@"SYSTEM\CurrentControlSet\Services\{serviceName}", true))
                     {
-                        key?.SetValue("Start", 2, RegistryValueKind.DWord); // 2 = Automatic
+                        key?.SetValue("Start", 2, RegistryValueKind.DWord);
                     }
                 }
             }
@@ -2034,7 +1799,6 @@ namespace WinHubX.Forms.Settaggi
 
                 if (registryKey != null)
                 {
-                    // Modifica il valore per attivare la Schedulazione di Defrag
                     registryKey.SetValue("ScheduledDefrag", 1, RegistryValueKind.DWord);
                     registryKey.Close();
                 }

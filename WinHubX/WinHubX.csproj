@@ -7,8 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <AssemblyVersion>2.4.2.2</AssemblyVersion>
-    <FileVersion>2.4.2.2</FileVersion>
+    <AssemblyVersion>2.4.2.3</AssemblyVersion>
+    <FileVersion>2.4.2.3</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
 	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -101,6 +101,7 @@
     <None Remove="Resources\PowerRun.exe" />
     <None Remove="Resources\Product Sans Black.ttf" />
     <None Remove="Resources\Product Sans.ttf" />
+    <None Remove="Resources\translations.json" />
     <None Remove="Resources\TSforge_Activation.cmd" />
     <None Remove="Resources\TSforge_Activation_Office.cmd" />
     <None Remove="Resources\WinCustomizer.ps1" />
@@ -376,6 +377,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Product Sans Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\translations.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TSforge_Activation.cmd">

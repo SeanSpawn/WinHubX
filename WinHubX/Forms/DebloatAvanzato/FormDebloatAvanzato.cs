@@ -42,18 +42,14 @@ namespace WinHubX.Forms.DebloatAvanzato
 
         private void btnAvviaSelezionati_Click(object sender, EventArgs e)
         {
-            // Verifica gli elementi selezionati nella CheckedListBox
             foreach (var selectedItem in checkedListBox1.CheckedItems)
             {
-                // Costruisci il comando PowerShell per rimuovere il pacchetto selezionato
                 string packageName = selectedItem.ToString();
                 string command = $"Get-AppxPackage -allusers {packageName} | Remove-AppxPackage";
-
-                // Esegui il comando PowerShell per rimuovere il pacchetto
                 ProcessStartInfo psi = new ProcessStartInfo
                 {
                     FileName = "powershell.exe",
-                    Verb = "runas", // Esegui come amministratore
+                    Verb = "runas",
                     UseShellExecute = false,
                     Arguments = command
                 };
@@ -66,25 +62,23 @@ namespace WinHubX.Forms.DebloatAvanzato
 
                 process.Start();
             }
-
-            // Verifica se la checkbox per Windows Defender è selezionata
             if (checkBox_WindowsDefender.Checked)
             {
-                DialogResult result = MessageBox.Show("Questa operazione richiede un riavvio del PC, Continuare?", "Attenzione", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                // Check the user's response
+                DialogResult result = MessageBox.Show(
+                    LanguageManager.GetTranslation("Global", "restartrequired"),
+                    "WinHubX",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning
+                );
                 if (result == DialogResult.OK)
                 {
                     string assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
                     string resourcePath = $"{assemblyName}.Resources.PowerRun.exe";
-
                     try
                     {
                         byte[] exeBytes = LoadEmbeddedResource(resourcePath);
                         string tempExePath = Path.Combine(Path.GetTempPath(), "PowerRun.exe");
                         File.WriteAllBytes(tempExePath, exeBytes);
-
-                        // Esegui i comandi per disabilitare Windows Defender
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender"" /v ""DisableAntiSpyware"" /t REG_DWORD /d 1 /f""");
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v ""DisableBehaviorMonitoring"" /t REG_DWORD /d 1 /f""");
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v ""DisableIOAVProtection"" /t REG_DWORD /d 1 /f""");
@@ -92,22 +86,20 @@ namespace WinHubX.Forms.DebloatAvanzato
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v ""DisableRealtimeMonitoring"" /t REG_DWORD /d 1 /f""");
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService"" /v ""Start"" /t REG_DWORD /d 4 /f""");
                         RunCommand(tempExePath, @"cmd.exe /c ""reg add ""HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend"" /v ""Start"" /t REG_DWORD /d 4 /f""");
-
-                        MessageBox.Show("Le modifiche sono state applicate. Riavvia il PC per renderle effettive.", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Si è verificato un errore durante il processo di debloating: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Operazione Annullata", "Annullato", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
             else
             {
-                MessageBox.Show("Operazione completata senza modificare Windows Defender.", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
 
@@ -117,9 +109,7 @@ namespace WinHubX.Forms.DebloatAvanzato
             using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
             {
                 if (stream == null)
-                    throw new InvalidOperationException("Impossibile trovare la risorsa: " + resourcePath);
-
-                // Leggi i byte dallo stream di input
+                    throw new InvalidOperationException("Error: " + resourcePath);
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
                 return buffer;
@@ -137,7 +127,6 @@ namespace WinHubX.Forms.DebloatAvanzato
                 RedirectStandardOutput = true,
                 RedirectStandardError = true
             };
-
             using (var process = Process.Start(startInfo))
             {
                 process.WaitForExit();
@@ -149,10 +138,8 @@ namespace WinHubX.Forms.DebloatAvanzato
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             string searchText = textBox1.Text.ToLower();
-
-            checkedListBox1.Items.Clear(); // Svuota temporaneamente la lista
-
-            foreach (var packageName in packageNames) // Assicurati che packageNames sia una variabile di classe
+            checkedListBox1.Items.Clear();
+            foreach (var packageName in packageNames)
             {
                 if (packageName.ToLower().Contains(searchText))
                 {

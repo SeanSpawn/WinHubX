@@ -81,6 +81,7 @@ C:\Users\utente\Desktop\winhubx\Resources\OfficePersonalizzato\bin.exe
 C:\Users\utente\Desktop\winhubx\Resources\Product Sans.ttf
 C:\Users\utente\Desktop\winhubx\Resources\Product Sans Black.ttf
 C:\Users\utente\Desktop\winhubx\Resources\icoWinHubX.ico
+C:\Users\utente\Desktop\winhubx\Resources\translations.json
 C:\Users\utente\Desktop\winhubx\Resources\TSforge_Activation.cmd
 C:\Users\utente\Desktop\winhubx\Resources\TSforge_Activation_Office.cmd
 C:\Users\utente\Desktop\winhubx\Resources\WinHubXStatoAttivazione.cmd

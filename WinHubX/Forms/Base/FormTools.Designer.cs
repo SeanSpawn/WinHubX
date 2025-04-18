@@ -39,120 +39,73 @@
             // 
             // btnKasperky
             // 
+            resources.ApplyResources(btnKasperky, "btnKasperky");
             btnKasperky.Cursor = Cursors.Hand;
             btnKasperky.FlatAppearance.BorderSize = 0;
-            btnKasperky.FlatStyle = FlatStyle.Flat;
-            btnKasperky.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold);
             btnKasperky.ForeColor = Color.White;
-            btnKasperky.Image = (Image)resources.GetObject("btnKasperky.Image");
-            btnKasperky.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKasperky.Location = new Point(96, 30);
-            btnKasperky.Margin = new Padding(3, 2, 3, 2);
             btnKasperky.Name = "btnKasperky";
-            btnKasperky.Size = new Size(375, 119);
-            btnKasperky.TabIndex = 68;
-            btnKasperky.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnKasperky.UseVisualStyleBackColor = true;
             btnKasperky.Click += btnKasperky_Click;
             // 
             // btnWimTK
             // 
+            resources.ApplyResources(btnWimTK, "btnWimTK");
             btnWimTK.Cursor = Cursors.Hand;
             btnWimTK.FlatAppearance.BorderSize = 0;
-            btnWimTK.FlatStyle = FlatStyle.Flat;
-            btnWimTK.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold);
             btnWimTK.ForeColor = Color.White;
             btnWimTK.Image = Properties.Resources.extWIMToolkit;
-            btnWimTK.ImageAlign = ContentAlignment.MiddleLeft;
-            btnWimTK.Location = new Point(542, 11);
-            btnWimTK.Margin = new Padding(3, 2, 3, 2);
             btnWimTK.Name = "btnWimTK";
-            btnWimTK.Size = new Size(303, 137);
-            btnWimTK.TabIndex = 69;
-            btnWimTK.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnWimTK.UseVisualStyleBackColor = true;
             btnWimTK.Click += btnWimTK_Click;
             // 
             // btnRufus
             // 
+            resources.ApplyResources(btnRufus, "btnRufus");
             btnRufus.Cursor = Cursors.Hand;
             btnRufus.FlatAppearance.BorderSize = 0;
-            btnRufus.FlatStyle = FlatStyle.Flat;
-            btnRufus.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold);
             btnRufus.ForeColor = Color.White;
             btnRufus.Image = Properties.Resources.Rufus_4Lite;
-            btnRufus.ImageAlign = ContentAlignment.MiddleRight;
-            btnRufus.Location = new Point(569, 162);
-            btnRufus.Margin = new Padding(3, 2, 3, 2);
             btnRufus.Name = "btnRufus";
-            btnRufus.Size = new Size(260, 130);
-            btnRufus.TabIndex = 70;
-            btnRufus.TextAlign = ContentAlignment.MiddleLeft;
-            btnRufus.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnRufus.UseVisualStyleBackColor = true;
             btnRufus.Click += btnRufus_Click;
             // 
             // btnDaRT
             // 
+            resources.ApplyResources(btnDaRT, "btnDaRT");
             btnDaRT.Cursor = Cursors.Hand;
             btnDaRT.FlatAppearance.BorderSize = 0;
-            btnDaRT.FlatStyle = FlatStyle.Flat;
-            btnDaRT.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold);
             btnDaRT.ForeColor = Color.White;
             btnDaRT.Image = Properties.Resources.pngDaRT;
-            btnDaRT.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDaRT.Location = new Point(96, 165);
-            btnDaRT.Margin = new Padding(3, 2, 3, 2);
             btnDaRT.Name = "btnDaRT";
-            btnDaRT.Size = new Size(400, 99);
-            btnDaRT.TabIndex = 71;
-            btnDaRT.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDaRT.UseVisualStyleBackColor = true;
             btnDaRT.Click += btnDaRT_Click;
             // 
             // btnMPM
             // 
+            resources.ApplyResources(btnMPM, "btnMPM");
             btnMPM.Cursor = Cursors.Hand;
             btnMPM.FlatAppearance.BorderSize = 0;
-            btnMPM.FlatStyle = FlatStyle.Flat;
-            btnMPM.Font = new Font("Microsoft Sans Serif", 23.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMPM.ForeColor = Color.White;
             btnMPM.Image = Properties.Resources.pngMPM;
-            btnMPM.ImageAlign = ContentAlignment.MiddleRight;
-            btnMPM.Location = new Point(116, 297);
-            btnMPM.Margin = new Padding(3, 2, 3, 2);
             btnMPM.Name = "btnMPM";
-            btnMPM.Size = new Size(326, 103);
-            btnMPM.TabIndex = 72;
-            btnMPM.Text = "Microsoft PC\r\nManager";
-            btnMPM.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMPM.UseVisualStyleBackColor = true;
             btnMPM.Click += btnMPM_Click;
             // 
             // btnRSTDriver
             // 
+            resources.ApplyResources(btnRSTDriver, "btnRSTDriver");
             btnRSTDriver.Cursor = Cursors.Hand;
             btnRSTDriver.FlatAppearance.BorderSize = 0;
-            btnRSTDriver.FlatStyle = FlatStyle.Flat;
-            btnRSTDriver.Font = new Font("Microsoft Sans Serif", 22.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRSTDriver.ForeColor = Color.White;
-            btnRSTDriver.ImageAlign = ContentAlignment.MiddleRight;
-            btnRSTDriver.Location = new Point(595, 327);
-            btnRSTDriver.Margin = new Padding(3, 2, 3, 2);
             btnRSTDriver.Name = "btnRSTDriver";
-            btnRSTDriver.Size = new Size(204, 43);
-            btnRSTDriver.TabIndex = 73;
-            btnRSTDriver.Text = "RST Driver";
-            btnRSTDriver.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnRSTDriver.UseVisualStyleBackColor = true;
             btnRSTDriver.Click += btnRSTDriver_Click;
             // 
             // FormTools
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(901, 458);
             Controls.Add(btnRSTDriver);
             Controls.Add(btnMPM);
             Controls.Add(btnDaRT);
@@ -160,9 +113,7 @@
             Controls.Add(btnWimTK);
             Controls.Add(btnKasperky);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormTools";
-            Text = "FormTools";
             ResumeLayout(false);
         }
 

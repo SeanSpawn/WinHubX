@@ -117,17 +117,177 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;btnWinLive.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnWin12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnWin11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAT1JREFUeF7t
-        1KERA0EQA8EL24E6nzdv8Xngm6omK77nfL7PK8y9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHtlDhVzr8yh
-        Yu6VOVTMvTKHirlX5lAx98ocKuZemUPF3CtzqJh7ZQ4Vc6/MoWLulTlUzL0yh4q5V+ZQMffKHCrmXplD
-        xdwrc6iYe2UOFXOvzKFi7pU5VMy9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHvldrv9eT6FirlX5lAx98oc
-        KuZemUPF3CtzqJh7ZQ4Vc6/MoWLulTlUzL0yh4q5V+ZQMffKHCrmXplDxdwrc6iYe2UOFXOvzKFi7pU5
-        VMy9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHtlDhVzr8yhYu6VOVTMvTKHirlX5lAx98ocKuZemUPF3Ctz
-        qJh7ZQ4Vc4/8AEClQJE+wMG9AAAAAElFTkSuQmCC
-</value>
+  <data name="btnWin8dot1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>524, 17</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnWin8dot1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;btnAttivaWin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnWin7.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblInfoWin12.Name" xml:space="preserve">
+    <value>lblInfoWin12</value>
+  </data>
+  <data name="&gt;&gt;btnWin7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btnCambioEdizione.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 364</value>
+  </data>
+  <data name="&gt;&gt;btnWin12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnWin10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 120</value>
+  </data>
+  <data name="&gt;&gt;btnWin10.Name" xml:space="preserve">
+    <value>btnWin10</value>
+  </data>
+  <data name="btnWin10.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;lblInfoWin12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnAttivaWin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>516, 364</value>
+  </data>
+  <data name="btnAttivaWin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnWin8dot1.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="btnAttivaWin.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="btnAttivaWin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 66</value>
+  </data>
+  <data name="&gt;&gt;lblInfoWin12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWin12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnWin11.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCambioEdizione.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="&gt;&gt;btnWin10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblInfoWin12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 37</value>
+  </data>
+  <data name="btnAttivaWin.Text" xml:space="preserve">
+    <value>Attiva Windows</value>
+  </data>
+  <data name="btnWin11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>524, 120</value>
+  </data>
+  <data name="btnWin12.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnWinLive.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnCambioEdizione.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="btnAttivaWin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="btnWinLive.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnWin8dot1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnCambioEdizione.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 66</value>
+  </data>
+  <data name="&gt;&gt;lblInfoWin12.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnWin10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnWin8dot1.Text" xml:space="preserve">
+    <value>Windows 8.1</value>
+  </data>
+  <data name="&gt;&gt;btnWin7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWin7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnWin8dot1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="btnWin12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnAttivaWin.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnWin8dot1.Name" xml:space="preserve">
+    <value>btnWin8dot1</value>
+  </data>
+  <data name="lblInfoWin12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnWin8dot1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnWinLive.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="&gt;&gt;btnWin10.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="btnWin11.Text" xml:space="preserve">
+    <value>Windows 11</value>
+  </data>
+  <data name="btnWin10.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="btnWin7.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnWin11.Name" xml:space="preserve">
+    <value>btnWin11</value>
+  </data>
+  <data name="&gt;&gt;btnAttivaWin.Name" xml:space="preserve">
+    <value>btnAttivaWin</value>
+  </data>
+  <data name="&gt;&gt;btnCambioEdizione.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnCambioEdizione.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="btnWin7.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="btnAttivaWin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -149,6 +309,68 @@
         PB+4QAPE7/FsIEMU3HfiWagrIf6RN0ji/wHVGwhZE1HnEQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnWinLive.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnWin10.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnWin8dot1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnWinLive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 90</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>FormWin</value>
+  </data>
+  <data name="btnWin12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>524, 231</value>
+  </data>
+  <data name="btnWin7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="&gt;&gt;btnWin11.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnWin12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnWin11.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="btnWin12.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnWin7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>901, 458</value>
+  </data>
+  <data name="&gt;&gt;btnWinLive.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnWinLive.Text" xml:space="preserve">
+    <value>Windows
+Live
+</value>
+  </data>
+  <data name="btnCambioEdizione.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="btnWin12.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormWin</value>
+  </data>
+  <data name="btnWinLive.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 220</value>
+  </data>
+  <data name="btnWin10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 68</value>
+  </data>
   <data name="btnCambioEdizione.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAqZJREFUeF7t
@@ -166,4 +388,133 @@
         wDvR58oLkMQu4A8mj0WuEZ3BPQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="&gt;&gt;btnWin7.Name" xml:space="preserve">
+    <value>btnWin7</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="btnWin11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAT1JREFUeF7t
+        1KERA0EQA8EL24E6nzdv8Xngm6omK77nfL7PK8y9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHtlDhVzr8yh
+        Yu6VOVTMvTKHirlX5lAx98ocKuZemUPF3CtzqJh7ZQ4Vc6/MoWLulTlUzL0yh4q5V+ZQMffKHCrmXplD
+        xdwrc6iYe2UOFXOvzKFi7pU5VMy9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHvldrv9eT6FirlX5lAx98oc
+        KuZemUPF3CtzqJh7ZQ4Vc6/MoWLulTlUzL0yh4q5V+ZQMffKHCrmXplDxdwrc6iYe2UOFXOvzKFi7pU5
+        VMy9MoeKuVfmUDH3yhwq5l6ZQ8XcK3OomHtlDhVzr8yhYu6VOVTMvTKHirlX5lAx98ocKuZemUPF3Ctz
+        qJh7ZQ4Vc4/8AEClQJE+wMG9AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnCambioEdizione.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnWin12.Text" xml:space="preserve">
+    <value>Windows 12</value>
+  </data>
+  <data name="lblInfoWin12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 23.999998pt, style=Italic</value>
+  </data>
+  <data name="btnWin7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="lblInfoWin12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>589, 301</value>
+  </data>
+  <data name="lblInfoWin12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="btnWin10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="&gt;&gt;btnWin12.Name" xml:space="preserve">
+    <value>btnWin12</value>
+  </data>
+  <data name="btnWin10.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnCambioEdizione.Name" xml:space="preserve">
+    <value>btnCambioEdizione</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnWinLive.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnWin12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 68</value>
+  </data>
+  <data name="btnWin7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 68</value>
+  </data>
+  <data name="&gt;&gt;btnAttivaWin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnWin11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnWin11.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnWin7.Text" xml:space="preserve">
+    <value>Windows 7</value>
+  </data>
+  <data name="btnAttivaWin.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnWin10.Text" xml:space="preserve">
+    <value>Windows 10</value>
+  </data>
+  <data name="&gt;&gt;btnWin8dot1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnWin12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="&gt;&gt;btnWin11.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnCambioEdizione.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnWin8dot1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnCambioEdizione.Text" xml:space="preserve">
+    <value>Cambio Edizione</value>
+  </data>
+  <data name="btnWinLive.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnWin8dot1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 75</value>
+  </data>
+  <data name="btnWin11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 25.8pt, style=Bold</value>
+  </data>
+  <data name="lblInfoWin12.Text" xml:space="preserve">
+    <value>coming soon!
+</value>
+  </data>
+  <data name="&gt;&gt;btnWinLive.Name" xml:space="preserve">
+    <value>btnWinLive</value>
+  </data>
+  <data name="&gt;&gt;btnCambioEdizione.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblInfoWin12.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="btnWin11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="btnWin11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 66</value>
+  </data>
+  <data name="&gt;&gt;btnAttivaWin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPersonalizzazione));
             panel1 = new Panel();
             radio_mostraoradata = new RadioButton();
             radio_nascondioradata = new RadioButton();
@@ -103,107 +104,67 @@
             panel1.Controls.Add(radio_mostradatasecondi);
             panel1.Controls.Add(radio_mostrasecondi);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(12, 40);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            panel1.Size = new Size(330, 159);
-            panel1.TabIndex = 0;
             // 
             // radio_mostraoradata
             // 
-            radio_mostraoradata.AutoSize = true;
-            radio_mostraoradata.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_mostraoradata, "radio_mostraoradata");
             radio_mostraoradata.ForeColor = Color.White;
-            radio_mostraoradata.Location = new Point(110, 127);
             radio_mostraoradata.Name = "radio_mostraoradata";
-            radio_mostraoradata.Size = new Size(137, 23);
-            radio_mostraoradata.TabIndex = 68;
             radio_mostraoradata.TabStop = true;
-            radio_mostraoradata.Text = "Mostra ora e data";
-            toolTip1.SetToolTip(radio_mostraoradata, "Mostra ora e data sull'orologio di windows");
+            toolTip1.SetToolTip(radio_mostraoradata, resources.GetString("radio_mostraoradata.ToolTip"));
             radio_mostraoradata.UseVisualStyleBackColor = true;
             // 
             // radio_nascondioradata
             // 
-            radio_nascondioradata.AutoSize = true;
-            radio_nascondioradata.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_nascondioradata, "radio_nascondioradata");
             radio_nascondioradata.ForeColor = Color.White;
-            radio_nascondioradata.Location = new Point(172, 87);
             radio_nascondioradata.Name = "radio_nascondioradata";
-            radio_nascondioradata.Size = new Size(149, 23);
-            radio_nascondioradata.TabIndex = 67;
             radio_nascondioradata.TabStop = true;
-            radio_nascondioradata.Text = "Nascondi ora e data";
-            toolTip1.SetToolTip(radio_nascondioradata, "Nasconde la data e i socondi sull'orologio windows");
+            toolTip1.SetToolTip(radio_nascondioradata, resources.GetString("radio_nascondioradata.ToolTip"));
             radio_nascondioradata.UseVisualStyleBackColor = true;
             // 
             // radio_orologiostandard
             // 
-            radio_orologiostandard.AutoSize = true;
-            radio_orologiostandard.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_orologiostandard, "radio_orologiostandard");
             radio_orologiostandard.ForeColor = Color.White;
-            radio_orologiostandard.Location = new Point(172, 46);
             radio_orologiostandard.Name = "radio_orologiostandard";
-            radio_orologiostandard.Size = new Size(140, 23);
-            radio_orologiostandard.TabIndex = 66;
             radio_orologiostandard.TabStop = true;
-            radio_orologiostandard.Text = "Orologio Standard";
-            toolTip1.SetToolTip(radio_orologiostandard, "Orologio default Windows");
+            toolTip1.SetToolTip(radio_orologiostandard, resources.GetString("radio_orologiostandard.ToolTip"));
             radio_orologiostandard.UseVisualStyleBackColor = true;
             // 
             // radio_mostradatasecondi
             // 
-            radio_mostradatasecondi.AutoSize = true;
-            radio_mostradatasecondi.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_mostradatasecondi, "radio_mostradatasecondi");
             radio_mostradatasecondi.ForeColor = Color.White;
-            radio_mostradatasecondi.Location = new Point(3, 90);
             radio_mostradatasecondi.Name = "radio_mostradatasecondi";
-            radio_mostradatasecondi.Size = new Size(163, 23);
-            radio_mostradatasecondi.TabIndex = 65;
             radio_mostradatasecondi.TabStop = true;
-            radio_mostradatasecondi.Text = "Mostra data e secondi";
-            toolTip1.SetToolTip(radio_mostradatasecondi, "Mostra data e socondi sull'orologio windows");
+            toolTip1.SetToolTip(radio_mostradatasecondi, resources.GetString("radio_mostradatasecondi.ToolTip"));
             radio_mostradatasecondi.UseVisualStyleBackColor = true;
             // 
             // radio_mostrasecondi
             // 
-            radio_mostrasecondi.AutoSize = true;
-            radio_mostrasecondi.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_mostrasecondi, "radio_mostrasecondi");
             radio_mostrasecondi.ForeColor = Color.White;
-            radio_mostrasecondi.Location = new Point(3, 46);
             radio_mostrasecondi.Name = "radio_mostrasecondi";
-            radio_mostrasecondi.Size = new Size(121, 23);
-            radio_mostrasecondi.TabIndex = 80;
             radio_mostrasecondi.TabStop = true;
-            radio_mostrasecondi.Text = "Mostra secondi";
-            toolTip1.SetToolTip(radio_mostrasecondi, "Mostra secondi nell'orologio");
+            toolTip1.SetToolTip(radio_mostrasecondi, resources.GetString("radio_mostrasecondi.ToolTip"));
             radio_mostrasecondi.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label4, "label4");
             label4.ForeColor = Color.Coral;
-            label4.Location = new Point(130, 12);
             label4.Name = "label4";
-            label4.Size = new Size(83, 24);
-            label4.TabIndex = 63;
-            label4.Text = "Orologio";
-            label4.TextAlign = ContentAlignment.BottomCenter;
             // 
             // btnAvviaSelezionati
             // 
             btnAvviaSelezionati.Cursor = Cursors.Hand;
             btnAvviaSelezionati.FlatAppearance.BorderSize = 0;
-            btnAvviaSelezionati.FlatStyle = FlatStyle.Flat;
-            btnAvviaSelezionati.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(btnAvviaSelezionati, "btnAvviaSelezionati");
             btnAvviaSelezionati.ForeColor = Color.White;
-            btnAvviaSelezionati.Location = new Point(750, 398);
-            btnAvviaSelezionati.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionati.Name = "btnAvviaSelezionati";
-            btnAvviaSelezionati.Size = new Size(149, 60);
-            btnAvviaSelezionati.TabIndex = 69;
-            btnAvviaSelezionati.Text = "Avvia Selezionati";
-            btnAvviaSelezionati.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAvviaSelezionati.UseVisualStyleBackColor = true;
             btnAvviaSelezionati.Click += btnAvviaSelezionati_Click;
             // 
@@ -214,170 +175,114 @@
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(12, 209);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
-            panel2.Size = new Size(380, 211);
-            panel2.TabIndex = 70;
             // 
             // panel14
             // 
             panel14.Controls.Add(radio_abilitaendtask);
             panel14.Controls.Add(radio_disabilitaendtask);
-            panel14.Location = new Point(0, 171);
+            resources.ApplyResources(panel14, "panel14");
             panel14.Name = "panel14";
-            panel14.Size = new Size(380, 38);
-            panel14.TabIndex = 72;
             // 
             // radio_abilitaendtask
             // 
-            radio_abilitaendtask.AutoSize = true;
-            radio_abilitaendtask.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_abilitaendtask, "radio_abilitaendtask");
             radio_abilitaendtask.ForeColor = Color.White;
-            radio_abilitaendtask.Location = new Point(3, 7);
             radio_abilitaendtask.Name = "radio_abilitaendtask";
-            radio_abilitaendtask.Size = new Size(117, 23);
-            radio_abilitaendtask.TabIndex = 64;
             radio_abilitaendtask.TabStop = true;
-            radio_abilitaendtask.Text = "Abilita EndTask";
-            toolTip1.SetToolTip(radio_abilitaendtask, "Aggiunge il comando per chiudere le finestre forzatamente");
+            toolTip1.SetToolTip(radio_abilitaendtask, resources.GetString("radio_abilitaendtask.ToolTip"));
             radio_abilitaendtask.UseVisualStyleBackColor = true;
             // 
             // radio_disabilitaendtask
             // 
-            radio_disabilitaendtask.AutoSize = true;
-            radio_disabilitaendtask.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disabilitaendtask, "radio_disabilitaendtask");
             radio_disabilitaendtask.ForeColor = Color.White;
-            radio_disabilitaendtask.Location = new Point(172, 7);
             radio_disabilitaendtask.Name = "radio_disabilitaendtask";
-            radio_disabilitaendtask.Size = new Size(134, 23);
-            radio_disabilitaendtask.TabIndex = 66;
             radio_disabilitaendtask.TabStop = true;
-            radio_disabilitaendtask.Text = "Disabilita EndTask";
-            toolTip1.SetToolTip(radio_disabilitaendtask, "Disattiva il comando per chiudere le finestre forzatamente");
+            toolTip1.SetToolTip(radio_disabilitaendtask, resources.GetString("radio_disabilitaendtask.ToolTip"));
             radio_disabilitaendtask.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
             panel5.Controls.Add(radio_apripowershell);
             panel5.Controls.Add(radio_eliminapowershell);
-            panel5.Location = new Point(0, 127);
+            resources.ApplyResources(panel5, "panel5");
             panel5.Name = "panel5";
-            panel5.Size = new Size(380, 38);
-            panel5.TabIndex = 71;
             // 
             // radio_apripowershell
             // 
-            radio_apripowershell.AutoSize = true;
-            radio_apripowershell.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_apripowershell, "radio_apripowershell");
             radio_apripowershell.ForeColor = Color.White;
-            radio_apripowershell.Location = new Point(3, 7);
             radio_apripowershell.Name = "radio_apripowershell";
-            radio_apripowershell.Size = new Size(143, 23);
-            radio_apripowershell.TabIndex = 64;
             radio_apripowershell.TabStop = true;
-            radio_apripowershell.Text = "Apri Powershell qui";
-            toolTip1.SetToolTip(radio_apripowershell, "Aggiunge al tasto destro \"apri powershell\"");
+            toolTip1.SetToolTip(radio_apripowershell, resources.GetString("radio_apripowershell.ToolTip"));
             radio_apripowershell.UseVisualStyleBackColor = true;
             // 
             // radio_eliminapowershell
             // 
-            radio_eliminapowershell.AutoSize = true;
-            radio_eliminapowershell.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_eliminapowershell, "radio_eliminapowershell");
             radio_eliminapowershell.ForeColor = Color.White;
-            radio_eliminapowershell.Location = new Point(172, 7);
             radio_eliminapowershell.Name = "radio_eliminapowershell";
-            radio_eliminapowershell.Size = new Size(188, 23);
-            radio_eliminapowershell.TabIndex = 66;
             radio_eliminapowershell.TabStop = true;
-            radio_eliminapowershell.Text = "Elimina apri Powershell qui";
-            toolTip1.SetToolTip(radio_eliminapowershell, "Elimina dal tasto destro \"apri powershell\"");
+            toolTip1.SetToolTip(radio_eliminapowershell, resources.GetString("radio_eliminapowershell.ToolTip"));
             radio_eliminapowershell.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
             panel4.Controls.Add(radio_apricmd);
             panel4.Controls.Add(radio_eliminaapricmd);
-            panel4.Location = new Point(0, 83);
+            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
-            panel4.Size = new Size(380, 38);
-            panel4.TabIndex = 70;
             // 
             // radio_apricmd
             // 
-            radio_apricmd.AutoSize = true;
-            radio_apricmd.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_apricmd, "radio_apricmd");
             radio_apricmd.ForeColor = Color.White;
-            radio_apricmd.Location = new Point(3, 7);
             radio_apricmd.Name = "radio_apricmd";
-            radio_apricmd.Size = new Size(111, 23);
-            radio_apricmd.TabIndex = 64;
             radio_apricmd.TabStop = true;
-            radio_apricmd.Text = "Apri CMD qui";
-            toolTip1.SetToolTip(radio_apricmd, "Aggiunge al tasto destro \"apri cmd\"");
+            toolTip1.SetToolTip(radio_apricmd, resources.GetString("radio_apricmd.ToolTip"));
             radio_apricmd.UseVisualStyleBackColor = true;
             // 
             // radio_eliminaapricmd
             // 
-            radio_eliminaapricmd.AutoSize = true;
-            radio_eliminaapricmd.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_eliminaapricmd, "radio_eliminaapricmd");
             radio_eliminaapricmd.ForeColor = Color.White;
-            radio_eliminaapricmd.Location = new Point(172, 7);
             radio_eliminaapricmd.Name = "radio_eliminaapricmd";
-            radio_eliminaapricmd.Size = new Size(156, 23);
-            radio_eliminaapricmd.TabIndex = 66;
             radio_eliminaapricmd.TabStop = true;
-            radio_eliminaapricmd.Text = "Elimina apri CMD qui";
-            toolTip1.SetToolTip(radio_eliminaapricmd, "Elimina dal tasto destro \"apri cmd\"");
+            toolTip1.SetToolTip(radio_eliminaapricmd, resources.GetString("radio_eliminaapricmd.ToolTip"));
             radio_eliminaapricmd.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
             panel3.Controls.Add(radio_destrolegacy);
             panel3.Controls.Add(radio_destrodefault);
-            panel3.Location = new Point(0, 39);
+            resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
-            panel3.Size = new Size(380, 38);
-            panel3.TabIndex = 69;
             // 
             // radio_destrolegacy
             // 
-            radio_destrolegacy.AutoSize = true;
-            radio_destrolegacy.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_destrolegacy, "radio_destrolegacy");
             radio_destrolegacy.ForeColor = Color.White;
-            radio_destrolegacy.Location = new Point(3, 7);
             radio_destrolegacy.Name = "radio_destrolegacy";
-            radio_destrolegacy.Size = new Size(143, 23);
-            radio_destrolegacy.TabIndex = 64;
             radio_destrolegacy.TabStop = true;
-            radio_destrolegacy.Text = "Tasto destro legacy";
-            toolTip1.SetToolTip(radio_destrolegacy, "Tasto destro come Win10");
+            toolTip1.SetToolTip(radio_destrolegacy, resources.GetString("radio_destrolegacy.ToolTip"));
             radio_destrolegacy.UseVisualStyleBackColor = true;
             // 
             // radio_destrodefault
             // 
-            radio_destrodefault.AutoSize = true;
-            radio_destrodefault.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_destrodefault, "radio_destrodefault");
             radio_destrodefault.ForeColor = Color.White;
-            radio_destrodefault.Location = new Point(172, 7);
             radio_destrodefault.Name = "radio_destrodefault";
-            radio_destrodefault.Size = new Size(147, 23);
-            radio_destrodefault.TabIndex = 66;
             radio_destrodefault.TabStop = true;
-            radio_destrodefault.Text = "Tasto destro default";
-            toolTip1.SetToolTip(radio_destrodefault, "Tasto destro nuovo di Win11");
+            toolTip1.SetToolTip(radio_destrodefault, resources.GetString("radio_destrodefault.ToolTip"));
             radio_destrodefault.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.Coral;
-            label1.Location = new Point(121, 9);
             label1.Name = "label1";
-            label1.Size = new Size(115, 24);
-            label1.TabIndex = 63;
-            label1.Text = "Tasto Destro";
-            label1.TextAlign = ContentAlignment.BottomRight;
             // 
             // panel7
             // 
@@ -387,260 +292,174 @@
             panel7.Controls.Add(panel11);
             panel7.Controls.Add(label2);
             panel7.Controls.Add(panel8);
-            panel7.Location = new Point(398, 10);
+            resources.ApplyResources(panel7, "panel7");
             panel7.Name = "panel7";
-            panel7.Size = new Size(340, 360);
-            panel7.TabIndex = 71;
             // 
             // panel10
             // 
             panel10.Controls.Add(radio_abilicopilot);
             panel10.Controls.Add(radio_disacopilot);
-            panel10.Location = new Point(0, 303);
+            resources.ApplyResources(panel10, "panel10");
             panel10.Name = "panel10";
-            panel10.Size = new Size(340, 38);
-            panel10.TabIndex = 74;
             // 
             // radio_abilicopilot
             // 
-            radio_abilicopilot.AutoSize = true;
-            radio_abilicopilot.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_abilicopilot, "radio_abilicopilot");
             radio_abilicopilot.ForeColor = Color.White;
-            radio_abilicopilot.Location = new Point(3, 7);
             radio_abilicopilot.Name = "radio_abilicopilot";
-            radio_abilicopilot.Size = new Size(113, 23);
-            radio_abilicopilot.TabIndex = 64;
             radio_abilicopilot.TabStop = true;
-            radio_abilicopilot.Text = "Abilita Copilot";
-            toolTip1.SetToolTip(radio_abilicopilot, "Abilita Copilot IA di windows");
+            toolTip1.SetToolTip(radio_abilicopilot, resources.GetString("radio_abilicopilot.ToolTip"));
             radio_abilicopilot.UseVisualStyleBackColor = true;
             // 
             // radio_disacopilot
             // 
-            radio_disacopilot.AutoSize = true;
-            radio_disacopilot.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disacopilot, "radio_disacopilot");
             radio_disacopilot.ForeColor = Color.White;
-            radio_disacopilot.Location = new Point(168, 7);
             radio_disacopilot.Name = "radio_disacopilot";
-            radio_disacopilot.Size = new Size(130, 23);
-            radio_disacopilot.TabIndex = 66;
             radio_disacopilot.TabStop = true;
-            radio_disacopilot.Text = "Disabilita Copilot";
-            toolTip1.SetToolTip(radio_disacopilot, "Disabilita Copilot IA di windows");
+            toolTip1.SetToolTip(radio_disacopilot, resources.GetString("radio_disacopilot.ToolTip"));
             radio_disacopilot.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
             panel6.Controls.Add(radio_abilitarecall);
             panel6.Controls.Add(radio_disabilitarecall);
-            panel6.Location = new Point(0, 171);
+            resources.ApplyResources(panel6, "panel6");
             panel6.Name = "panel6";
-            panel6.Size = new Size(340, 38);
-            panel6.TabIndex = 73;
             // 
             // radio_abilitarecall
             // 
-            radio_abilitarecall.AutoSize = true;
-            radio_abilitarecall.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_abilitarecall, "radio_abilitarecall");
             radio_abilitarecall.ForeColor = Color.White;
-            radio_abilitarecall.Location = new Point(3, 7);
             radio_abilitarecall.Name = "radio_abilitarecall";
-            radio_abilitarecall.Size = new Size(103, 23);
-            radio_abilitarecall.TabIndex = 64;
             radio_abilitarecall.TabStop = true;
-            radio_abilitarecall.Text = "Abilita Recall";
-            toolTip1.SetToolTip(radio_abilitarecall, "Abilita la funzione RECALL di windows");
+            toolTip1.SetToolTip(radio_abilitarecall, resources.GetString("radio_abilitarecall.ToolTip"));
             radio_abilitarecall.UseVisualStyleBackColor = true;
             // 
             // radio_disabilitarecall
             // 
-            radio_disabilitarecall.AutoSize = true;
-            radio_disabilitarecall.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disabilitarecall, "radio_disabilitarecall");
             radio_disabilitarecall.ForeColor = Color.White;
-            radio_disabilitarecall.Location = new Point(168, 7);
             radio_disabilitarecall.Name = "radio_disabilitarecall";
-            radio_disabilitarecall.Size = new Size(120, 23);
-            radio_disabilitarecall.TabIndex = 66;
             radio_disabilitarecall.TabStop = true;
-            radio_disabilitarecall.Text = "Disabilita Recall";
-            toolTip1.SetToolTip(radio_disabilitarecall, "Disattiva la funzione RECALL di windows");
+            toolTip1.SetToolTip(radio_disabilitarecall, resources.GetString("radio_disabilitarecall.ToolTip"));
             radio_disabilitarecall.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
             panel9.Controls.Add(radio_abilitasuggeriti);
             panel9.Controls.Add(radio_disabilitasuggeriti);
-            panel9.Location = new Point(0, 127);
+            resources.ApplyResources(panel9, "panel9");
             panel9.Name = "panel9";
-            panel9.Size = new Size(340, 38);
-            panel9.TabIndex = 71;
             // 
             // radio_abilitasuggeriti
             // 
-            radio_abilitasuggeriti.AutoSize = true;
-            radio_abilitasuggeriti.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_abilitasuggeriti, "radio_abilitasuggeriti");
             radio_abilitasuggeriti.ForeColor = Color.White;
-            radio_abilitasuggeriti.Location = new Point(3, 7);
             radio_abilitasuggeriti.Name = "radio_abilitasuggeriti";
-            radio_abilitasuggeriti.Size = new Size(123, 23);
-            radio_abilitasuggeriti.TabIndex = 64;
             radio_abilitasuggeriti.TabStop = true;
-            radio_abilitasuggeriti.Text = "Abilita Suggeriti";
-            toolTip1.SetToolTip(radio_abilitasuggeriti, "Mostra suggeriti su start");
+            toolTip1.SetToolTip(radio_abilitasuggeriti, resources.GetString("radio_abilitasuggeriti.ToolTip"));
             radio_abilitasuggeriti.UseVisualStyleBackColor = true;
             // 
             // radio_disabilitasuggeriti
             // 
-            radio_disabilitasuggeriti.AutoSize = true;
-            radio_disabilitasuggeriti.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disabilitasuggeriti, "radio_disabilitasuggeriti");
             radio_disabilitasuggeriti.ForeColor = Color.White;
-            radio_disabilitasuggeriti.Location = new Point(168, 7);
             radio_disabilitasuggeriti.Name = "radio_disabilitasuggeriti";
-            radio_disabilitasuggeriti.Size = new Size(140, 23);
-            radio_disabilitasuggeriti.TabIndex = 66;
             radio_disabilitasuggeriti.TabStop = true;
-            radio_disabilitasuggeriti.Text = "Disabilita Suggeriti";
-            toolTip1.SetToolTip(radio_disabilitasuggeriti, "Disattiva suggeriti su start");
+            toolTip1.SetToolTip(radio_disabilitasuggeriti, resources.GetString("radio_disabilitasuggeriti.ToolTip"));
             radio_disabilitasuggeriti.UseVisualStyleBackColor = true;
             // 
             // panel11
             // 
             panel11.Controls.Add(radio_disabilitaricercainternet);
-            panel11.Location = new Point(0, 39);
+            resources.ApplyResources(panel11, "panel11");
             panel11.Name = "panel11";
-            panel11.Size = new Size(340, 38);
-            panel11.TabIndex = 69;
             // 
             // radio_disabilitaricercainternet
             // 
-            radio_disabilitaricercainternet.AutoSize = true;
-            radio_disabilitaricercainternet.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disabilitaricercainternet, "radio_disabilitaricercainternet");
             radio_disabilitaricercainternet.ForeColor = Color.White;
-            radio_disabilitaricercainternet.Location = new Point(3, 7);
             radio_disabilitaricercainternet.Name = "radio_disabilitaricercainternet";
-            radio_disabilitaricercainternet.Size = new Size(177, 23);
-            radio_disabilitaricercainternet.TabIndex = 64;
             radio_disabilitaricercainternet.TabStop = true;
-            radio_disabilitaricercainternet.Text = "Disabilita ricerca internet";
-            toolTip1.SetToolTip(radio_disabilitaricercainternet, "Quando ricerchi su start non verrà più effettuata la ricerca con bing");
+            toolTip1.SetToolTip(radio_disabilitaricercainternet, resources.GetString("radio_disabilitaricercainternet.ToolTip"));
             radio_disabilitaricercainternet.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label2, "label2");
             label2.ForeColor = Color.Coral;
-            label2.Location = new Point(121, 7);
             label2.Name = "label2";
-            label2.Size = new Size(124, 24);
-            label2.TabIndex = 63;
-            label2.Text = "Ottimizzazioni";
-            label2.TextAlign = ContentAlignment.BottomRight;
             // 
             // panel8
             // 
             panel8.Controls.Add(radio_ottimizzaricerca);
-            panel8.Location = new Point(0, 83);
+            resources.ApplyResources(panel8, "panel8");
             panel8.Name = "panel8";
-            panel8.Size = new Size(340, 38);
-            panel8.TabIndex = 72;
             // 
             // radio_ottimizzaricerca
             // 
-            radio_ottimizzaricerca.AutoSize = true;
-            radio_ottimizzaricerca.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_ottimizzaricerca, "radio_ottimizzaricerca");
             radio_ottimizzaricerca.ForeColor = Color.White;
-            radio_ottimizzaricerca.Location = new Point(3, 7);
             radio_ottimizzaricerca.Name = "radio_ottimizzaricerca";
-            radio_ottimizzaricerca.Size = new Size(131, 23);
-            radio_ottimizzaricerca.TabIndex = 64;
             radio_ottimizzaricerca.TabStop = true;
-            radio_ottimizzaricerca.Text = "Ottimizza Ricerca";
             radio_ottimizzaricerca.UseVisualStyleBackColor = true;
             // 
             // panel13
             // 
             panel13.Controls.Add(radio_attivafx);
             panel13.Controls.Add(radio_disattivafx);
-            panel13.Location = new Point(398, 269);
+            resources.ApplyResources(panel13, "panel13");
             panel13.Name = "panel13";
-            panel13.Size = new Size(340, 38);
-            panel13.TabIndex = 74;
             // 
             // radio_attivafx
             // 
-            radio_attivafx.AutoSize = true;
-            radio_attivafx.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_attivafx, "radio_attivafx");
             radio_attivafx.ForeColor = Color.White;
-            radio_attivafx.Location = new Point(3, 9);
             radio_attivafx.Name = "radio_attivafx";
-            radio_attivafx.Size = new Size(80, 23);
-            radio_attivafx.TabIndex = 65;
             radio_attivafx.TabStop = true;
-            radio_attivafx.Text = "Attiva Fx";
-            toolTip1.SetToolTip(radio_attivafx, "Settaggi per ottenere l'aspetto migliore");
+            toolTip1.SetToolTip(radio_attivafx, resources.GetString("radio_attivafx.ToolTip"));
             radio_attivafx.UseVisualStyleBackColor = true;
             // 
             // radio_disattivafx
             // 
-            radio_disattivafx.AutoSize = true;
-            radio_disattivafx.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_disattivafx, "radio_disattivafx");
             radio_disattivafx.ForeColor = Color.White;
-            radio_disattivafx.Location = new Point(171, 9);
             radio_disattivafx.Name = "radio_disattivafx";
-            radio_disattivafx.Size = new Size(137, 23);
-            radio_disattivafx.TabIndex = 64;
             radio_disattivafx.TabStop = true;
-            radio_disattivafx.Text = "Disattiva Visual Fx";
-            toolTip1.SetToolTip(radio_disattivafx, "Migliora le prestazioni Windows");
+            toolTip1.SetToolTip(radio_disattivafx, resources.GetString("radio_disattivafx.ToolTip"));
             radio_disattivafx.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
             panel12.Controls.Add(radio_ripristinaottimizzazionewin);
             panel12.Controls.Add(radio_ottimizzawindows);
-            panel12.Location = new Point(398, 225);
+            resources.ApplyResources(panel12, "panel12");
             panel12.Name = "panel12";
-            panel12.Size = new Size(340, 38);
-            panel12.TabIndex = 73;
             // 
             // radio_ripristinaottimizzazionewin
             // 
-            radio_ripristinaottimizzazionewin.AutoSize = true;
-            radio_ripristinaottimizzazionewin.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_ripristinaottimizzazionewin, "radio_ripristinaottimizzazionewin");
             radio_ripristinaottimizzazionewin.ForeColor = Color.White;
-            radio_ripristinaottimizzazionewin.Location = new Point(168, 7);
             radio_ripristinaottimizzazionewin.Name = "radio_ripristinaottimizzazionewin";
-            radio_ripristinaottimizzazionewin.Size = new Size(171, 23);
-            radio_ripristinaottimizzazionewin.TabIndex = 65;
             radio_ripristinaottimizzazionewin.TabStop = true;
-            radio_ripristinaottimizzazionewin.Text = "Ripristina Ott. Windows";
             radio_ripristinaottimizzazionewin.UseVisualStyleBackColor = true;
             // 
             // radio_ottimizzawindows
             // 
-            radio_ottimizzawindows.AutoSize = true;
-            radio_ottimizzawindows.Font = new Font("Segoe UI", 10.2F);
+            resources.ApplyResources(radio_ottimizzawindows, "radio_ottimizzawindows");
             radio_ottimizzawindows.ForeColor = Color.White;
-            radio_ottimizzawindows.Location = new Point(3, 7);
             radio_ottimizzawindows.Name = "radio_ottimizzawindows";
-            radio_ottimizzawindows.Size = new Size(145, 23);
-            radio_ottimizzawindows.TabIndex = 64;
             radio_ottimizzawindows.TabStop = true;
-            radio_ottimizzawindows.Text = "Ottimizza Windows";
             radio_ottimizzawindows.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
-            btnBack.Location = new Point(12, -1);
-            btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(48, 41);
-            btnBack.TabIndex = 72;
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -649,49 +468,29 @@
             // 
             btn_resetselezione.Cursor = Cursors.Hand;
             btn_resetselezione.FlatAppearance.BorderSize = 0;
-            btn_resetselezione.FlatStyle = FlatStyle.Flat;
-            btn_resetselezione.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(btn_resetselezione, "btn_resetselezione");
             btn_resetselezione.ForeColor = Color.White;
-            btn_resetselezione.Location = new Point(750, 6);
-            btn_resetselezione.Margin = new Padding(3, 2, 3, 2);
             btn_resetselezione.Name = "btn_resetselezione";
-            btn_resetselezione.Size = new Size(149, 60);
-            btn_resetselezione.TabIndex = 1;
-            btn_resetselezione.Text = "Reset selezione";
-            btn_resetselezione.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_resetselezione.UseVisualStyleBackColor = true;
             btn_resetselezione.Click += btn_resetselezione_Click;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label3, "label3");
             label3.ForeColor = Color.Coral;
-            label3.Location = new Point(776, 225);
             label3.Name = "label3";
-            label3.Size = new Size(0, 24);
-            label3.TabIndex = 69;
-            label3.TextAlign = ContentAlignment.BottomCenter;
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label5, "label5");
             label5.ForeColor = Color.Coral;
-            label5.Location = new Point(776, 129);
             label5.Name = "label5";
-            label5.Size = new Size(0, 24);
-            label5.TabIndex = 74;
-            label5.TextAlign = ContentAlignment.BottomCenter;
             // 
             // progressBar1
             // 
-            progressBar1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            progressBar1.Location = new Point(17, 426);
+            resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(720, 23);
             progressBar1.Style = ProgressBarStyle.Continuous;
-            progressBar1.TabIndex = 75;
             // 
             // backgroundWorker1
             // 
@@ -703,10 +502,9 @@
             // 
             // FormPersonalizzazione
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(901, 458);
             Controls.Add(progressBar1);
             Controls.Add(panel13);
             Controls.Add(label5);
@@ -720,7 +518,6 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPersonalizzazione";
-            Text = "FormPersonalizzazione";
             Load += FormPersonalizzazione_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

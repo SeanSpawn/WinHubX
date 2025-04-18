@@ -118,6 +118,121 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnSSD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 39</value>
+  </data>
+  <data name="btnSSD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 30</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnSSD.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnSSD.Text" xml:space="preserve">
+    <value>SSD</value>
+  </data>
+  <data name="&gt;&gt;btnSSD.Name" xml:space="preserve">
+    <value>btnSSD</value>
+  </data>
+  <data name="&gt;&gt;btnSSD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSSD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSSD.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnNVMe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 79</value>
+  </data>
+  <data name="btnNVMe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 30</value>
+  </data>
+  <data name="btnNVMe.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnNVMe.Text" xml:space="preserve">
+    <value>SSD (NVMe)</value>
+  </data>
+  <data name="&gt;&gt;btnNVMe.Name" xml:space="preserve">
+    <value>btnNVMe</value>
+  </data>
+  <data name="&gt;&gt;btnNVMe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNVMe.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnNVMe.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnHDD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 119</value>
+  </data>
+  <data name="btnHDD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 30</value>
+  </data>
+  <data name="btnHDD.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnHDD.Text" xml:space="preserve">
+    <value>HDD</value>
+  </data>
+  <data name="&gt;&gt;btnHDD.Name" xml:space="preserve">
+    <value>btnHDD</value>
+  </data>
+  <data name="&gt;&gt;btnHDD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnHDD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnHDD.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblInstruction.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblInstruction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="lblInstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 9</value>
+  </data>
+  <data name="lblInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 19</value>
+  </data>
+  <data name="lblInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblInstruction.Text" xml:space="preserve">
+    <value>Seleziona il tipo di disco:</value>
+  </data>
+  <data name="lblInstruction.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblInstruction.Name" xml:space="preserve">
+    <value>lblInstruction</value>
+  </data>
+  <data name="&gt;&gt;lblInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblInstruction.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblInstruction.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>246, 162</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIABM8gAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgGAAAAXHKoZgAAAAFv
@@ -1156,5 +1271,14 @@
         DnOYwxzmMIc5zGEOc5jDHOYwhznMYQ5zmMMc5jCHOcxhDnOYwxzmMIc5zGEOc96b839ypeFKzMeABAAA
         AABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>WinHubX-Seleziona Tipo Disco</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DiskTypeSelectorForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

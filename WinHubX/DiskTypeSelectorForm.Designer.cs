@@ -42,59 +42,41 @@
             // 
             // btnSSD
             // 
-            btnSSD.Location = new Point(45, 39);
+            resources.ApplyResources(btnSSD, "btnSSD");
             btnSSD.Name = "btnSSD";
-            btnSSD.Size = new Size(150, 30);
-            btnSSD.TabIndex = 1;
-            btnSSD.Text = "SSD";
             btnSSD.UseVisualStyleBackColor = true;
             btnSSD.Click += btnSSD_Click;
             // 
             // btnNVMe
             // 
-            btnNVMe.Location = new Point(45, 79);
+            resources.ApplyResources(btnNVMe, "btnNVMe");
             btnNVMe.Name = "btnNVMe";
-            btnNVMe.Size = new Size(150, 30);
-            btnNVMe.TabIndex = 2;
-            btnNVMe.Text = "SSD (NVMe)";
             btnNVMe.UseVisualStyleBackColor = true;
             btnNVMe.Click += btnNVMe_Click;
             // 
             // btnHDD
             // 
-            btnHDD.Location = new Point(45, 119);
+            resources.ApplyResources(btnHDD, "btnHDD");
             btnHDD.Name = "btnHDD";
-            btnHDD.Size = new Size(150, 30);
-            btnHDD.TabIndex = 3;
-            btnHDD.Text = "HDD";
             btnHDD.UseVisualStyleBackColor = true;
             btnHDD.Click += btnHDD_Click;
             // 
             // lblInstruction
             // 
-            lblInstruction.AutoSize = true;
-            lblInstruction.Font = new Font("Segoe UI", 10F);
+            resources.ApplyResources(lblInstruction, "lblInstruction");
             lblInstruction.ForeColor = Color.White;
-            lblInstruction.Location = new Point(45, 9);
             lblInstruction.Name = "lblInstruction";
-            lblInstruction.Size = new Size(156, 19);
-            lblInstruction.TabIndex = 0;
-            lblInstruction.Text = "Seleziona il tipo di disco:";
-            lblInstruction.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // DiskTypeSelectorForm
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(246, 162);
             Controls.Add(lblInstruction);
             Controls.Add(btnSSD);
             Controls.Add(btnNVMe);
             Controls.Add(btnHDD);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DiskTypeSelectorForm";
-            Text = "Seleziona Tipo Disco";
             ResumeLayout(false);
             PerformLayout();
         }

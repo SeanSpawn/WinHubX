@@ -34,10 +34,9 @@ namespace WinHubX.Forms.Base
 
         private void InizializzaDati()
         {
-            // Avvia il caricamento dei dati in background
             Task.Run(async () =>
             {
-                Task.WhenAll(CaricaAppNameMappings(), CaricaImmaginiApp()).Wait(); // Carica prima i dati in parallelo
+                Task.WhenAll(CaricaAppNameMappings(), CaricaImmaginiApp()).Wait();
                 CaricaAppxPackages();
             });
         }
@@ -72,7 +71,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante il caricamento delle immagini delle app: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,7 +87,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante il caricamento delle associazioni delle app: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -122,7 +121,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante il caricamento delle app installate: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -140,15 +139,13 @@ namespace WinHubX.Forms.Base
         {
             string nomeLeggibile = OttieniNomeLeggibile(nomeTecnico);
             string imgUrl = imageUrls.ContainsKey(nomeLeggibile) ? imageUrls[nomeLeggibile] : null;
-
-            // Se l'immagine non è trovata, usa l'icona di default "Generale"
             if (string.IsNullOrEmpty(imgUrl) && imageUrls.ContainsKey("Generale"))
             {
                 imgUrl = imageUrls["Generale"];
             }
 
-            int panelWidth = (flowLayoutPanel1.ClientSize.Width / 2) - 20; // Due colonne con margine
-            int panelHeight = 50; // Ridotto per compattezza
+            int panelWidth = (flowLayoutPanel1.ClientSize.Width / 2) - 20;
+            int panelHeight = 50;
 
             Panel panel = new Panel
             {
@@ -157,7 +154,7 @@ namespace WinHubX.Forms.Base
                 Padding = new Padding(5),
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(3),
-                BackColor = Color.FromArgb(37, 38, 39) // Sfondo scuro per contrasto
+                BackColor = Color.FromArgb(37, 38, 39)
             };
 
             PictureBox pictureBox = new PictureBox
@@ -173,11 +170,11 @@ namespace WinHubX.Forms.Base
             {
                 try
                 {
-                    pictureBox.Load(imgUrl); // Carica direttamente da URL
+                    pictureBox.Load(imgUrl);
                 }
                 catch
                 {
-                    pictureBox.Image = null; // Se errore, lascia vuoto
+                    pictureBox.Image = null;
                 }
             }
 
@@ -185,14 +182,14 @@ namespace WinHubX.Forms.Base
             {
                 Text = nomeLeggibile,
                 AutoSize = false,
-                Width = panelWidth - 80, // Larghezza massima per evitare overflow
-                Height = 30, // Impedisce che vada troppo in basso
+                Width = panelWidth - 80,
+                Height = 30,
                 Left = 40,
                 Top = (panelHeight - 30) / 2,
                 TextAlign = ContentAlignment.MiddleLeft,
-                ForeColor = Color.White, // Testo bianco
+                ForeColor = Color.White,
                 Font = new Font("Arial", 9, FontStyle.Bold),
-                Padding = new Padding(0, 5, 0, 0) // Un po' di spazio sopra
+                Padding = new Padding(0, 5, 0, 0)
             };
 
             ToolTip tooltip = new ToolTip();
@@ -201,8 +198,8 @@ namespace WinHubX.Forms.Base
             CheckBox checkBox = new CheckBox
             {
                 AutoSize = true,
-                Left = panelWidth - 25, // Posizionato a destra del pannello
-                Top = (panelHeight - 15) / 2 // Centrato verticalmente
+                Left = panelWidth - 25,
+                Top = (panelHeight - 15) / 2
             };
 
             panel.Controls.Add(pictureBox);
@@ -215,10 +212,8 @@ namespace WinHubX.Forms.Base
         {
             if (appNameMappings.ContainsKey(nomeTecnico))
             {
-                return appNameMappings[nomeTecnico]; // Se esiste una corrispondenza, usa il nome leggibile
+                return appNameMappings[nomeTecnico];
             }
-
-            // Rimuove il prefisso "Microsoft." se presente
             return nomeTecnico.Replace("Microsoft.", "").Replace("_", " ");
         }
 
@@ -239,43 +234,32 @@ namespace WinHubX.Forms.Base
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                textBox1.ForeColor = Color.Gray; // Colore per il placeholder
-                textBox1.SelectionStart = 0; // Evita il cursore nel mezzo del testo
-                AggiornaUI(appxNames); // Ripristina tutte le app
+                textBox1.ForeColor = Color.Gray;
+                textBox1.SelectionStart = 0;
+                AggiornaUI(appxNames);
             }
         }
         private void btnAvviaSelezionatiDebloat_Click(object sender, EventArgs e)
         {
             totalSteps = 0;
-
-            // Itera su tutti i controlli nel FlowLayoutPanel
             foreach (Control control in flowLayoutPanel1.Controls)
             {
                 if (control is Panel panel)
                 {
-                    // Trova il CheckBox e il Label all'interno del Panel
                     CheckBox checkBox = panel.Controls.OfType<CheckBox>().FirstOrDefault();
                     Label lblNome = panel.Controls.OfType<Label>().FirstOrDefault();
-
-                    // Se il CheckBox è selezionato e il Label esiste, incrementa il contatore dei passi
                     if (checkBox != null && checkBox.Checked && lblNome != null)
                     {
                         totalSteps++;
                     }
                 }
             }
-
-            // Se nessun elemento è selezionato, imposta almeno 1 passo
             if (totalSteps == 0)
             {
                 totalSteps = 1;
             }
-
-            // Imposta il massimo della progress bar e azzera il valore
             progressBar1.Maximum = totalSteps;
             progressBar1.Value = 0;
-
-            // Avvia il lavoro nel background se non è già in esecuzione
             if (!backgroundWorker1.IsBusy)
             {
                 backgroundWorker1.RunWorkerAsync();
@@ -300,12 +284,12 @@ namespace WinHubX.Forms.Base
                 using (Process process = new Process { StartInfo = psi })
                 {
                     process.Start();
-                    process.WaitForExit(); // Aspetta la fine del processo
+                    process.WaitForExit();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante la rimozione di {nomeApp}: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -327,7 +311,7 @@ namespace WinHubX.Forms.Base
                 using (Process process = new Process { StartInfo = psi })
                 {
                     process.Start();
-                    process.WaitForExit(); // Aspetta la fine del processo
+                    process.WaitForExit();
                 }
             }
             catch (Exception ex)
@@ -349,7 +333,14 @@ namespace WinHubX.Forms.Base
                 if (powerShellCommand != null)
                 {
                     ExecutePowerShellCommand(powerShellCommand);
-                    MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+                    MessageBox.Show(
+                        messaggio,
+                        "WinHubX",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                 }
             }
         }
@@ -359,7 +350,6 @@ namespace WinHubX.Forms.Base
             int version = Environment.OSVersion.Version.Major;
             if (version < 10)
             {
-                MessageBox.Show("Versione di Windows non supportata. Questo script è per Windows 10 o 11.");
                 return null;
             }
 
@@ -435,7 +425,7 @@ namespace WinHubX.Forms.Base
                         string nomeTecnico = appxNames.FirstOrDefault(app => OttieniNomeLeggibile(app) == lblNome.Text);
                         if (!string.IsNullOrEmpty(nomeTecnico))
                         {
-                            appsToRemove.Add(nomeTecnico);  // Aggiungi all'elenco delle app da rimuovere
+                            appsToRemove.Add(nomeTecnico);
 
                         }
                     }
@@ -449,9 +439,7 @@ namespace WinHubX.Forms.Base
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
-
-            // Carica di nuovo la lista aggiornata delle app
-            CaricaAppxPackages(); // Questo rileggerà le app installate e aggiornerà l'interfaccia
+            CaricaAppxPackages();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -461,7 +449,14 @@ namespace WinHubX.Forms.Base
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

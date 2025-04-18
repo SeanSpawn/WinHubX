@@ -60,36 +60,34 @@ namespace WinHubX
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
             string primaryURL = string.Empty;
-
-            // Imposta la sicurezza TLS per la connessione
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             try
             {
-                // Controlla la connessione a Internet
                 if (IsInternetAvailable())
                 {
-                    // Ottieni il contenuto JSON da URL
                     using (HttpClient client = new HttpClient())
                     {
                         var jsonResponse = await client.GetStringAsync(configUrl);
                         var jsonObject = JObject.Parse(jsonResponse);
                         primaryURL = jsonObject["FormWin"]["attivatorewin"].ToString();
                     }
-
-                    // Avvia il comando HWID_Activation.cmd dal link ottenuto
                     await ExecuteScriptFromUrl(primaryURL);
                 }
                 else
                 {
-                    // Se non c'è connessione, usa la risorsa locale
-                    MessageBox.Show("Connessione Internet non disponibile. Utilizzo del file di attivazione locale.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        LanguageManager.GetTranslation("Global", "nointernet"),
+                        "WinHubX",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     ExtractAndExecuteLocalScript();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'attivazione: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -113,27 +111,20 @@ namespace WinHubX
         {
             try
             {
-                // Ottieni il percorso Documenti dell'utente
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string scriptPath = Path.Combine(documentsPath, "TSforge_Activation.cmd");
-
-                // Estrai il file dalla risorsa e salvalo in Documenti
                 byte[] scriptBytes = Properties.Resources.TSforge_Activation;
-
-                // Scrivi i byte su un file nella cartella Documenti
                 File.WriteAllBytes(scriptPath, scriptBytes);
-
-                // Esegui il file CMD estratto
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = scriptPath,
                     UseShellExecute = true,
-                    Verb = "runas" // Esegui come amministratore se necessario
+                    Verb = "runas"
                 });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'estrazione o l'esecuzione del file locale: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -142,27 +133,22 @@ namespace WinHubX
         {
             try
             {
-                // Scarica il contenuto del file CMD
                 using (HttpClient client = new HttpClient())
                 {
                     var scriptContent = await client.GetStringAsync(url);
                     string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "HWID_Activation.cmd");
-
-                    // Salva il file temporaneamente
                     System.IO.File.WriteAllText(tempFilePath, scriptContent);
-
-                    // Esegui il file CMD
                     Process.Start(new ProcessStartInfo
                     {
                         FileName = tempFilePath,
                         UseShellExecute = true,
-                        Verb = "runas" // Esegui come amministratore se necessario
+                        Verb = "runas"
                     });
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante l'esecuzione del comando: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -172,8 +158,6 @@ namespace WinHubX
             string logFile = Path.Combine(Path.GetTempPath(), "ScriptExecution.log");
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
             string primaryURL = string.Empty;
-
-            // Eliminare il file temporaneo se esiste
             if (File.Exists(tempScript))
             {
                 File.Delete(tempScript);

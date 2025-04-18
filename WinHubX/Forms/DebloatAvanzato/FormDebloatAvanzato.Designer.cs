@@ -40,94 +40,63 @@
             // 
             // checkedListBox1
             // 
-            checkedListBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(checkedListBox1, "checkedListBox1");
             checkedListBox1.BackColor = Color.FromArgb(37, 38, 39);
             checkedListBox1.BorderStyle = BorderStyle.FixedSingle;
             checkedListBox1.ForeColor = Color.White;
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(12, 30);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(388, 416);
-            checkedListBox1.TabIndex = 0;
             // 
             // checkBox_WindowsDefender
             // 
-            checkBox_WindowsDefender.Anchor = AnchorStyles.Top;
-            checkBox_WindowsDefender.AutoSize = true;
+            resources.ApplyResources(checkBox_WindowsDefender, "checkBox_WindowsDefender");
             checkBox_WindowsDefender.ForeColor = Color.White;
-            checkBox_WindowsDefender.Location = new Point(410, 30);
             checkBox_WindowsDefender.Name = "checkBox_WindowsDefender";
-            checkBox_WindowsDefender.Size = new Size(123, 19);
-            checkBox_WindowsDefender.TabIndex = 1;
-            checkBox_WindowsDefender.Text = "WindowsDefender";
             checkBox_WindowsDefender.UseVisualStyleBackColor = true;
             // 
             // btnAvviaSelezionati
             // 
-            btnAvviaSelezionati.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(btnAvviaSelezionati, "btnAvviaSelezionati");
             btnAvviaSelezionati.Cursor = Cursors.Hand;
             btnAvviaSelezionati.FlatAppearance.BorderSize = 0;
-            btnAvviaSelezionati.FlatStyle = FlatStyle.Flat;
-            btnAvviaSelezionati.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAvviaSelezionati.ForeColor = Color.White;
-            btnAvviaSelezionati.Location = new Point(410, 378);
-            btnAvviaSelezionati.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionati.Name = "btnAvviaSelezionati";
-            btnAvviaSelezionati.Size = new Size(154, 61);
-            btnAvviaSelezionati.TabIndex = 84;
-            btnAvviaSelezionati.Text = "Avvia Selezionati";
-            btnAvviaSelezionati.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAvviaSelezionati.UseVisualStyleBackColor = true;
             btnAvviaSelezionati.Click += btnAvviaSelezionati_Click;
             // 
             // lblInfoWin12
             // 
-            lblInfoWin12.AutoSize = true;
-            lblInfoWin12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            resources.ApplyResources(lblInfoWin12, "lblInfoWin12");
             lblInfoWin12.ForeColor = Color.Coral;
-            lblInfoWin12.Location = new Point(12, 9);
             lblInfoWin12.Name = "lblInfoWin12";
-            lblInfoWin12.Size = new Size(200, 17);
-            lblInfoWin12.TabIndex = 85;
-            lblInfoWin12.Text = "Seleziona le app da rimuovere";
-            lblInfoWin12.TextAlign = ContentAlignment.MiddleRight;
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(37, 38, 39);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(410, 70);
+            resources.ApplyResources(textBox1, "textBox1");
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Cerca...";
-            textBox1.Size = new Size(123, 23);
-            textBox1.TabIndex = 86;
             textBox1.KeyDown += textBox1_KeyDown;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.pngDefenderWin;
-            pictureBox1.Location = new Point(539, 21);
+            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(25, 28);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 87;
             pictureBox1.TabStop = false;
             // 
             // FormDebloatAvanzato
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(576, 450);
             Controls.Add(pictureBox1);
             Controls.Add(textBox1);
             Controls.Add(lblInfoWin12);
             Controls.Add(btnAvviaSelezionati);
             Controls.Add(checkBox_WindowsDefender);
             Controls.Add(checkedListBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormDebloatAvanzato";
-            Text = "DebloatAvanzato";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

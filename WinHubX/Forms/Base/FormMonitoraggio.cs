@@ -127,8 +127,6 @@ namespace WinHubX.Forms.Base
                 {
                     image = Properties.Resources.term_verde;
                 }
-
-                // Assegno l'immagine al controllo solo se è stata trovata
                 if (image != null)
                 {
                     pic_termgpu.Image = image;
@@ -143,34 +141,34 @@ namespace WinHubX.Forms.Base
         {
             labelCpuTemp.AutoSize = true;
             labelCpuTemp.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            labelCpuTemp.ForeColor = Color.FromArgb(224, 224, 224); // Colore più chiaro
+            labelCpuTemp.ForeColor = Color.FromArgb(224, 224, 224);
             labelCpuTemp.TextAlign = ContentAlignment.MiddleCenter;
             labelGpuTemp.AutoSize = true;
             labelGpuTemp.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            labelGpuTemp.ForeColor = Color.FromArgb(224, 224, 224); // Colore più chiaro
+            labelGpuTemp.ForeColor = Color.FromArgb(224, 224, 224);
             labelGpuTemp.TextAlign = ContentAlignment.MiddleCenter;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(224, 224, 224); // Colore più chiaro
+            label1.ForeColor = Color.FromArgb(224, 224, 224);
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(224, 224, 224); // Colore più chiaro
+            label2.ForeColor = Color.FromArgb(224, 224, 224);
             label2.TextAlign = ContentAlignment.MiddleCenter;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(224, 224, 224); // Colore più chiaro
+            label3.ForeColor = Color.FromArgb(224, 224, 224);
             label3.TextAlign = ContentAlignment.MiddleCenter;
             btn_pulisciram.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            btn_pulisciram.ForeColor = Color.FromArgb(224, 224, 224); // Colore testo chiaro
-            btn_pulisciram.BackColor = Color.FromArgb(64, 64, 64); // Colore di sfondo scuro
-            btn_pulisciram.FlatStyle = FlatStyle.Flat; // Rimuove il bordo 3D del bottone
-            btn_pulisciram.FlatAppearance.BorderSize = 0; // Nessun bordo
+            btn_pulisciram.ForeColor = Color.FromArgb(224, 224, 224);
+            btn_pulisciram.BackColor = Color.FromArgb(64, 64, 64);
+            btn_pulisciram.FlatStyle = FlatStyle.Flat;
+            btn_pulisciram.FlatAppearance.BorderSize = 0;
             btn_puliscicpu.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            btn_puliscicpu.ForeColor = Color.FromArgb(224, 224, 224); // Colore testo chiaro
-            btn_puliscicpu.BackColor = Color.FromArgb(64, 64, 64); // Colore di sfondo scuro
-            btn_puliscicpu.FlatStyle = FlatStyle.Flat; // Rimuove il bordo 3D del bottone
-            btn_puliscicpu.FlatAppearance.BorderSize = 0; // Nessun bordo
+            btn_puliscicpu.ForeColor = Color.FromArgb(224, 224, 224); 
+            btn_puliscicpu.BackColor = Color.FromArgb(64, 64, 64);
+            btn_puliscicpu.FlatStyle = FlatStyle.Flat;
+            btn_puliscicpu.FlatAppearance.BorderSize = 0;
             Controls.Add(btn_pulisciram);
             Controls.Add(btn_puliscicpu);
             Controls.Add(label1);
@@ -182,7 +180,7 @@ namespace WinHubX.Forms.Base
         private void StartMonitoringRam()
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 3000; // Imposta l'intervallo a 3 secondi
+            timer.Interval = 3000;
 
             timer.Tick += (sender, e) =>
             {
@@ -203,7 +201,7 @@ namespace WinHubX.Forms.Base
         private void StopMonitoringRam()
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 5000; // Imposta l'intervallo a 1 secondo
+            timer.Interval = 5000;
 
             timer.Tick += (sender, e) =>
             {
@@ -362,7 +360,6 @@ namespace WinHubX.Forms.Base
         {
             isMonitoringOn = swapButton1.Checked;
 
-            // Save the state to the registry
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegistryKey))
             {
                 key.SetValue(RegistryValueMonitoraggio, isMonitoringOn ? 1 : 0);
@@ -370,15 +367,16 @@ namespace WinHubX.Forms.Base
 
             if (isMonitoringOn)
             {
-                MessageBox.Show("Monitoraggio Attivo", "INFO");
+                MessageBox.Show(LanguageManager.GetTranslation("FormMonitoraggio", "monitoron"), "INFO");
                 StartMonitoringRam();
             }
             else
             {
-                MessageBox.Show("Monitoraggio Disattivo", "INFO");
+                MessageBox.Show(LanguageManager.GetTranslation("FormMonitoraggio", "monitoroff"), "INFO");
                 StopMonitoringRam();
             }
         }
+
         private void FormMonitoraggio_FormClosing(object sender, FormClosingEventArgs e)
         {
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegistryKey))

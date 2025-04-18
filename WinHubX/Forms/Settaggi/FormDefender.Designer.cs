@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDefender));
             btnBack = new Button();
             DisabilitaDefender = new CheckedListBox();
             btnAvviaSelezionatiDef = new Button();
@@ -45,136 +46,97 @@
             // 
             // btnBack
             // 
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
-            btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Image = Properties.Resources.pngBackArrow;
-            btnBack.Location = new Point(10, 9);
-            btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(48, 41);
-            btnBack.TabIndex = 7;
+            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
             // DisabilitaDefender
             // 
+            resources.ApplyResources(DisabilitaDefender, "DisabilitaDefender");
             DisabilitaDefender.BackColor = Color.FromArgb(37, 38, 39);
             DisabilitaDefender.BorderStyle = BorderStyle.None;
-            DisabilitaDefender.Font = new Font("Segoe UI", 10.2F);
             DisabilitaDefender.ForeColor = Color.White;
             DisabilitaDefender.FormattingEnabled = true;
-            DisabilitaDefender.Items.AddRange(new object[] { "Disabilita Controllo Accesso Cartella", "Disabilita Isolamento Core", "Disabilita Applicazione Defender Guard", "Disabilita Protezione Account Warning", "Disabilita Blocco Download Files", "Disabilita Windows Script Host", "Disabilita .NET Strong Cryptography", "Livello Minimo UAC", "Disabilita Implicit Administrative Sheres", "Disabilita Windows Firewall", "Disabilita Windows Defender CLoud", "Disabilita Windows Defender SysTray", "Disabilita Windows Defender Services" });
-            DisabilitaDefender.Location = new Point(158, 38);
+            DisabilitaDefender.Items.AddRange(new object[] { resources.GetString("DisabilitaDefender.Items"), resources.GetString("DisabilitaDefender.Items1"), resources.GetString("DisabilitaDefender.Items2"), resources.GetString("DisabilitaDefender.Items3"), resources.GetString("DisabilitaDefender.Items4"), resources.GetString("DisabilitaDefender.Items5"), resources.GetString("DisabilitaDefender.Items6"), resources.GetString("DisabilitaDefender.Items7"), resources.GetString("DisabilitaDefender.Items8"), resources.GetString("DisabilitaDefender.Items9"), resources.GetString("DisabilitaDefender.Items10"), resources.GetString("DisabilitaDefender.Items11"), resources.GetString("DisabilitaDefender.Items12") });
             DisabilitaDefender.Name = "DisabilitaDefender";
-            DisabilitaDefender.Size = new Size(303, 294);
-            DisabilitaDefender.TabIndex = 8;
+            toolTip1.SetToolTip(DisabilitaDefender, resources.GetString("DisabilitaDefender.ToolTip"));
             // 
             // btnAvviaSelezionatiDef
             // 
+            resources.ApplyResources(btnAvviaSelezionatiDef, "btnAvviaSelezionatiDef");
             btnAvviaSelezionatiDef.Cursor = Cursors.Hand;
             btnAvviaSelezionatiDef.FlatAppearance.BorderSize = 0;
-            btnAvviaSelezionatiDef.FlatStyle = FlatStyle.Flat;
-            btnAvviaSelezionatiDef.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnAvviaSelezionatiDef.ForeColor = Color.White;
-            btnAvviaSelezionatiDef.Location = new Point(344, 368);
-            btnAvviaSelezionatiDef.Margin = new Padding(3, 2, 3, 2);
             btnAvviaSelezionatiDef.Name = "btnAvviaSelezionatiDef";
-            btnAvviaSelezionatiDef.Size = new Size(208, 56);
-            btnAvviaSelezionatiDef.TabIndex = 23;
-            btnAvviaSelezionatiDef.Text = "Avvia Selezionati";
-            btnAvviaSelezionatiDef.TextImageRelation = TextImageRelation.ImageBeforeText;
+            toolTip1.SetToolTip(btnAvviaSelezionatiDef, resources.GetString("btnAvviaSelezionatiDef.ToolTip"));
             btnAvviaSelezionatiDef.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiDef.Click += btnAvviaSelezionatiDef_Click;
             // 
             // btnProtezioneMinima
             // 
+            resources.ApplyResources(btnProtezioneMinima, "btnProtezioneMinima");
             btnProtezioneMinima.Cursor = Cursors.Hand;
             btnProtezioneMinima.FlatAppearance.BorderSize = 0;
-            btnProtezioneMinima.FlatStyle = FlatStyle.Flat;
-            btnProtezioneMinima.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnProtezioneMinima.ForeColor = Color.White;
-            btnProtezioneMinima.Location = new Point(10, 374);
-            btnProtezioneMinima.Margin = new Padding(3, 2, 3, 2);
             btnProtezioneMinima.Name = "btnProtezioneMinima";
-            btnProtezioneMinima.Size = new Size(220, 50);
-            btnProtezioneMinima.TabIndex = 24;
-            btnProtezioneMinima.Text = "Protezione Minima";
-            btnProtezioneMinima.TextImageRelation = TextImageRelation.ImageBeforeText;
+            toolTip1.SetToolTip(btnProtezioneMinima, resources.GetString("btnProtezioneMinima.ToolTip"));
             btnProtezioneMinima.UseVisualStyleBackColor = true;
             btnProtezioneMinima.Click += btnProtezioneMinima_Click;
             // 
             // btnRipristinaDefender
             // 
+            resources.ApplyResources(btnRipristinaDefender, "btnRipristinaDefender");
             btnRipristinaDefender.Cursor = Cursors.Hand;
             btnRipristinaDefender.FlatAppearance.BorderSize = 0;
-            btnRipristinaDefender.FlatStyle = FlatStyle.Flat;
-            btnRipristinaDefender.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             btnRipristinaDefender.ForeColor = Color.White;
-            btnRipristinaDefender.Location = new Point(659, 368);
-            btnRipristinaDefender.Margin = new Padding(3, 2, 3, 2);
             btnRipristinaDefender.Name = "btnRipristinaDefender";
-            btnRipristinaDefender.Size = new Size(230, 56);
-            btnRipristinaDefender.TabIndex = 26;
-            btnRipristinaDefender.Text = "Ripristina Defender";
-            btnRipristinaDefender.TextImageRelation = TextImageRelation.ImageBeforeText;
+            toolTip1.SetToolTip(btnRipristinaDefender, resources.GetString("btnRipristinaDefender.ToolTip"));
             btnRipristinaDefender.UseVisualStyleBackColor = true;
             btnRipristinaDefender.Click += btnRipristinaDefender_Click;
             // 
             // AbilitaDefender
             // 
+            resources.ApplyResources(AbilitaDefender, "AbilitaDefender");
             AbilitaDefender.BackColor = Color.FromArgb(37, 38, 39);
             AbilitaDefender.BorderStyle = BorderStyle.None;
-            AbilitaDefender.Font = new Font("Segoe UI", 10.2F);
             AbilitaDefender.ForeColor = Color.White;
             AbilitaDefender.FormattingEnabled = true;
-            AbilitaDefender.Items.AddRange(new object[] { "Abilita Controllo Accesso Cartella", "Abilita Isolamento Core", "Abilita Applicazione Defender Guard", "Abilita Protezione Account Warning", "Abilita Blocco Download Files", "Abilita Windows Script Host", "Abilita .NET Strong Cryptography", "Livello Massimo UAC", "Abilita Implicit Administrative Sheres", "Abilita Windows Firewall", "Abilita Windows Defender CLoud", "Abilita Windows Defender SysTray", "Abilita Windows Defender Services" });
-            AbilitaDefender.Location = new Point(502, 42);
+            AbilitaDefender.Items.AddRange(new object[] { resources.GetString("AbilitaDefender.Items"), resources.GetString("AbilitaDefender.Items1"), resources.GetString("AbilitaDefender.Items2"), resources.GetString("AbilitaDefender.Items3"), resources.GetString("AbilitaDefender.Items4"), resources.GetString("AbilitaDefender.Items5"), resources.GetString("AbilitaDefender.Items6"), resources.GetString("AbilitaDefender.Items7"), resources.GetString("AbilitaDefender.Items8"), resources.GetString("AbilitaDefender.Items9"), resources.GetString("AbilitaDefender.Items10"), resources.GetString("AbilitaDefender.Items11"), resources.GetString("AbilitaDefender.Items12") });
             AbilitaDefender.Name = "AbilitaDefender";
-            AbilitaDefender.Size = new Size(303, 294);
-            AbilitaDefender.TabIndex = 27;
+            toolTip1.SetToolTip(AbilitaDefender, resources.GetString("AbilitaDefender.ToolTip"));
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
-            label1.Location = new Point(158, 6);
             label1.Name = "label1";
-            label1.Size = new Size(263, 31);
-            label1.TabIndex = 28;
-            label1.Text = "Disabilita Defender";
+            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resources.ApplyResources(label2, "label2");
             label2.ForeColor = Color.White;
-            label2.Location = new Point(502, 6);
             label2.Name = "label2";
-            label2.Size = new Size(223, 31);
-            label2.TabIndex = 29;
-            label2.Text = "Abilita Defender";
+            toolTip1.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic);
+            resources.ApplyResources(label4, "label4");
             label4.ForeColor = Color.Coral;
-            label4.Location = new Point(18, 329);
             label4.Name = "label4";
-            label4.Size = new Size(164, 45);
-            label4.TabIndex = 55;
-            label4.Text = "Attenzione!\r\nsarai maggiormente esposto\r\nad eventuali virus";
-            label4.TextAlign = ContentAlignment.BottomCenter;
+            toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(10, 429);
+            resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(879, 23);
-            progressBar1.TabIndex = 56;
+            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -186,13 +148,12 @@
             // 
             // FormDefender
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            ClientSize = new Size(901, 458);
+            Controls.Add(label4);
             Controls.Add(progressBar1);
             Controls.Add(btnProtezioneMinima);
-            Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(AbilitaDefender);
@@ -201,9 +162,8 @@
             Controls.Add(DisabilitaDefender);
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormDefender";
-            Text = "FormDefender";
+            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

@@ -63,7 +63,7 @@ namespace WinHubX.Forms.Base
 
         private void btnRipristinaSO_Click(object sender, EventArgs e)
         {
-            form1.lblPanelTitle.Text = "Ripristina SO";
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormSettaggi", "restoreos");
             form1.PnlFormLoader.Controls.Clear();
             FormRipristinoSO formRipristinoSO = new FormRipristinoSO(this, form1) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             formRipristinoSO.FormBorderStyle = FormBorderStyle.None;
@@ -89,7 +89,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nel caricamento dei link: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,8 +98,6 @@ namespace WinHubX.Forms.Base
             string systemType = GetSystemType();
             string downloadUrl = "";
             string zipFileName = "";
-
-            // Determina il link di download e il nome del file zip
             if (systemType.Contains("Windows 11"))
             {
                 if (Environment.Is64BitOperatingSystem)
@@ -123,41 +121,39 @@ namespace WinHubX.Forms.Base
             {
                 try
                 {
-                    // Avvia il download del file
                     Process.Start(new ProcessStartInfo(downloadUrl) { UseShellExecute = true });
-                    MessageBox.Show("Salva lo zip nella cartella Downloads e premi 'OK' quando il download è finito.");
-
+                    MessageBox.Show(LanguageManager.GetTranslation("FormSettaggi", "savezip"));
                     string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
                     string zipFilePath = Path.Combine(downloadsPath, zipFileName);
                     string extractPath = Path.Combine(Path.GetTempPath(), "WSA");
 
                     if (File.Exists(zipFilePath))
                     {
-                        ZipFile.ExtractToDirectory(zipFilePath, extractPath, true); // Estrai nella cartella temporanea
+                        ZipFile.ExtractToDirectory(zipFilePath, extractPath, true);
                         string batFilePath = Path.Combine(extractPath, "Run.bat");
                         if (File.Exists(batFilePath))
                         {
                             var process = Process.Start(new ProcessStartInfo(batFilePath) { UseShellExecute = true });
-                            process?.WaitForExit(); // Attendi la fine del processo
+                            process?.WaitForExit();
                         }
                         else
                         {
-                            MessageBox.Show("Il file 'Run.bat' non è stato trovato nella directory estratta.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(LanguageManager.GetTranslation("FormSettaggi", "runbatnotfound"), "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("File non trovato nella cartella Downloads. Assicurati di aver salvato il file.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(LanguageManager.GetTranslation("FormSettaggi", "filenotfound"), "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore durante l'elaborazione: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Impossibile determinare il link per il download.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.GetTranslation("FormSettaggi", "downloadlinknotfound"), "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Mostra la finestra di dialogo PacMan
@@ -206,7 +202,7 @@ namespace WinHubX.Forms.Base
             {
                 if (stream == null)
                 {
-                    throw new InvalidOperationException($"Could not find embedded resource: {resourcePath}");
+                    throw new InvalidOperationException($"Error: {resourcePath}");
                 }
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
@@ -234,7 +230,7 @@ namespace WinHubX.Forms.Base
 
         private void btnPersonalizzazione_Click(object sender, EventArgs e)
         {
-            form1.lblPanelTitle.Text = "Personalizzazione";
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormSettaggi", "customization");
             form1.PnlFormLoader.Controls.Clear();
             FormPersonalizzazione formPersonalizzazione = new FormPersonalizzazione(this, form1) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             formPersonalizzazione.FormBorderStyle = FormBorderStyle.None;

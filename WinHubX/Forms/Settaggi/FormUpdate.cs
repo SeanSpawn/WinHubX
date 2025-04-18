@@ -28,7 +28,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextDisa(tIndex);
                     toolTip1.SetToolTip(DisabilitaUpdate, tooltipText);
                 }
@@ -43,7 +42,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextAbil(tIndex);
                     toolTip1.SetToolTip(AbilitaUpdate, tooltipText);
                 }
@@ -52,40 +50,11 @@ namespace WinHubX.Forms.Settaggi
 
         private string GetTooltipTextDisa(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Disabilita il download automatico degli aggiornamenti di Windows, impedendo al sistema di scaricare e installare aggiornamenti senza autorizzazione.";
-                case 1:
-                    return "Disabilita l'aggiornamento automatico dei prodotti Microsoft tramite Windows Update (es. Office), limitando gli aggiornamenti solo a Windows.";
-                case 2:
-                    return "Disabilita il download automatico dei driver tramite Windows Update, utile se si desidera gestire manualmente i driver del sistema.";
-                case 3:
-                    return "Disabilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, evitando interruzioni improvvise.";
-                case 4:
-                    return "Disabilita le notifiche relative agli aggiornamenti di Windows, nascondendo avvisi su nuovi aggiornamenti disponibili.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            return LanguageManager.GetTranslation("FormUpdate", $"tooltipDisabilita_{index}");
         }
-
         private string GetTooltipTextAbil(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Abilita il download automatico degli aggiornamenti di Windows, garantendo che il sistema resti aggiornato con le ultime patch di sicurezza.";
-                case 1:
-                    return "Abilita l'aggiornamento automatico anche dei prodotti Microsoft (es. Office) tramite Windows Update.";
-                case 2:
-                    return "Abilita il download automatico dei driver tramite Windows Update, assicurando che l'hardware sia sempre aggiornato.";
-                case 3:
-                    return "Abilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, per completare correttamente le modifiche.";
-                case 4:
-                    return "Abilita le notifiche di aggiornamento, avvisando l'utente della disponibilità di nuovi update.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            return LanguageManager.GetTranslation("FormUpdate", $"tooltipAbilita_{index}");
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -183,7 +152,6 @@ namespace WinHubX.Forms.Settaggi
 
         private void btnAvviaSelezionatiUpda_Click(object sender, EventArgs e)
         {
-            // Conta i passi basati sugli oggetti checked
             totalSteps = 0;
             foreach (var item in DisabilitaUpdate.CheckedItems)
             {
@@ -196,7 +164,7 @@ namespace WinHubX.Forms.Settaggi
 
             if (totalSteps == 0)
             {
-                totalSteps = 1;  // Imposta almeno 1 passo
+                totalSteps = 1;
             }
 
             progressBar1.Maximum = totalSteps;
@@ -212,7 +180,6 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Elenco delle chiavi da modificare
                 var registryChanges = new (string Path, string Name, int Value)[]
                 {
             (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata", "PreventDeviceMetadataFromNetwork", 1),
@@ -223,20 +190,23 @@ namespace WinHubX.Forms.Settaggi
             (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "NoAutoRebootWithLoggedOnUsers", 1),
             (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "AUPowerManagement", 0)
                 };
-
-                // Aggiorna il registro a 64 bit
                 foreach (var change in registryChanges)
                 {
                     UpdateRegistry(change.Path, change.Name, change.Value, true);
                 }
-
-                // Aggiorna il registro a 32 bit
                 foreach (var change in registryChanges)
                 {
                     UpdateRegistry(change.Path, change.Name, change.Value, false);
                 }
 
-                MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+                MessageBox.Show(
+                    messaggio,
+                    "WinHubX",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
             catch (Exception)
             {
@@ -267,7 +237,7 @@ namespace WinHubX.Forms.Settaggi
 
                 if (process.ExitCode != 0)
                 {
-                    throw new Exception($"Failed to update registry: {error}");
+                    throw new Exception($"Error: {error}");
                 }
             }
         }
@@ -276,31 +246,22 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Chiavi e valori da ripristinare
                 var registryChanges = new (string Path, string Name, int Value)[]
                 {
             (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "NoAutoUpdate", 0),
             (@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", "AUOptions", 3),
             (@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config", "DODownloadMode", 1)
                 };
-
-                // Aggiorna il registro a 64 bit
                 foreach (var change in registryChanges)
                 {
                     UpdateRegistry(change.Path, change.Name, change.Value, true);
                 }
-
-                // Aggiorna il registro a 32 bit
                 foreach (var change in registryChanges)
                 {
                     UpdateRegistry(change.Path, change.Name, change.Value, false);
                 }
-
-                // Avvia i servizi richiesti
                 StartService("BITS");
                 StartService("wuauserv");
-
-                // Rimuovi le proprietà specificate dal registro
                 var registryRemovals = new[]
                 {
             @"HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata", "PreventDeviceMetadataFromNetwork",
@@ -313,16 +274,21 @@ namespace WinHubX.Forms.Settaggi
             @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "BranchReadinessLevel",
             @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "DeferFeatureUpdatesPeriodInDays",
             @"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings", "DeferQualityUpdatesPeriodInDays"
-        };
+                };
 
-                // Rimuovi le proprietà dal registro a 64 bit e a 32 bit
                 foreach (var removal in registryRemovals)
                 {
                     RemoveRegistryValue(removal, true);
                     RemoveRegistryValue(removal, false);
                 }
+                string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
 
-                MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    messaggio,
+                    "WinHubX",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
             catch (Exception)
             {
@@ -375,7 +341,7 @@ namespace WinHubX.Forms.Settaggi
                 var error = process.StandardError.ReadToEnd();
                 if (process.ExitCode != 0)
                 {
-                    throw new Exception($"Failed to start service {serviceName}: {error}");
+                    throw new Exception($"Error {serviceName}: {error}");
                 }
             }
         }
@@ -410,7 +376,7 @@ namespace WinHubX.Forms.Settaggi
             {
                 using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU", true))
                 {
-                    key?.SetValue("AUOptions", 2, RegistryValueKind.DWord); // Imposta il valore per disabilitare il download automatico
+                    key?.SetValue("AUOptions", 2, RegistryValueKind.DWord);
                 }
             }
             catch (Exception)
@@ -433,7 +399,6 @@ namespace WinHubX.Forms.Settaggi
             }
         }
 
-        // Funzione per rimuovere il riavvio automatico
         private void RimuoviRiavvioAutomatico()
         {
             using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
@@ -468,7 +433,6 @@ namespace WinHubX.Forms.Settaggi
             }
         }
 
-        // Funzione per rimuovere AUOptions
         private void RimuoviAUOptions()
         {
             using (var key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
@@ -489,7 +453,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Modifica per entrambe le architetture
                     ModificaDownloadAutomatico(RegistryView.Registry32);
                     ModificaDownloadAutomatico(RegistryView.Registry64);
                 }
@@ -548,7 +511,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Modifiche per entrambe le architetture
                     ModificaChiaveRegistro(RegistryView.Registry32);
                     ModificaChiaveRegistro(RegistryView.Registry64);
                 }
@@ -561,8 +523,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaDownloadDriverWindowsUpdate", false);
             }
-
-            // Modifica per disabilitare il riavvio automatico di Windows Update
             if (DisabilitaUpdate.CheckedItems.Contains("Disabilita Riavvio Automatico Windows Update"))
             {
                 SetCheckboxState("DisabilitaRiavvioAutomaticoWindowsUpdate", true);
@@ -606,8 +566,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaNotificheUpdate", false);
             }
-
-            // Abilita Download Automatico Windows Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Download Automatico Windows Update"))
             {
                 SetCheckboxState("AbilitaDownloadAutomaticoWindowsUpdate", true);
@@ -679,8 +637,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaDownloadDriverWindowsUpdate", false);
             }
-
-            // Abilita Riavvio Automatico Windows Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Riavvio Automatico Windows Update"))
             {
                 SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", true);
@@ -699,8 +655,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaRiavvioAutomaticoWindowsUpdate", false);
             }
-
-            // Abilita Notifiche Update
             if (AbilitaUpdate.CheckedItems.Contains("Abilita Notifiche Update"))
             {
                 SetCheckboxState("AbilitaNotificheUpdate", true);
@@ -728,7 +682,14 @@ namespace WinHubX.Forms.Settaggi
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

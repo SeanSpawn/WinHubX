@@ -139,6 +139,9 @@
   <data name="pngMinimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngMinimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pngDefenderWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngDefenderWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="png365" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\png365.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,8 +154,11 @@
   <data name="pngWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngMPM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pngMPM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TSforge_Activation_Office" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TSforge_Activation_Office.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pngPersonalizzazione" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngPersonalizzazione.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="extWIMToolkit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\extWIMToolkit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -162,6 +168,9 @@
   </data>
   <data name="pngOffline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngOffline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngMPM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngMPM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngWin8dot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngWin8dot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -180,6 +189,12 @@
   </data>
   <data name="term_verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\term_verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="italias" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\italias.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TSforge_Activation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TSforge_Activation.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Rufus-4Lite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Rufus-4Lite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,8 +217,14 @@
   <data name="pngOffice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngOffice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="englisj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\englisj.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Product_Sans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Product Sans.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="translations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\translations.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Product_Sans_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Product Sans Black.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -214,13 +235,7 @@
   <data name="pngClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngDefenderWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pngDefenderWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TSforge_Activation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TSforge_Activation.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TSforge_Activation_Office" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TSforge_Activation_Office.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pngDomanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngDomanda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

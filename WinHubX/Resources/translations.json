@@ -1,0 +1,426 @@
+{
+  "Global": {
+    "en": {
+      "sha256title": "SHA256 copied!",
+      "sha256text": "The hash code has been copied to the clipboard.",
+      "nointernet": "Internet connection not available. Using local activation file.",
+      "modifichesuccesso": "Changes applied successfully",
+      "restartrequired": "This operation requires a restart of the PC. Do you want to continue?"
+    },
+    "it": {
+      "sha256title": "SHA256 copiato!",
+      "sha256text": "Il codice hash è stato copiato negli appunti.",
+      "nointernet": "Connessione Internet non disponibile. Utilizzo del file di attivazione locale.",
+      "modifichesuccesso": "Modifiche apportate con successo",
+      "restartrequired": "Questa operazione richiede un riavvio del PC. Continuare?"
+    }
+  },
+  "Form1": {
+    "en": {
+      "newversion": "Update Available",
+      "newversion_message": "New version ({0}) is available.\n\nChangelog:\n{1}\n\nDo you want to update?",
+      "reboot_title": "Reboot Required",
+      "reboot_message": "Access to the registry is required to allow WinHubX to make the changes in this menu.\nA system reboot is necessary. Do you want to restart now?",
+      "restorepoint_title": "Restore Point",
+      "restorepoint_message": "Do you want to create a restore point before accessing the settings?"
+    },
+    "it": {
+      "newversion": "Aggiornamento Disponibile",
+      "newversion_message": "Nuova versione ({0}) disponibile.\n\nChangelog:\n{1}\n\nVuoi aggiornare?",
+      "reboot_title": "Riavvio necessario",
+      "reboot_message": "È necessario consentire l'accesso a WinHubX nel Registro per apportare le modifiche presenti in questo menù.\nPer fare ciò, è necessario il riavvio del PC. Vuoi riavviarlo?",
+      "restorepoint_title": "Punto di Ripristino",
+      "restorepoint_message": "Vuoi creare un punto di ripristino prima di accedere alle impostazioni?"
+    }
+  },
+  "FormHome": {
+    "en": {
+      "Changelog": "Changelog WinHubX\n\n17/04/2025 - v2.4.2.3:\n- Added support for English language\n\n15/04/2025 - v2.4.2.2:\n- Implemented background work to improve responsiveness on Settings panel\n- Added progress bar on all settings for visual feedback\n- Added tooltips on settings for clarification\n- Fixed saving of settings, now persist correctly\n- New settings for latest Windows updates\n- Debloat: added service management (beta)\n- Direct activation of Windows (online and offline)\n- Direct activation of Office (online and offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix for System Restore, code was not continuing\n\n19/02/2025 - v2.4.2.0:\n- Added WinHubX to CMD path, run 'winhubx /help' for more info\n- Updated all Windows 10/11 stock ISOs\n- Improved 'System Restore' section with HW/SW check and stress test\n- 'Debloat' updated: dynamic app detection and advanced mode\n- Option to show monitoring in taskbar or notification area\n- Fix WinGet installation in 'Install App'\n- Fix red texts on ISO optimization\n- Automatic HDD/SSD detection for system compacting\n- Office installation improvements\n- New Windows 10/11 Lite ISOs updated to Feb 2025\n- New permanent offline activation method"
+    },
+    "it": {
+      "Changelog": "Changelog WinHubX\n\n17/04/2025 - v2.4.2.3:\n- Aggiunto supporto per lingua inglese\n\n15/04/2025 - v2.4.2.2:\n- Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo\n- Inserita progressbar su tutti i settaggi per avere un responso visivo\n- Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione\n- Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria\n- Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows\n- Inserito su Debloat la gestione dei servizi (beta)\n- Attivazione diretta windows (online e offline)\n- Attivazione diretta office (online e offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix Ripristino SO, il codice non proseguiva\n\n19/02/2025 - v2.4.2.0:\n- Aggiunto winhubx al path cmd e ampliati i comandi digitare winhubx /help per maggiori info\n- Aggiornate tutte le iso di Win10/11 Stock\n- Sezione 'Ripristino SO' migliorata con verifica HW/SW e stress test\n- Sezione 'Debloat' aggiornata: rilevamento dinamico app e modalità avanzata\n- Opzione per mostrare il monitoraggio in barra applicazioni o area notifiche\n- Fix installazione WinGet su 'Installa App'\n- Fix scritte rosse su ottimizzazione ISO\n- Verifica automatica HDD/SSD per compattazione sistema\n- Aggiornamenti per installazioni Office\n- Nuove ISO Windows 10/11 Lite aggiornate a Febbraio 2025\n- Nuovo metodo di attivazione offline permanente"
+    }
+  },
+  "FormMonitoraggio": {
+    "en": {
+      "monitoron": "Monitoring Enabled",
+      "monitoroff": "Monitoring Disabled"
+    },
+    "it": {
+      "monitoron": "Monitoraggio Attivo",
+      "monitoroff": "Monitoraggio Disattivo"
+    }
+  },
+  "FormOffice": {
+    "en": {
+      "fileextracterror": "The file {0} was not extracted correctly.",
+      "resourcenotfound": "Internal resource not found: {0}",
+      "paneltitle": "Office Customization"
+    },
+    "it": {
+      "fileextracterror": "Il file {0} non è stato estratto correttamente.",
+      "resourcenotfound": "Non trovo la risorsa interna: {0}",
+      "paneltitle": "Personalizzazione Office"
+    }
+  },
+  "FormReinstallAPP": {
+    "en": {
+      "storeinstalling": "The Store is downloading... it will be installed shortly.",
+      "presskeyexit": "Press any key to exit...",
+      "noresults": "No results found.",
+      "selectpackage": "Please select a package.",
+      "updatecompleted": "Update completed.",
+      "wingetinstalled": "Winget is already installed.",
+      "wingetnotfound": "Winget not found. It will be installed now."
+    },
+    "it": {
+      "storeinstalling": "Lo store è in fase di download... sarà installato a breve.",
+      "presskeyexit": "Premi un tasto per uscire...",
+      "noresults": "Nessun risultato trovato.",
+      "selectpackage": "Seleziona un pacchetto.",
+      "updatecompleted": "Aggiornamento completato.",
+      "wingetinstalled": "Winget è già installato.",
+      "wingetnotfound": "Winget non trovato. Verrà installato ora."
+    }
+  },
+  "FormSettaggi": {
+    "en": {
+      "savezip": "Save the zip file in the Downloads folder and press 'OK' once the download is finished.",
+      "runbatnotfound": "The 'Run.bat' file was not found in the extracted directory.",
+      "filenotfound": "File not found in the Downloads folder. Please ensure you have saved the file.",
+      "downloadlinknotfound": "Unable to determine the download link.",
+      "restoreos": "Restore OS",
+      "customization": "Customization"
+    },
+    "it": {
+      "savezip": "Salva lo zip nella cartella Downloads e premi 'OK' quando il download è finito.",
+      "runbatnotfound": "Il file 'Run.bat' non è stato trovato nella directory estratta.",
+      "filenotfound": "File non trovato nella cartella Downloads. Assicurati di aver salvato il file.",
+      "downloadlinknotfound": "Impossibile determinare il link per il download.",
+      "restoreos": "Ripristina SO",
+      "customization": "Personalizzazione"
+    }
+  },
+  "FormDefender": {
+    "en": {
+      "desc0": "Disables Controlled Folder Access, a security feature that protects files from unauthorized changes. Disabling it removes this protection.",
+      "desc1": "Disables Core Isolation, a feature that protects the system from sophisticated attacks by isolating critical processes. Not recommended to disable unless necessary.",
+      "desc2": "Disables Defender Application Guard, a security feature that isolates the browser for safer browsing.",
+      "desc3": "Disables Account Protection Warnings, which notify you of missing security functionalities.",
+      "desc4": "Disables downloaded file blocking, avoiding the application of the 'Mark of the Web' flag used by Windows to signal potential risks.",
+      "desc5": "Disables Windows Script Host, preventing VBScript or JScript execution, useful to block potentially dangerous scripts.",
+      "desc6": "Disables strong .NET encryption, forcing the use of weaker algorithms, usually for compatibility with legacy software.",
+      "desc7": "Sets the minimum level of User Account Control (UAC), reducing user account notifications. May reduce security.",
+      "desc8": "Disables automatic administrative shares creation (like C$, ADMIN$), used for remote system management.",
+      "desc9": "Disables Windows Firewall, removing built-in protection against unauthorized network traffic.",
+      "desc10": "Disables Windows Defender cloud integration, which sends data to Microsoft to improve malware detection.",
+      "desc11": "Hides the Windows Defender icon in the system tray without disabling the service.",
+      "desc12": "Completely disables Windows Defender services, removing real-time antivirus protection.",
+      "descdefault": "No description available.",
+      "abil0": "Enables Controlled Folder Access, protecting files from unauthorized changes by unknown apps.",
+      "abil1": "Enables Core Isolation, enhancing system security by isolating critical processes from sophisticated threats.",
+      "abil2": "Enables Defender Application Guard, allowing the browser to run in an isolated environment for safer browsing.",
+      "abil3": "Enables Account Protection Warning notifications, which alert you about missing security components.",
+      "abil4": "Enables blocking of downloaded files, applying the 'Mark of the Web' to flag files from the internet as potentially risky.",
+      "abil5": "Enables Windows Script Host, allowing the execution of VBScript and JScript. Useful for admin tools and automation scripts.",
+      "abil6": "Enables strong .NET cryptography, improving data processing and communication security.",
+      "abil7": "Sets the highest UAC (User Account Control) level, providing maximum control over system changes.",
+      "abil8": "Enables creation of administrative shares (like C$, ADMIN$), useful for remote management over a network.",
+      "abil9": "Enables Windows Firewall, protecting the system from unwanted or potentially harmful network traffic.",
+      "abil10": "Enables cloud integration for Windows Defender, helping detect new threats quickly using Microsoft AI.",
+      "abil11": "Enables the Windows Defender icon in the system tray, making it easier to monitor protection status.",
+      "abil12": "Enables all Windows Defender services, ensuring real-time antivirus protection against threats.",
+      "abildefault": "No description available.",
+      "msgDisinstallaDefender": "To completely uninstall Windows Defender, go to the Debloat APP section."
+    },
+    "it": {
+      "desc0": "Disabilita il Controllo Accesso Cartella (Controlled Folder Access), una funzionalità di sicurezza che protegge i file da modifiche non autorizzate. Disabilitandola, si rimuove questa protezione.",
+      "desc1": "Disabilita l'Isolamento Core, una funzionalità che protegge il sistema da attacchi sofisticati isolando processi critici. Non raccomandato disattivarla a meno di necessità specifiche.",
+      "desc2": "Disabilita l'applicazione Defender Application Guard, una funzione di sicurezza che isola il browser per una navigazione più sicura.",
+      "desc3": "Disabilita gli avvisi di protezione dell'account (Account Protection Warning), che notificano la mancanza di funzionalità di sicurezza attivate.",
+      "desc4": "Disabilita il blocco dei file scaricati, evitando l'applicazione del flag 'Mark of the Web' che Windows usa per segnalare potenziali rischi.",
+      "desc5": "Disabilita Windows Script Host, impedendo l'esecuzione di script VBScript o JScript, utile per bloccare script potenzialmente pericolosi.",
+      "desc6": "Disabilita la crittografia forte in .NET, forzando l'uso di algoritmi meno sicuri. Generalmente usato per compatibilità con software legacy.",
+      "desc7": "Imposta il livello minimo di UAC (User Account Control), riducendo le notifiche di controllo dell'account utente. Potrebbe diminuire la sicurezza.",
+      "desc8": "Disabilita la creazione delle condivisioni amministrative implicite (come C$, ADMIN$), usate per la gestione remota del sistema.",
+      "desc9": "Disabilita il Firewall di Windows, rimuovendo la protezione integrata contro traffico di rete non autorizzato.",
+      "desc10": "Disabilita l'integrazione cloud di Windows Defender, che invia dati a Microsoft per migliorare la rilevazione di malware.",
+      "desc11": "Disabilita l'icona di Windows Defender nell'area di notifica (SysTray), nascondendone la presenza senza disattivare il servizio.",
+      "desc12": "Disabilita completamente i servizi di Windows Defender, rimuovendo la protezione antivirus in tempo reale offerta dal sistema.",
+      "descdefault": "Nessuna descrizione disponibile.",
+      "abil0": "Abilita il Controllo Accesso Cartella (Controlled Folder Access), proteggendo i file da modifiche non autorizzate da parte di app sconosciute.",
+      "abil1": "Abilita l'Isolamento Core, migliorando la sicurezza del sistema isolando i processi critici da minacce sofisticate.",
+      "abil2": "Abilita l'applicazione Defender Application Guard, che consente di eseguire il browser in un ambiente isolato per una navigazione più sicura.",
+      "abil3": "Abilita gli avvisi di protezione dell'account (Account Protection Warning), che segnalano la mancanza di componenti di sicurezza importanti.",
+      "abil4": "Abilita il blocco dei file scaricati, applicando il flag 'Mark of the Web' per segnalare file provenienti da internet come potenzialmente rischiosi.",
+      "abil5": "Abilita Windows Script Host, permettendo l'esecuzione di script VBScript e JScript. Utile per strumenti di amministrazione e script automatizzati.",
+      "abil6": "Abilita la crittografia forte in .NET (Strong Cryptography), migliorando la sicurezza nelle comunicazioni e nell'elaborazione dei dati.",
+      "abil7": "Imposta il livello massimo di UAC (User Account Control), fornendo il massimo controllo sulle modifiche apportate al sistema.",
+      "abil8": "Abilita la creazione delle condivisioni amministrative implicite (come C$, ADMIN$), utili per la gestione remota dei dispositivi in rete.",
+      "abil9": "Abilita il Firewall di Windows, proteggendo il sistema dal traffico di rete indesiderato o potenzialmente dannoso.",
+      "abil10": "Abilita l'integrazione cloud di Windows Defender, che aiuta a identificare rapidamente nuove minacce grazie all'intelligenza artificiale di Microsoft.",
+      "abil11": "Abilita l'icona di Windows Defender nell'area di notifica (SysTray), permettendo all'utente di monitorare facilmente lo stato della protezione.",
+      "abil12": "Abilita tutti i servizi di Windows Defender, assicurando una protezione antivirus in tempo reale contro malware e minacce.",
+      "abildefault": "Nessuna descrizione disponibile.",
+      "msgDisinstallaDefender": "Per disinstallare completamente Windows Defender, recati nella sezione Debloat APP."
+    }
+  },
+  "FormPrivacy": {
+    "en": {
+      "tooltipDisa0": "Disables system language options, preventing changes to system language and localization settings.",
+      "tooltipDisa1": "Disables app suggestions and recommendations, avoiding pop-ups and advice from applications.",
+      "tooltipDisa2": "Disables telemetry data collection and submission, protecting user privacy by limiting data sent to Microsoft.",
+      "tooltipDisa3": "Disables user activity tracking by the system, avoiding the logging of user behavior and actions.",
+      "tooltipDisa4": "Disables automatic error and bug reporting, preventing error data from being sent to Microsoft.",
+      "tooltipDisa5": "Disables diagnostic tracking of performance and errors in the OS, preventing reports from being sent.",
+      "tooltipDisa6": "Disables WAP Push messaging service, stopping push notification delivery through this service.",
+      "tooltipDisa7": "Disables HomeGroup functionality, blocking creation and management of network homegroups.",
+      "tooltipDisa8": "Disables remote assistance, preventing others from remotely connecting to your PC for support.",
+      "tooltipDisa9": "Disables scheduled disk defragmentation, preventing automatic file defragmentation.",
+      "tooltipDisa10": "Disables Xbox-related features such as data sync and Xbox account apps.",
+      "tooltipDisa11": "Disables automatic maintenance tasks like disk cleanup and security checks.",
+      "tooltipDisa12": "Disables reserved storage management, stopping OS from allocating space for updates and temp files.",
+      "tooltipDisa13": "Disables Game DVR performance enhancements, avoiding automatic game recordings and optimizations.",
+      "tooltipDisa14": "Disables activity history, stopping recording and display of previous actions like clipboard and opened items.",
+      "tooltipDisa15": "Disables WiFi Sense, preventing automatic connection to public Wi-Fi and sharing with contacts.",
+      "tooltipDisa16": "Disables the notification bar and calendar, hiding system notifications and calendar info.",
+      "tooltipAbil0": "Enables language and regional options in the system, allowing changes to system language and localization settings.",
+      "tooltipAbil1": "Enables app suggestions and recommendations, showing notifications and tips from applications.",
+      "tooltipAbil2": "Enables telemetry data collection and submission, helping improve the OS and Microsoft products.",
+      "tooltipAbil3": "Enables user activity tracking, logging actions and behaviors within the system.",
+      "tooltipAbil4": "Enables automatic error and bug reporting, sending reports to Microsoft for improvements.",
+      "tooltipAbil5": "Enables diagnostic tracking of performance and errors, allowing the collection of diagnostic data.",
+      "tooltipAbil6": "Enables WAP Push messaging service, allowing the sending and receiving of push notifications.",
+      "tooltipAbil7": "Enables HomeGroup functionality, allowing creation and management of home groups for sharing files and devices over the network.",
+      "tooltipAbil8": "Enables remote assistance, allowing others to connect to the computer for technical support via remote desktop.",
+      "tooltipAbil9": "Enables scheduling and automatic execution of disk defragmentation, allowing automatic file defrag.",
+      "tooltipAbil10": "Enables Xbox features, such as data synchronization and apps related to the Xbox account on the computer.",
+      "tooltipAbil11": "Enables automatic maintenance, allowing the system to perform tasks like disk cleanup and security checks automatically.",
+      "tooltipAbil12": "Enables reserved storage management, allowing the OS to automatically allocate space for temporary files and updates.",
+      "tooltipAbil13": "Enables gaming performance enhancements via Game DVR, allowing automatic game recording and related optimizations.",
+      "tooltipAbil14": "Enables activity history, allowing the recording and viewing of previous actions like clipboard and opened items.",
+      "tooltipAbil15": "Enables WiFi Sense, allowing automatic connection to public Wi-Fi and sharing networks with Microsoft contacts.",
+      "tooltipAbil16": "Enables the notification bar and calendar, showing system notifications and calendar information."
+    },
+    "it": {
+      "tooltipDisa0": "Disabilita le opzioni relative alla lingua nel sistema, impedendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.",
+      "tooltipDisa1": "Disabilita i suggerimenti e le raccomandazioni dell'app, evitando notifiche e consigli da parte delle applicazioni.",
+      "tooltipDisa2": "Disabilita la raccolta e l'invio dei dati di telemetria al fine di migliorare il sistema operativo, proteggendo la privacy dell'utente.",
+      "tooltipDisa3": "Disabilita il tracciamento delle attività dell'utente da parte del sistema, evitando la registrazione delle azioni e comportamenti.",
+      "tooltipDisa4": "Disabilita la segnalazione automatica degli errori e dei bug al sistema, impedendo l'invio di report ai server di Microsoft.",
+      "tooltipDisa5": "Disabilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, evitando l'invio di report diagnostici.",
+      "tooltipDisa6": "Disabilita il servizio di messaggistica WAP Push, impedendo l'invio e la ricezione di notifiche push tramite il servizio.",
+      "tooltipDisa7": "Disabilita la funzionalità di HomeGroup, evitando la creazione e gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.",
+      "tooltipDisa8": "Disabilita l'assistenza remota, impedendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.",
+      "tooltipDisa9": "Disabilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, impedendo la deframmentazione automatica dei file.",
+      "tooltipDisa10": "Disabilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.",
+      "tooltipDisa11": "Disabilita la manutenzione automatica, impedendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.",
+      "tooltipDisa12": "Disabilita la gestione dello spazio riservato sul sistema, impedendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.",
+      "tooltipDisa13": "Disabilita i miglioramenti delle performance di gioco tramite Game DVR, evitando la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.",
+      "tooltipDisa14": "Disabilita la cronologia delle attività, impedendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.",
+      "tooltipDisa15": "Disabilita WiFi Sense, impedendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.",
+      "tooltipDisa16": "Disabilita la barra delle notifiche e il calendario, impedendo la visualizzazione delle notifiche di sistema e delle informazioni sul calendario.",
+      "tooltipAbil0": "Abilita le opzioni linguistiche e regionali nel sistema, consentendo modifiche alla lingua di sistema e alle impostazioni di localizzazione.",
+      "tooltipAbil1": "Abilita i suggerimenti e le raccomandazioni dell'app, mostrando notifiche e consigli da parte delle applicazioni.",
+      "tooltipAbil2": "Abilita la raccolta e l'invio dei dati di telemetria, contribuendo al miglioramento del sistema operativo e dei prodotti Microsoft.",
+      "tooltipAbil3": "Abilita il tracciamento delle attività dell'utente, registrando le azioni e i comportamenti all'interno del sistema.",
+      "tooltipAbil4": "Abilita la segnalazione automatica degli errori e dei bug al sistema, inviando report ai server di Microsoft per miglioramenti.",
+      "tooltipAbil5": "Abilita il tracciamento diagnostico delle prestazioni e degli errori nel sistema operativo, consentendo la raccolta dei dati diagnostici.",
+      "tooltipAbil6": "Abilita il servizio di messaggistica WAP Push, consentendo l'invio e la ricezione di notifiche push tramite il servizio.",
+      "tooltipAbil7": "Abilita la funzionalità di HomeGroup, permettendo la creazione e la gestione di gruppi domestici per la condivisione di file e dispositivi in rete locale.",
+      "tooltipAbil8": "Abilita l'assistenza remota, permettendo ad altri utenti di connettersi al computer per supporto tecnico tramite desktop remoto.",
+      "tooltipAbil9": "Abilita la pianificazione e l'esecuzione automatica di defrag dei dischi rigidi, consentendo la deframmentazione automatica dei file.",
+      "tooltipAbil10": "Abilita le funzionalità di Xbox, come la sincronizzazione dei dati e le app correlate all'account Xbox sul computer.",
+      "tooltipAbil11": "Abilita la manutenzione automatica, consentendo al sistema di eseguire automaticamente attività di manutenzione come la pulizia del disco e la verifica della sicurezza.",
+      "tooltipAbil12": "Abilita la gestione dello spazio riservato sul sistema, consentendo al sistema operativo di allocare automaticamente spazio per file temporanei e aggiornamenti.",
+      "tooltipAbil13": "Abilita i miglioramenti delle performance di gioco tramite Game DVR, consentendo la registrazione automatica dei giochi e altre ottimizzazioni legate al gaming.",
+      "tooltipAbil14": "Abilita la cronologia delle attività, consentendo la registrazione e la visualizzazione delle azioni precedenti, come gli appunti e le attività aperte.",
+      "tooltipAbil15": "Abilita WiFi Sense, consentendo la connessione automatica a reti Wi-Fi pubbliche e la condivisione delle reti con i contatti Microsoft.",
+      "tooltipAbil16": "Abilita la barra delle notifiche e il calendario, mostronado le notifiche di sistema e le informazioni sul calendario."
+    }
+  },
+  "FormRipristinoSO": {
+    "en": {
+      "operazioneAnnullata": "Operation canceled by the user.",
+      "backupRegistro": "Registry backup in progress...",
+      "controlloFileSistema": "System file check...",
+      "scansioneErroriSistema": "Scanning for system errors...",
+      "ripristinoFileSistema": "Restoring system files...",
+      "esecuzioneSfc": "Running SFC...",
+      "puliziaWinSxS": "Cleaning WinSxS folder...",
+      "pianificazioneChkdsk": "Scheduling file system check...",
+      "registrazioneDll": "Registering system DLLs...",
+      "ripristinoCompletato": "Restore completed! Please restart your PC.",
+      "msgRipristinoCompletato": "Restore completed! Restart your PC to apply changes.",
+      "logBackupRegistro": "Registry backup saved at: {0}",
+      "logDllRegistrata": "Registered DLL: {0}",
+      "scansioneInCorsoConTempo": "Scanning in progress... ({0} min)",
+      "scansioneInCorso": "Scanning in progress...",
+      "tempoRimanente": "Remaining time: {0}",
+      "scansioneCompletata": "Scan completed!",
+      "logScansioneInterrotta": "Scan interrupted by user.",
+      "scansioneInterrotta": "Scan interrupted!",
+      "testAnnullato": "Test cancelled."
+    },
+    "it": {
+      "operazioneAnnullata": "Operazione annullata dall'utente.",
+      "backupRegistro": "Backup del registro in corso...",
+      "controlloFileSistema": "Controllo file di sistema...",
+      "scansioneErroriSistema": "Scansione per errori di sistema...",
+      "ripristinoFileSistema": "Ripristino dei file di sistema...",
+      "esecuzioneSfc": "Esecuzione SFC...",
+      "puliziaWinSxS": "Pulizia della cartella WinSxS...",
+      "pianificazioneChkdsk": "Pianificazione controllo del file system...",
+      "registrazioneDll": "Registrazione DLL di sistema...",
+      "ripristinoCompletato": "Ripristino completato! Riavvia il PC.",
+      "msgRipristinoCompletato": "Ripristino completato! Riavvia il PC per applicare le modifiche.",
+      "logBackupRegistro": "Backup del registro salvato in: {0}",
+      "logDllRegistrata": "Registrata DLL: {0}",
+      "scansioneInCorsoConTempo": "Scansione in corso... ({0} min)",
+      "scansioneInCorso": "Scansione in corso...",
+      "tempoRimanente": "Tempo rimanente: {0}",
+      "scansioneCompletata": "Scansione completata!",
+      "logScansioneInterrotta": "Scansione interrotta dall'utente.",
+      "scansioneInterrotta": "Scansione interrotta!",
+      "testAnnullato": "Test annullato."
+    }
+  },
+  "FormUpdate": {
+    "en": {
+      "tooltipDisabilita_0": "Disables automatic downloading of Windows updates, preventing the system from downloading and installing updates without authorization.",
+      "tooltipDisabilita_1": "Disables automatic updating of Microsoft products via Windows Update (e.g., Office), limiting updates to Windows only.",
+      "tooltipDisabilita_2": "Disables automatic driver downloads through Windows Update, useful for those who prefer manual driver management.",
+      "tooltipDisabilita_3": "Disables automatic system restart after updates, avoiding unexpected interruptions.",
+      "tooltipDisabilita_4": "Disables notifications related to Windows updates, hiding alerts about new updates.",
+      "tooltipDisabilita_default": "No description available.",
+      "tooltipAbilita_0": "Enables automatic downloading of Windows updates, ensuring the system stays up-to-date with the latest security patches.",
+      "tooltipAbilita_1": "Enables automatic updates for Microsoft products (e.g., Office) via Windows Update.",
+      "tooltipAbilita_2": "Enables automatic driver downloads via Windows Update, keeping hardware drivers up to date.",
+      "tooltipAbilita_3": "Enables automatic system restart after installing updates, ensuring changes are applied properly.",
+      "tooltipAbilita_4": "Enables update notifications, informing the user about the availability of new updates.",
+      "tooltipAbilita_default": "No description available."
+    },
+    "it": {
+      "tooltipDisabilita_0": "Disabilita il download automatico degli aggiornamenti di Windows, impedendo al sistema di scaricare e installare aggiornamenti senza autorizzazione.",
+      "tooltipDisabilita_1": "Disabilita l'aggiornamento automatico dei prodotti Microsoft tramite Windows Update (es. Office), limitando gli aggiornamenti solo a Windows.",
+      "tooltipDisabilita_2": "Disabilita il download automatico dei driver tramite Windows Update, utile se si desidera gestire manualmente i driver del sistema.",
+      "tooltipDisabilita_3": "Disabilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, evitando interruzioni improvvise.",
+      "tooltipDisabilita_4": "Disabilita le notifiche relative agli aggiornamenti di Windows, nascondendo avvisi su nuovi aggiornamenti disponibili.",
+      "tooltipDisabilita_default": "Nessuna descrizione disponibile.",
+      "tooltipAbilita_0": "Abilita il download automatico degli aggiornamenti di Windows, garantendo che il sistema resti aggiornato con le ultime patch di sicurezza.",
+      "tooltipAbilita_1": "Abilita l'aggiornamento automatico anche dei prodotti Microsoft (es. Office) tramite Windows Update.",
+      "tooltipAbilita_2": "Abilita il download automatico dei driver tramite Windows Update, assicurando che l'hardware sia sempre aggiornato.",
+      "tooltipAbilita_3": "Abilita il riavvio automatico del sistema dopo l'installazione degli aggiornamenti, per completare correttamente le modifiche.",
+      "tooltipAbilita_4": "Abilita le notifiche di aggiornamento, avvisando l'utente della disponibilità di nuovi update.",
+      "tooltipAbilita_default": "Nessuna descrizione disponibile."
+    }
+  },
+  "FormUtility": {
+    "en": {
+      "tooltipDisa_0": "Disables background app execution to save system resources and improve performance.",
+      "tooltipDisa_1": "Disables collection of feedback and data by Microsoft to improve services and user experience.",
+      "tooltipDisa_2": "Disables Advertising ID, which is used to track your preferences for personalized ads.",
+      "tooltipDisa_3": "Disables SmartScreen filter that prevents running unsafe apps and files from the Internet.",
+      "tooltipDisa_4": "Disables Remote Desktop, preventing remote access to your PC.",
+      "tooltipDisa_5": "Disables automatic NumLock activation on startup, preventing unintended enabling.",
+      "tooltipDisa_6": "Disables News and Interests feature on the taskbar.",
+      "tooltipDisa_7": "Disables file indexing to speed up file searches and improve performance.",
+      "tooltipDisa_8": "Disables PDF viewing within Microsoft Edge, enforcing the use of an external PDF reader.",
+      "tooltipDisa_9": "Disables maps and location services to save resources and protect privacy.",
+      "tooltipDisa_10": "Disables UWP (Universal Windows Platform) apps optimized for Microsoft Store.",
+      "tooltipDisa_11": "Disables personalized Microsoft experiences, including suggestions and services based on user data.",
+      "tooltipDisa_12": "Disables Storage Check, which monitors disk status and suggests cleanup.",
+      "tooltipDisa_13": "Disables Superfetch, a feature that optimizes memory by preloading frequently used apps.",
+      "tooltipDisa_14": "Disables Hibernation to save disk space and avoid writing suspension state to disk.",
+      "tooltipDisa_15": "Disables FullScreen Optimization to reduce resource usage during fullscreen apps.",
+      "tooltipDisa_16": "Disables Fast Startup, which speeds up boot time but may affect system security.",
+      "tooltipDisa_17": "Sets normal bandwidth usage to reduce network resource impact during system usage.",
+      "tooltipDisa_default": "No description available.",
+      "tooltipAbil_0": "Enables background app execution, allowing them to continue running when not actively used.",
+      "tooltipAbil_1": "Enables feedback collection by Microsoft to improve services and user experience, helping personalize features.",
+      "tooltipAbil_2": "Enables Advertising ID to personalize ads based on your interests and online activity.",
+      "tooltipAbil_3": "Enables SmartScreen Filter to protect your PC from malicious or unknown apps and websites.",
+      "tooltipAbil_4": "Enables Remote Desktop, allowing remote access to your PC over the network.",
+      "tooltipAbil_5": "Enables automatic NumLock activation at startup so the number pad is on by default.",
+      "tooltipAbil_6": "Enables News and Interests feature, displaying personalized updates on the taskbar.",
+      "tooltipAbil_7": "Enables file indexing, improving search speed by cataloging files in the system.",
+      "tooltipAbil_8": "Enables custom Power Saving mode, optimizing system resources for lower energy consumption, especially on laptops.",
+      "tooltipAbil_9": "Enables Maps and location services for navigation and location-based services.",
+      "tooltipAbil_10": "Enables UWP apps, optimized for the Microsoft Store and all Windows devices.",
+      "tooltipAbil_11": "Enables personalized Microsoft experiences, offering suggestions and services based on your preferences.",
+      "tooltipAbil_12": "Enables Storage Check to monitor disk status and recommend freeing up space.",
+      "tooltipAbil_13": "Enables Superfetch to optimize memory by preloading frequently used apps.",
+      "tooltipAbil_14": "Enables Hibernation to save your session to disk and fully power off the PC for faster startup.",
+      "tooltipAbil_15": "Enables FullScreen Optimization to enhance performance in full-screen apps.",
+      "tooltipAbil_16": "Enables Fast Startup, reducing boot time using a hybrid shutdown and hibernation.",
+      "tooltipAbil_17": "Sets a maximum bandwidth limit, optimizing network usage by the system.",
+      "tooltipAbil_18": "Improves SSD usage by optimizing the system for faster and more efficient solid-state drive performance.",
+      "tooltipAbil_default": "No description available."
+    },
+    "it": {
+      "tooltipDisa_0": "Disabilita l'esecuzione di app in background per risparmiare risorse di sistema e migliorare le prestazioni.",
+      "tooltipDisa_1": "Disabilita la raccolta di feedback e dati da parte di Microsoft per migliorare i servizi e l'esperienza utente.",
+      "tooltipDisa_2": "Disabilita l'Advertising ID, che viene utilizzato per tracciare le tue preferenze per pubblicità personalizzata.",
+      "tooltipDisa_3": "Disabilita il Filtro Smart Screen che previene l'esecuzione di app e file non sicuri da Internet.",
+      "tooltipDisa_4": "Disabilita il Desktop Remoto, evitando l'accesso remoto al tuo PC.",
+      "tooltipDisa_5": "Disabilita l'attivazione automatica del NumLock all'avvio, evitando che il tasto del numero venga abilitato senza volerlo.",
+      "tooltipDisa_6": "Disabilita la funzionalità News e Interessi, che mostra notizie e aggiornamenti sulla barra delle applicazioni.",
+      "tooltipDisa_7": "Disabilita l'indicizzazione dei file per accelerare la ricerca di file, migliorando la performance del sistema.",
+      "tooltipDisa_8": "Disabilita la visualizzazione dei PDF all'interno di Microsoft Edge, costringendo l'uso di un altro lettore PDF.",
+      "tooltipDisa_9": "Disabilita le mappe e la localizzazione per risparmiare risorse e proteggere la privacy.",
+      "tooltipDisa_10": "Disabilita le UWP (Universal Windows Platform) apps che sono ottimizzate per il Microsoft Store.",
+      "tooltipDisa_11": "Disabilita le esperienze personalizzate di Microsoft, che includono suggerimenti e servizi basati sui dati utente.",
+      "tooltipDisa_12": "Disabilita lo Storage Check che monitora lo stato del disco rigido per suggerire la pulizia e liberare spazio.",
+      "tooltipDisa_13": "Disabilita Superfetch, una funzionalità che ottimizza la memoria pre-caricando applicazioni frequentemente usate.",
+      "tooltipDisa_14": "Disabilita l'Ibernazione, impedendo al sistema di scrivere lo stato di sospensione su disco e liberando spazio.",
+      "tooltipDisa_15": "Disabilita l'ottimizzazione FullScreen per ridurre l'utilizzo delle risorse durante le applicazioni in modalità schermo intero.",
+      "tooltipDisa_16": "Disabilita l'Avvio Rapido, che accelera l'avvio del PC ma potrebbe influire sulla sicurezza del sistema.",
+      "tooltipDisa_17": "Imposta una larghezza di banda normale per ridurre l'impatto sulle risorse di rete durante l'uso del sistema.",
+      "tooltipDisa_default": "Nessuna descrizione disponibile.",
+      "tooltipAbil_0": "Abilita l'esecuzione di app in background, consentendo loro di continuare a funzionare anche quando non sono attivamente in uso.",
+      "tooltipAbil_1": "Abilita la raccolta di feedback da parte di Microsoft per migliorare i servizi e l'esperienza utente, contribuendo alla personalizzazione dei servizi.",
+      "tooltipAbil_2": "Abilita l'Advertising ID, che consente la personalizzazione delle pubblicità in base ai tuoi interessi e attività online.",
+      "tooltipAbil_3": "Abilita il Filtro Smart Screen, che protegge il tuo PC da app e siti web dannosi o sconosciuti, avvisandoti di eventuali rischi.",
+      "tooltipAbil_4": "Abilita il Desktop Remoto, permettendo l'accesso remoto al tuo PC tramite la rete per il controllo da dispositivi esterni.",
+      "tooltipAbil_5": "Abilita l'attivazione automatica del NumLock all'avvio, assicurando che il tasto del numero sia attivo senza doverlo premere manualmente.",
+      "tooltipAbil_6": "Abilita la funzionalità News e Interessi, che visualizza notizie personalizzate e aggiornamenti direttamente sulla barra delle applicazioni.",
+      "tooltipAbil_7": "Abilita l'indicizzazione dei file, migliorando la velocità delle ricerche sul PC attraverso la catalogazione dei file contenuti nel sistema.",
+      "tooltipAbil_8": "Abilita il Risparmio Energetico Personalizzato, ottimizzando le risorse per ridurre il consumo energetico del dispositivo, specialmente su laptop.",
+      "tooltipAbil_9": "Abilita le Mappe, permettendo l'accesso alla funzionalità di localizzazione e mappe per fornire indicazioni e servizi basati sulla posizione.",
+      "tooltipAbil_10": "Abilita le UWP (Universal Windows Platform) apps, che sono applicazioni ottimizzate per il Microsoft Store e per tutti i dispositivi Windows.",
+      "tooltipAbil_11": "Abilita le esperienze personalizzate di Microsoft, che offrono suggerimenti e servizi basati sulle tue preferenze e attività online.",
+      "tooltipAbil_12": "Abilita lo Storage Check, che controlla automaticamente lo stato del disco rigido per segnalare la necessità di liberare spazio.",
+      "tooltipAbil_13": "Abilita Superfetch, che ottimizza la memoria del PC pre-caricando automaticamente le app più utilizzate per velocizzare l'accesso.",
+      "tooltipAbil_14": "Abilita l'Ibernazione, che consente al PC di salvare lo stato corrente su disco e spegnersi completamente per un avvio più rapido.",
+      "tooltipAbil_15": "Abilita l'ottimizzazione FullScreen, migliorando le prestazioni e l'esperienza visiva durante l'esecuzione di applicazioni a schermo intero.",
+      "tooltipAbil_16": "Abilita l'Avvio Rapido, riducendo il tempo di avvio del PC utilizzando un'ottimizzazione combinata di spegnimento e ibernazione.",
+      "tooltipAbil_17": "Imposta una larghezza di banda massima, ottimizzando le risorse di rete per evitare che il sistema consumi tutta la banda disponibile.",
+      "tooltipAbil_18": "Migliora l'uso dell'SSD, ottimizzando il sistema per lavorare in modo più efficiente con unità a stato solido, migliorando la velocità complessiva.",
+      "tooltipAbil_default": "Nessuna descrizione disponibile."
+    }
+  },
+  "FormWin1011": {
+    "en": {
+      "infoWin1011Lite": "Windows 10 LITE\n\nThis version of Windows 10 has been optimized by removing a number of drivers, apps, services, and components to improve system performance and reduce disk space usage.\nThis customization leads to a slimmer and faster operating system, ideal for those seeking a smoother, lighter alternative to the standard version.\n\nBelow is the list of removed services and components:\n\n- Windows Barcode Preview\n- Assigned Access Lock App\n- Narrator\n- Call\n- Windows Hello Setup\n- Eye Control\n- Cortana\n- Feedback Hub\n- Microsoft Account Family Features\n- Delivery Optimization Manager\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Safe Device Removal\n- Default Windows Lock Screen\n- Skype\n- Tips (Basic Info)\n- Tests and Exams\n- 3D Viewer\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibility\n- Device Experience\n- Offline Files\n- Input Method Editor (IME) - Recommended\n- Internet Explorer\n- Payments\n- Remote Desktop Server\n- Telephony\n 📌 Added AIMODS-Store and WinHubX shortcuts to the desktop upon installation completion (for portable and removable versions)."
+    },
+    "it": {
+      "infoWin1011Lite": "Windows 10 LITE\n\nQuesta versione di Windows 10 è stata ottimizzata rimuovendo una serie di driver, applicazioni, servizi e componenti, per migliorare le prestazioni del sistema e ridurre l'ingombro di spazio su disco.\nQuesta personalizzazione porta ad un sistema operativo più snello e performante, ideale per chi cerca una versione più fluida e leggera rispetto alla versione standard.\n\nDi seguito l'elenco dei servizi e componenti rimossi:\n\n- Anteprima codice a barre Windows\n- App di blocco con accesso assegnato\n- Assistente vocale\n- Chiama\n- Configurazione di Windows Hello\n- Controllo ottico\n- Cortana\n- Feedback Hub\n- Funzionalità per la famiglia di account Microsoft\n- Gestore distribuzione contenuti\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Rimozione sicura del dispositivo\n- Schermata di blocco predefinita di Windows\n- Skype\n- Suggerimenti (Informazioni di base)\n- Test ed esami\n- Visualizzatore 3D\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibilità (Accessibilità)\n- Device Experience\n- File Offline\n- Input Method Editor (IME) - Consigliato\n- Internet Explorer\n- Pagamenti\n- Server Desktop remoto\n- Telefonia\n📌 Alla fine dell'installazione vengono aggiunti i collegamenti di AIMODS-Store e WinHubX sul desktop (versioni portatili e rimovibili)."
+    }
+  },
+  "FormWin7": {
+    "it": {
+      "infoWin7Lite": "Windows 7 Ultimate LITE\n\nQuesta versione di Windows 7 Ultimate è stata migliorata rimuovendo una serie di driver, applicazioni, servizi e componenti, per migliorare le prestazioni del sistema e ridurre l'ingombro di spazio su disco.\nQuesta personalizzazione porta ad un sistema operativo più snello e performante, ideale per chi cerca una versione più fluida e leggera rispetto alla versione stock.\n\nDi seguito l'elenco dei servizi e componenti rimossi:\n\n- Assistenza Remota\n- Auto Connection Manager di accesso remoto\n- Cache e file temporanei\n- Cartella Zip e Cab\n- Editor di caratteri personalizzati\n- Gadget\n- Giochi Multiplayer\n- Giochi Premium\n- Lente d'ingrandimento dello schermo\n- Narratore\n- Personalizzazione dei Temi di Windows\n- Puntatori del mouse (Accessibilità)\n- Redirector porta di Servizi Desktop remoto\n- Registro Remoto\n- RemoteFX\n- Servizi di integrazione Hyper-V\n- Servizio licenze Desktop remoto\n- Servizio Table Text\n- Suggerimenti (Informazioni di base)\n- Temi di base a contrasto elevato\n- Temi sul Market\n- Windows TIFF IFilter (OCR)\n- Accessibilità (Accessibilità)\n- Game Explorer\n- Giochi\n- Server Desktop remoto\n- Telefonia\n- Windows Sidebar\n\n📌 Alla fine dell'installazione vengono aggiunti i collegamenti di AIMODS-Store e WinHubX sul desktop (versioni portatili e rimovibili)."
+    },
+    "en": {
+      "infoWin7Lite": "Windows 7 Ultimate LITE\n\nThis version of Windows 7 Ultimate has been enhanced by removing a number of drivers, applications, services, and components to improve system performance and reduce disk space usage.\nThis customization leads to a slimmer and faster operating system, ideal for those looking for a lighter and smoother experience compared to the stock version.\n\nBelow is the list of removed services and components:\n\n- Remote Assistance\n- Remote Access Auto Connection Manager\n- Cache and temporary files\n- Zip and Cab folders\n- Custom font editor\n- Gadgets\n- Multiplayer Games\n- Premium Games\n- Screen Magnifier\n- Narrator\n- Windows Themes Personalization\n- Mouse Pointers (Accessibility)\n- Remote Desktop Services Redirector\n- Remote Registry\n- RemoteFX\n- Hyper-V Integration Services\n- Remote Desktop Licensing Service\n- Table Text Service\n- Tips (Basic Info)\n- High Contrast Basic Themes\n- Marketplace Themes\n- Windows TIFF IFilter (OCR)\n- Accessibility\n- Game Explorer\n- Games\n- Remote Desktop Server\n- Telephony\n- Windows Sidebar\n\n📌 After installation, AIMODS-Store and WinHubX shortcuts are added to the desktop (portable and removable versions)."
+    }
+  },
+  "FormCreaISO": {
+    "en": {
+      "domanda": "Upon clicking the icon, the following scripts will be executed in sequence:\n\n1. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P000.json\n2. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P001.json\n3. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P002.json\n4. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P003.json\n5. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P004.json\n\nThese scripts will automate the installation and debloating process. Once completed, two portable .exe files will be placed on the desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nThese files are portable, require no forced installation, and can be easily removed at any time."
+    },
+    "it": {
+      "domanda": "Cliccando sull'icona, verranno eseguiti i seguenti script in sequenza:\n\n1. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P000.json\n2. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P001.json\n3. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P002.json\n4. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P003.json\n5. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P004.json\n\nQuesti script automatizzeranno il processo di installazione e debloat. Al termine, due file .exe portabili verranno posizionati sul desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nQuesti file sono portabili, non richiedono installazione forzata e possono essere facilmente eliminati in qualsiasi momento."
+    }
+  }
+}

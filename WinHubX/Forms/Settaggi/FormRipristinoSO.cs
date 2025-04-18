@@ -22,7 +22,7 @@ namespace WinHubX.Forms.Settaggi
             this.formSettaggi = formSettaggi;
             dateTimePicker1.Format = DateTimePickerFormat.Time;
             dateTimePicker1.ShowUpDown = true;
-            dateTimePicker1.Value = DateTime.Today.AddMinutes(30); // Imposta il valore predefinito a 30 minuti
+            dateTimePicker1.Value = DateTime.Today.AddMinutes(30);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch (OperationCanceledException)
             {
-                UpdateLabel("Operazione annullata dall'utente.");
+                UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "operazioneAnnullata"));
             }
             finally
             {
@@ -77,50 +77,50 @@ namespace WinHubX.Forms.Settaggi
             int totalSteps = 7;
             int currentStep = 0;
 
-            UpdateLabel("Backup del registro in corso...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "backupRegistro"));
             await BackupRegistryAsync(cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Controllo file di sistema...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "controlloFileSistema"));
             await RunCommandAsync("DISM /Online /Cleanup-Image /CheckHealth", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Scansione per errori di sistema...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "scansioneErroriSistema"));
             await RunCommandAsync("DISM /Online /Cleanup-Image /ScanHealth", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Ripristino dei file di sistema...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "ripristinoFileSistema"));
             await RunCommandAsync("DISM /Online /Cleanup-Image /RestoreHealth", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Esecuzione SFC...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "esecuzioneSfc"));
             await RunCommandAsync("sfc /scannow", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Pulizia della cartella WinSxS...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "puliziaWinSxS"));
             await RunCommandAsync("Dism.exe /online /Cleanup-Image /StartComponentCleanup", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Pianificazione controllo del file system...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "pianificazioneChkdsk"));
             await RunCommandAsync("fsutil dirty set C:", cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Registrazione DLL di sistema...");
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "registrazioneDll"));
             await RegisterSystemDLLs(cancellationToken);
             UpdateProgress(++currentStep, totalSteps, cancellationToken);
 
-            UpdateLabel("Ripristino completato! Riavvia il PC.");
-            MessageBox.Show("Ripristino completato! Riavvia il PC per applicare le modifiche.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateLabel(LanguageManager.GetTranslation("FormRipristinoSO", "ripristinoCompletato"));
+            MessageBox.Show(
+                LanguageManager.GetTranslation("FormRipristinoSO", "msgRipristinoCompletato"),
+                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async Task BackupRegistryAsync(CancellationToken cancellationToken)
         {
             string backupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "RegistryBackup.reg");
-
             await RunCommandAsync($"reg export HKLM\\SOFTWARE {backupPath} /y", cancellationToken);
             await RunCommandAsync($"reg export HKCU {backupPath} /y", cancellationToken);
-
-            LogMessage($"Backup del registro salvato in: {backupPath}");
+            LogMessage(string.Format(LanguageManager.GetTranslation("FormRipristinoSO", "logBackupRegistro"), backupPath));
         }
 
         private async Task RegisterSystemDLLs(CancellationToken cancellationToken)
@@ -130,7 +130,7 @@ namespace WinHubX.Forms.Settaggi
             foreach (var dll in dlls)
             {
                 await RunCommandAsync($"regsvr32 /s {dll}", cancellationToken);
-                LogMessage($"Registrata DLL: {dll}");
+                LogMessage(string.Format(LanguageManager.GetTranslation("FormRipristinoSO", "logDllRegistrata"), dll));
             }
         }
 
@@ -189,11 +189,9 @@ namespace WinHubX.Forms.Settaggi
 
                 progressBar1.Visible = true;
                 label2.Visible = true;
-                label2.Text = $"Scansione in corso... ({remainingTime} min)";
-
+                label2.Text = string.Format(LanguageManager.GetTranslation("FormRipristinoSO", "scansioneInCorsoConTempo"), remainingTime);
                 richTextBox1.Clear();
-
-                cancellationTokenSource = new CancellationTokenSource(); // Creiamo un nuovo token di annullamento
+                cancellationTokenSource = new CancellationTokenSource();
                 CancellationToken token = cancellationTokenSource.Token;
 
                 if (checkBox_hw.Checked)
@@ -212,7 +210,7 @@ namespace WinHubX.Forms.Settaggi
             }
             catch (Exception ex)
             {
-                richTextBox1.AppendText($"Errore: {ex.Message}\n");
+                richTextBox1.AppendText($"Error: {ex.Message}\n");
             }
             finally
             {
@@ -242,14 +240,13 @@ namespace WinHubX.Forms.Settaggi
                 TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
                 string formattedTime = timeSpan.ToString(@"hh\:mm\:ss");
 
-                label2.Text = $"Scansione in corso...";
-                label3.Text = $"Tempo rimanente: {formattedTime}";
+                label2.Text = LanguageManager.GetTranslation("FormRipristinoSO", "scansioneInCorso");
+                label3.Text = string.Format(LanguageManager.GetTranslation("FormRipristinoSO", "tempoRimanente"), formattedTime);
             }
             else
             {
                 countdownTimer?.Stop();
-                label2.Text = "Scansione completata!";
-                label3.Text = "Tempo scaduto!";
+                label2.Text = LanguageManager.GetTranslation("FormRipristinoSO", "scansioneCompletata");
             }
         }
 
@@ -530,7 +527,6 @@ namespace WinHubX.Forms.Settaggi
 
 
         #endregion
-        // Funzioni di supporto
         private void UpdateLabel(string message)
         {
             if (label2.InvokeRequired)
@@ -587,7 +583,7 @@ namespace WinHubX.Forms.Settaggi
             }
             else
             {
-                richTextBox1.AppendText($"{DateTime.Now}: [ERRORE] {message}\n");
+                richTextBox1.AppendText($"{DateTime.Now}: [ERROR] {message}\n");
                 richTextBox1.ScrollToCaret();
             }
         }
@@ -602,9 +598,9 @@ namespace WinHubX.Forms.Settaggi
             if (cancellationTokenSource != null)
             {
                 cancellationTokenSource.Cancel();
-                LogMessage("Scansione interrotta dall'utente.");
-                label2.Text = "Scansione interrotta!";
-                label3.Text = "Test annullato.";
+                LogMessage(LanguageManager.GetTranslation("FormRipristinoSO", "logScansioneInterrotta"));
+                label2.Text = LanguageManager.GetTranslation("FormRipristinoSO", "scansioneInterrotta");
+                label3.Text = LanguageManager.GetTranslation("FormRipristinoSO", "testAnnullato");
                 countdownTimer?.Stop();
                 progressBar1.Visible = false;
             }

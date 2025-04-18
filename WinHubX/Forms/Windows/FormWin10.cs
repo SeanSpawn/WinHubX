@@ -49,65 +49,7 @@ namespace WinHubX.Forms.Windows
 
         public static void infoWin10Lite(object sender, EventArgs e)
         {
-            #region descrizione LITE
-
-            string description = "Windows 10 LITE\n\n" +
-                     "Questa versione di Windows 10 è stata ottimizzata rimuovendo una serie di driver, applicazioni, servizi e componenti, per migliorare le prestazioni del sistema e ridurre l'ingombro di spazio su disco.\n" +
-                     "Questa personalizzazione porta ad un sistema operativo più snello e performante, ideale per chi cerca una versione più fluida e leggera rispetto alla versione standard.\n\n" +
-                     "Di seguito l'elenco dei servizi e componenti rimossi:\n\n" +
-                        "- Anteprima codice a barre Windows\n" +
-                        "- App di blocco con accesso assegnato\n" +
-                        "- Assistente vocale\n" +
-                        "- Chiama\n" +
-                        "- Configurazione di Windows Hello\n" +
-                        "- Controllo ottico\n" +
-                        "- Cortana\n" +
-                        "- Feedback Hub\n" +
-                        "- Funzionalità per la famiglia di account Microsoft\n" +
-                        "- Gestore distribuzione contenuti\n" +
-                        "- Get Help\n" +
-                        "- Groove Music\n" +
-                        "- Mail and Calendar\n" +
-                        "- Microsoft Advertising SDK for XAML\n" +
-                        "- Microsoft Edge DevTools Client\n" +
-                        "- Microsoft Pay\n" +
-                        "- Microsoft People\n" +
-                        "- Microsoft Photos\n" +
-                        "- Microsoft Solitaire Collection\n" +
-                        "- Microsoft Sticky Notes\n" +
-                        "- Mixed Reality Portal\n" +
-                        "- Movies & TV\n" +
-                        "- MSN Weather\n" +
-                        "- Office\n" +
-                        "- OneNote\n" +
-                        "- Paint 3D\n" +
-                        "- Rimozione sicura del dispositivo\n" +
-                        "- Schermata di blocco predefinita di Windows\n" +
-                        "- Skype\n" +
-                        "- Suggerimenti (Informazioni di base)\n" +
-                        "- Test ed esami\n" +
-                        "- Visualizzatore 3D\n" +
-                        "- Web Media Extensions\n" +
-                        "- Windows Alarms & Clock\n" +
-                        "- Windows Maps\n" +
-                        "- Windows Voice Recorder\n" +
-                        "- Xbox Game Bar Plugin\n" +
-                        "- Xbox Game Bar\n" +
-                        "- Xbox Game Speech Window\n" +
-                        "- Xbox Game UI\n" +
-                        "- Xbox TCUI\n" +
-                        "- Xbox\n" +
-                        "- Your Phone\n" +
-                        "- Accessibilità (Accessibilità)\n" +
-                        "- Device Experience\n" +
-                        "- File Offline\n" +
-                        "- Input Method Editor (IME) - Consigliato\n" +
-                        "- Internet Explorer\n" +
-                        "- Pagamenti\n" +
-                        "- Server Desktop remoto\n" +
-                        "- Telefonia\n";
-
-            #endregion 
+            string description = LanguageManager.GetTranslation("FormWin1011", "infoWin1011Lite");
 
             InfoDialog infoWin10Lite = new InfoDialog(description)
             {
@@ -121,7 +63,6 @@ namespace WinHubX.Forms.Windows
         private async void LoadJsonLinks()
         {
             string url = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -138,7 +79,7 @@ namespace WinHubX.Forms.Windows
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore nel caricamento dei link: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -147,8 +88,8 @@ namespace WinHubX.Forms.Windows
             if (e.Button == MouseButtons.Right)
             {
                 Clipboard.SetText("7f9c63e48578451cbc92c009f9819816a28f5605ba9b1578e9f91a49834d10ac");
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -161,11 +102,9 @@ namespace WinHubX.Forms.Windows
         {
             if (e.Button == MouseButtons.Right)
             {
-
                 Clipboard.SetText("fde189da1265dc3eb1d3e26b560876a37c44a447afdd493ed73d53d33d766cf0");
-
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -180,9 +119,8 @@ namespace WinHubX.Forms.Windows
             {
 
                 Clipboard.SetText("2220ecf55ff6ee8b7c90d78ea536c7b7e4943f08593a6e1e68fc41b9b02e6f9f");
-
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -197,9 +135,8 @@ namespace WinHubX.Forms.Windows
             {
 
                 Clipboard.SetText("60d47df775b0f4445f69e2313844fa2516ae7efb007fd2db3bf781b93f2fac82");
-
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -214,9 +151,8 @@ namespace WinHubX.Forms.Windows
             {
 
                 Clipboard.SetText("9f9332232520fab06c13d84a2a7ea7da02dfd31dfd9559caabdf5c19d9d3f78c");
-
-                notifyIcon.BalloonTipTitle = "SHA256 copiato!";
-                notifyIcon.BalloonTipText = "Il codice hash è stato copiato negli appunti.";
+                notifyIcon.BalloonTipTitle = LanguageManager.GetTranslation("Global", "sha256title");
+                notifyIcon.BalloonTipText = LanguageManager.GetTranslation("Global", "sha256text");
                 notifyIcon.ShowBalloonTip(1000);
             }
             else if (e.Button == MouseButtons.Left)
@@ -240,12 +176,12 @@ namespace WinHubX.Forms.Windows
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Errore nell'aprire l'URL: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("URL non disponibile.");
+
             }
         }
     }

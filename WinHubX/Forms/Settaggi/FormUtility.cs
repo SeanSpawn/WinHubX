@@ -28,7 +28,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextDisa(tIndex);
                     toolTip1.SetToolTip(DisabilitaUtility, tooltipText);
                 }
@@ -43,7 +42,6 @@ namespace WinHubX.Forms.Settaggi
                 tIndex = index;
                 if (tIndex > -1)
                 {
-                    // Aggiungi i tuoi tooltips specifici per ciascun elemento
                     string tooltipText = GetTooltipTextAbil(tIndex);
                     toolTip1.SetToolTip(AbilitaUtility, tooltipText);
                 }
@@ -52,95 +50,13 @@ namespace WinHubX.Forms.Settaggi
 
         private string GetTooltipTextDisa(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Disabilita l'esecuzione di app in background per risparmiare risorse di sistema e migliorare le prestazioni.";
-                case 1:
-                    return "Disabilita la raccolta di feedback e dati da parte di Microsoft per migliorare i servizi e l'esperienza utente.";
-                case 2:
-                    return "Disabilita l'Advertising ID, che viene utilizzato per tracciare le tue preferenze per pubblicità personalizzata.";
-                case 3:
-                    return "Disabilita il Filtro Smart Screen che previene l'esecuzione di app e file non sicuri da Internet.";
-                case 4:
-                    return "Disabilita il Desktop Remoto, evitando l'accesso remoto al tuo PC.";
-                case 5:
-                    return "Disabilita l'attivazione automatica del NumLock all'avvio, evitando che il tasto del numero venga abilitato senza volerlo.";
-                case 6:
-                    return "Disabilita la funzionalità News e Interessi, che mostra notizie e aggiornamenti sulla barra delle applicazioni.";
-                case 7:
-                    return "Disabilita l'indicizzazione dei file per accelerare la ricerca di file, migliorando la performance del sistema.";
-                case 8:
-                    return "Disabilita la visualizzazione dei PDF all'interno di Microsoft Edge, costringendo l'uso di un altro lettore PDF.";
-                case 9:
-                    return "Disabilita le mappe e la localizzazione per risparmiare risorse e proteggere la privacy.";
-                case 10:
-                    return "Disabilita le UWP (Universal Windows Platform) apps che sono ottimizzate per il Microsoft Store.";
-                case 11:
-                    return "Disabilita le esperienze personalizzate di Microsoft, che includono suggerimenti e servizi basati sui dati utente.";
-                case 12:
-                    return "Disabilita lo Storage Check che monitora lo stato del disco rigido per suggerire la pulizia e liberare spazio.";
-                case 13:
-                    return "Disabilita Superfetch, una funzionalità che ottimizza la memoria pre-caricando applicazioni frequentemente usate.";
-                case 14:
-                    return "Disabilita l'Ibernazione, impedendo al sistema di scrivere lo stato di sospensione su disco e liberando spazio.";
-                case 15:
-                    return "Disabilita l'ottimizzazione FullScreen per ridurre l'utilizzo delle risorse durante le applicazioni in modalità schermo intero.";
-                case 16:
-                    return "Disabilita l'Avvio Rapido, che accelera l'avvio del PC ma potrebbe influire sulla sicurezza del sistema.";
-                case 17:
-                    return "Imposta una larghezza di banda normale per ridurre l'impatto sulle risorse di rete durante l'uso del sistema.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            return LanguageManager.GetTranslation("FormUtility", $"tooltipDisa_{index}");
         }
-
         private string GetTooltipTextAbil(int index)
         {
-            switch (index)
-            {
-                case 0:
-                    return "Abilita l'esecuzione di app in background, consentendo loro di continuare a funzionare anche quando non sono attivamente in uso.";
-                case 1:
-                    return "Abilita la raccolta di feedback da parte di Microsoft per migliorare i servizi e l'esperienza utente, contribuendo alla personalizzazione dei servizi.";
-                case 2:
-                    return "Abilita l'Advertising ID, che consente la personalizzazione delle pubblicità in base ai tuoi interessi e attività online.";
-                case 3:
-                    return "Abilita il Filtro Smart Screen, che protegge il tuo PC da app e siti web dannosi o sconosciuti, avvisandoti di eventuali rischi.";
-                case 4:
-                    return "Abilita il Desktop Remoto, permettendo l'accesso remoto al tuo PC tramite la rete per il controllo da dispositivi esterni.";
-                case 5:
-                    return "Abilita l'attivazione automatica del NumLock all'avvio, assicurando che il tasto del numero sia attivo senza doverlo premere manualmente.";
-                case 6:
-                    return "Abilita la funzionalità News e Interessi, che visualizza notizie personalizzate e aggiornamenti direttamente sulla barra delle applicazioni.";
-                case 7:
-                    return "Abilita l'indicizzazione dei file, migliorando la velocità delle ricerche sul PC attraverso la catalogazione dei file contenuti nel sistema.";
-                case 8:
-                    return "Abilita il Risparmio Energetico Personalizzato, ottimizzando le risorse per ridurre il consumo energetico del dispositivo, specialmente su laptop.";
-                case 9:
-                    return "Abilita le Mappe, permettendo l'accesso alla funzionalità di localizzazione e mappe per fornire indicazioni e servizi basati sulla posizione.";
-                case 10:
-                    return "Abilita le UWP (Universal Windows Platform) apps, che sono applicazioni ottimizzate per il Microsoft Store e per tutti i dispositivi Windows.";
-                case 11:
-                    return "Abilita le esperienze personalizzate di Microsoft, che offrono suggerimenti e servizi basati sulle tue preferenze e attività online.";
-                case 12:
-                    return "Abilita lo Storage Check, che controlla automaticamente lo stato del disco rigido per segnalare la necessità di liberare spazio.";
-                case 13:
-                    return "Abilita Superfetch, che ottimizza la memoria del PC pre-caricando automaticamente le app più utilizzate per velocizzare l'accesso.";
-                case 14:
-                    return "Abilita l'Ibernazione, che consente al PC di salvare lo stato corrente su disco e spegnersi completamente per un avvio più rapido.";
-                case 15:
-                    return "Abilita l'ottimizzazione FullScreen, migliorando le prestazioni e l'esperienza visiva durante l'esecuzione di applicazioni a schermo intero.";
-                case 16:
-                    return "Abilita l'Avvio Rapido, riducendo il tempo di avvio del PC utilizzando un'ottimizzazione combinata di spegnimento e ibernazione.";
-                case 17:
-                    return "Imposta una larghezza di banda massima, ottimizzando le risorse di rete per evitare che il sistema consumi tutta la banda disponibile.";
-                case 18:
-                    return "Migliora l'uso dell'SSD, ottimizzando il sistema per lavorare in modo più efficiente con unità a stato solido, migliorando la velocità complessiva.";
-                default:
-                    return "Nessuna descrizione disponibile.";
-            }
+            return LanguageManager.GetTranslation("FormUtility", $"tooltipAbil_{index}");
         }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -400,7 +316,7 @@ namespace WinHubX.Forms.Settaggi
 
             if (totalSteps == 0)
             {
-                totalSteps = 1;  // Imposta almeno 1 passo
+                totalSteps = 1;
             }
 
             progressBar1.Maximum = totalSteps;
@@ -485,7 +401,6 @@ namespace WinHubX.Forms.Settaggi
         {
             try
             {
-                // Imposta il comando per abilitare il task
                 var taskCommand = $@"schtasks /Change /TN ""{taskName}"" /ENABLE";
                 var startInfo = new System.Diagnostics.ProcessStartInfo()
                 {
@@ -514,7 +429,7 @@ namespace WinHubX.Forms.Settaggi
             {
                 if (subKeyName.StartsWith("Microsoft.Windows.Cortana"))
                 {
-                    continue; // Salta Cortana
+                    continue;
                 }
 
                 using (RegistryKey subKey = backgroundAppsKey.OpenSubKey(subKeyName, true))
@@ -545,19 +460,14 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta la chiave del registro di sistema per disabilitare le applicazioni in background (64-bit)
                     using (RegistryKey key64 = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     {
                         key64?.SetValue("GlobalUserDisabled", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta la chiave del registro di sistema per disabilitare le applicazioni in background (32-bit)
                     using (RegistryKey key32 = Registry.CurrentUser.OpenSubKey(@"Software\WOW6432Node\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     {
                         key32?.SetValue("GlobalUserDisabled", 1, RegistryValueKind.DWord);
                     }
-
-                    // Disabilita tutte le applicazioni di background, esclusa Cortana
                     using (RegistryKey baseKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     {
                         if (baseKey != null)
@@ -592,8 +502,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita le impostazioni di feedback nel registro di sistema per 32-bit e 64-bit
-                    // HKCU\SOFTWARE\Microsoft\Siuf\Rules
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\Siuf\Rules", true))
                     {
                         key32?.SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
@@ -602,8 +510,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64?.SetValue("NumberOfSIUFInPeriod", 0, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection
                     using (RegistryKey key32LM = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection", true))
                     {
                         key32LM?.SetValue("DoNotShowFeedbackNotifications", 1, RegistryValueKind.DWord);
@@ -612,8 +518,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64LM?.SetValue("DoNotShowFeedbackNotifications", 1, RegistryValueKind.DWord);
                     }
-
-                    // Disabilita i task di feedback programmati
                     DisableScheduledTask(@"Microsoft\Windows\Feedback\Siuf\DmClient");
                     DisableScheduledTask(@"Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload");
                 }
@@ -633,7 +537,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita Advertising ID nel registro sia per 32-bit che 64-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", true))
                     {
                         key32?.SetValue("DisabledByGroupPolicy", 1, RegistryValueKind.DWord);
@@ -660,8 +563,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita SmartScreen nel registro sia per 32-bit che 64-bit
-                    // HKLM\SOFTWARE\Policies\Microsoft\Windows\System -> EnableSmartScreen
                     using (RegistryKey key32System = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System", true))
                     {
                         key32System?.SetValue("EnableSmartScreen", 0, RegistryValueKind.DWord);
@@ -671,8 +572,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64System?.SetValue("EnableSmartScreen", 0, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter -> EnabledV9
                     using (RegistryKey key32Edge = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter", true))
                     {
                         key32Edge?.SetValue("EnabledV9", 0, RegistryValueKind.DWord);
@@ -699,9 +598,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita Desktop Remoto nel registro sia per 32-bit che 64-bit
-
-                    // HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server -> fDenyTSConnections
                     using (RegistryKey key32TSConnections = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server", true))
                     {
                         key32TSConnections?.SetValue("fDenyTSConnections", 1, RegistryValueKind.DWord);
@@ -711,8 +607,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         key64TSConnections?.SetValue("fDenyTSConnections", 1, RegistryValueKind.DWord);
                     }
-
-                    // HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp -> UserAuthentication
                     using (RegistryKey key32UserAuth = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", true))
                     {
                         key32UserAuth?.SetValue("UserAuthentication", 1, RegistryValueKind.DWord);
@@ -741,24 +635,16 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Impostare "InitialKeyboardIndicators" a 2147483648 (disabilita NumLock all'avvio)
-
-                    // Registro a 32-bit
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.Users, RegistryView.Registry32).OpenSubKey(@".DEFAULT\Control Panel\Keyboard", true))
                     {
                         key32?.SetValue("InitialKeyboardIndicators", 2147483648, RegistryValueKind.DWord);
                     }
-
-                    // Registro a 64-bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.Users, RegistryView.Registry64).OpenSubKey(@".DEFAULT\Control Panel\Keyboard", true))
                     {
                         key64?.SetValue("InitialKeyboardIndicators", 2147483648, RegistryValueKind.DWord);
                     }
-
-                    // Disattivare il NumLock se attualmente attivo
                     if (Control.IsKeyLocked(Keys.NumLock))
                     {
-                        // Simula il tasto NumLock per disattivarlo
                         SendKeys.SendWait("{NUMLOCK}");
                     }
 
@@ -780,7 +666,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Chiude il processo di Explorer
+
                     Process.Start(new ProcessStartInfo
                     {
                         FileName = "taskkill",
@@ -790,7 +676,6 @@ namespace WinHubX.Forms.Settaggi
                         CreateNoWindow = true
                     }).WaitForExit();
 
-                    // Imposta il valore di ShellFeedsTaskbarViewMode e IsFeedsAvailable per CurrentUser (registro a 32 e 64 bit)
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32).CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Feeds"))
                     {
                         key32?.SetValue("ShellFeedsTaskbarViewMode", 2, RegistryValueKind.DWord);
@@ -802,8 +687,6 @@ namespace WinHubX.Forms.Settaggi
                         key64?.SetValue("ShellFeedsTaskbarViewMode", 2, RegistryValueKind.DWord);
                         key64?.SetValue("IsFeedsAvailable", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore di EnableFeeds per LocalMachine (registro a 32 e 64 bit)
                     using (RegistryKey keyLM32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"))
                     {
                         keyLM32?.SetValue("EnableFeeds", 0, RegistryValueKind.DWord);
@@ -871,12 +754,9 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta le chiavi di registro per disabilitare Edge PDF
                     string pdfKeyPath = @"Software\Classes\.pdf";
                     string openWithProgidsPath = @"Software\Classes\.pdf\OpenWithProgids";
                     string openWithListPath = @"Software\Classes\.pdf\OpenWithList";
-
-                    // Chiavi a 32-bit
                     using (RegistryKey pdfKey32 = Registry.CurrentUser.CreateSubKey(pdfKeyPath))
                     {
                         if (pdfKey32 != null)
@@ -903,8 +783,6 @@ namespace WinHubX.Forms.Settaggi
                             openWithListKey32.SetValue("NoStaticDefaultVerb", "", RegistryValueKind.String);
                         }
                     }
-
-                    // Chiavi a 64-bit
                     string edgeKeyPath = @"Software\Classes\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_";
 
                     using (RegistryKey edgeKey64 = Registry.CurrentUser.CreateSubKey(edgeKeyPath))
@@ -930,13 +808,10 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore di AutoUpdateEnabled a 0 nel registro di sistema (32 bit)
                     using (RegistryKey key32 = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Maps"))
                     {
                         key32?.SetValue("AutoUpdateEnabled", 0, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore di AutoUpdateEnabled a 0 nel registro di sistema (64 bit)
                     using (RegistryKey key64 = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Maps"))
                     {
                         key64?.SetValue("AutoUpdateEnabled", 0, RegistryValueKind.DWord);
@@ -958,11 +833,9 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Verifica la versione di Windows
                     Version osVersion = Environment.OSVersion.Version;
                     if (osVersion.Build >= 17763)
                     {
-                        // Crea la chiave di registro AppPrivacy se non esiste
                         using (RegistryKey appPrivacyKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\AppPrivacy"))
                         {
                             if (appPrivacyKey != null)
@@ -984,8 +857,6 @@ namespace WinHubX.Forms.Settaggi
                                 appPrivacyKey.SetValue("LetAppsGetDiagnosticInfo", 2, RegistryValueKind.DWord);
                             }
                         }
-
-                        // Impostazioni di accesso alla libreria
                         using (RegistryKey capabilityAccessKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore"))
                         {
                             if (capabilityAccessKey != null)
@@ -996,8 +867,6 @@ namespace WinHubX.Forms.Settaggi
                                 capabilityAccessKey.CreateSubKey("broadFileSystemAccess")?.SetValue("Value", "Deny", RegistryValueKind.String);
                             }
                         }
-
-                        // Imposta SwapfileControl
                         using (RegistryKey memoryManagementKey = Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"))
                         {
                             memoryManagementKey?.SetValue("SwapfileControl", 0, RegistryValueKind.DWord);
@@ -1005,7 +874,6 @@ namespace WinHubX.Forms.Settaggi
                     }
                     else
                     {
-                        // Disabilita le app UWP su versioni precedenti
                         using (RegistryKey backgroundAccessKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                         {
                             if (backgroundAccessKey != null)
@@ -1042,7 +910,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Modifica le impostazioni nel registro a 64 bit
                     using (var systemKey64 = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System"))
                     {
                         if (systemKey64 != null)
@@ -1051,8 +918,6 @@ namespace WinHubX.Forms.Settaggi
                             systemKey64.SetValue("EnableMmx", 0, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Modifica le impostazioni nel registro a 32 bit (WOW6432Node)
                     using (var systemKey32 = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\System"))
                     {
                         if (systemKey32 != null)
@@ -1061,8 +926,6 @@ namespace WinHubX.Forms.Settaggi
                             systemKey32.SetValue("EnableMmx", 0, RegistryValueKind.DWord);
                         }
                     }
-
-                    // Impostazioni per l'utente corrente
                     using (var cloudContentKey64 = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\CloudContent"))
                     {
                         cloudContentKey64?.SetValue("DisableTailoredExperiencesWithDiagnosticData", 1, RegistryValueKind.DWord);
@@ -1115,8 +978,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita il servizio SysMain (Superfetch)
-                    SetRegistryValue(@"SYSTEM\CurrentControlSet\Services\SysMain", "Start", 4); // 4 = Disabled
+                    SetRegistryValue(@"SYSTEM\CurrentControlSet\Services\SysMain", "Start", 4);
                 }
                 catch (Exception)
                 {
@@ -1127,8 +989,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaSuperfetch", false);
             }
-
-            // Disabilita Storage Check
             if (DisabilitaUtility.CheckedItems.Contains("Disabilita Storage Check"))
             {
                 SetCheckboxState("DisabilitaStorageCheck", true);
@@ -1136,7 +996,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuove la chiave di StoragePolicy
                     DeleteRegistryKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters", "StoragePolicy", RegistryView.Registry32);
                     DeleteRegistryKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters", "StoragePolicy", RegistryView.Registry64);
                 }
@@ -1149,8 +1008,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaStorageCheck", false);
             }
-
-            // Disabilita Ibernazione
             if (DisabilitaUtility.CheckedItems.Contains("Disabilita Ibernazione"))
             {
                 SetCheckboxState("DisabilitaIbernazione", true);
@@ -1158,11 +1015,8 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Disabilita l'ibernazione
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Session Manager\Power", "HibernateEnabled", 0);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings", "ShowHibernateOption", 0);
-
-                    // Disabilita ibernazione tramite comando (richiede amministrazione)
                     System.Diagnostics.Process.Start("cmd.exe", "/C powercfg /hibernate off");
                 }
                 catch (Exception)
@@ -1174,8 +1028,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaIbernazione", false);
             }
-
-            // Disabilita Ottimizzazione FullScreen
             if (DisabilitaUtility.CheckedItems.Contains("Disabilita Ottimizzazione FullScreen"))
             {
                 SetCheckboxState("DisabilitaOttimizzazioneFullScreen", true);
@@ -1201,8 +1053,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaOttimizzazioneFullScreen", false);
             }
-
-            // Disabilita Avvio Rapido
             if (DisabilitaUtility.CheckedItems.Contains("Disabilita Avvio Rapido"))
             {
                 SetCheckboxState("DisabilitaAvvioRapido", true);
@@ -1221,8 +1071,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("DisabilitaAvvioRapido", false);
             }
-
-            // Normal Bandwidth
             if (DisabilitaUtility.CheckedItems.Contains("Normal Bandwidth"))
             {
                 SetCheckboxState("NormalBandwidth", true);
@@ -1249,10 +1097,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Percorso del registro per Storage Sense
                     string storagePolicyKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy";
-
-                    // Imposta il valore per le chiavi specificate sia per 32 che per 64 bit
                     using (RegistryKey key32 = Registry.CurrentUser.OpenSubKey(storagePolicyKey, true))
                     {
                         if (key32 != null)
@@ -1268,8 +1113,6 @@ namespace WinHubX.Forms.Settaggi
 
                         }
                     }
-
-                    // Per la versione a 64 bit
                     using (RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64).OpenSubKey(storagePolicyKey, true))
                     {
                         if (key64 != null)
@@ -1306,7 +1149,7 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    SetRegistryValue(@"SYSTEM\CurrentControlSet\Services\SysMain", "Start", 2, RegistryView.Registry32); // 2 = Automatic
+                    SetRegistryValue(@"SYSTEM\CurrentControlSet\Services\SysMain", "Start", 2, RegistryView.Registry32);
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Services\SysMain", "Start", 2, RegistryView.Registry64);
                     System.Diagnostics.Process.Start("cmd.exe", "/C sc start SysMain");
                 }
@@ -1319,8 +1162,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaSuperfetch", false);
             }
-
-            // Abilita Ibernazione
             if (AbilitaUtility.CheckedItems.Contains("Abilita Ibernazione"))
             {
                 SetCheckboxState("AbilitaIbernazione", true);
@@ -1332,7 +1173,6 @@ namespace WinHubX.Forms.Settaggi
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Session Manager\Power", "HibernateEnabled", 1, RegistryView.Registry64);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings", "ShowHibernateOption", 1, RegistryView.Registry32);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings", "ShowHibernateOption", 1, RegistryView.Registry64);
-                    // Abilita ibernazione tramite comando (richiede amministrazione)
                     System.Diagnostics.Process.Start("cmd.exe", "/C powercfg /hibernate on");
                 }
                 catch (Exception)
@@ -1344,8 +1184,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaIbernazione", false);
             }
-
-            // Abilita Ottimizzazione FullScreen
             if (AbilitaUtility.CheckedItems.Contains("Abilita Ottimizzazione FullScreen"))
             {
                 SetCheckboxState("AbilitaOttimizzazioneFullScreen", true);
@@ -1371,8 +1209,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaOttimizzazioneFullScreen", false);
             }
-
-            // Abilita Avvio Rapido
             if (AbilitaUtility.CheckedItems.Contains("Abilita Avvio Rapido"))
             {
                 SetCheckboxState("AbilitaAvvioRapido", true);
@@ -1392,8 +1228,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 SetCheckboxState("AbilitaAvvioRapido", false);
             }
-
-            // All Bandwidth
             if (AbilitaUtility.CheckedItems.Contains("All Bandwidth"))
             {
                 SetCheckboxState("AllBandwidth", true);
@@ -1421,29 +1255,20 @@ namespace WinHubX.Forms.Settaggi
 
                 try
                 {
-                    // Gestione per RegistryView 32 e 64
                     RegistryView view32 = RegistryView.Registry32;
                     RegistryView view64 = RegistryView.Registry64;
-
-                    // Abilita le app in background modificando il registro per entrambe le architetture
                     using (RegistryKey backgroundAppsKey32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, view32).OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     using (RegistryKey backgroundAppsKey64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, view64).OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     {
                         if (backgroundAppsKey32 != null)
                         {
-                            // Aggiungi o modifica il valore GlobalUserDisabled in 32-bit
                             backgroundAppsKey32.SetValue("GlobalUserDisabled", 0, RegistryValueKind.DWord);
-
-                            // Rimuovi le proprietà disabilitate
                             RemoveDisabledProperties(backgroundAppsKey32);
                         }
 
                         if (backgroundAppsKey64 != null)
                         {
-                            // Aggiungi o modifica il valore GlobalUserDisabled in 64-bit
                             backgroundAppsKey64.SetValue("GlobalUserDisabled", 0, RegistryValueKind.DWord);
-
-                            // Rimuovi le proprietà disabilitate
                             RemoveDisabledProperties(backgroundAppsKey64);
                         }
                     }
@@ -1465,7 +1290,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovi il valore dalla chiave del registro a 32 bit
                     using (RegistryKey rulesKey32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32)
                         .OpenSubKey(@"SOFTWARE\Microsoft\Siuf\Rules", true))
                     {
@@ -1474,8 +1298,6 @@ namespace WinHubX.Forms.Settaggi
                             rulesKey32.DeleteValue("NumberOfSIUFInPeriod", false);
                         }
                     }
-
-                    // Rimuovi il valore dalla chiave del registro a 64 bit
                     using (RegistryKey dataCollectionKey64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                         .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection", true))
                     {
@@ -1484,8 +1306,6 @@ namespace WinHubX.Forms.Settaggi
                             dataCollectionKey64.DeleteValue("DoNotShowFeedbackNotifications", false);
                         }
                     }
-
-                    // Abilita i task pianificati
                     EnableScheduledTask("Microsoft\\Windows\\Feedback\\Siuf\\DmClient");
                     EnableScheduledTask("Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload");
                 }
@@ -1505,27 +1325,22 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovi il valore dalla chiave del registro a 32 bit
                     using (RegistryKey advertisingKey32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32)
                         .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", true))
                     {
                         if (advertisingKey32 != null)
                         {
-                            // Rimuovi il valore se esiste
                             if (advertisingKey32.GetValue("DisabledByGroupPolicy") != null)
                             {
                                 advertisingKey32.DeleteValue("DisabledByGroupPolicy", false);
                             }
                         }
                     }
-
-                    // Rimuovi il valore dalla chiave del registro a 64 bit
                     using (RegistryKey advertisingKey64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                         .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", true))
                     {
                         if (advertisingKey64 != null)
                         {
-                            // Rimuovi il valore se esiste
                             if (advertisingKey64.GetValue("DisabledByGroupPolicy") != null)
                             {
                                 advertisingKey64.DeleteValue("DisabledByGroupPolicy", false);
@@ -1549,7 +1364,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Rimuovere le proprietà dal registro relative al Filtro Smart Screen a 32 bit
                     using (RegistryKey systemKey32 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System", true))
                     {
                         systemKey32?.DeleteValue("EnableSmartScreen", false);
@@ -1559,8 +1373,6 @@ namespace WinHubX.Forms.Settaggi
                     {
                         edgeKey32?.DeleteValue("EnabledV9", false);
                     }
-
-                    // Rimuovere le proprietà dal registro relative al Filtro Smart Screen a 64 bit
                     using (RegistryKey systemKey64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
                         .OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\System", true))
                     {
@@ -1589,14 +1401,11 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nel registro per abilitare il Desktop Remoto
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Terminal Server", "fDenyTSConnections", 0, RegistryView.Registry32);
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Terminal Server", "fDenyTSConnections", 0, RegistryView.Registry64);
 
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", "UserAuthentication", 0, RegistryView.Registry32);
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", "UserAuthentication", 0, RegistryView.Registry64);
-
-                    // Esegui i comandi PowerShell per abilitare il Desktop Remoto
                     string[] commands = new[]
                     {
             "Enable-NetFirewallRule -Name \"RemoteDesktop*\""
@@ -1619,11 +1428,8 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il valore nel registro per attivare il Num Lock all'avvio
                     SetRegistryValue(@"HKEY_USERS\.DEFAULT\Control Panel\Keyboard", "InitialKeyboardIndicators", 2147483650, RegistryView.Registry32);
                     SetRegistryValue(@"HKEY_USERS\.DEFAULT\Control Panel\Keyboard", "InitialKeyboardIndicators", 2147483650, RegistryView.Registry64);
-
-                    // Esegui i comandi PowerShell per attivare il Num Lock se non è già attivato
                     string[] commands = new[]
                     {
             "Add-Type -AssemblyName System.Windows.Forms",
@@ -1647,7 +1453,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Chiude il processo di Explorer
                     Process.Start(new ProcessStartInfo
                     {
                         FileName = "taskkill",
@@ -1656,8 +1461,6 @@ namespace WinHubX.Forms.Settaggi
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }).WaitForExit();
-
-                    // Imposta il valore di ShellFeedsTaskbarViewMode e IsFeedsAvailable per CurrentUser (registro a 32 e 64 bit)
                     using (RegistryKey key32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32).CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Feeds"))
                     {
                         key32?.SetValue("ShellFeedsTaskbarViewMode", 1, RegistryValueKind.DWord);
@@ -1669,8 +1472,6 @@ namespace WinHubX.Forms.Settaggi
                         key64?.SetValue("ShellFeedsTaskbarViewMode", 1, RegistryValueKind.DWord);
                         key64?.SetValue("IsFeedsAvailable", 1, RegistryValueKind.DWord);
                     }
-
-                    // Imposta il valore di EnableFeeds per LocalMachine (registro a 32 e 64 bit)
                     using (RegistryKey keyLM32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"))
                     {
                         keyLM32?.SetValue("EnableFeeds", 1, RegistryValueKind.DWord);
@@ -1725,7 +1526,7 @@ namespace WinHubX.Forms.Settaggi
                 }
                 catch (Exception)
                 {
-                    // Gestione errori (eventualmente loggare)
+
                 }
             }
             else
@@ -1774,7 +1575,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta il comportamento di fsutil per migliorare l'uso degli SSD
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\FileSystem", "DisableLastAccess", 1, RegistryView.Registry32);
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\FileSystem", "DisableLastAccess", 1, RegistryView.Registry64);
 
@@ -1798,7 +1598,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Utilizza la funzione SetRegistryValue per rimuovere il valore AutoUpdateEnabled
                     SetRegistryValue(@"SYSTEM\Maps", "AutoUpdateEnabled", null, RegistryView.Registry32);
                     SetRegistryValue(@"SYSTEM\Maps", "AutoUpdateEnabled", null, RegistryView.Registry64);
                 }
@@ -1818,7 +1617,6 @@ namespace WinHubX.Forms.Settaggi
                 backgroundWorker1.ReportProgress(currentStep);
                 try
                 {
-                    // Imposta i valori nel registro per entrambe le architetture
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", "SwapfileControl", null, RegistryView.Registry64);
                     SetRegistryValue(@"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", "SwapfileControl", null, RegistryView.Registry32);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary", "Value", "Allow", RegistryView.Registry64);
@@ -1829,8 +1627,6 @@ namespace WinHubX.Forms.Settaggi
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary", "Value", "Allow", RegistryView.Registry32);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess", "Value", "Allow", RegistryView.Registry64);
                     SetRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess", "Value", "Allow", RegistryView.Registry32);
-
-                    // Rimuovere le proprietà da AppPrivacy per entrambe le architetture
                     string appPrivacyPath = @"SOFTWARE\Policies\Microsoft\Windows\AppPrivacy";
                     string[] propertiesToRemove = {
                 "LetAppsGetDiagnosticInfo",
@@ -1855,8 +1651,6 @@ namespace WinHubX.Forms.Settaggi
                         SetRegistryValue(appPrivacyPath, property, null, RegistryView.Registry64);
                         SetRegistryValue(appPrivacyPath, property, null, RegistryView.Registry32);
                     }
-
-                    // Rimuovere le proprietà da BackgroundAccessApplications
                     using (RegistryKey backgroundAccessKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", true))
                     {
                         if (backgroundAccessKey != null)
@@ -1914,7 +1708,14 @@ namespace WinHubX.Forms.Settaggi
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             RestartExplorer();
-            MessageBox.Show("Modifiche apportate con successo", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string messaggio = LanguageManager.GetTranslation("Global", "modifichesuccesso");
+
+            MessageBox.Show(
+                messaggio,
+                "WinHubX",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
