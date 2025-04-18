@@ -12,24 +12,22 @@ namespace WinHubX
     {
         private static Dictionary<string, Dictionary<string, Dictionary<string, string>>> translations;
         public static string CurrentLanguage { get; private set; } = "en";
+
         public static void LoadTranslations()
         {
             string localAppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinHubX", "Lingue");
             string filePath = Path.Combine(localAppDataPath, "translations.json");
-            string flagFilePath = Path.Combine(localAppDataPath, "translations_initialized.flag");
+
             if (!Directory.Exists(localAppDataPath))
             {
                 Directory.CreateDirectory(localAppDataPath);
             }
-            if (!File.Exists(flagFilePath))
+
+            if (!File.Exists(filePath))
             {
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
                 ExtractEmbeddedResource("WinHubX.Resources.translations.json", filePath);
-                File.WriteAllText(flagFilePath, "initialized");
             }
+
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);

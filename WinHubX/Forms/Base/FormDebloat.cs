@@ -71,7 +71,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -87,7 +87,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -121,7 +121,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -289,7 +289,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -316,7 +316,7 @@ namespace WinHubX.Forms.Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore durante la rimozione del provisioning di {nomeApp}: {ex.Message}", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {nomeApp}: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

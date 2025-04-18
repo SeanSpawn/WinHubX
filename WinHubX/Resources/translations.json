@@ -22,7 +22,12 @@
       "reboot_title": "Reboot Required",
       "reboot_message": "Access to the registry is required to allow WinHubX to make the changes in this menu.\nA system reboot is necessary. Do you want to restart now?",
       "restorepoint_title": "Restore Point",
-      "restorepoint_message": "Do you want to create a restore point before accessing the settings?"
+      "restorepoint_message": "Do you want to create a restore point before accessing the settings?",
+      "titoloMon": "Monitoring",
+      "titoloApp": "Install App",
+      "titoloSett": "Settings",
+      "titoloCreaISO": "Create ISO"
+
     },
     "it": {
       "newversion": "Aggiornamento Disponibile",
@@ -30,7 +35,11 @@
       "reboot_title": "Riavvio necessario",
       "reboot_message": "È necessario consentire l'accesso a WinHubX nel Registro per apportare le modifiche presenti in questo menù.\nPer fare ciò, è necessario il riavvio del PC. Vuoi riavviarlo?",
       "restorepoint_title": "Punto di Ripristino",
-      "restorepoint_message": "Vuoi creare un punto di ripristino prima di accedere alle impostazioni?"
+      "restorepoint_message": "Vuoi creare un punto di ripristino prima di accedere alle impostazioni?",
+      "titoloMon": "Monitoraggio",
+      "titoloApp": "Installa App",
+      "titoloSett": "Settaggi",
+      "titoloCreaISO": "Crea ISO"
     }
   },
   "FormHome": {

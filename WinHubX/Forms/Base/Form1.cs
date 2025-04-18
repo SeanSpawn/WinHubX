@@ -125,7 +125,7 @@ namespace WinHubX
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -148,7 +148,7 @@ namespace WinHubX
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -159,6 +159,25 @@ namespace WinHubX
 
         private async Task DownloadFileWithProgress(string url, string filePath, ProgressForm progressForm)
         {
+            // Controlla se bisogna eliminare il file di traduzione
+            if (Properties.Settings.Default.elimafiletraduzione)
+            {
+                string localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinHubX", "Lingue", "translations.json");
+                if (File.Exists(localPath))
+                {
+                    try
+                    {
+                        File.Delete(localPath);
+                        Properties.Settings.Default.elimafiletraduzione = false;
+                        Properties.Settings.Default.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error:\n{ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
             using var response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
             var totalBytes = response.Content.Headers.ContentLength.GetValueOrDefault();
@@ -170,8 +189,8 @@ namespace WinHubX
             while ((read = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
                 await fileStream.WriteAsync(buffer, 0, read);
-                bytesRead += read;
-                progressForm.Invoke(new Action(() => progressForm.SetStatus("Download in corso...", (int)((bytesRead * 100) / totalBytes))));
+                progressForm.Invoke(new Action(() =>
+                    progressForm.SetStatus("Download...", (int)((bytesRead * 100) / totalBytes))));
             }
         }
 
@@ -317,18 +336,22 @@ if ($existingRestorePoints.Count -eq 0) {
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            LoadForm(new FormSettaggi(this), btnSettaggi, "Settaggi");
+            LoadForm(new FormSettaggi(this), btnSettaggi, LanguageManager.GetTranslation("Form1", "titoloSett"));
         }
 
         private void btnDebloat_Click(object sender, EventArgs e) => LoadForm(new FormDebloat(this), btnDebloat, "Debloat");
-        private void btnCreaISO_Click(object sender, EventArgs e) => LoadForm(new FormCreaISO(this), btnCreaISO, "Crea ISO");
+        private void btnCreaISO_Click(object sender, EventArgs e) =>
+            LoadForm(new FormCreaISO(this), btnCreaISO, LanguageManager.GetTranslation("Form1", "titoloCreaISO"));
         private void btnTools_Click(object sender, EventArgs e) => LoadForm(new FormTools(), btnTools, "Tools");
-        private void btnmonitoraggio_Click(object sender, EventArgs e) => LoadForm(new FormMonitoraggio(this), btnmonitoraggio, "Monitoraggio");
-        private void btnReinstallaApp_Click(object sender, EventArgs e) => LoadForm(new FormReinstallaAPP(), btnReinstallaApp, "Installa App");
+        private void btnmonitoraggio_Click(object sender, EventArgs e) =>
+            LoadForm(new FormMonitoraggio(this), btnmonitoraggio, LanguageManager.GetTranslation("Form1", "titoloMon"));
+        private void btnReinstallaApp_Click(object sender, EventArgs e) =>
+            LoadForm(new FormReinstallaAPP(), btnReinstallaApp, LanguageManager.GetTranslation("Form1", "titoloApp"));
+
         private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
         private void btnMnmz_Click(object sender, EventArgs e)
         {

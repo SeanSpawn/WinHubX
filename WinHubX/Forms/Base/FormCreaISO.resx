@@ -484,7 +484,7 @@
     <value>True</value>
   </data>
   <data name="NotDisWinDefRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 52</value>
+    <value>3, 27</value>
   </data>
   <data name="NotDisWinDefRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 19</value>
@@ -511,7 +511,7 @@
     <value>True</value>
   </data>
   <data name="DisWindDefRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 27</value>
+    <value>3, 52</value>
   </data>
   <data name="DisWindDefRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 19</value>
@@ -718,7 +718,7 @@
     <value>True</value>
   </data>
   <data name="RemEdgeRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+    <value>3, 51</value>
   </data>
   <data name="RemEdgeRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 19</value>
@@ -745,7 +745,7 @@
     <value>True</value>
   </data>
   <data name="NotRemEdgeRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 47</value>
+    <value>3, 23</value>
   </data>
   <data name="NotRemEdgeRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 19</value>

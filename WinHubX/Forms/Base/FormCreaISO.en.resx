@@ -134,6 +134,18 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Process</value>
   </data>
+  <data name="NotRemProcRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 19</value>
+  </data>
+  <data name="NotRemProcRad.Text" xml:space="preserve">
+    <value>Don't Remove</value>
+  </data>
+  <data name="RemProcRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 19</value>
+  </data>
+  <data name="RemProcRad.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAA2VJREFUeF7t
@@ -157,14 +169,62 @@
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Architecture</value>
   </data>
+  <data name="StockAppRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="StockAppRad.Text" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="DebAppRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="DebAppRad.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Select Defender preference</value>
+  </data>
+  <data name="NotDisWinDefRad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 27</value>
+  </data>
+  <data name="NotDisWinDefRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="NotDisWinDefRad.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="DisWindDefRad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 52</value>
+  </data>
+  <data name="DisWindDefRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="DisWindDefRad.Text" xml:space="preserve">
+    <value>Disable</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Select Windows ISO version</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Select Edge preference</value>
+  </data>
+  <data name="RemEdgeRad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 47</value>
+  </data>
+  <data name="RemEdgeRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="RemEdgeRad.Text" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="NotRemEdgeRad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 22</value>
+  </data>
+  <data name="NotRemEdgeRad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="NotRemEdgeRad.Text" xml:space="preserve">
+    <value>Enable</value>
   </data>
   <data name="btn_CreaISO.Text" xml:space="preserve">
     <value>CrateISO</value>
