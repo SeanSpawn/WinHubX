@@ -1,7 +1,8 @@
 { 
-    "version": "2.4.2.3",  
+    "version": "2.4.2.4",  
     "releaseNotes": [
-  "- Aggiunta lingua inglese"
+  "- Fix Creazione Personalizzazione Office",
+  "- Fix Creating Office Customization"
      ],
-    "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX_2.4.2.3/WinHubX.exe" 
+    "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX_2.4.2.4/WinHubX.exe" 
 }
