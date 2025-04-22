@@ -159,22 +159,16 @@ namespace WinHubX
 
         private async Task DownloadFileWithProgress(string url, string filePath, ProgressForm progressForm)
         {
-            // Controlla se bisogna eliminare il file di traduzione
-            if (Properties.Settings.Default.elimafiletraduzione)
+            string localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinHubX", "Lingue", "translations.json");
+            if (File.Exists(localPath))
             {
-                string localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinHubX", "Lingue", "translations.json");
-                if (File.Exists(localPath))
+                try
                 {
-                    try
-                    {
-                        File.Delete(localPath);
-                        Properties.Settings.Default.elimafiletraduzione = false;
-                        Properties.Settings.Default.Save();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error:\n{ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    File.Delete(localPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error:\n{ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

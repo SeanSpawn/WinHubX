@@ -167,7 +167,7 @@
     <value>94</value>
   </data>
   <data name="btnChangelog.Text" xml:space="preserve">
-    <value>v2.4.2.3 - Changelog</value>
+    <value>v2.4.2.4 - Changelog</value>
   </data>
   <data name="btnChangelog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -384,9 +384,6 @@ Con WinHubX, ogni dettaglio del tuo sistema sarà nelle tue mani. Preparati a es
   <data name="&gt;&gt;lblInfoWinAIO64.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>en</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

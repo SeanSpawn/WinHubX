@@ -46,17 +46,5 @@ namespace WinHubX.Properties {
                 this["Language"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool elimafiletraduzione {
-            get {
-                return ((bool)(this["elimafiletraduzione"]));
-            }
-            set {
-                this["elimafiletraduzione"] = value;
-            }
-        }
     }
 }

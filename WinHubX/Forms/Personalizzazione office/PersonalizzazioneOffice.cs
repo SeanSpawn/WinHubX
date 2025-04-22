@@ -20,7 +20,6 @@ namespace WinHubX.Forms.Personalizzazione_office
             ExtractFolderToTemp();
         }
 
-
         private void btn_avviainstallazione_Click(object sender, EventArgs e)
         {
             if (radiobutton_office2021.Checked)
@@ -399,7 +398,7 @@ namespace WinHubX.Forms.Personalizzazione_office
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -604,7 +603,7 @@ namespace WinHubX.Forms.Personalizzazione_office
             }
         }
 
-        private void StartInstallation(string xmlFilePath)
+        private async void StartInstallation(string xmlFilePath)
         {
             try
             {
@@ -613,10 +612,14 @@ namespace WinHubX.Forms.Personalizzazione_office
                 string binExePath = Path.Combine(tempPath, "bin.exe");
 
                 progressBar_office.Value = 15;
+                await Task.Delay(5000);
+
                 if (!File.Exists(binExePath))
                     throw new FileNotFoundException("Executable not found.", binExePath);
 
                 progressBar_office.Value = 30;
+                await Task.Delay(3000);
+
                 string arguments = $"/configure \"{xmlFilePath}\"";
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
@@ -627,20 +630,30 @@ namespace WinHubX.Forms.Personalizzazione_office
                     CreateNoWindow = true
                 };
 
-                // Start the process
-                Process.Start(startInfo);
+                // Avvia il processo e attendi la sua fine
+                using (Process process = Process.Start(startInfo))
+                {
+                    progressBar_office.Value = 50;
+                    await Task.Delay(6000);
 
-                progressBar_office.Value = 50;
+                    if (process != null)
+                        await Task.Run(() => process.WaitForExit());
+                }
+
                 progressBar_office.Value = 75;
+                await Task.Delay(3000);
+
                 File.Delete(xmlFilePath);
 
                 progressBar_office.Value = 100;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
