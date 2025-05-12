@@ -1,4 +1,6 @@
-﻿namespace WinHubX.Forms.Base
+﻿using WinHubX.Bottoni;
+
+namespace WinHubX.Forms.Base
 {
     partial class FormMonitoraggio
     {
@@ -33,9 +35,9 @@
             pic_termgpu = new PictureBox();
             labelCpuTemp = new Label();
             labelGpuTemp = new Label();
-            BarRAM = new WinHubX.Forms.Bottoni.CircularProgressBar();
-            BarCPU = new WinHubX.Forms.Bottoni.CircularProgressBar();
-            swapButton1 = new WinHubX.Forms.Bottoni.BottoniSwap();
+            BarRAM = new WinHubX.Bottoni.CircularProgressBar();
+            BarCPU = new WinHubX.Bottoni.CircularProgressBar();
+            swapButton1 = new WinHubX.Bottoni.BottoniSwap();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -186,13 +188,13 @@
 
         #endregion
 
-        private Bottoni.CircularProgressBar BarRAM;
+        private CircularProgressBar BarRAM;
         private PictureBox pic_termcpu;
         private PictureBox pic_termgpu;
         private Label labelCpuTemp;
         private Label labelGpuTemp;
-        private Bottoni.CircularProgressBar BarCPU;
-        private Bottoni.BottoniSwap swapButton1;
+        private CircularProgressBar BarCPU;
+        private BottoniSwap swapButton1;
         private Label label1;
         private Label label2;
         private Label label3;

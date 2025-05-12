@@ -1,14 +1,31 @@
 ﻿using WinHubX.Dialog.Tools;
+using WinHubX.Forms;
 
 namespace WinHubX
 {
     public partial class FormTools : Form
     {
-        public FormTools()
+        Form1 form1;
+        public FormTools(Form1 form1)
         {
             InitializeComponent();
+            this.form1 = form1;
+            SetTooltips();
+        }
+        private void SetTooltips()
+        {
+            toolTip1.SetToolTip(btnKasperky, GetTooltipText("kasperky"));
+            toolTip1.SetToolTip(btnDaRT, GetTooltipText("dart"));
+            toolTip1.SetToolTip(btnMPM, GetTooltipText("mpm"));
+            toolTip1.SetToolTip(btnWimTK, GetTooltipText("wimtk"));
+            toolTip1.SetToolTip(btnWinHubXLiteOS, GetTooltipText("winhubx"));
+            toolTip1.SetToolTip(btnRSTDriver, GetTooltipText("rst"));
         }
 
+        private string GetTooltipText(string key)
+        {
+            return LanguageManager.GetTranslation("FormTools", $"tooltip_{key}");
+        }
         private void btnKasperky_Click(object sender, EventArgs e)
         {
             DialogKasperskyLive dialogWinC = new DialogKasperskyLive()
@@ -42,15 +59,14 @@ namespace WinHubX
             dialogDaRT.ShowDialog();
         }
 
-        private void btnRufus_Click(object sender, EventArgs e)
+        private void btnWinHubXLiteOS_Click(object sender, EventArgs e)
         {
-            DialogRufus4Lite dialogRufus4Lite = new DialogRufus4Lite()
-            {
-                TopMost = true,
-                FormBorderStyle = FormBorderStyle.None,
-                StartPosition = FormStartPosition.CenterScreen
-            };
-            dialogRufus4Lite.ShowDialog();
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormTools", "paneltitle");
+            form1.PnlFormLoader.Controls.Clear();
+            FormWinHubXLiteOS formwinhubxliteos = new FormWinHubXLiteOS(form1, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            formwinhubxliteos.FormBorderStyle = FormBorderStyle.None;
+            form1.PnlFormLoader.Controls.Add(formwinhubxliteos);
+            formwinhubxliteos.Show();
         }
 
         private void btnMPM_Click(object sender, EventArgs e)

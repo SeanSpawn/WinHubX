@@ -300,6 +300,7 @@
             // 
             // btn_CreaISO
             // 
+            btn_CreaISO.Cursor = Cursors.Hand;
             resources.ApplyResources(btn_CreaISO, "btn_CreaISO");
             btn_CreaISO.Name = "btn_CreaISO";
             btn_CreaISO.UseVisualStyleBackColor = true;

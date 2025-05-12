@@ -2,6 +2,69 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
+      "DiscUtils.Core/0.16.13": {
+        "type": "package",
+        "dependencies": {
+          "DiscUtils.Streams": "0.16.13",
+          "System.Security.AccessControl": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/DiscUtils.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/DiscUtils.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DiscUtils.Iso9660/0.16.13": {
+        "type": "package",
+        "dependencies": {
+          "DiscUtils.Core": "0.16.13"
+        },
+        "compile": {
+          "lib/net5.0/DiscUtils.Iso9660.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/DiscUtils.Iso9660.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DiscUtils.Streams/0.16.13": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/DiscUtils.Streams.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/DiscUtils.Streams.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DiscUtils.Udf/0.16.13": {
+        "type": "package",
+        "dependencies": {
+          "DiscUtils.Core": "0.16.13",
+          "DiscUtils.Iso9660": "0.16.13"
+        },
+        "compile": {
+          "lib/net5.0/DiscUtils.Udf.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/DiscUtils.Udf.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "HidSharp/2.1.0": {
         "type": "package",
         "compile": {
@@ -873,6 +936,82 @@
     }
   },
   "libraries": {
+    "DiscUtils.Core/0.16.13": {
+      "sha512": "TU/Ns5RMa3060K7AsSDqG94/H7eaWaz1XoYuCUur40Mg+t0/ubtKqxCffkoiB1e/cFMGvHL0evFoY6uDL9Ocmw==",
+      "type": "package",
+      "path": "discutils.core/0.16.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "discutils.core.0.16.13.nupkg.sha512",
+        "discutils.core.nuspec",
+        "lib/net40/DiscUtils.Core.dll",
+        "lib/net40/DiscUtils.Core.xml",
+        "lib/net45/DiscUtils.Core.dll",
+        "lib/net45/DiscUtils.Core.xml",
+        "lib/net5.0/DiscUtils.Core.dll",
+        "lib/net5.0/DiscUtils.Core.xml",
+        "lib/netstandard2.0/DiscUtils.Core.dll",
+        "lib/netstandard2.0/DiscUtils.Core.xml"
+      ]
+    },
+    "DiscUtils.Iso9660/0.16.13": {
+      "sha512": "hT0DbN+sIqg5Bu3/sCQUuKLwIrceF9BZvn7AeRe+f2iY0p4mgN9xEmXpFWQshnBBxN9r75364agBHDeb5owiUA==",
+      "type": "package",
+      "path": "discutils.iso9660/0.16.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "discutils.iso9660.0.16.13.nupkg.sha512",
+        "discutils.iso9660.nuspec",
+        "lib/net40/DiscUtils.Iso9660.dll",
+        "lib/net40/DiscUtils.Iso9660.xml",
+        "lib/net45/DiscUtils.Iso9660.dll",
+        "lib/net45/DiscUtils.Iso9660.xml",
+        "lib/net5.0/DiscUtils.Iso9660.dll",
+        "lib/net5.0/DiscUtils.Iso9660.xml",
+        "lib/netstandard2.0/DiscUtils.Iso9660.dll",
+        "lib/netstandard2.0/DiscUtils.Iso9660.xml"
+      ]
+    },
+    "DiscUtils.Streams/0.16.13": {
+      "sha512": "BSrywAX2mmvt6j00u6VQYQLtxc6jDniK2aP4p0q20bbTGXImtW4N26eUZYKfkW9aj6XLaqISFgtWfssKURixeA==",
+      "type": "package",
+      "path": "discutils.streams/0.16.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "discutils.streams.0.16.13.nupkg.sha512",
+        "discutils.streams.nuspec",
+        "lib/net40/DiscUtils.Streams.dll",
+        "lib/net40/DiscUtils.Streams.xml",
+        "lib/net45/DiscUtils.Streams.dll",
+        "lib/net45/DiscUtils.Streams.xml",
+        "lib/net5.0/DiscUtils.Streams.dll",
+        "lib/net5.0/DiscUtils.Streams.xml",
+        "lib/netstandard2.0/DiscUtils.Streams.dll",
+        "lib/netstandard2.0/DiscUtils.Streams.xml"
+      ]
+    },
+    "DiscUtils.Udf/0.16.13": {
+      "sha512": "wl8amQNP3N5VFB4wlLh76OXD2vGpFKuYb/RqqcwTPdE406mvQsLuxxPJB5E4orkjNDrpglLvi94WVr8FfWY2Uw==",
+      "type": "package",
+      "path": "discutils.udf/0.16.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "discutils.udf.0.16.13.nupkg.sha512",
+        "discutils.udf.nuspec",
+        "lib/net40/DiscUtils.Udf.dll",
+        "lib/net40/DiscUtils.Udf.xml",
+        "lib/net45/DiscUtils.Udf.dll",
+        "lib/net45/DiscUtils.Udf.xml",
+        "lib/net5.0/DiscUtils.Udf.dll",
+        "lib/net5.0/DiscUtils.Udf.xml",
+        "lib/netstandard2.0/DiscUtils.Udf.dll",
+        "lib/netstandard2.0/DiscUtils.Udf.xml"
+      ]
+    },
     "HidSharp/2.1.0": {
       "sha512": "UTdxWvbgp2xzT1Ajaa2va+Qi3oNHJPasYmVhbKI2VVdu1VYP6yUG+RikhsHvpD7iM0S8e8UYb5Qm/LTWxx9QAA==",
       "type": "package",
@@ -2020,6 +2159,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "DiscUtils.Udf >= 0.16.13",
       "LibreHardwareMonitorLib >= 0.9.4-pre348",
       "Microsoft.PowerShell.Native >= 7.4.0",
       "System.Management.Automation >= 7.4.6",
@@ -2034,11 +2174,11 @@
   "project": {
     "version": "2.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
+      "projectUniqueName": "C:\\Users\\utente\\Documents\\GitHub\\ItalianDevelopers\\WinHubX\\WinHubX\\WinHubX.csproj",
       "projectName": "WinHubX",
-      "projectPath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
+      "projectPath": "C:\\Users\\utente\\Documents\\GitHub\\ItalianDevelopers\\WinHubX\\WinHubX\\WinHubX.csproj",
       "packagesPath": "C:\\Users\\utente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\obj\\",
+      "outputPath": "C:\\Users\\utente\\Documents\\GitHub\\ItalianDevelopers\\WinHubX\\WinHubX\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2077,6 +2217,10 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "DiscUtils.Udf": {
+            "target": "Package",
+            "version": "[0.16.13, )"
+          },
           "LibreHardwareMonitorLib": {
             "target": "Package",
             "version": "[0.9.4-pre348, )"

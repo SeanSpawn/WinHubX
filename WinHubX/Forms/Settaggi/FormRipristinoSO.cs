@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Management;
-using System.Windows.Forms;
 using WinHubX.Forms.Base;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinHubX.Forms.Settaggi
 {

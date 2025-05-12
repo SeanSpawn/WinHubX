@@ -1,12 +1,10 @@
-using Microsoft.Win32;
+ï»¿using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using WinHubX.Forms.Base;
 using WinHubX.Forms.ReinstallaAPP;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace WinHubX
 {
@@ -24,7 +22,7 @@ namespace WinHubX
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == WM_NCHITTEST)
-                m.Result = (IntPtr)HT_CAPTION;
+                m.Result = HT_CAPTION;
             else
                 base.WndProc(ref m);
         }
@@ -71,7 +69,7 @@ namespace WinHubX
             pnlNav.SetBounds(activeButton.Left, activeButton.Top, pnlNav.Width, activeButton.Height);
         }
 
-        private void LoadForm(Form form, Button button, string title)
+        public void LoadForm(Form form, Button button, string title)
         {
             swap_pnlNav(button);
             lblPanelTitle.Text = title;
@@ -89,7 +87,8 @@ namespace WinHubX
         private async Task CheckForUpdatesAsync()
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-            string currentVersion = "2.4.2.3";
+            string currentVersion = "2.4.2.5";
+
             try
             {
                 var configResponse = await client.GetStringAsync(configUrl);
@@ -128,7 +127,6 @@ namespace WinHubX
                 MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private async Task DownloadAndUpdate(string updateUrl, string version)
         {
@@ -242,7 +240,7 @@ namespace WinHubX
                         object value = key.GetValue("SettaggiRiavviati");
                         if (value != null && value.ToString() == "0")
                         {
-                            MessageBox.Show("Per entrare in questo menù necessito dell'accesso al registro");
+                            MessageBox.Show("Per entrare in questo menÃ¹ necessito dell'accesso al registro");
                         }
                     }
                 }
@@ -267,7 +265,7 @@ namespace WinHubX
                 try
                 {
                     string script = @"
-# Abilita System Restore sull'unità di sistema
+# Abilita System Restore sull'unitÃ  di sistema
 try {
     Enable-ComputerRestore -Drive ""$env:SystemDrive""
 } catch {
@@ -288,7 +286,7 @@ try {
     return
 }
 
-# Controlla se oggi esistono già punti di ripristino
+# Controlla se oggi esistono giÃ  punti di ripristino
 try {
     $existingRestorePoints = Get-ComputerRestorePoint | Where-Object { $_.CreationTime.Date -eq (Get-Date).Date }
 } catch {
@@ -296,7 +294,7 @@ try {
     return
 }
 
-# Crea un punto di ripristino se non ce ne sono già oggi
+# Crea un punto di ripristino se non ce ne sono giÃ  oggi
 if ($existingRestorePoints.Count -eq 0) {
     Checkpoint-Computer -Description ""Punto di ripristino creato da WinHubX"" -RestorePointType MODIFY_SETTINGS
     Write-Host ""Punto di ripristino creato correttamente""
@@ -340,7 +338,7 @@ if ($existingRestorePoints.Count -eq 0) {
         private void btnDebloat_Click(object sender, EventArgs e) => LoadForm(new FormDebloat(this), btnDebloat, "Debloat");
         private void btnCreaISO_Click(object sender, EventArgs e) =>
             LoadForm(new FormCreaISO(this), btnCreaISO, LanguageManager.GetTranslation("Form1", "titoloCreaISO"));
-        private void btnTools_Click(object sender, EventArgs e) => LoadForm(new FormTools(), btnTools, "Tools");
+        private void btnTools_Click(object sender, EventArgs e) => LoadForm(new FormTools(this), btnTools, "Tools");
         private void btnmonitoraggio_Click(object sender, EventArgs e) =>
             LoadForm(new FormMonitoraggio(this), btnmonitoraggio, LanguageManager.GetTranslation("Form1", "titoloMon"));
         private void btnReinstallaApp_Click(object sender, EventArgs e) =>

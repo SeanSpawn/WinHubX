@@ -35,6 +35,7 @@
             lblInfoWin12 = new Label();
             textBox1 = new TextBox();
             pictureBox1 = new PictureBox();
+            progressBar1 = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +86,17 @@
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
+            // progressBar1
+            // 
+            resources.ApplyResources(progressBar1, "progressBar1");
+            progressBar1.Name = "progressBar1";
+            // 
             // FormDebloatAvanzato
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(37, 38, 39);
+            Controls.Add(progressBar1);
             Controls.Add(pictureBox1);
             Controls.Add(textBox1);
             Controls.Add(lblInfoWin12);
@@ -110,5 +117,6 @@
         private Label lblInfoWin12;
         private TextBox textBox1;
         private PictureBox pictureBox1;
+        private ProgressBar progressBar1;
     }
 }

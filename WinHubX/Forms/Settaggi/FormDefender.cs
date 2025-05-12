@@ -301,7 +301,7 @@ namespace WinHubX.Forms.Settaggi
                 SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry64);
                 SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -339,7 +339,7 @@ namespace WinHubX.Forms.Settaggi
                     baseKey.DeleteSubKey(Path.Combine(keyPath, subKeyName), throwOnMissingSubKey: false);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -466,7 +466,7 @@ namespace WinHubX.Forms.Settaggi
                 {
                     SetMpPreference("EnableControlledFolderAccess", true);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -520,7 +520,7 @@ namespace WinHubX.Forms.Settaggi
                         var error = process.StandardError.ReadToEnd();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -539,7 +539,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry64);
                     SetDwordRegistryValue(@"Software\Microsoft\Windows Security Health\State", "AccountProtection_MicrosoftAccount_Disconnected", 1, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -558,7 +558,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry64);
                     SetDwordRegistryValue(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", 1, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -577,7 +577,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", 0, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -596,7 +596,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -615,7 +615,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 0, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -634,7 +634,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", 0, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -653,7 +653,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", 0, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", 0, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -674,7 +674,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -709,7 +709,7 @@ namespace WinHubX.Forms.Settaggi
                         RemoveRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -739,7 +739,7 @@ namespace WinHubX.Forms.Settaggi
                         TakeOwnership(path, RegistryView.Registry32);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -754,7 +754,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -773,7 +773,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 1, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -808,7 +808,7 @@ namespace WinHubX.Forms.Settaggi
                         var error = process.StandardError.ReadToEnd();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -827,7 +827,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey(@"Software\Microsoft\Windows Security Health\State", RegistryView.Registry64);
                     DeleteRegistryKey(@"Software\Microsoft\Windows Security Health\State", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -846,7 +846,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"Software\Microsoft\Windows\CurrentVersion\Policies\Attachments", "SaveZoneInformation", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -865,7 +865,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SOFTWARE\Microsoft\Windows Script Host\Settings", "Enabled", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -886,7 +886,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry32);
                     SetDwordRegistryValue(@"SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319", "SchUseStrongCrypto", 1, RegistryView.Registry64);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -908,7 +908,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1, RegistryView.Registry64);
                     SetDwordRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -927,7 +927,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "AutoShareWks", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -946,7 +946,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile", "EnableFirewall", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -968,7 +968,7 @@ namespace WinHubX.Forms.Settaggi
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", RegistryView.Registry64);
                     DeleteRegistryKey3arg(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1004,7 +1004,7 @@ namespace WinHubX.Forms.Settaggi
                         SetStringRegistryValue(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "SecurityHealth", @"%windir%\system32\SecurityHealthSystray.exe", RegistryView.Registry32);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1034,7 +1034,7 @@ namespace WinHubX.Forms.Settaggi
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "Start", 3, RegistryView.Registry32);
                     SetDwordRegistryValue(@"SYSTEM\CurrentControlSet\Services\Sense", "AutorunsDisabled", 4, RegistryView.Registry32);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1075,7 +1075,7 @@ namespace WinHubX.Forms.Settaggi
                 SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SpynetReporting", 0, RegistryView.Registry32);
                 SetDwordRegistryValue(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet", "SubmitSamplesConsent", 2, RegistryView.Registry32);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

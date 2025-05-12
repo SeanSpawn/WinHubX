@@ -126,7 +126,7 @@
     <value>Microsoft Sans Serif, 10.199999pt</value>
   </data>
   <data name="lblHashInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 420</value>
+    <value>233, 45</value>
   </data>
   <data name="lblHashInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>379, 17</value>
@@ -745,7 +745,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnAttivaOffice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>481, 348</value>
+    <value>490, 325</value>
   </data>
   <data name="btnAttivaOffice.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -815,7 +815,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnScrubber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 348</value>
+    <value>112, 325</value>
   </data>
   <data name="btnScrubber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -967,7 +967,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnPersonalizzaOffice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 9</value>
+    <value>215, 394</value>
   </data>
   <data name="btnPersonalizzaOffice.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>

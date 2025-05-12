@@ -874,13 +874,11 @@ namespace WinHubX.Forms.Settaggi
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            bool opzioneSelezionata = false;
             int currentStep = 0;
             if (radio_mostrasecondi.Checked)
             {
                 AvviaProcessoMostraSecondi();
                 SetCheckboxState("MostraSecondi", radio_mostrasecondi.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -888,7 +886,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoMostraDataSecondi();
                 SetCheckboxState("MostraDataSecondi", radio_mostradatasecondi.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -896,7 +893,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoOrologioStandard();
                 SetCheckboxState("OrologioStandard", radio_orologiostandard.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -904,7 +900,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoNascondiOraData();
                 SetCheckboxState("NascondiOraData", radio_nascondioradata.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -912,7 +907,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoMostraOraData();
                 SetCheckboxState("MostraOraData", radio_mostraoradata.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -920,7 +914,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoDestroLegacy();
                 SetCheckboxState("DestroLegacy", radio_destrolegacy.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -928,7 +921,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoDestroDefault();
                 SetCheckboxState("DestroDefault", radio_destrodefault.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -936,7 +928,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("cmdsi.reg");
                 SetCheckboxState("ApriCMD", radio_apricmd.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -944,7 +935,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("cmdno.reg");
                 SetCheckboxState("EliminaApriCMD", radio_eliminaapricmd.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -952,7 +942,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("powershellsi.reg");
                 SetCheckboxState("ApriPowershell", radio_apripowershell.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -960,8 +949,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("powershellno.reg");
                 SetCheckboxState("EliminaPowershell", radio_eliminapowershell.Checked);
-
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -976,7 +963,6 @@ namespace WinHubX.Forms.Settaggi
                     AvviaProcessoConRegFile("ottimizzazioni_hdd.reg");
                 }
                 SetCheckboxState("OttimazzazioneWindows", radio_ottimizzawindows.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -984,7 +970,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("disabilita_tutti_visual_fx.reg");
                 SetCheckboxState("DisattivaFx", radio_disattivafx.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -992,7 +977,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("abilita_visual_fx.reg");
                 SetCheckboxState("AttivaFx", radio_attivafx.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1000,7 +984,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoConRegFile("ripristina_impostazioni_windows.reg");
                 SetCheckboxState("RipristinaOttimizzazioneWin", radio_ripristinaottimizzazionewin.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1008,7 +991,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoDisabilitaRicercaInternet();
                 SetCheckboxState("DisabilitaRicercaInternet", radio_disabilitaricercainternet.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1016,7 +998,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoAbilitaSuggeriti();
                 SetCheckboxState("AbilitaSuggeriti", radio_abilitasuggeriti.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1024,7 +1005,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoDisabilitaSuggeriti();
                 SetCheckboxState("DisabilitaSuggeriti", radio_disabilitasuggeriti.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1032,7 +1012,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoOttimizzaRicerca();
                 SetCheckboxState("OttimizzaRicerca", radio_ottimizzaricerca.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1040,7 +1019,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoAbilitaecall();
                 SetCheckboxState("AbilitaRecall", radio_abilitarecall.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1048,7 +1026,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoRimuovirecall();
                 SetCheckboxState("DisabilitaRecall", radio_disabilitarecall.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1056,7 +1033,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoAggiungiCopilot();
                 SetCheckboxState("AbilitaCopilot", radio_abilicopilot.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1064,7 +1040,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AvviaProcessoRimuoviCopilot();
                 SetCheckboxState("DisablitaCopilot", radio_disacopilot.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1072,7 +1047,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 AbiliaEndTask();
                 SetCheckboxState("AbiliEndTask", radio_disacopilot.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }
@@ -1080,7 +1054,6 @@ namespace WinHubX.Forms.Settaggi
             {
                 DisabilitaEndTask();
                 SetCheckboxState("DisabilEndTask", radio_disacopilot.Checked);
-                opzioneSelezionata = true;
                 currentStep++;
                 backgroundWorker1.ReportProgress(currentStep);
             }

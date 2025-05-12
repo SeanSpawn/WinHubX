@@ -27,7 +27,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 if (radioButton_x64.Checked)
                 {
                     string xmlFilePath = Path.Combine(GetTempFolderPath(), "Configurazione2021x64.xml");
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml(xmlFilePath, CreateVisioXml());
@@ -74,7 +77,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 {
                     string xmlFilePath = @"C:\Configurazione2021x32.xml";
                     ExtractAndSaveResource("Configurazione2021x32.xml", xmlFilePath);
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml(xmlFilePath, CreateVisioXml());
@@ -124,7 +130,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 {
                     string xmlFilePath = @"C:\Configurazione365x64.xml";
                     ExtractAndSaveResource("Configurazione365x64.xml", xmlFilePath);
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml365(xmlFilePath, CreateVisioXml365());
@@ -171,7 +180,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 {
                     string xmlFilePath = @"C:\Configurazione365x32.xml";
                     ExtractAndSaveResource("Configurazione365x32.xml", xmlFilePath);
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml365(xmlFilePath, CreateVisioXml365());
@@ -222,7 +234,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 {
                     string xmlFilePath = @"C:\Configurazione2024x64.xml";
                     ExtractAndSaveResource("Configurazione2024x64.xml", xmlFilePath);
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml2024(xmlFilePath, CreateVisioXml24());
@@ -269,7 +284,10 @@ namespace WinHubX.Forms.Personalizzazione_office
                 {
                     string xmlFilePath = @"C:\Configurazione2024x32.xml";
                     ExtractAndSaveResource("Configurazione2024x32.xml", xmlFilePath);
-
+                    if (radioButton_EN.Checked)
+                    {
+                        ModifyElementFromXml(xmlFilePath, "it-it", "en-gb");
+                    }
                     if (checkBox_visio.Checked)
                     {
                         AddElementToXml2024(xmlFilePath, CreateVisioXml24());
@@ -344,7 +362,22 @@ namespace WinHubX.Forms.Personalizzazione_office
             return Path.Combine(Path.GetTempPath(), "OfficePersonalizzato");
         }
 
+        private void ModifyElementFromXml(string xmlFilePath, string oldLang, string newLang)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlFilePath);
 
+            XmlNodeList languageNodes = doc.GetElementsByTagName("Language");
+            foreach (XmlNode node in languageNodes)
+            {
+                if (node.Attributes["ID"] != null && node.Attributes["ID"].Value == oldLang)
+                {
+                    node.Attributes["ID"].Value = newLang;
+                }
+            }
+
+            doc.Save(xmlFilePath);
+        }
         private void AddElementToXml(string xmlFilePath, string xmlToAdd)
         {
             try

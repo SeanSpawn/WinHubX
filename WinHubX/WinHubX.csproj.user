@@ -64,16 +64,22 @@
     <Compile Update="Forms\Base\ProgressBar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Bottoni\BottoniSwap.cs">
+    <Compile Update="Bottoni\BottoniSwap.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Forms\Bottoni\CircularProgressBar.cs">
+    <Compile Update="Bottoni\CircularProgressBar.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\CreaISO\FormCreazioneISO.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\DebloatAvanzato\FormDebloatAvanzato.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\DebloatAvanzato\FormServizi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormWinHubXLiteOS.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Personalizzazione office\PersonalizzazioneOffice.cs">

@@ -115,6 +115,12 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                MessageBox.Show(
+    LanguageManager.GetTranslation("FormWin1011", "rufusWarning"),
+    "Attenzione",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
                 OpenLink(linkWin11Lite64);
             }
         }
@@ -160,11 +166,18 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                MessageBox.Show(
+    LanguageManager.GetTranslation("FormWin1011", "rufusWarning"),
+    "Attenzione",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
                 OpenLink(linkWin11Lite6424h2Pro);
             }
         }
         private void btnLTSCLite24h2_MouseUp(object sender, MouseEventArgs e)
         {
+
             if (e.Button == MouseButtons.Right)
             {
 
@@ -175,6 +188,12 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                MessageBox.Show(
+    LanguageManager.GetTranslation("FormWin1011", "rufusWarning"),
+    "Attenzione",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
                 OpenLink(linkWin11Lite6424h2LTSC);
             }
         }

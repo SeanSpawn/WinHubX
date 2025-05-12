@@ -113,16 +113,6 @@ namespace WinHubX.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nicksparrow {
-            get {
-                object obj = ResourceManager.GetObject("nicksparrow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap png365 {
             get {
                 object obj = ResourceManager.GetObject("png365", resourceCulture);
@@ -203,9 +193,29 @@ namespace WinHubX.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngDriverRST {
+            get {
+                object obj = ResourceManager.GetObject("pngDriverRST", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngHome {
             get {
                 object obj = ResourceManager.GetObject("pngHome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngKasperskyLive {
+            get {
+                object obj = ResourceManager.GetObject("pngKasperskyLive", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +353,16 @@ namespace WinHubX.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngWinHubXLiteOS {
+            get {
+                object obj = ResourceManager.GetObject("pngWinHubXLiteOS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngWinLive {
             get {
                 object obj = ResourceManager.GetObject("pngWinLive", resourceCulture);
@@ -387,16 +407,6 @@ namespace WinHubX.Properties {
             get {
                 object obj = ResourceManager.GetObject("Product_Sans_Black", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Rufus_4Lite {
-            get {
-                object obj = ResourceManager.GetObject("Rufus-4Lite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

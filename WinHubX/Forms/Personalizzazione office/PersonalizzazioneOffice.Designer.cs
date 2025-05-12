@@ -63,6 +63,10 @@
             btn_avviainstallazione = new Button();
             progressBar_office = new ProgressBar();
             btnBack = new Button();
+            panel4 = new Panel();
+            label2 = new Label();
+            radioButton_EN = new RadioButton();
+            radioButton_IT = new RadioButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -76,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -335,11 +340,42 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
+            // panel4
+            // 
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Controls.Add(label2);
+            panel4.Controls.Add(radioButton_EN);
+            panel4.Controls.Add(radioButton_IT);
+            panel4.Name = "panel4";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = Color.Coral;
+            label2.Name = "label2";
+            // 
+            // radioButton_EN
+            // 
+            resources.ApplyResources(radioButton_EN, "radioButton_EN");
+            radioButton_EN.ForeColor = Color.White;
+            radioButton_EN.Name = "radioButton_EN";
+            radioButton_EN.TabStop = true;
+            radioButton_EN.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_IT
+            // 
+            resources.ApplyResources(radioButton_IT, "radioButton_IT");
+            radioButton_IT.ForeColor = Color.White;
+            radioButton_IT.Name = "radioButton_IT";
+            radioButton_IT.TabStop = true;
+            radioButton_IT.UseVisualStyleBackColor = true;
+            // 
             // PersonalizzazioneOffice
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
+            Controls.Add(panel4);
             Controls.Add(btnBack);
             Controls.Add(progressBar_office);
             Controls.Add(btn_avviainstallazione);
@@ -364,6 +400,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -403,5 +441,9 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private PictureBox pictureBox10;
+        private Panel panel4;
+        private Label label2;
+        private RadioButton radioButton_EN;
+        private RadioButton radioButton_IT;
     }
 }

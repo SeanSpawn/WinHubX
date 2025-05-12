@@ -124,8 +124,8 @@
   <data name="term_rosso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\term_rosso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngDaRT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pngDaRT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngHome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngHome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngXtndLogo_WinHubX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngXtndLogo_WinHubX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +139,17 @@
   <data name="pngMinimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngMinimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pngDriverRST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngDriverRST.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pngDefenderWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngDefenderWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="png365" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\png365.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icoLogoWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icoLogoWhite.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngDomanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngDomanda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngBackArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngBackArrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +160,14 @@
   <data name="TSforge_Activation_Office" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TSforge_Activation_Office.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="icoLogoWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icoLogoWhite.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pngPersonalizzazione" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngPersonalizzazione.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngKasperskyLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngKasperskyLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="extWIMToolkit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\extWIMToolkit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +187,8 @@
   <data name="pngWinLive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngWinLive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngHome" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pngHome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngDaRT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pngDaRT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngWinWhat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngWinWhat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,9 +205,6 @@
   <data name="TSforge_Activation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TSforge_Activation.cmd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Rufus-4Lite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Rufus-4Lite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="term_giallo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\term_giallo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -210,9 +216,6 @@
   </data>
   <data name="pngOnline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngOnline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nicksparrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\nicksparrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngOffice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngOffice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,7 +238,7 @@
   <data name="pngClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\pngClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngDomanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pngDomanda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pngWinHubXLiteOS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngWinHubXLiteOS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

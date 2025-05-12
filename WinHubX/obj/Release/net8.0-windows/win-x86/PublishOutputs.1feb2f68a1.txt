@@ -38,7 +38,6 @@ C:\Users\utente\Desktop\winhubx\Images\pngWinLive.png
 C:\Users\utente\Desktop\winhubx\Images\pngWinWhat.png
 C:\Users\utente\Desktop\winhubx\Images\pngWSA.png
 C:\Users\utente\Desktop\winhubx\Images\pngXtndLogo_WinHubX.png
-C:\Users\utente\Desktop\winhubx\Images\Rufus-4Lite.png
 C:\Users\utente\Desktop\winhubx\Images\pngAttivaWin.png
 C:\Users\utente\Desktop\winhubx\Images\pngCreaISO.png
 C:\Users\utente\Desktop\winhubx\Images\pngDebloat.png
@@ -56,7 +55,6 @@ C:\Users\utente\Desktop\winhubx\Images\term_rosso.png
 C:\Users\utente\Desktop\winhubx\Images\term_verde.png
 C:\Users\utente\Desktop\winhubx\Images\update.png
 C:\Users\utente\Desktop\winhubx\Images\pngWinhubxsystemmonitor.png
-C:\Users\utente\Desktop\winhubx\Images\nicksparrow.png
 C:\Users\utente\Desktop\winhubx\Images\pngDaRT.png
 C:\Users\utente\Desktop\winhubx\Images\pngOffice.png
 C:\Users\utente\Desktop\winhubx\Images\pngWin.png

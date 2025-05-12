@@ -81,7 +81,6 @@
             // 
             // imgTool
             // 
-            imgTool.Image = Properties.Resources.Rufus_4Lite;
             imgTool.Location = new Point(210, 9);
             imgTool.Margin = new Padding(3, 2, 3, 2);
             imgTool.Name = "imgTool";

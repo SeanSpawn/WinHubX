@@ -2,7 +2,6 @@
 using Microsoft.Win32.TaskScheduler;
 using System.ComponentModel;
 using System.ServiceProcess;
-using System.Windows.Forms;
 using WinHubX.Forms.Base;
 
 namespace WinHubX.Forms.Settaggi
@@ -318,7 +317,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -389,7 +388,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("HttpAcceptLanguageOptOut", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -455,7 +454,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -575,7 +574,7 @@ namespace WinHubX.Forms.Settaggi
     Disable-ScheduledTask -TaskName ""Microsoft\Windows\Maps\MapsUpdateTask"";
         ");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -624,7 +623,7 @@ namespace WinHubX.Forms.Settaggi
                         key32_3?.SetValue("Status", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -659,7 +658,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -693,7 +692,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("DisableDiagnostics", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -727,7 +726,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("DisableWAPPushService", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -769,7 +768,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("DisableHomeGroup", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -796,7 +795,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("fAllowToGetHelp", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -842,7 +841,7 @@ namespace WinHubX.Forms.Settaggi
                         key64?.SetValue("AllowGameDVR", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -869,7 +868,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("MaintenanceDisabled", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -897,7 +896,7 @@ namespace WinHubX.Forms.Settaggi
                         key32?.SetValue("ReservedStorageState", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -951,7 +950,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -988,7 +987,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1059,7 +1058,7 @@ namespace WinHubX.Forms.Settaggi
                         key64SenseAllowed?.SetValue("WiFISenseAllowed", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1109,7 +1108,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1130,7 +1129,7 @@ namespace WinHubX.Forms.Settaggi
                         key?.SetValue("HttpAcceptLanguageOptOut", 0, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1169,7 +1168,7 @@ namespace WinHubX.Forms.Settaggi
                         policyKey?.DeleteValue("DisableWindowsConsumerFeatures", false);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1205,7 +1204,7 @@ namespace WinHubX.Forms.Settaggi
                     StartService("DiagTrack");
                     StartService("dmwappushservice");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1237,7 +1236,7 @@ namespace WinHubX.Forms.Settaggi
                         key?.SetValue("Status", 1, RegistryValueKind.DWord);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1276,7 +1275,7 @@ namespace WinHubX.Forms.Settaggi
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1308,7 +1307,7 @@ namespace WinHubX.Forms.Settaggi
                     }
                     ExecutePowerShellScript(@"Set-Service -Name 'DiagTrack' -StartupType 'Automatic'");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1340,7 +1339,7 @@ namespace WinHubX.Forms.Settaggi
                     }
                     ExecutePowerShellScript(@"Set-Service -Name 'dmwappushservice' -StartupType 'Automatic'");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1368,7 +1367,7 @@ namespace WinHubX.Forms.Settaggi
                 Set-Service -Name 'HomeGroupProvider' -StartupType 'Manual';
             ");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1399,7 +1398,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1435,7 +1434,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1495,7 +1494,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1557,7 +1556,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1604,7 +1603,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1679,7 +1678,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1734,7 +1733,7 @@ namespace WinHubX.Forms.Settaggi
                 {
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1776,7 +1775,7 @@ namespace WinHubX.Forms.Settaggi
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1807,7 +1806,7 @@ namespace WinHubX.Forms.Settaggi
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

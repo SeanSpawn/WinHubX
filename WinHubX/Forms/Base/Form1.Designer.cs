@@ -278,7 +278,7 @@
         private Button btnTools;
         private Button btnmonitoraggio;
         private Button btnReinstallaApp;
-        private ComboBox comboBox1;
-        private PictureBox pictureBox3;
+        public ComboBox comboBox1;
+        public PictureBox pictureBox3;
     }
 }

@@ -2,7 +2,6 @@
 using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using WinHubX.Forms.Base;
 
 namespace WinHubX.Forms.ReinstallaAPP
 {
@@ -476,7 +475,7 @@ namespace WinHubX.Forms.ReinstallaAPP
                         label1.Text = $"Scaricando {localFiles[i]}...";
                         webClient.DownloadFile(urls[i], localFiles[i]);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show($"Error: {localFiles[i]}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -489,7 +488,7 @@ namespace WinHubX.Forms.ReinstallaAPP
                 {
                     AddAppxPackage(file);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show($"Error: {file}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

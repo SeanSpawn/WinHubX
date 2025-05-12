@@ -44,10 +44,10 @@
   },
   "FormHome": {
     "en": {
-      "Changelog": "Changelog WinHubX\n\n22/04/2025 - v2.4.2.4:\n- Fix Custom Installation Office\n\n117/04/2025 - v2.4.2.3:\n- Added support for English language\n\n15/04/2025 - v2.4.2.2:\n- Implemented background work to improve responsiveness on Settings panel\n- Added progress bar on all settings for visual feedback\n- Added tooltips on settings for clarification\n- Fixed saving of settings, now persist correctly\n- New settings for latest Windows updates\n- Debloat: added service management (beta)\n- Direct activation of Windows (online and offline)\n- Direct activation of Office (online and offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix for System Restore, code was not continuing\n\n19/02/2025 - v2.4.2.0:\n- Added WinHubX to CMD path, run 'winhubx /help' for more info\n- Updated all Windows 10/11 stock ISOs\n- Improved 'System Restore' section with HW/SW check and stress test\n- 'Debloat' updated: dynamic app detection and advanced mode\n- Option to show monitoring in taskbar or notification area\n- Fix WinGet installation in 'Install App'\n- Fix red texts on ISO optimization\n- Automatic HDD/SSD detection for system compacting\n- Office installation improvements\n- New Windows 10/11 Lite ISOs updated to Feb 2025\n- New permanent offline activation method"
+      "Changelog": "Changelog WinHubX\n\n12/05/2025 - v2.4.2.5:\n- Added English language support in Custom Office Installation\n- New UI for ISO Creation\n- Added WinHubXLiteOS\n- Added tooltips in Tools section\n- Fix Custom Installation Office\n\n22/04/2025 - v2.4.2.4:\n- Fix Custom Installation Office\n\n17/04/2025 - v2.4.2.3:\n- Added support for English language\n\n22/04/2025 - v2.4.2.4:\n- Fix Custom Installation Office\n\n17/04/2025 - v2.4.2.3:\n- Added support for English language\n\n15/04/2025 - v2.4.2.2:\n- Implemented background work to improve responsiveness on Settings panel\n- Added progress bar on all settings for visual feedback\n- Added tooltips on settings for clarification\n- Fixed saving of settings, now persist correctly\n- New settings for latest Windows updates\n- Debloat: added service management (beta)\n- Direct activation of Windows (online and offline)\n- Direct activation of Office (online and offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix for System Restore, code was not continuing\n\n19/02/2025 - v2.4.2.0:\n- Added WinHubX to CMD path, run 'winhubx /help' for more info\n- Updated all Windows 10/11 stock ISOs\n- Improved 'System Restore' section with HW/SW check and stress test\n- 'Debloat' updated: dynamic app detection and advanced mode\n- Option to show monitoring in taskbar or notification area\n- Fix WinGet installation in 'Install App'\n- Fix red texts on ISO optimization\n- Automatic HDD/SSD detection for system compacting\n- Office installation improvements\n- New Windows 10/11 Lite ISOs updated to Feb 2025\n- New permanent offline activation method"
     },
     "it": {
-      "Changelog": "Changelog WinHubX\n\n22/04/2025 - v2.4.2.4:\n- Fix Personalizzazione Office\n\n17/04/2025 - v2.4.2.3:\n- Aggiunto supporto per lingua inglese\n\n15/04/2025 - v2.4.2.2:\n- Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo\n- Inserita progressbar su tutti i settaggi per avere un responso visivo\n- Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione\n- Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria\n- Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows\n- Inserito su Debloat la gestione dei servizi (beta)\n- Attivazione diretta windows (online e offline)\n- Attivazione diretta office (online e offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix Ripristino SO, il codice non proseguiva\n\n19/02/2025 - v2.4.2.0:\n- Aggiunto winhubx al path cmd e ampliati i comandi digitare winhubx /help per maggiori info\n- Aggiornate tutte le iso di Win10/11 Stock\n- Sezione 'Ripristino SO' migliorata con verifica HW/SW e stress test\n- Sezione 'Debloat' aggiornata: rilevamento dinamico app e modalità avanzata\n- Opzione per mostrare il monitoraggio in barra applicazioni o area notifiche\n- Fix installazione WinGet su 'Installa App'\n- Fix scritte rosse su ottimizzazione ISO\n- Verifica automatica HDD/SSD per compattazione sistema\n- Aggiornamenti per installazioni Office\n- Nuove ISO Windows 10/11 Lite aggiornate a Febbraio 2025\n- Nuovo metodo di attivazione offline permanente"
+      "Changelog": "Changelog WinHubX\n\n12/05/2025 - v2.4.2.5:\n- Aggiunta della lingua EN nella Personalizzazione Office\n- Nuova UI per la Creazione ISO\n- Aggiunta di WinHubXLiteOS\n- Aggiunti tooltip nella sezione Tools\n- Fix Personalizzazione Office\n\n17/04/2025 - v2.4.2.4:\n- Fix Personalizzazione Office\n\n17/04/2025 - v2.4.2.3:\n- Aggiunto supporto per lingua inglese\n\n17/04/2025 - v2.4.2.4:\n- Fix Personalizzazione Office\n\n17/04/2025 - v2.4.2.3:\n- Aggiunto supporto per lingua inglese\n\n15/04/2025 - v2.4.2.2:\n- Implementato \"background work\" per velocizzare il codice sul pannello Settaggi, ora è più responsivo\n- Inserita progressbar su tutti i settaggi per avere un responso visivo\n- Inserito sui settaggi il tooltip esplicativo per sapere cosa è quell'impostazione\n- Fix salvataggio settaggi, ora vengono correttamente mantenuti in memoria\n- Aggiunti nuovi settaggi per gli ultimi aggiornamenti Windows\n- Inserito su Debloat la gestione dei servizi (beta)\n- Attivazione diretta windows (online e offline)\n- Attivazione diretta office (online e offline)\n\n10/04/2025 - v2.4.2.1:\n- Fix Ripristino SO, il codice non proseguiva\n\n19/02/2025 - v2.4.2.0:\n- Aggiunto winhubx al path cmd e ampliati i comandi digitare winhubx /help per maggiori info\n- Aggiornate tutte le iso di Win10/11 Stock\n- Sezione 'Ripristino SO' migliorata con verifica HW/SW e stress test\n- Sezione 'Debloat' aggiornata: rilevamento dinamico app e modalità avanzata\n- Opzione per mostrare il monitoraggio in barra applicazioni o area notifiche\n- Fix installazione WinGet su 'Installa App'\n- Fix scritte rosse su ottimizzazione ISO\n- Verifica automatica HDD/SSD per compattazione sistema\n- Aggiornamenti per installazioni Office\n- Nuove ISO Windows 10/11 Lite aggiornate a Febbraio 2025\n- Nuovo metodo di attivazione offline permanente"
     }
   },
   "FormMonitoraggio": {
@@ -410,10 +410,12 @@
   },
   "FormWin1011": {
     "en": {
-      "infoWin1011Lite": "Windows 10 LITE\n\nThis version of Windows 10 has been optimized by removing a number of drivers, apps, services, and components to improve system performance and reduce disk space usage.\nThis customization leads to a slimmer and faster operating system, ideal for those seeking a smoother, lighter alternative to the standard version.\n\nBelow is the list of removed services and components:\n\n- Windows Barcode Preview\n- Assigned Access Lock App\n- Narrator\n- Call\n- Windows Hello Setup\n- Eye Control\n- Cortana\n- Feedback Hub\n- Microsoft Account Family Features\n- Delivery Optimization Manager\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Safe Device Removal\n- Default Windows Lock Screen\n- Skype\n- Tips (Basic Info)\n- Tests and Exams\n- 3D Viewer\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibility\n- Device Experience\n- Offline Files\n- Input Method Editor (IME) - Recommended\n- Internet Explorer\n- Payments\n- Remote Desktop Server\n- Telephony\n 📌 Added AIMODS-Store and WinHubX shortcuts to the desktop upon installation completion (for portable and removable versions)."
+      "infoWin1011Lite": "Windows 10 LITE\n\nThis version of Windows 10 has been optimized by removing a number of drivers, apps, services, and components to improve system performance and reduce disk space usage.\nThis customization leads to a slimmer and faster operating system, ideal for those seeking a smoother, lighter alternative to the standard version.\n\nBelow is the list of removed services and components:\n\n- Windows Barcode Preview\n- Assigned Access Lock App\n- Narrator\n- Call\n- Windows Hello Setup\n- Eye Control\n- Cortana\n- Feedback Hub\n- Microsoft Account Family Features\n- Delivery Optimization Manager\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Safe Device Removal\n- Default Windows Lock Screen\n- Skype\n- Tips (Basic Info)\n- Tests and Exams\n- 3D Viewer\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibility\n- Device Experience\n- Offline Files\n- Input Method Editor (IME) - Recommended\n- Internet Explorer\n- Payments\n- Remote Desktop Server\n- Telephony\n 📌 Added AIMODS-Store and WinHubX shortcuts to the desktop upon installation completion (for portable and removable versions).",
+      "rufusWarning": "Do not select any additional options in Rufus (local account, TPM, etc...) as they are already integrated."
     },
     "it": {
-      "infoWin1011Lite": "Windows 10 LITE\n\nQuesta versione di Windows 10 è stata ottimizzata rimuovendo una serie di driver, applicazioni, servizi e componenti, per migliorare le prestazioni del sistema e ridurre l'ingombro di spazio su disco.\nQuesta personalizzazione porta ad un sistema operativo più snello e performante, ideale per chi cerca una versione più fluida e leggera rispetto alla versione standard.\n\nDi seguito l'elenco dei servizi e componenti rimossi:\n\n- Anteprima codice a barre Windows\n- App di blocco con accesso assegnato\n- Assistente vocale\n- Chiama\n- Configurazione di Windows Hello\n- Controllo ottico\n- Cortana\n- Feedback Hub\n- Funzionalità per la famiglia di account Microsoft\n- Gestore distribuzione contenuti\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Rimozione sicura del dispositivo\n- Schermata di blocco predefinita di Windows\n- Skype\n- Suggerimenti (Informazioni di base)\n- Test ed esami\n- Visualizzatore 3D\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibilità (Accessibilità)\n- Device Experience\n- File Offline\n- Input Method Editor (IME) - Consigliato\n- Internet Explorer\n- Pagamenti\n- Server Desktop remoto\n- Telefonia\n📌 Alla fine dell'installazione vengono aggiunti i collegamenti di AIMODS-Store e WinHubX sul desktop (versioni portatili e rimovibili)."
+      "infoWin1011Lite": "Windows 10 LITE\n\nQuesta versione di Windows 10 è stata ottimizzata rimuovendo una serie di driver, applicazioni, servizi e componenti, per migliorare le prestazioni del sistema e ridurre l'ingombro di spazio su disco.\nQuesta personalizzazione porta ad un sistema operativo più snello e performante, ideale per chi cerca una versione più fluida e leggera rispetto alla versione standard.\n\nDi seguito l'elenco dei servizi e componenti rimossi:\n\n- Anteprima codice a barre Windows\n- App di blocco con accesso assegnato\n- Assistente vocale\n- Chiama\n- Configurazione di Windows Hello\n- Controllo ottico\n- Cortana\n- Feedback Hub\n- Funzionalità per la famiglia di account Microsoft\n- Gestore distribuzione contenuti\n- Get Help\n- Groove Music\n- Mail and Calendar\n- Microsoft Advertising SDK for XAML\n- Microsoft Edge DevTools Client\n- Microsoft Pay\n- Microsoft People\n- Microsoft Photos\n- Microsoft Solitaire Collection\n- Microsoft Sticky Notes\n- Mixed Reality Portal\n- Movies & TV\n- MSN Weather\n- Office\n- OneNote\n- Paint 3D\n- Rimozione sicura del dispositivo\n- Schermata di blocco predefinita di Windows\n- Skype\n- Suggerimenti (Informazioni di base)\n- Test ed esami\n- Visualizzatore 3D\n- Web Media Extensions\n- Windows Alarms & Clock\n- Windows Maps\n- Windows Voice Recorder\n- Xbox Game Bar Plugin\n- Xbox Game Bar\n- Xbox Game Speech Window\n- Xbox Game UI\n- Xbox TCUI\n- Xbox\n- Your Phone\n- Accessibilità (Accessibilità)\n- Device Experience\n- File Offline\n- Input Method Editor (IME) - Consigliato\n- Internet Explorer\n- Pagamenti\n- Server Desktop remoto\n- Telefonia\n📌 Alla fine dell'installazione vengono aggiunti i collegamenti di AIMODS-Store e WinHubX sul desktop (versioni portatili e rimovibili).",
+      "rufusWarning": "Non selezionare nessuna opzione aggiuntiva su Rufus (account locale, TPM, ecc...)\nSono già integrate."
     }
   },
   "FormWin7": {
@@ -426,10 +428,140 @@
   },
   "FormCreaISO": {
     "en": {
-      "domanda": "Upon clicking the icon, the following scripts will be executed in sequence:\n\n1. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P000.json\n2. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P001.json\n3. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P002.json\n4. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P003.json\n5. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P004.json\n\nThese scripts will automate the installation and debloating process. Once completed, two portable .exe files will be placed on the desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nThese files are portable, require no forced installation, and can be easily removed at any time."
+      "domanda": "Once completed deblat process, two portable .exe files will be placed on the desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nThese files are portable, require no forced installation, and can be easily removed at any time.",
+      "creazioneiso": "Custom ISO Creation"
     },
     "it": {
-      "domanda": "Cliccando sull'icona, verranno eseguiti i seguenti script in sequenza:\n\n1. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P000.json\n2. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P001.json\n3. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P002.json\n4. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P003.json\n5. https://raw.githubusercontent.com/AMStore-na/WinHubX-Resource/refs/heads/main/P004.json\n\nQuesti script automatizzeranno il processo di installazione e debloat. Al termine, due file .exe portabili verranno posizionati sul desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nQuesti file sono portabili, non richiedono installazione forzata e possono essere facilmente eliminati in qualsiasi momento."
+      "domanda": "Al termine del debloat finale, due file .exe portabili verranno posizionati sul desktop:\n\n- AIMODS-Store.exe\n- WinHubX.exe\n\nQuesti file sono portabili, non richiedono installazione forzata e possono essere facilmente eliminati in qualsiasi momento.",
+      "creazioneiso": "Creazione ISO personalizzata"
+    }
+  },
+  "FormDebloat": {
+    "en": {
+      "confermaEsecuzione": "Are you sure you want to perform this operation?",
+      "titoloConferma": "Confirmation"
+    },
+    "it": {
+      "confermaEsecuzione": "Sei sicuro di voler eseguire questa operazione?",
+      "titoloConferma": "Conferma"
+    }
+  },
+  "FormTools": {
+    "en": {
+      "paneltitle": "WinHubXliteOS",
+      "tooltip_kasperky": "Download Kaspersky live, install it on USB and run it to scan your PC (works like a live linux distro)",
+      "tooltip_dart": "Download Microsoft DaRT for advanced repairs, install it on USB (works like a live linux distro)",
+      "tooltip_mpm": "Install Microsoft PC Manager",
+      "tooltip_wimtk": "Manage WIM images with WIM ToolKit",
+      "tooltip_winhubx": "Install Lite OS with WinHubX",
+      "tooltip_rst": "RST driver for NVMe SSD installation"
+    },
+    "it": {
+      "paneltitle": "WinHubXliteOS",
+      "tooltip_kasperky": "Scarica Kaspersky live, installalo su USB e avvialo per fare una scansione completa del pc (funziona come una distro live linux)",
+      "tooltip_dart": "Scarica Microsoft DaRT per riparazioni avanzate, installalo su USB (funziona come una distro live linux)",
+      "tooltip_mpm": "Installa Microsoft PC Manager",
+      "tooltip_wimtk": "Gestisci immagini WIM con WIM ToolKit",
+      "tooltip_winhubx": "Installa sistemi Lite con WinHubX",
+      "tooltip_rst": "Driver RST per installazione SSD NVMe"
+    }
+  },
+  "FormCreazioneISO": {
+    "en": {
+      "erroreindicenonselezionato": "Error: No index selected.",
+      "conversioneesdwim": "Converting install.esd to install.wim...",
+      "conversionesuccesso": "Conversion completed successfully.",
+      "trovatoinstallwim": "Found install.wim, optimizing image...",
+      "ottimizzazionesuccesso": "Optimization completed successfully.",
+      "nessunfilewimesd": "No install.esd or install.wim file found in the ISO sources folder.",
+      "erroreoperazione": "An error occurred during the operation",
+      "errorefilewimnontrovato": "ERROR: install.wim file not found.",
+      "montaggioincorso": "Mounting WIM image...",
+      "montaggiosuccesso": "Mount completed successfully!",
+      "erroremontaggio": "ERROR while mounting the image.",
+      "erroregenericomontaggio": "ERROR during the mounting process",
+      "erroreversionewindows": "ERROR: Windows version not specified",
+      "erroreunattendmancante": "ERROR: unattend.xml file not found in temporary folder",
+      "copiabypass": "unattend.xml file successfully copied for Bypass",
+      "configbypass": "Bypass configuration for Windows 11 - Loading registry...",
+      "montaggioboot": "Mounting boot.wim...",
+      "montaggiobootsuccesso": "boot.wim mounted successfully",
+      "rinominatoappraiser": "appraiserres.dll renamed to .bak",
+      "appraisernontrovato": "appraiserres.dll not found, rename failed",
+      "smontaggioboot": "Unmounting boot.wim...",
+      "smontaggiobootsuccesso": "boot.wim unmounted successfully",
+      "erroresmontaggioboot": "ERROR during boot.wim unmount",
+      "erroremontaggioboot": "ERROR during boot.wim mount",
+      "bypasscompletato": "Bypass completed",
+      "copiastock": "unattendstock.xml successfully copied for Stock",
+      "copiaunattend10x64": "unattend10.xml successfully copied for Windows 10 x64",
+      "copiaunattend10x32": "unattendx32.xml successfully copied for Windows 10 x32",
+      "erroreunattendarch": "ERROR: unattend file not found for specified architecture",
+      "erroregenericaunattend": "ERROR during Unattend operation",
+      "rimozionepacchetticompletata": "Package removal completed.",
+      "verificaparametricompletata": "Parameter verification completed.",
+      "filenontrovato": "File not found",
+      "copiacompletata": "File copy completed.",
+      "erroregenerico": "Error",
+      "errordirectorymount": "Error: Directory mount",
+      "smontaggiosalvataggio": "Unmounting and saving image...",
+      "immaginesmontata": "Image unmounted successfully",
+      "erroresmontaggio": "Error during unmounting image",
+      "errorecreazioneinstall": "Error during installation creation",
+      "creazioneisocompletata": "ISO creation completed.",
+      "errorecreazioneiso": "Error during ISO creation",
+      "operazioneannullatatoken": "Operation cancelled.",
+      "estrazioneisook": "ISO extraction complete",
+      "successo1": "CUSTOM ISO CREATED SUCCESSFULLY",
+      "successo2": "You will find your custom ISO in C: renamed as 'WindowsISO_edited.iso'"
+    },
+    "it": {
+      "erroreindicenonselezionato": "Errore: Nessun indice selezionato.",
+      "conversioneesdwim": "Conversione di install.esd in install.wim in corso...",
+      "conversionesuccesso": "Conversione completata con successo.",
+      "trovatoinstallwim": "Trovato install.wim, ottimizzazione dell'immagine in corso...",
+      "ottimizzazionesuccesso": "Ottimizzazione completata con successo.",
+      "nessunfilewimesd": "Nessun file install.esd o install.wim trovato nella cartella sources dell'ISO.",
+      "erroreoperazione": "Si è verificato un errore durante l'operazione",
+      "errorefilewimnontrovato": "ERRORE: File install.wim non trovato.",
+      "montaggioincorso": "Montaggio immagine WIM in corso...",
+      "montaggiosuccesso": "Montaggio completato con successo!",
+      "erroremontaggio": "ERRORE durante il montaggio dell'immagine.",
+      "erroregenericomontaggio": "ERRORE durante il montaggio",
+      "erroreversionewindows": "ERRORE: Versione di Windows non specificata",
+      "erroreunattendmancante": "ERRORE: File unattend.xml non trovato nella cartella temporanea",
+      "copiabypass": "File unattend.xml copiato con successo per Bypass",
+      "configbypass": "Configurazione Bypass per Windows 11 - Caricamento registry...",
+      "montaggioboot": "Montaggio boot.wim in corso...",
+      "montaggiobootsuccesso": "Boot.wim montato con successo",
+      "rinominatoappraiser": "File appraiserres.dll rinominato in .bak",
+      "appraisernontrovato": "File appraiserres.dll non trovato, impossibile rinominare",
+      "smontaggioboot": "Smontaggio boot.wim in corso...",
+      "smontaggiobootsuccesso": "Boot.wim smontato con successo",
+      "erroresmontaggioboot": "ERRORE durante lo smontaggio di boot.wim",
+      "erroremontaggioboot": "ERRORE durante il montaggio di boot",
+      "bypasscompletato": "Bypass completato",
+      "copiastock": "File unattendstock.xml copiato con successo per Stock",
+      "copiaunattend10x64": "File unattend10.xml copiato con successo per Windows 10 x64",
+      "copiaunattend10x32": "File unattendx32.xml copiato con successo per Windows 10 x32",
+      "erroreunattendarch": "ERRORE: File unattend non trovato per l'architettura specificata",
+      "erroregenericaunattend": "ERRORE durante l'operazione Unattend",
+      "rimozionepacchetticompletata": "Rimozione dei pacchetti completata.",
+      "verificaparametricompletata": "Verifica parametri completata.",
+      "filenontrovato": "File non trovato",
+      "copiacompletata": "Copia file completata.",
+      "erroregenerico": "Errore",
+      "errordirectorymount": "Errore: Directory mount",
+      "smontaggiosalvataggio": "Smontaggio e salvataggio immagine in corso...",
+      "immaginesmontata": "Immagine smontata con successo",
+      "erroresmontaggio": "ERRORE durante lo smontaggio dell'immagine",
+      "errorecreazioneinstall": "ERRORE durante la creazione dell'installazione",
+      "creazioneisocompletata": "Creazione ISO completata.",
+      "errorecreazioneiso": "ERRORE durante la creazione dell'ISO",
+      "operazioneannullatatoken": "Operazione annullata.",
+      "estrazioneisook": "Estrazione ISO completata",
+      "successo1": "ISO PERSONALIZZATA CREATA CORRETTAMENTE",
+      "successo2": "Troverai la tua ISO personalizzata in C: rinominata come 'WindowsISO_edited.iso'"
     }
   }
 }

@@ -1,6 +1,4 @@
-using Microsoft.PowerShell;
 using System.Diagnostics;
-using System.Management.Automation;
 using System.Reflection;
 using System.Runtime.InteropServices;
 

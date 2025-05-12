@@ -7,8 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <AssemblyVersion>2.4.2.4</AssemblyVersion>
-    <FileVersion>2.4.2.4</FileVersion>
+    <AssemblyVersion>2.4.2.5</AssemblyVersion>
+    <FileVersion>2.4.2.5</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
 	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -24,7 +24,6 @@
     <None Remove="Images\help.png" />
     <None Remove="Images\homeLogo.png" />
     <None Remove="Images\icoLogoWhite.ico" />
-    <None Remove="Images\nicksparrow.png" />
     <None Remove="Images\png365.png" />
     <None Remove="Images\pngArchitettura.png" />
     <None Remove="Images\pngAttivaOffice.png" />
@@ -76,7 +75,6 @@
     <None Remove="Images\pngWinWhat.png" />
     <None Remove="Images\pngWSA.png" />
     <None Remove="Images\pngXtndLogo_WinHubX.png" />
-    <None Remove="Images\Rufus-4Lite.png" />
     <None Remove="Images\term_giallo.png" />
     <None Remove="Images\term_rosso.png" />
     <None Remove="Images\term_verde.png" />
@@ -229,9 +227,6 @@
     <Content Include="Images\pngXtndLogo_WinHubX.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Rufus-4Lite.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\pngAttivaWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -340,12 +335,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\nicksparrow.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Images\pngDaRT.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -400,6 +389,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DiscUtils.Udf" Version="0.16.13" />
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.4-pre348" />
     <PackageReference Include="Microsoft.PowerShell.Native" Version="7.4.0" />
     <PackageReference Include="System.Management.Automation" Version="7.4.6" />

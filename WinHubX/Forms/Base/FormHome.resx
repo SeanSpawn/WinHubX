@@ -167,7 +167,7 @@
     <value>94</value>
   </data>
   <data name="btnChangelog.Text" xml:space="preserve">
-    <value>v2.4.2.4 - Changelog</value>
+    <value>v2.4.2.5 - Changelog</value>
   </data>
   <data name="btnChangelog.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>

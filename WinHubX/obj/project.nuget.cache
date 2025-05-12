@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "agFOFpexz5A=",
+  "dgSpecHash": "FKidG1PaEx8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\utente\\Downloads\\WinHubX-main\\WinHubX\\WinHubX.csproj",
+  "projectFilePath": "C:\\Users\\utente\\Documents\\GitHub\\ItalianDevelopers\\WinHubX\\WinHubX\\WinHubX.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\utente\\.nuget\\packages\\discutils.core\\0.16.13\\discutils.core.0.16.13.nupkg.sha512",
+    "C:\\Users\\utente\\.nuget\\packages\\discutils.iso9660\\0.16.13\\discutils.iso9660.0.16.13.nupkg.sha512",
+    "C:\\Users\\utente\\.nuget\\packages\\discutils.streams\\0.16.13\\discutils.streams.0.16.13.nupkg.sha512",
+    "C:\\Users\\utente\\.nuget\\packages\\discutils.udf\\0.16.13\\discutils.udf.0.16.13.nupkg.sha512",
     "C:\\Users\\utente\\.nuget\\packages\\hidsharp\\2.1.0\\hidsharp.2.1.0.nupkg.sha512",
     "C:\\Users\\utente\\.nuget\\packages\\librehardwaremonitorlib\\0.9.4-pre348\\librehardwaremonitorlib.0.9.4-pre348.nupkg.sha512",
     "C:\\Users\\utente\\.nuget\\packages\\microsoft.applicationinsights\\2.21.0\\microsoft.applicationinsights.2.21.0.nupkg.sha512",

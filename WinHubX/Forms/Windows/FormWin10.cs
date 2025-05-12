@@ -141,6 +141,12 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                MessageBox.Show(
+    LanguageManager.GetTranslation("FormWin1011", "rufusWarning"),
+    "Attenzione",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
                 OpenLink(linkWin10Lite32);
             }
         }
@@ -157,6 +163,12 @@ namespace WinHubX.Forms.Windows
             }
             else if (e.Button == MouseButtons.Left)
             {
+                MessageBox.Show(
+    LanguageManager.GetTranslation("FormWin1011", "rufusWarning"),
+    "Attenzione",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
                 OpenLink(linkWin10Lite64);
             }
         }

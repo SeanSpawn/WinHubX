@@ -28,52 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTools));
             btnKasperky = new Button();
             btnWimTK = new Button();
-            btnRufus = new Button();
+            btnWinHubXLiteOS = new Button();
             btnDaRT = new Button();
             btnMPM = new Button();
             btnRSTDriver = new Button();
+            toolTip1 = new ToolTip(components);
             SuspendLayout();
             // 
             // btnKasperky
             // 
-            resources.ApplyResources(btnKasperky, "btnKasperky");
             btnKasperky.Cursor = Cursors.Hand;
             btnKasperky.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnKasperky, "btnKasperky");
             btnKasperky.ForeColor = Color.White;
+            btnKasperky.Image = Properties.Resources.pngKasperskyLive;
             btnKasperky.Name = "btnKasperky";
             btnKasperky.UseVisualStyleBackColor = true;
             btnKasperky.Click += btnKasperky_Click;
             // 
             // btnWimTK
             // 
-            resources.ApplyResources(btnWimTK, "btnWimTK");
             btnWimTK.Cursor = Cursors.Hand;
             btnWimTK.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnWimTK, "btnWimTK");
             btnWimTK.ForeColor = Color.White;
             btnWimTK.Image = Properties.Resources.extWIMToolkit;
             btnWimTK.Name = "btnWimTK";
             btnWimTK.UseVisualStyleBackColor = true;
             btnWimTK.Click += btnWimTK_Click;
             // 
-            // btnRufus
+            // btnWinHubXLiteOS
             // 
-            resources.ApplyResources(btnRufus, "btnRufus");
-            btnRufus.Cursor = Cursors.Hand;
-            btnRufus.FlatAppearance.BorderSize = 0;
-            btnRufus.ForeColor = Color.White;
-            btnRufus.Image = Properties.Resources.Rufus_4Lite;
-            btnRufus.Name = "btnRufus";
-            btnRufus.UseVisualStyleBackColor = true;
-            btnRufus.Click += btnRufus_Click;
+            btnWinHubXLiteOS.Cursor = Cursors.Hand;
+            btnWinHubXLiteOS.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnWinHubXLiteOS, "btnWinHubXLiteOS");
+            btnWinHubXLiteOS.ForeColor = Color.White;
+            btnWinHubXLiteOS.Image = Properties.Resources.pngWinHubXLiteOS;
+            btnWinHubXLiteOS.Name = "btnWinHubXLiteOS";
+            btnWinHubXLiteOS.UseVisualStyleBackColor = true;
+            btnWinHubXLiteOS.Click += btnWinHubXLiteOS_Click;
             // 
             // btnDaRT
             // 
-            resources.ApplyResources(btnDaRT, "btnDaRT");
             btnDaRT.Cursor = Cursors.Hand;
             btnDaRT.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnDaRT, "btnDaRT");
             btnDaRT.ForeColor = Color.White;
             btnDaRT.Image = Properties.Resources.pngDaRT;
             btnDaRT.Name = "btnDaRT";
@@ -82,9 +85,9 @@
             // 
             // btnMPM
             // 
-            resources.ApplyResources(btnMPM, "btnMPM");
             btnMPM.Cursor = Cursors.Hand;
             btnMPM.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnMPM, "btnMPM");
             btnMPM.ForeColor = Color.White;
             btnMPM.Image = Properties.Resources.pngMPM;
             btnMPM.Name = "btnMPM";
@@ -93,10 +96,11 @@
             // 
             // btnRSTDriver
             // 
-            resources.ApplyResources(btnRSTDriver, "btnRSTDriver");
             btnRSTDriver.Cursor = Cursors.Hand;
             btnRSTDriver.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnRSTDriver, "btnRSTDriver");
             btnRSTDriver.ForeColor = Color.White;
+            btnRSTDriver.Image = Properties.Resources.pngDriverRST;
             btnRSTDriver.Name = "btnRSTDriver";
             btnRSTDriver.UseVisualStyleBackColor = true;
             btnRSTDriver.Click += btnRSTDriver_Click;
@@ -109,7 +113,7 @@
             Controls.Add(btnRSTDriver);
             Controls.Add(btnMPM);
             Controls.Add(btnDaRT);
-            Controls.Add(btnRufus);
+            Controls.Add(btnWinHubXLiteOS);
             Controls.Add(btnWimTK);
             Controls.Add(btnKasperky);
             FormBorderStyle = FormBorderStyle.None;
@@ -121,9 +125,10 @@
 
         private Button btnKasperky;
         private Button btnWimTK;
-        private Button btnRufus;
+        private Button btnWinHubXLiteOS;
         private Button btnDaRT;
         private Button btnMPM;
         private Button btnRSTDriver;
+        private ToolTip toolTip1;
     }
 }

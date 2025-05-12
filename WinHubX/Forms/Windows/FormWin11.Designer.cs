@@ -72,9 +72,9 @@
             // 
             // btnWin11Lite64
             // 
-            resources.ApplyResources(btnWin11Lite64, "btnWin11Lite64");
             btnWin11Lite64.Cursor = Cursors.Hand;
             btnWin11Lite64.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnWin11Lite64, "btnWin11Lite64");
             btnWin11Lite64.ForeColor = Color.White;
             btnWin11Lite64.Name = "btnWin11Lite64";
             btnWin11Lite64.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             // btnWin11AIO64
             // 
-            resources.ApplyResources(btnWin11AIO64, "btnWin11AIO64");
             btnWin11AIO64.Cursor = Cursors.Hand;
             btnWin11AIO64.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnWin11AIO64, "btnWin11AIO64");
             btnWin11AIO64.ForeColor = Color.White;
             btnWin11AIO64.Name = "btnWin11AIO64";
             btnWin11AIO64.UseVisualStyleBackColor = true;
@@ -110,16 +110,16 @@
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Image = Properties.Resources.pngWin;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
             btnBack.UseMnemonic = false;
@@ -128,9 +128,9 @@
             // 
             // btnWin11ARM64
             // 
-            resources.ApplyResources(btnWin11ARM64, "btnWin11ARM64");
             btnWin11ARM64.Cursor = Cursors.Hand;
             btnWin11ARM64.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnWin11ARM64, "btnWin11ARM64");
             btnWin11ARM64.ForeColor = Color.White;
             btnWin11ARM64.Name = "btnWin11ARM64";
             btnWin11ARM64.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // 
             // btn24h2ProLite
             // 
-            resources.ApplyResources(btn24h2ProLite, "btn24h2ProLite");
             btn24h2ProLite.Cursor = Cursors.Hand;
             btn24h2ProLite.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btn24h2ProLite, "btn24h2ProLite");
             btn24h2ProLite.ForeColor = Color.White;
             btn24h2ProLite.Name = "btn24h2ProLite";
             btn24h2ProLite.UseVisualStyleBackColor = true;
@@ -154,9 +154,9 @@
             // 
             // btn_win1124h2
             // 
-            resources.ApplyResources(btn_win1124h2, "btn_win1124h2");
             btn_win1124h2.Cursor = Cursors.Hand;
             btn_win1124h2.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btn_win1124h2, "btn_win1124h2");
             btn_win1124h2.ForeColor = Color.White;
             btn_win1124h2.Name = "btn_win1124h2";
             btn_win1124h2.UseVisualStyleBackColor = true;
@@ -164,9 +164,9 @@
             // 
             // btnLTSCLite24h2
             // 
-            resources.ApplyResources(btnLTSCLite24h2, "btnLTSCLite24h2");
             btnLTSCLite24h2.Cursor = Cursors.Hand;
             btnLTSCLite24h2.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnLTSCLite24h2, "btnLTSCLite24h2");
             btnLTSCLite24h2.ForeColor = Color.White;
             btnLTSCLite24h2.Name = "btnLTSCLite24h2";
             btnLTSCLite24h2.UseVisualStyleBackColor = true;

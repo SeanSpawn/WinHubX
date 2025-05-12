@@ -420,7 +420,7 @@ namespace WinHubX
 
         private void btnPersonalizzaOffice_Click(object sender, EventArgs e)
         {
-            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormOffice", "paneltitle");
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormTools", "paneltitle");
             form1.PnlFormLoader.Controls.Clear();
             PersonalizzazioneOffice formPersonalizzazioneOffice = new PersonalizzazioneOffice(form1, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             formPersonalizzazioneOffice.FormBorderStyle = FormBorderStyle.None;

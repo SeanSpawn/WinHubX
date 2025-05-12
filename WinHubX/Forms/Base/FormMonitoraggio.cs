@@ -165,7 +165,7 @@ namespace WinHubX.Forms.Base
             btn_pulisciram.FlatStyle = FlatStyle.Flat;
             btn_pulisciram.FlatAppearance.BorderSize = 0;
             btn_puliscicpu.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            btn_puliscicpu.ForeColor = Color.FromArgb(224, 224, 224); 
+            btn_puliscicpu.ForeColor = Color.FromArgb(224, 224, 224);
             btn_puliscicpu.BackColor = Color.FromArgb(64, 64, 64);
             btn_puliscicpu.FlatStyle = FlatStyle.Flat;
             btn_puliscicpu.FlatAppearance.BorderSize = 0;

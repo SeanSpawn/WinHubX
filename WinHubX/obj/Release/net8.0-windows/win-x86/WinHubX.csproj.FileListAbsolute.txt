@@ -5699,7 +5699,6 @@ C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x8
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngWinWhat.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngWSA.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngXtndLogo_WinHubX.png
-C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\Rufus-4Lite.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngAttivaWin.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngCreaISO.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngDebloat.png
@@ -5717,7 +5716,6 @@ C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x8
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\term_verde.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\update.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngWinhubxsystemmonitor.png
-C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\nicksparrow.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngDaRT.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngOffice.png
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\Images\pngWin.png
@@ -6317,3 +6315,11 @@ C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x8
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.FormWin7.en.resources
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.Forms.Windows.FormWin8Dot1.en.resources
 C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\en\WinHubX.resources.dll
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\DiscUtils.Core.dll
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\DiscUtils.Iso9660.dll
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\DiscUtils.Streams.dll
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\bin\Release\net8.0-windows\win-x86\DiscUtils.Udf.dll
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.Forms.CreaISO.FormCreazioneISO.resources
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.Forms.CreaISO.FormCreazioneISO.en.resources
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.Forms.FormWinHubXLiteOS.resources
+C:\Users\utente\Downloads\WinHubX-main\WinHubX\obj\Release\net8.0-windows\win-x86\WinHubX.Forms.FormWinHubXLiteOS.en.resources

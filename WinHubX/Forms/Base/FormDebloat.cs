@@ -1,13 +1,6 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using System.Text.Json;
 using WinHubX.Forms.DebloatAvanzato;
-using WinHubX.Forms.ReinstallaAPP;
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinHubX.Forms.Base
 {
@@ -322,8 +315,11 @@ namespace WinHubX.Forms.Base
 
         private void btnDebloatAuto_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Sei sicuro di voler eseguire questa operazione?",
-                                                  "Conferma",
+            string messaggionbox = LanguageManager.GetTranslation("FormDebloat", "confermaEsecuzione");
+            string titolo = LanguageManager.GetTranslation("FormDebloat", "titoloConferma");
+
+            DialogResult result = MessageBox.Show(messaggionbox,
+                                                  titolo,
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Warning);
 
@@ -393,10 +389,7 @@ namespace WinHubX.Forms.Base
         }
         private void btnDebloatAvanzato_Click(object sender, EventArgs e)
         {
-            // Crea una nuova istanza di FormDebloatAvanzato
             FormDebloatAvanzato formDebloat = new FormDebloatAvanzato();
-
-            // Mostra il form
             formDebloat.Show();
         }
 

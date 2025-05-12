@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.ServiceProcess;
-using System.Management;
-using Newtonsoft.Json;
-using Microsoft.Win32;
+﻿using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace WinHubX.Forms.DebloatAvanzato
@@ -134,7 +122,7 @@ namespace WinHubX.Forms.DebloatAvanzato
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 richTextBox1.Invoke((MethodInvoker)(() =>
                 {
