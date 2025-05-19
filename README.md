@@ -18,6 +18,9 @@
 ## License 📄
 <p>WinHubX is distributed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3.0</a>, allowing users the freedom to run, study, share, and modify the software.</p>
 
+##VirusTotal
+<p></p>
+
 ### Site:
 <p>
     YourLifeUpdate: <a href="https://www.yourlifeupdated.net/programmi-windows/scaricare-iso-di-windows-e-office-gratis-con-winhubx">https://www.yourlifeupdated.net/programmi-windows/scaricare-iso-di-windows-e-office-gratis-con-winhubx</a><br>
