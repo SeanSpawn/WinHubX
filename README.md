@@ -10,9 +10,9 @@
 
 ### Language 🖥️
 <p>
-    ![PowerShell](https://img.shields.io/badge/PowerShell-87.0%25-blue) 
-    ![C#](https://img.shields.io/badge/C%23-11.5%25-green) 
-    ![Batchfile](https://img.shields.io/badge/Batchfile-1.5%25-yellow)
+    <img src="https://img.shields.io/badge/PowerShell-87.0%25-blue" alt="PowerShell"> 
+    <img src="https://img.shields.io/badge/C%23-11.5%25-green" alt="C#"> 
+    <img src="https://img.shields.io/badge/Batchfile-1.5%25-yellow" alt="Batchfile">
 </p>
 
 ## License 📄
