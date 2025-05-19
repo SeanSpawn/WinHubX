@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./WinHubX/Immagini/image.png" width="254">
+<img src="./Immagini/image.png" width="254">
 
 # WinHubX
 ## Introduction 🌟
