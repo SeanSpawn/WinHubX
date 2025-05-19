@@ -1,9 +1,10 @@
 <div align="center">
 
 <img src="./Immagini/image.png" width="500">
-</div>
+
 
 # WinHubX
+</div>
 ## Introduction 🌟
 
 WinHubX is a versatile open source tool designed to optimize and manage Windows operating systems.
