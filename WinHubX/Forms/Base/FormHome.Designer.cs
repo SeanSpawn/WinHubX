@@ -42,16 +42,16 @@
             // 
             // imgHomeLogo
             // 
-            imgHomeLogo.Image = Properties.Resources.homeLogo;
             resources.ApplyResources(imgHomeLogo, "imgHomeLogo");
+            imgHomeLogo.Image = Properties.Resources.homeLogo;
             imgHomeLogo.Name = "imgHomeLogo";
             imgHomeLogo.TabStop = false;
             // 
             // btnChangelog
             // 
+            resources.ApplyResources(btnChangelog, "btnChangelog");
             btnChangelog.Cursor = Cursors.Hand;
             btnChangelog.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnChangelog, "btnChangelog");
             btnChangelog.ForeColor = Color.Coral;
             btnChangelog.Name = "btnChangelog";
             btnChangelog.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // btnKofi
             // 
+            resources.ApplyResources(btnKofi, "btnKofi");
             btnKofi.Cursor = Cursors.Hand;
             btnKofi.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnKofi, "btnKofi");
             btnKofi.ForeColor = Color.Coral;
             btnKofi.Image = Properties.Resources.pngCoffee;
             btnKofi.Name = "btnKofi";
@@ -70,8 +70,8 @@
             // 
             // tgWinHubX
             // 
-            tgWinHubX.Cursor = Cursors.Hand;
             resources.ApplyResources(tgWinHubX, "tgWinHubX");
+            tgWinHubX.Cursor = Cursors.Hand;
             tgWinHubX.ForeColor = Color.FromArgb(37, 38, 39);
             tgWinHubX.Image = Properties.Resources.pngTelegram;
             tgWinHubX.Name = "tgWinHubX";

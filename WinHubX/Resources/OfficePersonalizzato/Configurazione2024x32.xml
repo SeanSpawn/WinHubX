@@ -1,5 +1,6 @@
 <Configuration ID="0efbc650-3da7-4158-a287-9fad947b82fb">
   <Add OfficeClientEdition="32" Channel="PerpetualVL2024">
+   <Display Level="Full" AcceptEULA="TRUE"/>	  
     <Product ID="ProPlus2024Volume" PIDKEY="XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB"> 
       <Language ID="it-it" />
       <ExcludeApp ID="Access" />

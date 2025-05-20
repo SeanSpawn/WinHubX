@@ -686,8 +686,6 @@ namespace WinHubX.Forms.Personalizzazione_office
             }
         }
 
-
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             form1.lblPanelTitle.Text = "Office";

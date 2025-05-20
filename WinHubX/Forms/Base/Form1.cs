@@ -87,7 +87,7 @@ namespace WinHubX
         private async Task CheckForUpdatesAsync()
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-            string currentVersion = "2.4.2.5";
+            string currentVersion = "2.4.2.6";
 
             try
             {

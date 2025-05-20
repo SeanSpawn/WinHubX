@@ -7,8 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <AssemblyVersion>2.4.2.5</AssemblyVersion>
-    <FileVersion>2.4.2.5</FileVersion>
+    <AssemblyVersion>2.4.2.6</AssemblyVersion>
+    <FileVersion>2.4.2.6</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
 	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>

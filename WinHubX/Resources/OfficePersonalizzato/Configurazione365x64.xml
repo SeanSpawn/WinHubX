@@ -1,5 +1,6 @@
 <Configuration ID="3631a83f-3a93-4612-a5a3-b1126a4ce748">
   <Add OfficeClientEdition="64" Channel="Current">
+    <Display Level="Full" AcceptEULA="TRUE"/>	  
     <Product ID="O365BusinessRetail">
       <Language ID="it-it" />
       <ExcludeApp ID="Access" />
