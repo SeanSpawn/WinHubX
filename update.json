@@ -1,17 +1,11 @@
 {
-  "version": "2.4.2.5",
+  "version": "2.4.2.6",
   "releaseNotes": [
     "IT:",
-    "Nuova UI per la sezione Creazione ISO",
-    "Aggiunta lingua inglese (EN) per Office Personalizzato",
-    "Tooltip aggiunto nella sezione Tools",
-    "Nuovo tool: WinHubXLiteOS --> Ottimizza e rimuove pacchetti e servizi non essenziali su Windows in uso, mantenendo file e programmi. Compatibile con tutte le versioni di Windows 10 e 11",
+    "Fix tool WinHubXLiteOS",
     "",
     "EN:",
-    "New UI for ISO Creation section",
-    "Added English (EN) language for Custom Office",
-    "Added Command Description in Tools section",
-    "New Tool: WinHubXLiteOS --> Optimizes and removes non-essential packages and services on your Windows, keeping files and programs. Compatible with all versions of Windows 10 and 11"
+    "Fix tool WinHubXLiteOS"
   ],
-  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.5/WinHubX.exe"
+  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.6/WinHubX.exe"
 }
