@@ -1,11 +1,13 @@
 {
-  "version": "2.4.2.6",
+  "version": "2.4.2.7",
   "releaseNotes": [
     "IT:",
-    "Fix tool WinHubXLiteOS",
+    "Fix titolo Office personalizzato",
+    "ScrubberOffice migliorato per renderlo più intuibile",
     "",
     "EN:",
-    "Fix tool WinHubXLiteOS"
+    "Fix custom Office title",
+    "ScrubberOffice improved to make it more intuitive"
   ],
-  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.6/WinHubX.exe"
+  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.7/WinHubX.exe"
 }
