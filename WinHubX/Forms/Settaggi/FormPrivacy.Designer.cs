@@ -43,12 +43,11 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
-            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -63,7 +62,6 @@
             DisabilitaPrivacy.FormattingEnabled = true;
             DisabilitaPrivacy.Items.AddRange(new object[] { resources.GetString("DisabilitaPrivacy.Items"), resources.GetString("DisabilitaPrivacy.Items1"), resources.GetString("DisabilitaPrivacy.Items2"), resources.GetString("DisabilitaPrivacy.Items3"), resources.GetString("DisabilitaPrivacy.Items4"), resources.GetString("DisabilitaPrivacy.Items5"), resources.GetString("DisabilitaPrivacy.Items6"), resources.GetString("DisabilitaPrivacy.Items7"), resources.GetString("DisabilitaPrivacy.Items8"), resources.GetString("DisabilitaPrivacy.Items9"), resources.GetString("DisabilitaPrivacy.Items10"), resources.GetString("DisabilitaPrivacy.Items11"), resources.GetString("DisabilitaPrivacy.Items12"), resources.GetString("DisabilitaPrivacy.Items13"), resources.GetString("DisabilitaPrivacy.Items14"), resources.GetString("DisabilitaPrivacy.Items15"), resources.GetString("DisabilitaPrivacy.Items16") });
             DisabilitaPrivacy.Name = "DisabilitaPrivacy";
-            toolTip1.SetToolTip(DisabilitaPrivacy, resources.GetString("DisabilitaPrivacy.ToolTip"));
             // 
             // btnAvviaSelezionati
             // 
@@ -72,7 +70,6 @@
             btnAvviaSelezionati.FlatAppearance.BorderSize = 0;
             btnAvviaSelezionati.ForeColor = Color.White;
             btnAvviaSelezionati.Name = "btnAvviaSelezionati";
-            toolTip1.SetToolTip(btnAvviaSelezionati, resources.GetString("btnAvviaSelezionati.ToolTip"));
             btnAvviaSelezionati.UseVisualStyleBackColor = true;
             btnAvviaSelezionati.Click += btnAvviaSelezionati_Click;
             // 
@@ -81,14 +78,12 @@
             resources.ApplyResources(lblWin7Lite, "lblWin7Lite");
             lblWin7Lite.ForeColor = Color.White;
             lblWin7Lite.Name = "lblWin7Lite";
-            toolTip1.SetToolTip(lblWin7Lite, resources.GetString("lblWin7Lite.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // AbilitaPrivacy
             // 
@@ -100,7 +95,6 @@
             AbilitaPrivacy.FormattingEnabled = true;
             AbilitaPrivacy.Items.AddRange(new object[] { resources.GetString("AbilitaPrivacy.Items"), resources.GetString("AbilitaPrivacy.Items1"), resources.GetString("AbilitaPrivacy.Items2"), resources.GetString("AbilitaPrivacy.Items3"), resources.GetString("AbilitaPrivacy.Items4"), resources.GetString("AbilitaPrivacy.Items5"), resources.GetString("AbilitaPrivacy.Items6"), resources.GetString("AbilitaPrivacy.Items7"), resources.GetString("AbilitaPrivacy.Items8"), resources.GetString("AbilitaPrivacy.Items9"), resources.GetString("AbilitaPrivacy.Items10"), resources.GetString("AbilitaPrivacy.Items11"), resources.GetString("AbilitaPrivacy.Items12"), resources.GetString("AbilitaPrivacy.Items13"), resources.GetString("AbilitaPrivacy.Items14"), resources.GetString("AbilitaPrivacy.Items15"), resources.GetString("AbilitaPrivacy.Items16") });
             AbilitaPrivacy.Name = "AbilitaPrivacy";
-            toolTip1.SetToolTip(AbilitaPrivacy, resources.GetString("AbilitaPrivacy.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -114,7 +108,6 @@
             // 
             resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // FormPrivacy
             // 
@@ -130,7 +123,6 @@
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPrivacy";
-            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

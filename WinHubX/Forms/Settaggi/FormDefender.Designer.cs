@@ -46,12 +46,11 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
-            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -65,7 +64,6 @@
             DisabilitaDefender.FormattingEnabled = true;
             DisabilitaDefender.Items.AddRange(new object[] { resources.GetString("DisabilitaDefender.Items"), resources.GetString("DisabilitaDefender.Items1"), resources.GetString("DisabilitaDefender.Items2"), resources.GetString("DisabilitaDefender.Items3"), resources.GetString("DisabilitaDefender.Items4"), resources.GetString("DisabilitaDefender.Items5"), resources.GetString("DisabilitaDefender.Items6"), resources.GetString("DisabilitaDefender.Items7"), resources.GetString("DisabilitaDefender.Items8"), resources.GetString("DisabilitaDefender.Items9"), resources.GetString("DisabilitaDefender.Items10"), resources.GetString("DisabilitaDefender.Items11"), resources.GetString("DisabilitaDefender.Items12") });
             DisabilitaDefender.Name = "DisabilitaDefender";
-            toolTip1.SetToolTip(DisabilitaDefender, resources.GetString("DisabilitaDefender.ToolTip"));
             // 
             // btnAvviaSelezionatiDef
             // 
@@ -74,7 +72,6 @@
             btnAvviaSelezionatiDef.FlatAppearance.BorderSize = 0;
             btnAvviaSelezionatiDef.ForeColor = Color.White;
             btnAvviaSelezionatiDef.Name = "btnAvviaSelezionatiDef";
-            toolTip1.SetToolTip(btnAvviaSelezionatiDef, resources.GetString("btnAvviaSelezionatiDef.ToolTip"));
             btnAvviaSelezionatiDef.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiDef.Click += btnAvviaSelezionatiDef_Click;
             // 
@@ -85,7 +82,6 @@
             btnProtezioneMinima.FlatAppearance.BorderSize = 0;
             btnProtezioneMinima.ForeColor = Color.White;
             btnProtezioneMinima.Name = "btnProtezioneMinima";
-            toolTip1.SetToolTip(btnProtezioneMinima, resources.GetString("btnProtezioneMinima.ToolTip"));
             btnProtezioneMinima.UseVisualStyleBackColor = true;
             btnProtezioneMinima.Click += btnProtezioneMinima_Click;
             // 
@@ -96,7 +92,6 @@
             btnRipristinaDefender.FlatAppearance.BorderSize = 0;
             btnRipristinaDefender.ForeColor = Color.White;
             btnRipristinaDefender.Name = "btnRipristinaDefender";
-            toolTip1.SetToolTip(btnRipristinaDefender, resources.GetString("btnRipristinaDefender.ToolTip"));
             btnRipristinaDefender.UseVisualStyleBackColor = true;
             btnRipristinaDefender.Click += btnRipristinaDefender_Click;
             // 
@@ -109,34 +104,29 @@
             AbilitaDefender.FormattingEnabled = true;
             AbilitaDefender.Items.AddRange(new object[] { resources.GetString("AbilitaDefender.Items"), resources.GetString("AbilitaDefender.Items1"), resources.GetString("AbilitaDefender.Items2"), resources.GetString("AbilitaDefender.Items3"), resources.GetString("AbilitaDefender.Items4"), resources.GetString("AbilitaDefender.Items5"), resources.GetString("AbilitaDefender.Items6"), resources.GetString("AbilitaDefender.Items7"), resources.GetString("AbilitaDefender.Items8"), resources.GetString("AbilitaDefender.Items9"), resources.GetString("AbilitaDefender.Items10"), resources.GetString("AbilitaDefender.Items11"), resources.GetString("AbilitaDefender.Items12") });
             AbilitaDefender.Name = "AbilitaDefender";
-            toolTip1.SetToolTip(AbilitaDefender, resources.GetString("AbilitaDefender.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
             label2.ForeColor = Color.White;
             label2.Name = "label2";
-            toolTip1.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
             label4.ForeColor = Color.Coral;
             label4.Name = "label4";
-            toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // progressBar1
             // 
             resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -163,7 +153,6 @@
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormDefender";
-            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

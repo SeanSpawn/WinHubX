@@ -61,15 +61,15 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.pngOffice;
             resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = Properties.Resources.pngOffice;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.png365;
             resources.ApplyResources(pictureBox2, "pictureBox2");
+            pictureBox2.Image = Properties.Resources.png365;
             pictureBox2.Name = "pictureBox2";
             pictureBox2.TabStop = false;
             // 
@@ -82,9 +82,9 @@
             // 
             // btn2019Online
             // 
+            resources.ApplyResources(btn2019Online, "btn2019Online");
             btn2019Online.Cursor = Cursors.Hand;
             btn2019Online.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2019Online, "btn2019Online");
             btn2019Online.ForeColor = Color.White;
             btn2019Online.Image = Properties.Resources.pngOnline;
             btn2019Online.Name = "btn2019Online";
@@ -93,9 +93,9 @@
             // 
             // btn2019Offline
             // 
+            resources.ApplyResources(btn2019Offline, "btn2019Offline");
             btn2019Offline.Cursor = Cursors.Hand;
             btn2019Offline.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2019Offline, "btn2019Offline");
             btn2019Offline.ForeColor = Color.White;
             btn2019Offline.Image = Properties.Resources.pngOffline;
             btn2019Offline.Name = "btn2019Offline";
@@ -104,9 +104,9 @@
             // 
             // btn2021Offline
             // 
+            resources.ApplyResources(btn2021Offline, "btn2021Offline");
             btn2021Offline.Cursor = Cursors.Hand;
             btn2021Offline.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2021Offline, "btn2021Offline");
             btn2021Offline.ForeColor = Color.White;
             btn2021Offline.Image = Properties.Resources.pngOffline;
             btn2021Offline.Name = "btn2021Offline";
@@ -115,9 +115,9 @@
             // 
             // btn2021Online
             // 
+            resources.ApplyResources(btn2021Online, "btn2021Online");
             btn2021Online.Cursor = Cursors.Hand;
             btn2021Online.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2021Online, "btn2021Online");
             btn2021Online.ForeColor = Color.White;
             btn2021Online.Image = Properties.Resources.pngOnline;
             btn2021Online.Name = "btn2021Online";
@@ -133,9 +133,9 @@
             // 
             // btn2024Offline
             // 
+            resources.ApplyResources(btn2024Offline, "btn2024Offline");
             btn2024Offline.Cursor = Cursors.Hand;
             btn2024Offline.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2024Offline, "btn2024Offline");
             btn2024Offline.ForeColor = Color.White;
             btn2024Offline.Image = Properties.Resources.pngOffline;
             btn2024Offline.Name = "btn2024Offline";
@@ -144,9 +144,9 @@
             // 
             // btn2024Online
             // 
+            resources.ApplyResources(btn2024Online, "btn2024Online");
             btn2024Online.Cursor = Cursors.Hand;
             btn2024Online.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn2024Online, "btn2024Online");
             btn2024Online.ForeColor = Color.White;
             btn2024Online.Image = Properties.Resources.pngOnline;
             btn2024Online.Name = "btn2024Online";
@@ -161,9 +161,9 @@
             // 
             // btn365Offline
             // 
+            resources.ApplyResources(btn365Offline, "btn365Offline");
             btn365Offline.Cursor = Cursors.Hand;
             btn365Offline.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn365Offline, "btn365Offline");
             btn365Offline.ForeColor = Color.White;
             btn365Offline.Image = Properties.Resources.pngOffline;
             btn365Offline.Name = "btn365Offline";
@@ -172,9 +172,9 @@
             // 
             // btn365Online
             // 
+            resources.ApplyResources(btn365Online, "btn365Online");
             btn365Online.Cursor = Cursors.Hand;
             btn365Online.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn365Online, "btn365Online");
             btn365Online.ForeColor = Color.White;
             btn365Online.Image = Properties.Resources.pngOnline;
             btn365Online.Name = "btn365Online";
@@ -190,20 +190,22 @@
             // 
             // btnAttivaOffice
             // 
+            resources.ApplyResources(btnAttivaOffice, "btnAttivaOffice");
             btnAttivaOffice.Cursor = Cursors.Hand;
             btnAttivaOffice.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnAttivaOffice, "btnAttivaOffice");
             btnAttivaOffice.ForeColor = Color.White;
+            btnAttivaOffice.Image = Properties.Resources.pngAttivaOffice;
             btnAttivaOffice.Name = "btnAttivaOffice";
             btnAttivaOffice.UseVisualStyleBackColor = true;
             btnAttivaOffice.Click += btnAttivaOffice_Click;
             // 
             // btnScrubber
             // 
+            resources.ApplyResources(btnScrubber, "btnScrubber");
             btnScrubber.Cursor = Cursors.Hand;
             btnScrubber.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnScrubber, "btnScrubber");
             btnScrubber.ForeColor = Color.White;
+            btnScrubber.Image = Properties.Resources.pngDisinstallaOffice;
             btnScrubber.Name = "btnScrubber";
             btnScrubber.UseVisualStyleBackColor = true;
             btnScrubber.Click += btnScrubber_Click;
@@ -216,10 +218,11 @@
             // 
             // btnPersonalizzaOffice
             // 
+            resources.ApplyResources(btnPersonalizzaOffice, "btnPersonalizzaOffice");
             btnPersonalizzaOffice.Cursor = Cursors.Hand;
             btnPersonalizzaOffice.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnPersonalizzaOffice, "btnPersonalizzaOffice");
             btnPersonalizzaOffice.ForeColor = Color.White;
+            btnPersonalizzaOffice.Image = Properties.Resources.pngPersonalizzaOffice;
             btnPersonalizzaOffice.Name = "btnPersonalizzaOffice";
             btnPersonalizzaOffice.UseVisualStyleBackColor = true;
             btnPersonalizzaOffice.Click += btnPersonalizzaOffice_Click;

@@ -34,7 +34,15 @@ namespace WinHubX.Forms.CreaISO
             var token = _cancellationTokenSource.Token;
             form1.comboBox1.Enabled = false;
             form1.pictureBox3.Enabled = false;
-
+            form1.btnHome.Enabled = false;
+            form1.btnWin.Enabled = false;
+            form1.btnOffice.Enabled = false;
+            form1.btnSettaggi.Enabled = false;
+            form1.btnDebloat.Enabled = false;
+            form1.btnCreaISO.Enabled = false;
+            form1.btnCreaISO.Enabled = false;
+            form1.btnmonitoraggio.Enabled = false;
+            form1.btnReinstallaApp.Enabled = false;
             try
             {
                 btnStop.Visible = true;
@@ -125,6 +133,15 @@ namespace WinHubX.Forms.CreaISO
                 btnBack.Enabled = true;
                 form1.comboBox1.Enabled = true;
                 form1.pictureBox3.Enabled = true;
+                form1.btnHome.Enabled = true;
+                form1.btnWin.Enabled = true;
+                form1.btnOffice.Enabled = true;
+                form1.btnSettaggi.Enabled = true;
+                form1.btnDebloat.Enabled = true;
+                form1.btnCreaISO.Enabled = true;
+                form1.btnCreaISO.Enabled = true;
+                form1.btnmonitoraggio.Enabled = true;
+                form1.btnReinstallaApp.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -1117,6 +1134,15 @@ namespace WinHubX.Forms.CreaISO
             btnBack.Cursor = Cursors.Hand;
             form1.comboBox1.Enabled = true;
             form1.pictureBox3.Enabled = true;
+            form1.btnHome.Enabled = true;
+            form1.btnWin.Enabled = true;
+            form1.btnOffice.Enabled = true;
+            form1.btnSettaggi.Enabled = true;
+            form1.btnDebloat.Enabled = true;
+            form1.btnCreaISO.Enabled = true;
+            form1.btnCreaISO.Enabled = true;
+            form1.btnmonitoraggio.Enabled = true;
+            form1.btnReinstallaApp.Enabled = true;
         }
     }
 }

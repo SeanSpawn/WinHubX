@@ -43,12 +43,11 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
-            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -63,7 +62,6 @@
             DisabilitaUtility.FormattingEnabled = true;
             DisabilitaUtility.Items.AddRange(new object[] { resources.GetString("DisabilitaUtility.Items"), resources.GetString("DisabilitaUtility.Items1"), resources.GetString("DisabilitaUtility.Items2"), resources.GetString("DisabilitaUtility.Items3"), resources.GetString("DisabilitaUtility.Items4"), resources.GetString("DisabilitaUtility.Items5"), resources.GetString("DisabilitaUtility.Items6"), resources.GetString("DisabilitaUtility.Items7"), resources.GetString("DisabilitaUtility.Items8"), resources.GetString("DisabilitaUtility.Items9"), resources.GetString("DisabilitaUtility.Items10"), resources.GetString("DisabilitaUtility.Items11"), resources.GetString("DisabilitaUtility.Items12"), resources.GetString("DisabilitaUtility.Items13"), resources.GetString("DisabilitaUtility.Items14"), resources.GetString("DisabilitaUtility.Items15"), resources.GetString("DisabilitaUtility.Items16"), resources.GetString("DisabilitaUtility.Items17") });
             DisabilitaUtility.Name = "DisabilitaUtility";
-            toolTip1.SetToolTip(DisabilitaUtility, resources.GetString("DisabilitaUtility.ToolTip"));
             // 
             // AbilitaUtility
             // 
@@ -75,7 +73,6 @@
             AbilitaUtility.FormattingEnabled = true;
             AbilitaUtility.Items.AddRange(new object[] { resources.GetString("AbilitaUtility.Items"), resources.GetString("AbilitaUtility.Items1"), resources.GetString("AbilitaUtility.Items2"), resources.GetString("AbilitaUtility.Items3"), resources.GetString("AbilitaUtility.Items4"), resources.GetString("AbilitaUtility.Items5"), resources.GetString("AbilitaUtility.Items6"), resources.GetString("AbilitaUtility.Items7"), resources.GetString("AbilitaUtility.Items8"), resources.GetString("AbilitaUtility.Items9"), resources.GetString("AbilitaUtility.Items10"), resources.GetString("AbilitaUtility.Items11"), resources.GetString("AbilitaUtility.Items12"), resources.GetString("AbilitaUtility.Items13"), resources.GetString("AbilitaUtility.Items14"), resources.GetString("AbilitaUtility.Items15"), resources.GetString("AbilitaUtility.Items16"), resources.GetString("AbilitaUtility.Items17"), resources.GetString("AbilitaUtility.Items18") });
             AbilitaUtility.Name = "AbilitaUtility";
-            toolTip1.SetToolTip(AbilitaUtility, resources.GetString("AbilitaUtility.ToolTip"));
             // 
             // btnAvviaSelezionatiUti
             // 
@@ -84,7 +81,6 @@
             btnAvviaSelezionatiUti.FlatAppearance.BorderSize = 0;
             btnAvviaSelezionatiUti.ForeColor = Color.White;
             btnAvviaSelezionatiUti.Name = "btnAvviaSelezionatiUti";
-            toolTip1.SetToolTip(btnAvviaSelezionatiUti, resources.GetString("btnAvviaSelezionatiUti.ToolTip"));
             btnAvviaSelezionatiUti.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiUti.Click += btnAvviaSelezionatiUti_Click;
             // 
@@ -93,20 +89,17 @@
             resources.ApplyResources(lblWin7Lite, "lblWin7Lite");
             lblWin7Lite.ForeColor = Color.White;
             lblWin7Lite.Name = "lblWin7Lite";
-            toolTip1.SetToolTip(lblWin7Lite, resources.GetString("lblWin7Lite.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // progressBar1
             // 
             resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -130,7 +123,6 @@
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormUtility";
-            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

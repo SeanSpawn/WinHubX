@@ -81,8 +81,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.pngDefenderWin;
             resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = Properties.Resources.pngDefenderWin;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 

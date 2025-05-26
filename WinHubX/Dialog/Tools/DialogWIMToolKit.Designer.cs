@@ -81,7 +81,7 @@
             // 
             // imgTool
             // 
-            imgTool.Image = Properties.Resources.extWIMToolkit;
+            imgTool.Image = Properties.Resources.pngextWIMToolkit;
             imgTool.Location = new Point(192, 7);
             imgTool.Margin = new Padding(3, 2, 3, 2);
             imgTool.Name = "imgTool";

@@ -47,37 +47,33 @@
             // 
             // btnAvviaSelezionatiApp
             // 
-            resources.ApplyResources(btnAvviaSelezionatiApp, "btnAvviaSelezionatiApp");
             btnAvviaSelezionatiApp.Cursor = Cursors.Hand;
             btnAvviaSelezionatiApp.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnAvviaSelezionatiApp, "btnAvviaSelezionatiApp");
             btnAvviaSelezionatiApp.ForeColor = Color.White;
             btnAvviaSelezionatiApp.Name = "btnAvviaSelezionatiApp";
-            toolTip1.SetToolTip(btnAvviaSelezionatiApp, resources.GetString("btnAvviaSelezionatiApp.ToolTip"));
             btnAvviaSelezionatiApp.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiApp.Click += btnAvviaSelezionatiApp_Click;
             // 
             // App1
             // 
-            resources.ApplyResources(App1, "App1");
             App1.BackColor = Color.FromArgb(37, 38, 39);
             App1.BorderStyle = BorderStyle.None;
             App1.ForeColor = Color.White;
             App1.FormattingEnabled = true;
             App1.Items.AddRange(new object[] { resources.GetString("App1.Items"), resources.GetString("App1.Items1"), resources.GetString("App1.Items2") });
+            resources.ApplyResources(App1, "App1");
             App1.Name = "App1";
-            toolTip1.SetToolTip(App1, resources.GetString("App1.ToolTip"));
             // 
             // txtSearch
             // 
             resources.ApplyResources(txtSearch, "txtSearch");
             txtSearch.Name = "txtSearch";
-            toolTip1.SetToolTip(txtSearch, resources.GetString("txtSearch.ToolTip"));
             // 
             // txtOutput
             // 
             resources.ApplyResources(txtOutput, "txtOutput");
             txtOutput.Name = "txtOutput";
-            toolTip1.SetToolTip(txtOutput, resources.GetString("txtOutput.ToolTip"));
             // 
             // dataGridViewResults
             // 
@@ -86,7 +82,6 @@
             dataGridViewResults.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewResults.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewResults.Name = "dataGridViewResults";
-            toolTip1.SetToolTip(dataGridViewResults, resources.GetString("dataGridViewResults.ToolTip"));
             dataGridViewResults.CellDoubleClick += dataGridViewResults_CellDoubleClick;
             // 
             // btnSearch
@@ -96,7 +91,6 @@
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.ForeColor = Color.White;
             btnSearch.Name = "btnSearch";
-            toolTip1.SetToolTip(btnSearch, resources.GetString("btnSearch.ToolTip"));
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click_1;
             // 
@@ -105,7 +99,6 @@
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.FromArgb(224, 224, 224);
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // btn_AggiornaTutto
             // 
@@ -124,7 +117,6 @@
             btn_Aggiorna.FlatAppearance.BorderSize = 0;
             btn_Aggiorna.ForeColor = Color.White;
             btn_Aggiorna.Name = "btn_Aggiorna";
-            toolTip1.SetToolTip(btn_Aggiorna, resources.GetString("btn_Aggiorna.ToolTip"));
             btn_Aggiorna.UseVisualStyleBackColor = true;
             btn_Aggiorna.Click += btn_Aggiorna_Click;
             // 
@@ -135,7 +127,6 @@
             btnInstalla.FlatAppearance.BorderSize = 0;
             btnInstalla.ForeColor = Color.White;
             btnInstalla.Name = "btnInstalla";
-            toolTip1.SetToolTip(btnInstalla, resources.GetString("btnInstalla.ToolTip"));
             btnInstalla.UseVisualStyleBackColor = true;
             btnInstalla.Click += btnInstalla_Click;
             // 
@@ -143,7 +134,6 @@
             // 
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip1.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // FormReinstallaAPP
             // 
@@ -163,7 +153,6 @@
             Controls.Add(App1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormReinstallaAPP";
-            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             Load += FormReinstallaAPP_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewResults).EndInit();
             ResumeLayout(false);

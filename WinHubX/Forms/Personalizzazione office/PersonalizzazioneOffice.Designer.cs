@@ -331,9 +331,9 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
             btnBack.UseMnemonic = false;
@@ -384,6 +384,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PersonalizzazioneOffice";
+            FormClosing += PersonalizzazioneOffice_FormClosing;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

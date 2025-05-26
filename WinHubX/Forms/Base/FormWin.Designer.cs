@@ -68,6 +68,7 @@
             btnWin11.Cursor = Cursors.Hand;
             btnWin11.FlatAppearance.BorderSize = 0;
             btnWin11.ForeColor = Color.White;
+            btnWin11.Image = Properties.Resources.pngWindows11;
             btnWin11.Name = "btnWin11";
             btnWin11.UseVisualStyleBackColor = true;
             btnWin11.Click += btnWin11_Click;
@@ -116,6 +117,7 @@
             btnAttivaWin.Cursor = Cursors.Hand;
             btnAttivaWin.FlatAppearance.BorderSize = 0;
             btnAttivaWin.ForeColor = Color.White;
+            btnAttivaWin.Image = Properties.Resources.pngAttivaWin;
             btnAttivaWin.Name = "btnAttivaWin";
             btnAttivaWin.UseVisualStyleBackColor = true;
             btnAttivaWin.Click += btnAttivaWin_Click;
@@ -126,6 +128,7 @@
             btnCambioEdizione.Cursor = Cursors.Hand;
             btnCambioEdizione.FlatAppearance.BorderSize = 0;
             btnCambioEdizione.ForeColor = Color.White;
+            btnCambioEdizione.Image = Properties.Resources.pngCambioEdizione;
             btnCambioEdizione.Name = "btnCambioEdizione";
             btnCambioEdizione.UseVisualStyleBackColor = true;
             btnCambioEdizione.Click += btnCambioEdizione_Click;

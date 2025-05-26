@@ -7,79 +7,71 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <AssemblyVersion>2.4.2.6</AssemblyVersion>
-    <FileVersion>2.4.2.6</FileVersion>
+    <AssemblyVersion>2.4.2.8</AssemblyVersion>
+    <FileVersion>2.4.2.8</FileVersion>
 	<ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
-	<ApplicationIcon>Images\icoLogoWhite.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
 	<Version>2.0.0</Version>
+	<ApplicationIcon>icoLogoWhite.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\btnAIO.png" />
-    <None Remove="Images\btnAIOVect.png" />
-    <None Remove="Images\computer-icons-question-mark-button-png-favpng-E45T7eWVvJxHqczEgbdu26ig4.png" />
-    <None Remove="Images\extWIMToolkit.png" />
-    <None Remove="Images\extWinCustomizer.png" />
-    <None Remove="Images\help.png" />
-    <None Remove="Images\homeLogo.png" />
-    <None Remove="Images\icoLogoWhite.ico" />
-    <None Remove="Images\png365.png" />
-    <None Remove="Images\pngArchitettura.png" />
-    <None Remove="Images\pngAttivaOffice.png" />
-    <None Remove="Images\pngAttivaWin.png" />
-    <None Remove="Images\pngAttivaWSA.png" />
-    <None Remove="Images\pngAttivaWSL.png" />
-    <None Remove="Images\pngAvanti.png" />
-    <None Remove="Images\pngBackArrow.png" />
-    <None Remove="Images\pngbypass.png" />
-    <None Remove="Images\pngCambioEdizione.png" />
-    <None Remove="Images\pngClose.png" />
-    <None Remove="Images\pngCoffee.png" />
-    <None Remove="Images\pngCreaISO.png" />
-    <None Remove="Images\pngDaRT.png" />
-    <None Remove="Images\pngDebloat.png" />
-    <None Remove="Images\pngDefenderWin.png" />
-    <None Remove="Images\pngDisinstallaOffice.png" />
-    <None Remove="Images\pngDomanda.png" />
-    <None Remove="Images\pngEdge.png" />
-    <None Remove="Images\pngHome.png" />
-    <None Remove="Images\pngKasperskyLive.png" />
-    <None Remove="Images\pngLogoWHX.png" />
-    <None Remove="Images\pngMinimize.png" />
-    <None Remove="Images\pngMonitoraggio.png" />
-    <None Remove="Images\pngMPM.png" />
-    <None Remove="Images\pngOffice.png" />
-    <None Remove="Images\pngOfficeHome.png" />
-    <None Remove="Images\pngOfficenuovo.png" />
-    <None Remove="Images\pngOffline.png" />
-    <None Remove="Images\pngOnline.png" />
-    <None Remove="Images\pngPersonalizzaOffice.png" />
-    <None Remove="Images\pngPersonalizzazione.png" />
-    <None Remove="Images\pngPrivacy.png" />
-    <None Remove="Images\pngprocessi.png" />
-    <None Remove="Images\pngRipristinaWindows.png" />
-    <None Remove="Images\pngSettaggi.png" />
-    <None Remove="Images\pngTelegram.png" />
-    <None Remove="Images\pngTools.png" />
-    <None Remove="Images\pngUpdateWin.png" />
-    <None Remove="Images\pngUtility.png" />
-    <None Remove="Images\pngWin.png" />
-    <None Remove="Images\pngWin10.png" />
-    <None Remove="Images\pngWin7.png" />
-    <None Remove="Images\pngWin8dot1.png" />
-    <None Remove="Images\pngWindows.png" />
-    <None Remove="Images\pngWindows11.png" />
-    <None Remove="Images\pngWinhubxsystemmonitor.png" />
-    <None Remove="Images\pngWinLive.png" />
-    <None Remove="Images\pngWinWhat.png" />
-    <None Remove="Images\pngWSA.png" />
-    <None Remove="Images\pngXtndLogo_WinHubX.png" />
-    <None Remove="Images\term_giallo.png" />
-    <None Remove="Images\term_rosso.png" />
-    <None Remove="Images\term_verde.png" />
-    <None Remove="Images\update.png" />
-    <None Remove="Resources\icoWinHubX.ico" />
+    <None Remove="Resources\Immagini\Form1\englisj.jpg" />
+    <None Remove="Resources\Immagini\Form1\italias.jpg" />
+    <None Remove="Resources\Immagini\Form1\pngAddApp.png" />
+    <None Remove="Resources\Immagini\Form1\pngClose.png" />
+    <None Remove="Resources\Immagini\Form1\pngCreaISO.png" />
+    <None Remove="Resources\Immagini\Form1\pngHome.png" />
+    <None Remove="Resources\Immagini\Form1\pngLogoWHX.png" />
+    <None Remove="Resources\Immagini\Form1\pngmaxi.png" />
+    <None Remove="Resources\Immagini\Form1\pngMinimize.png" />
+    <None Remove="Resources\Immagini\Form1\pngMonitoraggio.png" />
+    <None Remove="Resources\Immagini\Form1\pngOfficeHome.png" />
+    <None Remove="Resources\Immagini\Form1\pngprocessi.png" />
+    <None Remove="Resources\Immagini\Form1\pngSettaggi.png" />
+    <None Remove="Resources\Immagini\Form1\pngTools.png" />
+    <None Remove="Resources\Immagini\Form1\pngWin.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngArchitettura.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngbypass.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngDebloat.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngDefenderWin.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngDomanda.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngEdge.png" />
+    <None Remove="Resources\Immagini\FormCreaISO\pngWin10.png" />
+    <None Remove="Resources\Immagini\FormHome\homeLogo.png" />
+    <None Remove="Resources\Immagini\FormHome\pngCoffee.png" />
+    <None Remove="Resources\Immagini\FormHome\pngTelegram.png" />
+    <None Remove="Resources\Immagini\FormMonitoraggio\term_giallo.png" />
+    <None Remove="Resources\Immagini\FormMonitoraggio\term_rosso.png" />
+    <None Remove="Resources\Immagini\FormMonitoraggio\term_verde.png" />
+    <None Remove="Resources\Immagini\FormOffice\png365.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngAttivaOffice.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngDisinstallaOffice.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngOffice.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngOffline.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngOnline.png" />
+    <None Remove="Resources\Immagini\FormOffice\pngPersonalizzaOffice.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngAttivaWSA.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngAttivaWSL.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngPersonalizzazione.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngPrivacy.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngRipristinaWindows.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngUpdateWin.png" />
+    <None Remove="Resources\Immagini\FormSettaggi\pngUtility.png" />
+    <None Remove="Resources\Immagini\FormTools\pngDaRT.png" />
+    <None Remove="Resources\Immagini\FormTools\pngDriverRST.png" />
+    <None Remove="Resources\Immagini\FormTools\pngextWIMToolkit.png" />
+    <None Remove="Resources\Immagini\FormTools\pngKasperskyLive.png" />
+    <None Remove="Resources\Immagini\FormTools\pngMPM.png" />
+    <None Remove="Resources\Immagini\FormTools\pngWinHubXLiteOS.png" />
+    <None Remove="Resources\Immagini\FormWin\pngAttivaWin.png" />
+    <None Remove="Resources\Immagini\FormWin\pngCambioEdizione.png" />
+    <None Remove="Resources\Immagini\FormWin\pngWin7.png" />
+    <None Remove="Resources\Immagini\FormWin\pngWin8dot1.png" />
+    <None Remove="Resources\Immagini\FormWin\pngWindows11.png" />
+    <None Remove="Resources\Immagini\FormWin\pngWinLive.png" />
+    <None Remove="Resources\Immagini\FormWin\pngWinWhat.png" />
+    <None Remove="Resources\Immagini\pngXtndLogo_WinHubX.png" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2021x32.xml" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2021x64.xml" />
     <None Remove="Resources\OfficePersonalizzato\Configurazione2024x32.xml" />
@@ -103,181 +95,184 @@
     <None Remove="Resources\TSforge_Activation.cmd" />
     <None Remove="Resources\TSforge_Activation_Office.cmd" />
     <None Remove="Resources\WinCustomizer.ps1" />
-    <None Remove="Resources\WinHubXOfficeScrubber.ps1" />
     <None Remove="Resources\WinHubXScrubber.cmd" />
     <None Remove="Resources\WinHubXStatoAttivazione.cmd" />
     <None Remove="Resources\WinHubXWSL.ps1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\extWIMToolkit.png">
+    <Content Include="icoLogoWhite.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Immagini\Form1\englisj.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\help.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\italias.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\homeLogo.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngAddApp.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\icoLogoWhite.ico">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngClose.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\png365.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngCreaISO.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngArchitettura.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngHome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngAttivaOffice.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngLogoWHX.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngAvanti.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngmaxi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngBackArrow.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngMinimize.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngbypass.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngMonitoraggio.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngClose.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngOfficeHome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngCoffee.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngprocessi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngDefenderWin.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngSettaggi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngDisinstallaOffice.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngTools.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngDomanda.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngEdge.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\Form1\pngXtndLogo_WinHubX.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngHome.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngArchitettura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngKasperskyLive.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngbypass.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngLogoWHX.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngDebloat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngMinimize.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngDefenderWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngMonitoraggio.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngDomanda.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngMPM.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngEdge.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngOfficeHome.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormCreaISO\pngWin10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngOffline.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormHome\homeLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngOnline.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormHome\pngCoffee.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngprocessi.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormHome\pngTelegram.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngRipristinaWindows.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormMonitoraggio\term_giallo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngTelegram.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormMonitoraggio\term_rosso.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngTools.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormMonitoraggio\term_verde.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngUpdateWin.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\png365.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngUtility.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngAttivaOffice.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWin10.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngDisinstallaOffice.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWin7.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngOffice.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWin8dot1.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngOffline.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWindows.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngOnline.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWinLive.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormOffice\pngPersonalizzaOffice.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWinWhat.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngAttivaWSA.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWSA.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngAttivaWSL.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngXtndLogo_WinHubX.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngPersonalizzazione.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngAttivaWin.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngPrivacy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngCreaISO.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngRipristinaWindows.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngDebloat.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngUpdateWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngOfficenuovo.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormSettaggi\pngUtility.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngPrivacy.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngDaRT.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngSettaggi.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngDriverRST.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngAttivaWSA.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngextWIMToolkit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngAttivaWSL.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngKasperskyLive.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngCambioEdizione.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngMPM.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngPersonalizzaOffice.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormTools\pngWinHubXLiteOS.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngPersonalizzazione.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngAttivaWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWindows11.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngCambioEdizione.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\term_giallo.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngWin7.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\term_rosso.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngWin8dot1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\term_verde.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngWindows11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\update.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngWinLive.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pngWinhubxsystemmonitor.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Immagini\FormWin\pngWinWhat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\OfficePersonalizzato\Configurazione2021x32.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -335,31 +330,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\pngDaRT.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Images\pngOffice.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Images\pngWin.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\OfficePersonalizzato\bin.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\icoWinHubX.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -375,9 +346,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TSforge_Activation_Office.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\WinHubXOfficeScrubber.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\WinHubXStatoAttivazione.cmd">

@@ -29,7 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
+            btnFullScreen = new Button();
+            btnMnmz = new Button();
+            btnClose = new Button();
+            pictureBox3 = new PictureBox();
+            comboBox1 = new ComboBox();
+            lblPanelTitle = new Label();
+            pictureBox2 = new PictureBox();
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            panel2 = new Panel();
+            pnlNav = new Panel();
             btnReinstallaApp = new Button();
             btnmonitoraggio = new Button();
             btnTools = new Button();
@@ -39,155 +51,48 @@
             btnOffice = new Button();
             btnWin = new Button();
             btnHome = new Button();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            pnlNav = new Panel();
             PnlFormLoader = new Panel();
-            btnClose = new Button();
-            btnMnmz = new Button();
-            pictureBox2 = new PictureBox();
-            lblPanelTitle = new Label();
-            comboBox1 = new ComboBox();
-            pictureBox3 = new PictureBox();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.BackColor = Color.FromArgb(64, 60, 59);
-            panel1.Controls.Add(btnReinstallaApp);
-            panel1.Controls.Add(btnmonitoraggio);
-            panel1.Controls.Add(btnTools);
-            panel1.Controls.Add(btnCreaISO);
-            panel1.Controls.Add(btnDebloat);
-            panel1.Controls.Add(btnSettaggi);
-            panel1.Controls.Add(btnOffice);
-            panel1.Controls.Add(btnWin);
-            panel1.Controls.Add(btnHome);
-            panel1.Controls.Add(panel2);
-            panel1.Name = "panel1";
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(panel3, 1, 0);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 1);
+            tableLayoutPanel1.Controls.Add(PnlFormLoader, 1, 1);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // btnReinstallaApp
+            // panel3
             // 
-            resources.ApplyResources(btnReinstallaApp, "btnReinstallaApp");
-            btnReinstallaApp.FlatAppearance.BorderSize = 0;
-            btnReinstallaApp.ForeColor = SystemColors.Window;
-            btnReinstallaApp.Image = Properties.Resources.pngAddApp;
-            btnReinstallaApp.Name = "btnReinstallaApp";
-            btnReinstallaApp.UseVisualStyleBackColor = true;
-            btnReinstallaApp.Click += btnReinstallaApp_Click;
+            resources.ApplyResources(panel3, "panel3");
+            panel3.BackColor = Color.FromArgb(37, 38, 39);
+            panel3.Controls.Add(btnFullScreen);
+            panel3.Controls.Add(btnMnmz);
+            panel3.Controls.Add(btnClose);
+            panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(comboBox1);
+            panel3.Controls.Add(lblPanelTitle);
+            panel3.Controls.Add(pictureBox2);
+            panel3.Name = "panel3";
             // 
-            // btnmonitoraggio
+            // btnFullScreen
             // 
-            resources.ApplyResources(btnmonitoraggio, "btnmonitoraggio");
-            btnmonitoraggio.FlatAppearance.BorderSize = 0;
-            btnmonitoraggio.ForeColor = SystemColors.Window;
-            btnmonitoraggio.Name = "btnmonitoraggio";
-            btnmonitoraggio.UseVisualStyleBackColor = true;
-            btnmonitoraggio.Click += btnmonitoraggio_Click;
-            // 
-            // btnTools
-            // 
-            resources.ApplyResources(btnTools, "btnTools");
-            btnTools.FlatAppearance.BorderSize = 0;
-            btnTools.ForeColor = SystemColors.Window;
-            btnTools.Name = "btnTools";
-            btnTools.UseVisualStyleBackColor = true;
-            btnTools.Click += btnTools_Click;
-            // 
-            // btnCreaISO
-            // 
-            resources.ApplyResources(btnCreaISO, "btnCreaISO");
-            btnCreaISO.FlatAppearance.BorderSize = 0;
-            btnCreaISO.ForeColor = SystemColors.Window;
-            btnCreaISO.Name = "btnCreaISO";
-            btnCreaISO.UseVisualStyleBackColor = true;
-            btnCreaISO.Click += btnCreaISO_Click;
-            // 
-            // btnDebloat
-            // 
-            resources.ApplyResources(btnDebloat, "btnDebloat");
-            btnDebloat.FlatAppearance.BorderSize = 0;
-            btnDebloat.ForeColor = SystemColors.Window;
-            btnDebloat.Name = "btnDebloat";
-            btnDebloat.UseVisualStyleBackColor = true;
-            btnDebloat.Click += btnDebloat_Click;
-            // 
-            // btnSettaggi
-            // 
-            resources.ApplyResources(btnSettaggi, "btnSettaggi");
-            btnSettaggi.FlatAppearance.BorderSize = 0;
-            btnSettaggi.ForeColor = SystemColors.Window;
-            btnSettaggi.Name = "btnSettaggi";
-            btnSettaggi.UseVisualStyleBackColor = true;
-            btnSettaggi.Click += btnSettaggi_Click;
-            // 
-            // btnOffice
-            // 
-            resources.ApplyResources(btnOffice, "btnOffice");
-            btnOffice.FlatAppearance.BorderSize = 0;
-            btnOffice.ForeColor = SystemColors.Window;
-            btnOffice.Name = "btnOffice";
-            btnOffice.UseVisualStyleBackColor = true;
-            btnOffice.Click += btnOffice_Click;
-            // 
-            // btnWin
-            // 
-            resources.ApplyResources(btnWin, "btnWin");
-            btnWin.FlatAppearance.BorderSize = 0;
-            btnWin.ForeColor = SystemColors.Window;
-            btnWin.Name = "btnWin";
-            btnWin.UseVisualStyleBackColor = true;
-            btnWin.Click += btnWin_Click;
-            // 
-            // btnHome
-            // 
-            resources.ApplyResources(btnHome, "btnHome");
-            btnHome.FlatAppearance.BorderSize = 0;
-            btnHome.ForeColor = SystemColors.Window;
-            btnHome.Name = "btnHome";
-            btnHome.UseVisualStyleBackColor = true;
-            btnHome.Click += btnHome_Click;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(pictureBox1);
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Name = "panel2";
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.Image = Properties.Resources.pngLogoWHX;
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.TabStop = false;
-            // 
-            // pnlNav
-            // 
-            pnlNav.BackColor = Color.FromArgb(0, 126, 249);
-            resources.ApplyResources(pnlNav, "pnlNav");
-            pnlNav.Name = "pnlNav";
-            // 
-            // PnlFormLoader
-            // 
-            resources.ApplyResources(PnlFormLoader, "PnlFormLoader");
-            PnlFormLoader.Name = "PnlFormLoader";
-            // 
-            // btnClose
-            // 
-            resources.ApplyResources(btnClose, "btnClose");
-            btnClose.Cursor = Cursors.Hand;
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.Image = Properties.Resources.pngClose;
-            btnClose.Name = "btnClose";
-            btnClose.UseMnemonic = false;
-            btnClose.UseVisualStyleBackColor = true;
-            btnClose.Click += btnClose_Click;
+            resources.ApplyResources(btnFullScreen, "btnFullScreen");
+            btnFullScreen.Cursor = Cursors.Hand;
+            btnFullScreen.FlatAppearance.BorderSize = 0;
+            btnFullScreen.Image = Properties.Resources.pngmaxi;
+            btnFullScreen.Name = "btnFullScreen";
+            btnFullScreen.UseMnemonic = false;
+            btnFullScreen.UseVisualStyleBackColor = true;
+            btnFullScreen.Click += btnFullScreen_Click;
             // 
             // btnMnmz
             // 
@@ -200,12 +105,34 @@
             btnMnmz.UseVisualStyleBackColor = true;
             btnMnmz.Click += btnMnmz_Click;
             // 
-            // pictureBox2
+            // btnClose
             // 
-            pictureBox2.Image = Properties.Resources.pngXtndLogo_WinHubX;
-            resources.ApplyResources(pictureBox2, "pictureBox2");
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.TabStop = false;
+            resources.ApplyResources(btnClose, "btnClose");
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.Image = Properties.Resources.pngClose;
+            btnClose.Name = "btnClose";
+            btnClose.UseMnemonic = false;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
+            // pictureBox3
+            // 
+            resources.ApplyResources(pictureBox3, "pictureBox3");
+            pictureBox3.Cursor = Cursors.Hand;
+            pictureBox3.Image = Properties.Resources.italias;
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
+            // 
+            // comboBox1
+            // 
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { resources.GetString("comboBox1.Items"), resources.GetString("comboBox1.Items1") });
+            comboBox1.Name = "comboBox1";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // lblPanelTitle
             // 
@@ -213,72 +140,198 @@
             lblPanelTitle.ForeColor = Color.White;
             lblPanelTitle.Name = "lblPanelTitle";
             // 
-            // comboBox1
+            // pictureBox2
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { resources.GetString("comboBox1.Items"), resources.GetString("comboBox1.Items1") });
-            resources.ApplyResources(comboBox1, "comboBox1");
-            comboBox1.Name = "comboBox1";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            pictureBox2.Image = Properties.Resources.pngXtndLogo_WinHubX;
+            resources.ApplyResources(pictureBox2, "pictureBox2");
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.TabStop = false;
             // 
-            // pictureBox3
+            // panel1
             // 
-            pictureBox3.Cursor = Cursors.Hand;
-            pictureBox3.Image = Properties.Resources.italias;
-            resources.ApplyResources(pictureBox3, "pictureBox3");
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(pictureBox1);
+            panel1.Name = "panel1";
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BackColor = Color.FromArgb(64, 60, 59);
+            pictureBox1.Image = Properties.Resources.pngLogoWHX;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(panel2, "panel2");
+            panel2.BackColor = Color.FromArgb(64, 60, 59);
+            panel2.Controls.Add(pnlNav);
+            panel2.Controls.Add(btnReinstallaApp);
+            panel2.Controls.Add(btnmonitoraggio);
+            panel2.Controls.Add(btnTools);
+            panel2.Controls.Add(btnCreaISO);
+            panel2.Controls.Add(btnDebloat);
+            panel2.Controls.Add(btnSettaggi);
+            panel2.Controls.Add(btnOffice);
+            panel2.Controls.Add(btnWin);
+            panel2.Controls.Add(btnHome);
+            panel2.Name = "panel2";
+            // 
+            // pnlNav
+            // 
+            pnlNav.BackColor = Color.FromArgb(0, 126, 249);
+            resources.ApplyResources(pnlNav, "pnlNav");
+            pnlNav.Name = "pnlNav";
+            // 
+            // btnReinstallaApp
+            // 
+            btnReinstallaApp.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnReinstallaApp, "btnReinstallaApp");
+            btnReinstallaApp.FlatAppearance.BorderSize = 0;
+            btnReinstallaApp.ForeColor = SystemColors.Window;
+            btnReinstallaApp.Image = Properties.Resources.pngAddApp;
+            btnReinstallaApp.Name = "btnReinstallaApp";
+            btnReinstallaApp.UseVisualStyleBackColor = true;
+            btnReinstallaApp.Click += btnReinstallaApp_Click;
+            // 
+            // btnmonitoraggio
+            // 
+            btnmonitoraggio.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnmonitoraggio, "btnmonitoraggio");
+            btnmonitoraggio.FlatAppearance.BorderSize = 0;
+            btnmonitoraggio.ForeColor = SystemColors.Window;
+            btnmonitoraggio.Image = Properties.Resources.pngMonitoraggio;
+            btnmonitoraggio.Name = "btnmonitoraggio";
+            btnmonitoraggio.UseVisualStyleBackColor = true;
+            btnmonitoraggio.Click += btnmonitoraggio_Click;
+            // 
+            // btnTools
+            // 
+            btnTools.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnTools, "btnTools");
+            btnTools.FlatAppearance.BorderSize = 0;
+            btnTools.ForeColor = SystemColors.Window;
+            btnTools.Image = Properties.Resources.pngTools;
+            btnTools.Name = "btnTools";
+            btnTools.UseVisualStyleBackColor = true;
+            btnTools.Click += btnTools_Click;
+            // 
+            // btnCreaISO
+            // 
+            btnCreaISO.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnCreaISO, "btnCreaISO");
+            btnCreaISO.FlatAppearance.BorderSize = 0;
+            btnCreaISO.ForeColor = SystemColors.Window;
+            btnCreaISO.Image = Properties.Resources.pngCreaISO;
+            btnCreaISO.Name = "btnCreaISO";
+            btnCreaISO.UseVisualStyleBackColor = true;
+            btnCreaISO.Click += btnCreaISO_Click;
+            // 
+            // btnDebloat
+            // 
+            btnDebloat.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnDebloat, "btnDebloat");
+            btnDebloat.FlatAppearance.BorderSize = 0;
+            btnDebloat.ForeColor = SystemColors.Window;
+            btnDebloat.Image = Properties.Resources.pngprocessi;
+            btnDebloat.Name = "btnDebloat";
+            btnDebloat.UseVisualStyleBackColor = true;
+            btnDebloat.Click += btnDebloat_Click;
+            // 
+            // btnSettaggi
+            // 
+            btnSettaggi.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnSettaggi, "btnSettaggi");
+            btnSettaggi.FlatAppearance.BorderSize = 0;
+            btnSettaggi.ForeColor = SystemColors.Window;
+            btnSettaggi.Image = Properties.Resources.pngSettaggi;
+            btnSettaggi.Name = "btnSettaggi";
+            btnSettaggi.UseVisualStyleBackColor = true;
+            btnSettaggi.Click += btnSettaggi_Click;
+            // 
+            // btnOffice
+            // 
+            btnOffice.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnOffice, "btnOffice");
+            btnOffice.FlatAppearance.BorderSize = 0;
+            btnOffice.ForeColor = SystemColors.Window;
+            btnOffice.Image = Properties.Resources.pngOfficeHome;
+            btnOffice.Name = "btnOffice";
+            btnOffice.UseVisualStyleBackColor = true;
+            btnOffice.Click += btnOffice_Click;
+            // 
+            // btnWin
+            // 
+            btnWin.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnWin, "btnWin");
+            btnWin.FlatAppearance.BorderSize = 0;
+            btnWin.ForeColor = SystemColors.Window;
+            btnWin.Image = Properties.Resources.pngWin;
+            btnWin.Name = "btnWin";
+            btnWin.UseVisualStyleBackColor = true;
+            btnWin.Click += btnWin_Click;
+            // 
+            // btnHome
+            // 
+            btnHome.Cursor = Cursors.Hand;
+            resources.ApplyResources(btnHome, "btnHome");
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.ForeColor = SystemColors.Window;
+            btnHome.Image = Properties.Resources.pngHome;
+            btnHome.Name = "btnHome";
+            btnHome.UseVisualStyleBackColor = true;
+            btnHome.Click += btnHome_Click;
+            // 
+            // PnlFormLoader
+            // 
+            resources.ApplyResources(PnlFormLoader, "PnlFormLoader");
+            PnlFormLoader.Name = "PnlFormLoader";
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(37, 38, 39);
-            Controls.Add(pictureBox3);
-            Controls.Add(comboBox1);
-            Controls.Add(lblPanelTitle);
-            Controls.Add(pictureBox2);
-            Controls.Add(btnMnmz);
-            Controls.Add(btnClose);
-            Controls.Add(PnlFormLoader);
-            Controls.Add(pnlNav);
-            Controls.Add(panel1);
+            Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Load += Form1_Load;
             Resize += Form1_Resize;
-            panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
         private Panel panel1;
         private Panel panel2;
-        private Button btnHome;
         private PictureBox pictureBox1;
-        private Button btnOffice;
-        private Button btnWin;
         private Panel pnlNav;
-        public Panel PnlFormLoader;
-        private Button btnClose;
+        public Button btnReinstallaApp;
+        public Button btnmonitoraggio;
+        public Button btnTools;
+        public Button btnCreaISO;
+        public Button btnDebloat;
+        public Button btnSettaggi;
+        public Button btnOffice;
+        public Button btnWin;
+        public Button btnHome;
         private Button btnMnmz;
-        private PictureBox pictureBox2;
-        public Label lblPanelTitle;
-        private Button btnSettaggi;
-        private Button btnDebloat;
-        private Button btnCreaISO;
-        private Button btnTools;
-        private Button btnmonitoraggio;
-        private Button btnReinstallaApp;
-        public ComboBox comboBox1;
+        private Button btnClose;
         public PictureBox pictureBox3;
+        public ComboBox comboBox1;
+        public Label lblPanelTitle;
+        private PictureBox pictureBox2;
+        public Panel PnlFormLoader;
+        private Button btnFullScreen;
     }
 }

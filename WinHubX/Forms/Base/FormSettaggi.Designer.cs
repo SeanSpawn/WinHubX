@@ -53,6 +53,7 @@
             btnPrivacy.Cursor = Cursors.Hand;
             btnPrivacy.FlatAppearance.BorderSize = 0;
             btnPrivacy.ForeColor = Color.White;
+            btnPrivacy.Image = Properties.Resources.pngPrivacy;
             btnPrivacy.Name = "btnPrivacy";
             btnPrivacy.UseVisualStyleBackColor = true;
             btnPrivacy.Click += btnPrivacy_Click;
@@ -63,6 +64,7 @@
             btnUtility.Cursor = Cursors.Hand;
             btnUtility.FlatAppearance.BorderSize = 0;
             btnUtility.ForeColor = Color.White;
+            btnUtility.Image = Properties.Resources.pngUtility;
             btnUtility.Name = "btnUtility";
             btnUtility.UseVisualStyleBackColor = true;
             btnUtility.Click += btnUtility_Click;
@@ -73,6 +75,7 @@
             btnDefender.Cursor = Cursors.Hand;
             btnDefender.FlatAppearance.BorderSize = 0;
             btnDefender.ForeColor = Color.White;
+            btnDefender.Image = Properties.Resources.pngDefenderWin;
             btnDefender.Name = "btnDefender";
             btnDefender.UseVisualStyleBackColor = true;
             btnDefender.Click += btnDefender_Click;
@@ -83,6 +86,7 @@
             btnUpdate.Cursor = Cursors.Hand;
             btnUpdate.FlatAppearance.BorderSize = 0;
             btnUpdate.ForeColor = Color.White;
+            btnUpdate.Image = Properties.Resources.pngUpdateWin;
             btnUpdate.Name = "btnUpdate";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
@@ -123,6 +127,7 @@
             btnRipristinaSO.Cursor = Cursors.Hand;
             btnRipristinaSO.FlatAppearance.BorderSize = 0;
             btnRipristinaSO.ForeColor = Color.White;
+            btnRipristinaSO.Image = Properties.Resources.pngRipristinaWindows;
             btnRipristinaSO.Name = "btnRipristinaSO";
             btnRipristinaSO.UseVisualStyleBackColor = true;
             btnRipristinaSO.Click += btnRipristinaSO_Click;
@@ -139,6 +144,7 @@
             btnAttivaWSA.Cursor = Cursors.Hand;
             btnAttivaWSA.FlatAppearance.BorderSize = 0;
             btnAttivaWSA.ForeColor = Color.White;
+            btnAttivaWSA.Image = Properties.Resources.pngAttivaWSA;
             btnAttivaWSA.Name = "btnAttivaWSA";
             btnAttivaWSA.UseVisualStyleBackColor = true;
             btnAttivaWSA.Click += btnAttivaWSA_Click;
@@ -149,6 +155,7 @@
             btnAttivaWSL.Cursor = Cursors.Hand;
             btnAttivaWSL.FlatAppearance.BorderSize = 0;
             btnAttivaWSL.ForeColor = Color.White;
+            btnAttivaWSL.Image = Properties.Resources.pngAttivaWSL;
             btnAttivaWSL.Name = "btnAttivaWSL";
             btnAttivaWSL.UseVisualStyleBackColor = true;
             btnAttivaWSL.Click += btnAttivaWSL_Click;

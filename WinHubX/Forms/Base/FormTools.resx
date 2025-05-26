@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnKasperky.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
   <data name="btnKasperky.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -160,6 +163,9 @@
   <data name="&gt;&gt;btnKasperky.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnWimTK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
   <data name="btnWimTK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -195,6 +201,9 @@
   </data>
   <data name="&gt;&gt;btnWimTK.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="btnWinHubXLiteOS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
   </data>
   <data name="btnWinHubXLiteOS.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -232,6 +241,9 @@
   <data name="&gt;&gt;btnWinHubXLiteOS.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="btnDaRT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
   <data name="btnDaRT.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -267,6 +279,9 @@
   </data>
   <data name="&gt;&gt;btnDaRT.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="btnMPM.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="btnMPM.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -307,6 +322,9 @@ Manager</value>
   </data>
   <data name="&gt;&gt;btnMPM.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnRSTDriver.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
   </data>
   <data name="btnRSTDriver.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>

@@ -148,6 +148,9 @@
   <data name="&gt;&gt;btnBack.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -181,6 +184,9 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="progressBar1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
   <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 347</value>
   </data>
@@ -201,6 +207,9 @@
   </data>
   <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="richTextBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 70</value>
@@ -226,6 +235,9 @@
   <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="button1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -233,7 +245,7 @@
     <value>Segoe UI, 18pt</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>470, 399</value>
+    <value>775, 401</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 45</value>
@@ -255,6 +267,9 @@
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="checkBox_hw.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="checkBox_hw.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,6 +301,9 @@
   <data name="&gt;&gt;checkBox_hw.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="checkBox_sw.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="checkBox_sw.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -316,6 +334,9 @@
   <data name="&gt;&gt;checkBox_sw.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="dateTimePicker1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 398</value>
   </data>
@@ -339,6 +360,9 @@
   </data>
   <data name="&gt;&gt;dateTimePicker1.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -373,6 +397,9 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="richTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="richTextBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>555, 70</value>
   </data>
@@ -396,6 +423,9 @@
   </data>
   <data name="&gt;&gt;richTextBox2.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -433,6 +463,9 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnStop.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -440,7 +473,7 @@
     <value>Segoe UI, 18pt</value>
   </data>
   <data name="btnStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>623, 399</value>
+    <value>655, 401</value>
   </data>
   <data name="btnStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 45</value>

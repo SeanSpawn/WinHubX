@@ -41,9 +41,9 @@
             // 
             // btnKasperky
             // 
+            resources.ApplyResources(btnKasperky, "btnKasperky");
             btnKasperky.Cursor = Cursors.Hand;
             btnKasperky.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnKasperky, "btnKasperky");
             btnKasperky.ForeColor = Color.White;
             btnKasperky.Image = Properties.Resources.pngKasperskyLive;
             btnKasperky.Name = "btnKasperky";
@@ -52,20 +52,20 @@
             // 
             // btnWimTK
             // 
+            resources.ApplyResources(btnWimTK, "btnWimTK");
             btnWimTK.Cursor = Cursors.Hand;
             btnWimTK.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnWimTK, "btnWimTK");
             btnWimTK.ForeColor = Color.White;
-            btnWimTK.Image = Properties.Resources.extWIMToolkit;
+            btnWimTK.Image = Properties.Resources.pngextWIMToolkit;
             btnWimTK.Name = "btnWimTK";
             btnWimTK.UseVisualStyleBackColor = true;
             btnWimTK.Click += btnWimTK_Click;
             // 
             // btnWinHubXLiteOS
             // 
+            resources.ApplyResources(btnWinHubXLiteOS, "btnWinHubXLiteOS");
             btnWinHubXLiteOS.Cursor = Cursors.Hand;
             btnWinHubXLiteOS.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnWinHubXLiteOS, "btnWinHubXLiteOS");
             btnWinHubXLiteOS.ForeColor = Color.White;
             btnWinHubXLiteOS.Image = Properties.Resources.pngWinHubXLiteOS;
             btnWinHubXLiteOS.Name = "btnWinHubXLiteOS";
@@ -74,9 +74,9 @@
             // 
             // btnDaRT
             // 
+            resources.ApplyResources(btnDaRT, "btnDaRT");
             btnDaRT.Cursor = Cursors.Hand;
             btnDaRT.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnDaRT, "btnDaRT");
             btnDaRT.ForeColor = Color.White;
             btnDaRT.Image = Properties.Resources.pngDaRT;
             btnDaRT.Name = "btnDaRT";
@@ -85,9 +85,9 @@
             // 
             // btnMPM
             // 
+            resources.ApplyResources(btnMPM, "btnMPM");
             btnMPM.Cursor = Cursors.Hand;
             btnMPM.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnMPM, "btnMPM");
             btnMPM.ForeColor = Color.White;
             btnMPM.Image = Properties.Resources.pngMPM;
             btnMPM.Name = "btnMPM";
@@ -96,9 +96,9 @@
             // 
             // btnRSTDriver
             // 
+            resources.ApplyResources(btnRSTDriver, "btnRSTDriver");
             btnRSTDriver.Cursor = Cursors.Hand;
             btnRSTDriver.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnRSTDriver, "btnRSTDriver");
             btnRSTDriver.ForeColor = Color.White;
             btnRSTDriver.Image = Properties.Resources.pngDriverRST;
             btnRSTDriver.Name = "btnRSTDriver";

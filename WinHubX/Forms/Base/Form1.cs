@@ -19,25 +19,106 @@ namespace WinHubX
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
+        private const int HTLEFT = 10;
+        private const int HTRIGHT = 11;
+        private const int HTTOP = 12;
+        private const int HTTOPLEFT = 13;
+        private const int HTTOPRIGHT = 14;
+        private const int HTBOTTOM = 15;
+        private const int HTBOTTOMLEFT = 16;
+        private const int HTBOTTOMRIGHT = 17;
+
         protected override void WndProc(ref Message m)
         {
+            const int gripSize = 10;
             if (m.Msg == WM_NCHITTEST)
-                m.Result = HT_CAPTION;
-            else
-                base.WndProc(ref m);
+            {
+                Point pos = PointToClient(new Point(m.LParam.ToInt32()));
+
+                if (pos.X <= gripSize)
+                {
+                    if (pos.Y <= gripSize)
+                        m.Result = HTTOPLEFT;
+                    else if (pos.Y >= ClientSize.Height - gripSize)
+                        m.Result = HTBOTTOMLEFT;
+                    else
+                        m.Result = HTLEFT;
+                }
+                else if (pos.X >= ClientSize.Width - gripSize)
+                {
+                    if (pos.Y <= gripSize)
+                        m.Result = HTTOPRIGHT;
+                    else if (pos.Y >= ClientSize.Height - gripSize)
+                        m.Result = HTBOTTOMRIGHT;
+                    else
+                        m.Result = HTRIGHT;
+                }
+                else if (pos.Y <= gripSize)
+                {
+                    m.Result = HTTOP;
+                }
+                else if (pos.Y >= ClientSize.Height - gripSize)
+                {
+                    m.Result = HTBOTTOM;
+                }
+                else
+                {
+                    base.WndProc(ref m);
+                }
+                return;
+            }
+
+            base.WndProc(ref m);
         }
+
         private NotifyIcon notifyIcon;
         private ContextMenuStrip trayIconContextMenu;
+        [DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
         public Form1()
         {
             InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            this.Padding = new Padding(2); // Aiuta visivamente con il resize
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Resize += (s, e) =>
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            };
             bottoni.AddRange(new[] { btnHome, btnWin, btnOffice, btnSettaggi, btnDebloat, btnCreaISO, btnTools, btnmonitoraggio });
             LoadForm(new FormHome(), btnHome, "Home");
             CheckForUpdatesOnStartup();
             InitializeTrayIcon();
             LanguageManager.LoadTranslations();
         }
+
+        private void EnableDragging(Control control)
+        {
+            // Non aggiungere il trascinamento a controlli interattivi
+            if (control is Button || control is TextBox || control is CheckBox || control is ComboBox || control is ListBox)
+                return;
+
+            control.MouseDown += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    ReleaseCapture();
+                    SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                }
+            };
+
+            // Ricorsivamente abilita il dragging solo sui controlli "contenitori"
+            foreach (Control child in control.Controls)
+            {
+                EnableDragging(child);
+            }
+        }
+
+
         private void ShowFromTray()
         {
             this.Show();
@@ -87,7 +168,7 @@ namespace WinHubX
         private async Task CheckForUpdatesAsync()
         {
             string configUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
-            string currentVersion = "2.4.2.6";
+            string currentVersion = "2.4.2.7";
 
             try
             {
@@ -440,6 +521,11 @@ if ($existingRestorePoints.Count -eq 0) {
                 pictureBox3.Image = Properties.Resources.englisj;
             }
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            EnableDragging(tableLayoutPanel1);
+            EnableDragging(panel1);
+            EnableDragging(panel2);
+            EnableDragging(panel3);
+            EnableDragging(PnlFormLoader);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -469,6 +555,36 @@ if ($existingRestorePoints.Count -eq 0) {
             if (!isLoading)
             {
                 CheckForUpdatesOnStartup();
+            }
+        }
+        private bool isFullScreen = false;
+        private FormWindowState previousWindowState;
+        private FormBorderStyle previousBorderStyle;
+        private Rectangle previousBounds;
+        private void btnFullScreen_Click(object sender, EventArgs e)
+        {
+            if (!isFullScreen)
+            {
+                // Salvo lo stato precedente
+                previousWindowState = this.WindowState;
+                previousBorderStyle = this.FormBorderStyle;
+                previousBounds = this.Bounds;
+
+                // Imposto il full screen
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Normal; // Necessario per evitare problemi con la massimizzazione precedente
+                this.Bounds = Screen.PrimaryScreen.Bounds;
+
+                isFullScreen = true;
+            }
+            else
+            {
+                // Ripristino lo stato precedente
+                this.FormBorderStyle = previousBorderStyle;
+                this.WindowState = previousWindowState;
+                this.Bounds = previousBounds;
+
+                isFullScreen = false;
             }
         }
     }

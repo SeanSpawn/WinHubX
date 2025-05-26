@@ -67,9 +67,9 @@
             // 
             // richTextBox1
             // 
+            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.BackColor = Color.FromArgb(37, 38, 39);
             richTextBox1.ForeColor = Color.White;
-            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.Name = "richTextBox1";
             // 
             // button1
@@ -108,9 +108,9 @@
             // 
             // richTextBox2
             // 
+            resources.ApplyResources(richTextBox2, "richTextBox2");
             richTextBox2.BackColor = Color.FromArgb(37, 38, 39);
             richTextBox2.ForeColor = Color.White;
-            resources.ApplyResources(richTextBox2, "richTextBox2");
             richTextBox2.Name = "richTextBox2";
             // 
             // label3

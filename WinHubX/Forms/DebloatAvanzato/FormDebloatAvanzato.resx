@@ -145,7 +145,7 @@
     <value>6</value>
   </data>
   <data name="checkBox_WindowsDefender.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+    <value>Top, Right</value>
   </data>
   <data name="checkBox_WindowsDefender.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -270,6 +270,9 @@
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>539, 21</value>

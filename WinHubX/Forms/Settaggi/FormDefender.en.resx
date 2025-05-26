@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnBack.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="DisabilitaDefender.Items" xml:space="preserve">
     <value>Disable Folder Access Control</value>
   </data>
@@ -159,9 +156,6 @@
   <data name="DisabilitaDefender.Items12" xml:space="preserve">
     <value>Disable Windows Defender Services</value>
   </data>
-  <data name="DisabilitaDefender.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAvviaSelezionatiDef.Location" type="System.Drawing.Point, System.Drawing">
     <value>344, 374</value>
@@ -172,17 +166,15 @@
   <data name="btnAvviaSelezionatiDef.Text" xml:space="preserve">
     <value>Run Select</value>
   </data>
-  <data name="btnAvviaSelezionatiDef.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnProtezioneMinima.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 50</value>
   </data>
   <data name="btnProtezioneMinima.Text" xml:space="preserve">
     <value>Minimum protection</value>
   </data>
-  <data name="btnProtezioneMinima.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnRipristinaDefender.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="btnRipristinaDefender.Location" type="System.Drawing.Point, System.Drawing">
     <value>659, 374</value>
@@ -192,9 +184,6 @@
   </data>
   <data name="btnRipristinaDefender.Text" xml:space="preserve">
     <value>Restore Defender</value>
-  </data>
-  <data name="btnRipristinaDefender.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="AbilitaDefender.Items" xml:space="preserve">
     <value>Enable Folder Access Control</value>
@@ -235,26 +224,17 @@
   <data name="AbilitaDefender.Items12" xml:space="preserve">
     <value>Enable Windows Defender Services</value>
   </data>
-  <data name="AbilitaDefender.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 31</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Disable Defender</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 31</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Enable Defender</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 45</value>
@@ -264,13 +244,7 @@
 you will be more exposed
 to possible viruses</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="progressBar1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="progressBar1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
   </data>
 </root>

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.IO.Compression;
 using System.Net;
-using System.Reflection;
 using WinHubX.Dialog;
 using WinHubX.Forms.Personalizzazione_office;
 
@@ -354,73 +354,95 @@ namespace WinHubX
         }
         #endregion
 
+        private async Task<string> OttiniURL(string jsonUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetStringAsync(jsonUrl);
+                var json = JObject.Parse(response);
+                return json["FormOffice"]["scrubber"].ToString();
+            }
+        }
 
-        private void btnScrubber_Click(object sender, EventArgs e)
+        private async void btnScrubber_Click(object sender, EventArgs e)
         {
             try
             {
-                string assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
-                string resourcePath = $"{assemblyName}.Resources.WinHubXOfficeScrubber.ps1";
-                byte[] exeBytes = LoadEmbeddedResource(resourcePath);
-                string ps1FilePath = Path.Combine(Path.GetTempPath(), "WinHubXOfficeScrubber.ps1");
-                File.WriteAllBytes(ps1FilePath, exeBytes);
-                if (File.Exists(ps1FilePath))
+                string jsonUrl = "https://aimodsitalia.store/ConfigWinHubX/configWinHubX.json";
+                string zipFileUrl = await OttiniURL(jsonUrl);
+
+                // Percorso cartella temporanea
+                string tempFolder = Path.Combine(Path.GetTempPath(), "OfficeScrubber");
+                string tempZipPath = Path.Combine(tempFolder, "OfficeScrubber.zip");
+
+                // Pulisce ed eventualmente ricrea la cartella
+                if (Directory.Exists(tempFolder))
+                    Directory.Delete(tempFolder, true);
+                Directory.CreateDirectory(tempFolder);
+
+                // Scarica lo ZIP
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(zipFileUrl))
+                using (FileStream fs = new FileStream(tempZipPath, FileMode.Create, FileAccess.Write))
                 {
-                    StartPowerShell(ps1FilePath);
+                    await response.Content.CopyToAsync(fs);
                 }
-                else
+
+                // Estrai ZIP
+                ZipFile.ExtractToDirectory(tempZipPath, tempFolder);
+
+                // Verifica esistenza .cmd
+                string cmdPath = Path.Combine(tempFolder, "OfficeScrubber.cmd");
+                if (!File.Exists(cmdPath))
                 {
-                    MessageBox.Show(
-                        string.Format(LanguageManager.GetTranslation("FormOffice", "fileextracterror"), ps1FilePath),
-                        "Errore",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
+                    return;
                 }
+
+                // Avvia come amministratore e attendi chiusura
+                Process process = new Process();
+                process.StartInfo.FileName = "cmd.exe";
+                process.StartInfo.Arguments = $"/c \"{cmdPath}\"";
+                process.StartInfo.WorkingDirectory = tempFolder;
+                process.StartInfo.Verb = "runas"; // Avvia come amministratore
+                process.StartInfo.UseShellExecute = true;
+
+                process.Start();
+                await Task.Run(() => process.WaitForExit());
+                await Task.Run(() => AttendiScrubberConTitolo("Office Scrubber v12"));
+                Directory.Delete(tempFolder, true);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Errore: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private byte[] LoadEmbeddedResource(string resourcePath)
+        private async Task AttendiScrubberConTitolo(string titolo, int timeoutMs = 10 * 60 * 1000)
         {
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
+            int waited = 0;
+            Process scrubberProc = null;
+
+            while (waited < timeoutMs)
             {
-                if (stream == null)
-                {
-                    throw new InvalidOperationException(
-                        string.Format(LanguageManager.GetTranslation("FormOffice", "resourcenotfound"), resourcePath)
-                    );
-                }
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
-                return buffer;
+                scrubberProc = Process.GetProcessesByName("powershell")
+                    .FirstOrDefault(p => p.MainWindowTitle.Contains(titolo));
+
+                if (scrubberProc != null)
+                    break;
+
+                await Task.Delay(1000);
+                waited += 1000;
             }
-        }
 
-        private void StartPowerShell(string scriptFilePath)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo
+            if (scrubberProc != null)
             {
-                FileName = "powershell.exe",
-                Arguments = $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"",
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                RedirectStandardOutput = true
-            };
-
-            using (Process process = new Process { StartInfo = startInfo })
-            {
-                process.Start();
-                string output = process.StandardOutput.ReadToEnd();
+                scrubberProc.WaitForExit();
             }
         }
 
         private void btnPersonalizzaOffice_Click(object sender, EventArgs e)
         {
-            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormTools", "paneltitle");
+            form1.lblPanelTitle.Text = LanguageManager.GetTranslation("FormOffice", "paneltitle");
             form1.PnlFormLoader.Controls.Clear();
             PersonalizzazioneOffice formPersonalizzazioneOffice = new PersonalizzazioneOffice(form1, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             formPersonalizzazioneOffice.FormBorderStyle = FormBorderStyle.None;

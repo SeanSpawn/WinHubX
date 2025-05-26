@@ -40,10 +40,10 @@
             // 
             // richTextBox1
             // 
-            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.BackColor = Color.DimGray;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.ForeColor = Color.White;
+            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.Name = "richTextBox1";
             // 
             // progressBar1
@@ -58,8 +58,8 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.No;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.FlatAppearance.BorderSize = 0;
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";

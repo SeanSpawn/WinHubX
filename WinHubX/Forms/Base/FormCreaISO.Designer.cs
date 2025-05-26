@@ -89,25 +89,26 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.pngDefenderWin;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
+            resources.ApplyResources(pictureBox2, "pictureBox2");
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = Properties.Resources.pngWin10;
-            resources.ApplyResources(pictureBox2, "pictureBox2");
             pictureBox2.Name = "pictureBox2";
             pictureBox2.TabStop = false;
             // 
             // groupBox4
             // 
+            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Controls.Add(NotRemProcRad);
             groupBox4.Controls.Add(RemProcRad);
             groupBox4.ForeColor = Color.White;
-            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
             // 
@@ -129,17 +130,18 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox5, "pictureBox5");
+            pictureBox5.BackColor = Color.Transparent;
+            pictureBox5.Image = Properties.Resources.pngDebloat;
             pictureBox5.Name = "pictureBox5";
             pictureBox5.TabStop = false;
             // 
             // groupBox6
             // 
+            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Controls.Add(ThirTwoRad);
             groupBox6.Controls.Add(SixforArchRad);
             groupBox6.ForeColor = Color.White;
-            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Name = "groupBox6";
             groupBox6.TabStop = false;
             // 
@@ -161,10 +163,10 @@
             // 
             // groupBox5
             // 
+            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Controls.Add(StockAppRad);
             groupBox5.Controls.Add(DebAppRad);
             groupBox5.ForeColor = Color.White;
-            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Name = "groupBox5";
             groupBox5.TabStop = false;
             // 
@@ -186,10 +188,10 @@
             // 
             // groupBox3
             // 
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(NotDisWinDefRad);
             groupBox3.Controls.Add(DisWindDefRad);
             groupBox3.ForeColor = Color.White;
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             // 
@@ -211,10 +213,10 @@
             // 
             // groupBox7
             // 
+            resources.ApplyResources(groupBox7, "groupBox7");
             groupBox7.Controls.Add(Win11BypassRad);
             groupBox7.Controls.Add(Win11StockRad);
             groupBox7.ForeColor = Color.White;
-            resources.ApplyResources(groupBox7, "groupBox7");
             groupBox7.Name = "groupBox7";
             groupBox7.TabStop = false;
             // 
@@ -236,10 +238,10 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(Win11Rad);
             groupBox2.Controls.Add(Win10Rad);
             groupBox2.ForeColor = Color.White;
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
@@ -263,10 +265,10 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(RemEdgeRad);
             groupBox1.Controls.Add(NotRemEdgeRad);
             groupBox1.ForeColor = Color.White;
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
@@ -300,37 +302,41 @@
             // 
             // btn_CreaISO
             // 
-            btn_CreaISO.Cursor = Cursors.Hand;
             resources.ApplyResources(btn_CreaISO, "btn_CreaISO");
+            btn_CreaISO.Cursor = Cursors.Hand;
             btn_CreaISO.Name = "btn_CreaISO";
             btn_CreaISO.UseVisualStyleBackColor = true;
             btn_CreaISO.Click += btn_CreaISO_Click;
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox3, "pictureBox3");
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.Image = Properties.Resources.pngEdge;
             pictureBox3.Name = "pictureBox3";
             pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            pictureBox4.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox4, "pictureBox4");
+            pictureBox4.BackColor = Color.Transparent;
+            pictureBox4.Image = Properties.Resources.pngArchitettura;
             pictureBox4.Name = "pictureBox4";
             pictureBox4.TabStop = false;
             // 
             // pictureBox6
             // 
-            pictureBox6.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox6, "pictureBox6");
+            pictureBox6.BackColor = Color.Transparent;
+            pictureBox6.Image = Properties.Resources.pngprocessi;
             pictureBox6.Name = "pictureBox6";
             pictureBox6.TabStop = false;
             // 
             // pictureBox7
             // 
-            pictureBox7.BackColor = Color.Transparent;
             resources.ApplyResources(pictureBox7, "pictureBox7");
+            pictureBox7.BackColor = Color.Transparent;
+            pictureBox7.Image = Properties.Resources.pngbypass;
             pictureBox7.Name = "pictureBox7";
             pictureBox7.TabStop = false;
             // 
@@ -348,9 +354,9 @@
             // 
             // pictureBox8
             // 
+            resources.ApplyResources(pictureBox8, "pictureBox8");
             pictureBox8.Cursor = Cursors.Hand;
             pictureBox8.Image = Properties.Resources.pngDomanda;
-            resources.ApplyResources(pictureBox8, "pictureBox8");
             pictureBox8.Name = "pictureBox8";
             pictureBox8.TabStop = false;
             pictureBox8.Click += pictureBox8_Click;

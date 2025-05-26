@@ -98,13 +98,13 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(radio_mostraoradata);
             panel1.Controls.Add(radio_nascondioradata);
             panel1.Controls.Add(radio_orologiostandard);
             panel1.Controls.Add(radio_mostradatasecondi);
             panel1.Controls.Add(radio_mostrasecondi);
             panel1.Controls.Add(label4);
-            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
             // radio_mostraoradata
@@ -160,9 +160,9 @@
             // 
             // btnAvviaSelezionati
             // 
+            resources.ApplyResources(btnAvviaSelezionati, "btnAvviaSelezionati");
             btnAvviaSelezionati.Cursor = Cursors.Hand;
             btnAvviaSelezionati.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btnAvviaSelezionati, "btnAvviaSelezionati");
             btnAvviaSelezionati.ForeColor = Color.White;
             btnAvviaSelezionati.Name = "btnAvviaSelezionati";
             btnAvviaSelezionati.UseVisualStyleBackColor = true;
@@ -170,12 +170,12 @@
             // 
             // panel2
             // 
+            resources.ApplyResources(panel2, "panel2");
             panel2.Controls.Add(panel14);
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label1);
-            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
             // 
             // panel14
@@ -286,13 +286,13 @@
             // 
             // panel7
             // 
+            resources.ApplyResources(panel7, "panel7");
             panel7.Controls.Add(panel10);
             panel7.Controls.Add(panel6);
             panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel11);
             panel7.Controls.Add(label2);
             panel7.Controls.Add(panel8);
-            resources.ApplyResources(panel7, "panel7");
             panel7.Name = "panel7";
             // 
             // panel10
@@ -466,9 +466,9 @@
             // 
             // btn_resetselezione
             // 
+            resources.ApplyResources(btn_resetselezione, "btn_resetselezione");
             btn_resetselezione.Cursor = Cursors.Hand;
             btn_resetselezione.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(btn_resetselezione, "btn_resetselezione");
             btn_resetselezione.ForeColor = Color.White;
             btn_resetselezione.Name = "btn_resetselezione";
             btn_resetselezione.UseVisualStyleBackColor = true;

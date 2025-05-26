@@ -45,12 +45,11 @@
             // 
             // btnBack
             // 
-            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnBack, "btnBack");
             btnBack.Image = Properties.Resources.pngBackArrow;
             btnBack.Name = "btnBack";
-            toolTip1.SetToolTip(btnBack, resources.GetString("btnBack.ToolTip"));
             btnBack.UseMnemonic = false;
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -64,7 +63,6 @@
             DisabilitaUpdate.FormattingEnabled = true;
             DisabilitaUpdate.Items.AddRange(new object[] { resources.GetString("DisabilitaUpdate.Items"), resources.GetString("DisabilitaUpdate.Items1"), resources.GetString("DisabilitaUpdate.Items2"), resources.GetString("DisabilitaUpdate.Items3"), resources.GetString("DisabilitaUpdate.Items4") });
             DisabilitaUpdate.Name = "DisabilitaUpdate";
-            toolTip1.SetToolTip(DisabilitaUpdate, resources.GetString("DisabilitaUpdate.ToolTip"));
             // 
             // btnAvviaSelezionatiUpda
             // 
@@ -73,7 +71,6 @@
             btnAvviaSelezionatiUpda.FlatAppearance.BorderSize = 0;
             btnAvviaSelezionatiUpda.ForeColor = Color.White;
             btnAvviaSelezionatiUpda.Name = "btnAvviaSelezionatiUpda";
-            toolTip1.SetToolTip(btnAvviaSelezionatiUpda, resources.GetString("btnAvviaSelezionatiUpda.ToolTip"));
             btnAvviaSelezionatiUpda.UseVisualStyleBackColor = true;
             btnAvviaSelezionatiUpda.Click += btnAvviaSelezionatiUpda_Click;
             // 
@@ -86,21 +83,18 @@
             AbilitaUpdate.FormattingEnabled = true;
             AbilitaUpdate.Items.AddRange(new object[] { resources.GetString("AbilitaUpdate.Items"), resources.GetString("AbilitaUpdate.Items1"), resources.GetString("AbilitaUpdate.Items2"), resources.GetString("AbilitaUpdate.Items3"), resources.GetString("AbilitaUpdate.Items4") });
             AbilitaUpdate.Name = "AbilitaUpdate";
-            toolTip1.SetToolTip(AbilitaUpdate, resources.GetString("AbilitaUpdate.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
             label2.ForeColor = Color.White;
             label2.Name = "label2";
-            toolTip1.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = Color.White;
             label1.Name = "label1";
-            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // btnUpdateEssential
             // 
@@ -109,7 +103,6 @@
             btnUpdateEssential.FlatAppearance.BorderSize = 0;
             btnUpdateEssential.ForeColor = Color.White;
             btnUpdateEssential.Name = "btnUpdateEssential";
-            toolTip1.SetToolTip(btnUpdateEssential, resources.GetString("btnUpdateEssential.ToolTip"));
             btnUpdateEssential.UseVisualStyleBackColor = true;
             btnUpdateEssential.Click += btnUpdateEssential_Click;
             // 
@@ -120,7 +113,6 @@
             btnResetUpdate.FlatAppearance.BorderSize = 0;
             btnResetUpdate.ForeColor = Color.White;
             btnResetUpdate.Name = "btnResetUpdate";
-            toolTip1.SetToolTip(btnResetUpdate, resources.GetString("btnResetUpdate.ToolTip"));
             btnResetUpdate.UseVisualStyleBackColor = true;
             btnResetUpdate.Click += btnResetUpdate_Click;
             // 
@@ -128,7 +120,6 @@
             // 
             resources.ApplyResources(progressBar1, "progressBar1");
             progressBar1.Name = "progressBar1";
-            toolTip1.SetToolTip(progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // backgroundWorker1
             // 
@@ -154,7 +145,6 @@
             Controls.Add(btnBack);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormUpdate";
-            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

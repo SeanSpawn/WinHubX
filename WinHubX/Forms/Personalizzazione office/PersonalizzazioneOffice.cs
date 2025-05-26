@@ -715,5 +715,26 @@ namespace WinHubX.Forms.Personalizzazione_office
         {
             checkBox_publisher.Enabled = true;
         }
+
+        private void PersonalizzazioneOffice_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Ottieni il percorso della cartella %TEMP%
+            string tempPath = Path.Combine(Environment.GetEnvironmentVariable("TEMP"), "OfficePersonalizzato");
+
+            // Verifica se la cartella esiste
+            if (Directory.Exists(tempPath))
+            {
+                try
+                {
+                    // Elimina la cartella e tutto il suo contenuto
+                    Directory.Delete(tempPath, true);
+                }
+                catch (Exception ex)
+                {
+                    // Gestione degli errori
+                    MessageBox.Show($"Error: {ex.Message}", "WinHubX", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

@@ -35,9 +35,9 @@ namespace WinHubX.Forms.Base
             pic_termgpu = new PictureBox();
             labelCpuTemp = new Label();
             labelGpuTemp = new Label();
-            BarRAM = new WinHubX.Bottoni.CircularProgressBar();
-            BarCPU = new WinHubX.Bottoni.CircularProgressBar();
-            swapButton1 = new WinHubX.Bottoni.BottoniSwap();
+            BarRAM = new CircularProgressBar();
+            BarCPU = new CircularProgressBar();
+            swapButton1 = new BottoniSwap();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -54,7 +54,7 @@ namespace WinHubX.Forms.Base
             // pic_termcpu
             // 
             resources.ApplyResources(pic_termcpu, "pic_termcpu");
-            pic_termcpu.Image = Properties.Resources.term_giallo;
+            pic_termcpu.Image = Properties.Resources.term_verde;
             pic_termcpu.Name = "pic_termcpu";
             pic_termcpu.TabStop = false;
             // 
