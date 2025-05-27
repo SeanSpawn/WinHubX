@@ -19,7 +19,7 @@
 <p>WinHubX is distributed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3.0</a>, allowing users the freedom to run, study, share, and modify the software.</p>
 
 ## VirusTotal 🛡️
-<p></p>
+<p>https://www.virustotal.com/gui/file/d6963008fb5a5112fdc9e78fc2e93b29d0d0f36ba268b6136b0ad24aee591158?nocache=1</p>
 
 ### Site:
 <p>
