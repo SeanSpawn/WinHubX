@@ -1,5 +1,5 @@
 {
-  "version": "2.4.2.8",
+  "version": "2.4.2.9",
   "releaseNotes": [
     "IT:",
     "Inserita logica per ridimensionamento applicazione",
@@ -7,5 +7,5 @@
     "EN:",
     "Added logic for application resizing"
   ],
-  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.8/WinHubX.exe"
+  "updateUrl": "https://github.com/MrNico98/WinHubX/releases/download/WinHubX-v.2.4.2.9/WinHubX.exe"
 }
